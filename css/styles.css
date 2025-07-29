@@ -1,0 +1,101 @@
+:root{
+    --bg-primary: #691C32;
+    --bg-secondary:#fcf8f9;
+    --bg-muted: #D9D9D9;
+    --bg-separator: #A48138;
+
+    --text-primary: #691C32;
+    --text-secondary: #235B4E;
+}
+
+h2{
+    text-align: center;
+    color: var(--text-primary);
+}
+.container-description{
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; gap: 10px;
+}
+
+.boton{
+    background-color: var(--bg-primary);
+    color: #FFFFFF;
+    border-radius: 25px;
+}
+
+.iconos-description{
+    display: grid; 
+    grid-template-columns: repeat(4, 200px); 
+    justify-content: center; 
+    padding: 30px;
+
+    .info-icono{
+        color: var(--text-secondary);
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 10px; 
+        text-align: center;
+    }
+        .info-icono>.img-icono{
+             width: 40px;
+            height: 40px;
+        }
+    
+}
+
+/* vida academica */
+.bg-grecas{
+    background-image: url(/assets/background/TexturaGrisTransparente.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container-cards{
+    display: grid; 
+    grid-template-columns: repeat(4, 250px);
+    place-items: center; 
+    gap: 10px; 
+    justify-content: center;
+}
+
+.card-info{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-evenly; 
+    height: 90%; 
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    
+
+    .card-vida-academica > img{
+        width: 40px;
+        height: 40px;
+    }
+
+     p{
+        font-weight: bold;
+    }
+
+}
+
+.card-info span:last-child {
+  padding-left: 150px;
+}
+
+/* vida academica */
+
+ .container-cards-tu-alcance{
+    display: grid; 
+    grid-template-columns: repeat(3, 250px);
+    place-items: center; 
+    gap: 55px; 
+    justify-content: center;
+}
