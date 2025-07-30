@@ -79,25 +79,25 @@
                       <button type="button" class="btn boton">Conocer más  <span class="glyphicon glyphicon-chevron-right"></span></button>
                   </div>
               </div>
-              <div class="iconos-description">
+              <div class="iconos-description" id="seccion-contadores">
                   <div class="info-icono">
                     <img class="img-icono" src="./assets/iconos-quienes-somos/docentes.png" alt="docentes">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Docentes</p>
                   </div>
                   <div class="info-icono">
                     <img class="img-icono"  src="./assets/iconos-quienes-somos/estudiantes.png" alt="estudiantes">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Estudiantes</p>
                   </div>
                   <div class="info-icono">
                     <img class="img-icono"   src="./assets/iconos-quienes-somos/planteles.png" alt="planteles">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Planteles</p>
                   </div>
                   <div class="info-icono">
                     <img class="img-icono"  src="./assets/iconos-quienes-somos/especialidades.png" alt="especialidades">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Especialidades <br> Técnicas</p>
                   </div>
               </div>
@@ -112,7 +112,7 @@
               <div class="card-info" >
                 <img src="./assets/iconos-vida-academica/oferta.PNG" alt="Oferta Educativa del Bachillerato Nacional">
                 <p>Oferta educativa del Bachillerato Nacional</p>
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <div class="card-info-span"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></div>
               </div>
               <div class="card-info">
                 <img src="./assets/iconos-vida-academica/marco.PNG" alt="Marco Curricular">
@@ -197,25 +197,25 @@
                       <button type="button" class="btn boton">Conocer más  <span class="glyphicon glyphicon-chevron-right"></span></button>
                   </div>
               </div>
-              <div class="iconos-description">
+              <div class="iconos-description" id="seccion-contadores">
                   <div class="info-icono">
                     <img class="img-icono" src="./assets/iconos-quienes-somos/docentes.png" alt="docentes">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Mujeres <br> Inscritas</p>
                   </div>
                   <div class="info-icono">
                     <img class="img-icono"  src="./assets/iconos-quienes-somos/especialidades.png" alt="especialidades">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Hombres <br> Inscritos</p>
                   </div>
                   <div class="info-icono">
                     <img class="img-icono"   src="./assets/iconos-quienes-somos/planteles.png" alt="planteles">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Egresados <br> Ciclo 2024-2025</p>
                   </div>
                   <div class="info-icono">
                     <img class="img-icono"  src="./assets/iconos-quienes-somos/estudiantes.png" alt="estudiantes">
-                    <strong>21000</strong>
+                    <strong class="contador" data-contar="21000">0</strong>
                     <p>Total de <br> Matricula</p>
                   </div>
               </div>
@@ -225,7 +225,7 @@
         <div class="bg-grecas">
           <div class="container" style="text-align: center;">
             <h2>A Tu Alcance</h2>
-            <div class="container-cards-tu-alcance">
+            <div class="container-cards-3">
               <div class="card-info" >
                 <img src="./assets/a-tu-alcance/becas.PNG" alt="Oferta Educativa del Bachillerato Nacional">
                 <p>Becas Benito Juárez</p>
@@ -243,7 +243,7 @@
               </div>
             </div>
 
-            <div class="container-cards-tu-alcance">
+            <div class="container-cards-3">
               <div class="card-info" >
                 <img src="./assets/a-tu-alcance/construccion.PNG" alt="Oferta Educativa del Bachillerato Nacional">
                 <p>Proceso de <br> Construcción de la <br> Ley</p>
@@ -262,7 +262,7 @@
             </div>
 
             <h2>Mi Escuela Me Cuida</h2>
-            <div class="container-cards-tu-alcance">
+            <div class="container-cards-3">
               <div class="card-info" >
                 <img src="./assets/mi-escuela-me-cuida/cultura.PNG" alt="Oferta Educativa del Bachillerato Nacional">
                 <p>Cultura de Paz</p>
@@ -279,13 +279,50 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
               </div>
             </div>
+
+            <div class="card-red-de-apoyo">
+              <img src="/assets/mi-escuela-me-cuida/bocina.PNG" alt="bocina">
+              <h2>Red de Apoyo</h2>
+              <p>Creemos que cada estudiante merece sentirse valorado, escuchado y protegido.
+                Nuestro compromiso es crear un espacio donde puedas expresarte libremente, 
+                recibir el apoyo que necesitas o presentar una queja.</p>
+              <button type="button" class="btn boton">Conocer más  <span class="glyphicon glyphicon-chevron-right"></span></button>
             </div>
+
+
           </div>
         </div>
 
+        <!-- Tu voz nos importa -->
+         <div style="background-color: var(--bg-secondary)">
+           <div class="container" style="text-align: center; margin-bottom: 40px;">
+            <h2>Tu Voz Nos Importa </h2>
+            <div class="container-cards-3">
+              <div class="card-info" >
+                <span class="glyphicon glyphicon-earphone span-voz" aria-hidden="true"></span>
+                <strong >Teléfono</strong>
+                <p class="p-voz">800 522 6798</p>
+              </div>
+              <div class="card-info">
+                <span class="glyphicon glyphicon-envelope span-voz" aria-hidden="true"></span>
+                <strong>Correo</strong>
+                <p class="p-voz" style="font-size: 16px;">atencion.sems@sems.gob.mx</p>
+              </div>
+              <div class="card-info">
+                <span class="glyphicon glyphicon-map-marker span-voz" aria-hidden="true"></span>
+                <strong>Dirección</strong>
+                <p class="p-voz" style="font-size: 14px;">Av. Universidad #1200 Col.Xoco. Alcaldia <br>Benito Juárez CDMX, C.P. 03300. <br>Lunes a Viernes</p>
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              </div>
+            </div>
+            <button  type="button" class="btn boton">Ingresa petición <span class="glyphicon glyphicon-chevron-right"></span></button>
+           </div>
+         </div>
     </main>
     
+
 <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
 <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>

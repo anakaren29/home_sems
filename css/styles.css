@@ -22,6 +22,14 @@ h2{
     background-color: var(--bg-primary);
     color: #FFFFFF;
     border-radius: 25px;
+    
+}
+
+.boton:hover{
+    background-color: #FFFFFF;
+    color: var(--bg-primary);
+    border: 1px solid var(--bg-primary);
+    transition: all .3s ease;
 }
 
 .iconos-description{
@@ -63,17 +71,14 @@ h2{
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: space-evenly; 
-    height: 90%; 
+    justify-content: flex-start; 
+    height: 200px; 
     width: 100%;
     background-color: #ffffff;
     border-radius: 12px;
-    padding: 30px 20px;
     margin-top: 20px;
-    margin-bottom: 20px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    
 
     .card-vida-academica > img{
         width: 40px;
@@ -85,17 +90,51 @@ h2{
     }
 
 }
-
-.card-info span:last-child {
-  padding-left: 150px;
+.card-info-span{
+  display: block;         
+  width: 100%;   
+  height: 50px; 
+  margin-top: auto;        
+  text-align: right;      
+  transition: all 0.3s ease; 
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+  
+}
+.card-info-span:hover{
+    border-radius: 0 0 12px 12px;
+    background-color: var(--bg-primary);
+    color: #FFFFFF;
+    cursor: pointer;
+    width: 100%;
 }
 
-/* vida academica */
 
- .container-cards-tu-alcance{
+/* a tu alcance*/
+
+ .container-cards-3{
     display: grid; 
     grid-template-columns: repeat(3, 250px);
     place-items: center; 
     gap: 55px; 
     justify-content: center;
+    
+}
+
+.card-red-de-apoyo{
+    border-radius: 20px; 
+    box-shadow: 2px 8px rgba(0,0,0,0.12); 
+    width: 75%; 
+    margin: 20px auto ; 
+    padding: 30px; 
+    background-color: #ffffff;
+}
+
+/* tu voz nos importa*/
+.container-cards-3 > .card-info > .span-voz{
+    color: var(--bg-primary);
+}
+.container-cards-3 > .card-info > .p-voz{
+    font-weight: 300;
 }
