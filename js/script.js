@@ -44,3 +44,11 @@ document.querySelectorAll('#seccion-contadores').forEach(seccion => {
 });
 
 
+function scrollCarrusel(direction) {
+    const carrusel = document.getElementById('carrusel');
+    const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20; // incluye gap
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
