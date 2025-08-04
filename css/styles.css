@@ -16,20 +16,39 @@ h2{
     text-align: center;
     color: var(--text-primary);
 }
-.container-description{
-    display: flex; 
-    justify-content: space-around; 
-    align-items: center; 
-    gap: 10px;
+/* QUIENES SOMOS */
+.vertical-wrapper{
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.vertical-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1.2px;
+  background-color: var(--bg-separator);
+  left: 50.0000%; 
+  z-index: 1;
+}
+.video{
+  position: relative;
+  z-index: 2;
+  
+}
+.d-flex-col{
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
 }
 
 .boton{
     background-color: var(--bg-primary);
     color: #FFFFFF;
-    border-radius: 25px;
-    
+    border-radius: 25px;   
 }
-
 .boton:hover{
     background-color: #FFFFFF;
     color: var(--bg-primary);
@@ -37,44 +56,33 @@ h2{
     transition: all .3s ease;
 }
 
-.iconos-description{
-    display: grid; 
-    grid-template-columns: repeat(5, 200px); 
-    justify-content: center; 
-    padding: 30px;
+.iconos{
+  padding: 30px;
+}
 
-    p{
-      font-weight: bold;
-    }
-    .info-icono{
-        color: var(--text-secondary);
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        gap: 10px; 
-        text-align: center;
-    }
-        .info-icono>.img-icono{
+
+.info-icono{
+    color: var(--text-secondary);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+    text-align: center;
+
+  p{
+    font-weight: bold;
+  }
+  strong{
+    font-size: 22px;
+  }
+  .img-icono{
              width: 40px;
             height: 40px;
         }
-    
 }
+        
 
 /* vida academica */
-.bg-grecas{
-    background-image: url(/assets/background/TexturaGrisTransparente.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.container-cards{
-    display: grid; 
-    grid-template-columns: repeat(4, 250px);
-    place-items: center; 
-    gap: 10px; 
-    justify-content: center;
-}
-
 .card-info{
     display: flex; 
     flex-direction: column; 
@@ -145,10 +153,36 @@ h2{
 .card-red-de-apoyo{
     border-radius: 20px; 
     box-shadow: 2px 8px rgba(0,0,0,0.12); 
-    width: 75%; 
+    max-width: 75%; 
     margin: 20px auto ; 
     padding: 30px; 
     background-color: #ffffff;
+}
+
+/* Mi escuela me cuida */
+.cards{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 200px; 
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+    img{
+        margin-top: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+     p{
+        font-weight: bold;
+    }
+
 }
 
 /* tu voz nos importa*/
@@ -181,8 +215,19 @@ h2{
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
-/* carrusel lo que estamos haciendo */
 
+
+.row.centrado {
+  max-width: 900px;
+  margin: 0 auto;
+}
+/* carrusel lo que estamos haciendo */
+.container-description{
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    gap: 10px;
+}
 .carousel-wrapper {
   position: relative;
   width: 100%;
@@ -199,6 +244,7 @@ h2{
   gap: 20px;
   padding-bottom: 10px;
   scrollbar-width: none; 
+  cursor: grab;
 }
 
 .carousel-scroll::-webkit-scrollbar {
@@ -228,7 +274,10 @@ h2{
   cursor: pointer;
   z-index: 10;
 }
-
+.carousel-scroll.dragging {
+  cursor: grabbing;
+  user-select: none;
+}
 .carousel-btn.left {
   left: 10px;
 }
