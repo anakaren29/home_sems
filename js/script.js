@@ -14,10 +14,10 @@ function animarContadoresEn(seccion) {
 
       if (valorActual < valorFinal) {
         valorActual += incremento;
-        counter.innerText = valorActual;
+        counter.innerText = valorActual.toLocaleString('es-MX');
         setTimeout(actualizar, 20);
       } else {
-        counter.innerText = valorFinal;
+        counter.innerText = valorFinal.toLocaleString('es-MX');
         counter.setAttribute('data-animado', 'true'); 
       }
     };
@@ -47,8 +47,9 @@ document.querySelectorAll('.seccion-contadores').forEach(seccion => {
 
 
 // CARRUSEL
-const carrusel = document.getElementById('carrusel');
+
 function scrollCarrusel(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal');
     const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20;
     carrusel.scrollBy({
       left: direction * cardWidth,
@@ -56,49 +57,57 @@ function scrollCarrusel(direction) {
     });
   }
   
+  document.querySelectorAll('.carrusel-scroll').forEach(carrusel => {
     let isDown = false;
-    let startX;
-    let scrollLeft;
+    let start, scrollStart;
+    let isVertical = carrusel.classList.contains('vertical');
 
-    carrusel.addEventListener('mousedown', (e) => {
+    // PC: mouse
+    carrusel.addEventListener('mousedown', e => {
       isDown = true;
       carrusel.classList.add('dragging');
-      startX = e.pageX - carrusel.offsetLeft;
-      scrollLeft = carrusel.scrollLeft;
+      start = isVertical ? e.pageY : e.pageX;
+      scrollStart = isVertical ? carrusel.scrollTop : carrusel.scrollLeft;
     });
 
-    carrusel.addEventListener('mouseleave', () => {
-      isDown = false;
-      carrusel.classList.remove('dragging');
+    ['mouseup', 'mouseleave'].forEach(event => {
+      carrusel.addEventListener(event, () => {
+        isDown = false;
+        carrusel.classList.remove('dragging');
+      });
     });
 
-    carrusel.addEventListener('mouseup', () => {
-      isDown = false;
-      carrusel.classList.remove('dragging');
-    });
-
-    carrusel.addEventListener('mousemove', (e) => {
+    carrusel.addEventListener('mousemove', e => {
       if (!isDown) return;
       e.preventDefault();
-      const x = e.pageX - carrusel.offsetLeft;
-      const walk = (x - startX) * 1.2;
-      carrusel.scrollLeft = scrollLeft - walk;
+      const current = isVertical ? e.pageY : e.pageX;
+      const walk = (current - start) * 1.2;
+      if (isVertical) {
+        carrusel.scrollTop = scrollStart - walk;
+      } else {
+        carrusel.scrollLeft = scrollStart - walk;
+      }
     });
 
-    // Soporte táctil
-    carrusel.addEventListener('touchstart', (e) => {
+    // Móviles: touch
+    carrusel.addEventListener('touchstart', e => {
       isDown = true;
-      startX = e.touches[0].pageX - carrusel.offsetLeft;
-      scrollLeft = carrusel.scrollLeft;
+      start = isVertical ? e.touches[0].pageY : e.touches[0].pageX;
+      scrollStart = isVertical ? carrusel.scrollTop : carrusel.scrollLeft;
     });
 
     carrusel.addEventListener('touchend', () => {
       isDown = false;
     });
 
-    carrusel.addEventListener('touchmove', (e) => {
+    carrusel.addEventListener('touchmove', e => {
       if (!isDown) return;
-      const x = e.touches[0].pageX - carrusel.offsetLeft;
-      const walk = (x - startX) * 1.2;
-      carrusel.scrollLeft = scrollLeft - walk;
+      const current = isVertical ? e.touches[0].pageY : e.touches[0].pageX;
+      const walk = (current - start) * 1.2;
+      if (isVertical) {
+        carrusel.scrollTop = scrollStart - walk;
+      } else {
+        carrusel.scrollLeft = scrollStart - walk;
+      }
     });
+  });

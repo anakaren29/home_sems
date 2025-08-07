@@ -41,7 +41,7 @@ h2{
 .d-flex-col{
   display: flex;
   flex-direction: column;
-  gap: 88px;
+  gap: 50px;
 }
 
 .boton{
@@ -76,19 +76,23 @@ h2{
     font-size: 22px;
   }
   .img-icono{
-             width: 40px;
-            height: 40px;
+             width: 46px;
+            height: 39px;
         }
 }
-        
+
+.col-carreras-tecnicas{
+  width: 16.888888%;
+  margin: 0 auto;
+}
 
 /* vida academica */
 .card-info{
     display: flex; 
     flex-direction: column; 
-    align-items: center; 
+    align-items: flex-start; 
     justify-content: space-between; 
-    height: 200px; 
+    min-height: 220px; 
     width: 100%;
     background-color: #ffffff;
     border-radius: 12px;
@@ -98,15 +102,21 @@ h2{
 
     img{
         margin-top: 20px;
-        width: 40px;
-        height: 40px;
+        width: 25%;
+        
     }
 
      p{
         font-weight: bold;
+        
     }
 
 }
+
+.card-info-margin{
+  margin-left: 20px;
+}
+
 .card-info-span{
   display: flex;         
   width: 100%;   
@@ -157,6 +167,11 @@ h2{
     margin: 20px auto ; 
     padding: 30px; 
     background-color: #ffffff;
+}
+
+.card-red-de-apoyo > img{
+  width: 10%;
+  height: 70px;
 }
 
 /* Mi escuela me cuida */
@@ -212,10 +227,24 @@ h2{
     background-color: #ffffff;
     border-radius: 12px;
     margin-top: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 8px rgba(0,0,0,0.12);
 }
 
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
 
+.info-item img {
+    width: 24px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.info-item p {
+    margin: 0;
+  }
 
 .row.centrado {
   max-width: 900px;
@@ -237,7 +266,7 @@ h2{
   padding: 0 40px;
 }
 
-.carousel-scroll {
+.carrusel-scroll.horizontal {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -247,11 +276,11 @@ h2{
   cursor: grab;
 }
 
-.carousel-scroll::-webkit-scrollbar {
+.carrusel-scroll::-webkit-scrollbar {
   display: none; 
 }
 
-.card-noticia {
+.card-noticia{
   flex: 0 0 80%; 
   background: #fff;
   border-radius: 12px;
