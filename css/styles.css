@@ -128,9 +128,13 @@ h2{
   justify-content: space-around;
   align-items: baseline;
 
+  a{
+    text-decoration: none;
+  }
   span{
     width: 60px;
     height: 60px;
+    color: #ffffff;
   }
 }
 .card-info-span:hover{
@@ -139,11 +143,16 @@ h2{
     color: #FFFFFF;
     cursor: pointer;
     width: 100%;
+
+}
+.card-info-span a:focus{
+  outline: none;
 }
 .hover-text {
   opacity: 0;
   transition: opacity 0.3s ease;
   white-space: nowrap;
+  text-decoration: none;
 }
 .card-info-span:hover .hover-text {
   opacity: 1;
@@ -318,6 +327,113 @@ h2{
 .carousel-btn:hover {
   cursor: pointer;
 }
+
+/* CARRUSEL BOLETIN */
+.carrusel-boletin{
+  margin-top: 120px;
+}
+.carrusel-scroll.vertical {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 800px; 
+   cursor: grab;
+}
+.carrusel-scroll.dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+/* termina carrusel boletin */
+
+/* BOLETINES */
+.carousel-boletines{
+  padding: 30px 45px;
+  background-color: #f1f1f1;
+}
+.carousel-control.left, 
+.carousel-control.right{
+  background-image: none;
+}
+
+.buscador{
+  max-width: 900px;
+  margin: 60px auto;
+}
+
+.font-changer {
+    position: fixed;
+    margin-top: 138px;
+}
+.internal {
+    top: 184px !important;
+}
+.font-changer button {
+    display: block;
+    background: none;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+    border: 1px solid white;
+    outline: 0;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+.font-modifier {
+    background-color: white !important;
+}
+.card-boletin{
+  display: flex;
+  border-radius: 23px;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #f6f6f6;
+  border: 1px solid #ddd;
+  padding: 15px;
+  box-sizing: border-box;
+
+  img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    padding: 5px;
+  }
+  strong{
+    color: var(--text-secondary);
+  }
+}
+.card-boletin-btn{
+  text-align: right;
+
+  button > span{
+    margin-left: 15px;
+  }
+}
+
+.p-boletin{
+  color: var(--text-secondary);
+  background-color: #9F22410D;
+  width: 28%;
+  padding: 7px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.cards-interes{
+  margin-bottom: 120px;
+
+  hr{
+    height: 2px;
+    background-color: var(--bg-separator);
+  }
+}
+/* termina boletines */
+
+
 .card-noticia {
   background: #fff;
   border-radius: 12px;
@@ -699,4 +815,153 @@ h2{
 
 
 
+/* CALENDARIO */
+.media-superior{
+  color: #7c7c7b;
+    font-weight: 900;
+    font-size: 1.8em;
+    text-align: center;
+}
+.media-h1{
+  color: var(--text-primary);
+  span{
+    color: var(--bg-separator);
+  }
+}
+.boton-rojo {
+    background: #9f2241;
+    color: #fff;
+    margin: 64px auto 32px;
+    border-radius: 20px;
+    padding: 16px 10px;
+    font-weight: 600;
+    max-width: 280px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: #4a0d27 0.3em 0.3em 0 0;
+    display: block;
+}
+.boton-rojo:hover, .boton-rojo:focus {
+    color: #fff;
+    text-decoration: none;
+    box-shadow: #4a0d27 0.15em 0.15em 0 0;
+    translate: 0.15em 0.15em;
+}
+.calendar{
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1;
+}    
+.calendar > [class*="col-"] {
+                        display: flex;
+                        flex-direction: column;
+                    }
+.month{
+  padding: 5px;
+}
+.month-header {
+    background-color: var(--bg-primary);
+    color: #fff;
+    text-align-last: justify;
+    padding: 0.3em 0.5em;
+    font-family: 'Patria', 'Noto Sans', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.days-header, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.days-header div {
+    background-color: #eaeaec;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+}
+.day {
+    text-align: center;
+    padding: 0.5em;
+    position: relative;
+}
+.reunion-discusion {
+    background-color: #60113d;
+    color: white;
+}
+.vacaciones {
+    background-color: #817f7e;
+    color: white;
+}
 
+/* ACOTACIONES DEL CALENDARIO */
+.acotaciones {
+    font-size: .8em;
+}
+.acotaciones ul {
+    list-style: none;
+    padding: 0;
+}
+.acotaciones li {
+    margin: 1em;
+}
+.cuadrito {
+    display: inline-block;
+    width: 3em;
+    text-align: center;
+    margin-right: 0.5em;
+    height: 2em;
+}
+.inicio-clases {
+    background: url(/assets/calendario/icono-inicio-clases.png) right center;
+    color: white;
+}
+.fin-clases {
+    background: url(/assets/calendario/icono-fin-clases.png) left center;
+    color: white;
+}
+.suspension {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0 auto;
+    padding-left: 0.3em;
+}
+.circulito {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+}
+.circulito-jornada{
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+}
+.jornada-concientizacion {
+    border: 3px solid black;
+    border-radius: 50%;
+    height: 1.9em;
+    width: 1.9em;
+    margin: 0 auto;
+    padding-top: 0.4em;
+    padding-left: 0.2em;
+    background-color: #d86ecc;
+}
+.borde {
+    width: calc(3em - 6px);
+}
+.planeacion {
+    border: 3px dashed var(--text-secondary);
+}
+.evaluacion {
+    border: 3px dashed #fd5252;
+}
+.campana {
+    border: 3px dashed #7c9ab5;
+}
+.negritas {
+    font-weight: bold;
+}
+.nota{
+  list-style: none;
+}

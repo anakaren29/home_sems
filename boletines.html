@@ -68,118 +68,158 @@
         </div>
       </nav>
     </header>
-    <main class="page" style="margin-top: 70px">
-      <div class="container">
-        <h2>Boletines</h2>
-        <p>
+    <main class="page" style="margin-top: 90px">
+      <div class="container boletines">
+        <h2 style="margin-top: 80px">Boletines</h2>
+        <p class="text-center" style="padding: 10px 35px">
           Consulta aquí los comunicados, boletines y notas informativas. Esta
           sección reúne información oficial, anuncios relevantes y
           actualizaciones sobre las acciones, programas y políticas dirigidas a
           la Educación Media Superior en todo el país.
         </p>
-        <div id="myCarousel" class="carousel slide carousel-boletines" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-        </ol>
+        <div
+          id="myCarousel"
+          class="carousel slide carousel-boletines"
+          data-ride="carousel"
+        >
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+          </ol>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <img src="./assets/carousel-lo-que-estamos-haciendo/carrusel_comision.png" alt="banner1" />
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img
+                src="./assets/carousel-lo-que-estamos-haciendo/carrusel_comision.png"
+                alt="banner1"
+              />
+            </div>
+
+            <div class="item">
+              <img src="./assets/carousel/banner1.png" alt="banner2" />
+            </div>
           </div>
 
-          <div class="item">
-            <img src="./assets/carousel/banner1.png" alt="banner2" />
-          </div>
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="sr-only">Next</span>
-        </a>
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="right carousel-control"
+            href="#myCarousel"
+            data-slide="next"
+          >
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
 
         <div class="container buscador">
-            <div class="row">
-                <div class="col-md-6 ">
-                  <div class="clearfix">
-                    <div class="accessibility-buttons" style="position: absolute;">
-                    <button id="increase-font" class="btn btn-xs btn-default">Aa+</button>
-                    <button id="decrease-font" class="btn btn-xs btn-default">Aa-</button>
-                    </div>
-                    <div class="btn-group" role="group" style="position: relative;">
-                    <button type="button" class="btn btn-sm btn-default">
-                      <span class="glyphicon glyphicon-th"></span>
-                    </button>
-                    <button type="button" class="btn btn-sm  btn-default" style="margin-right: 10px;">
-                      <span class="glyphicon glyphicon-th-list"></span>
-                    </button>
-                    <button type="button" class="btn  btn-sm btn-default">
-                      <span class="glyphicon glyphicon-sort-by-attributes"></span>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-default">
-                      <span class="glyphicon glyphicon-sort-by-attributes-alt"></span>
-                    </button>
-                  </div>
-
-                    <!-- Select Año -->
-                  <div class="form-group" style="margin-top: 20px;">
-                    <label for="filtro-anio">Filtro de año</label>
-                    <select class="form-control" id="filtro-anio">
-                      <option>2025</option>
-                      <option>2024</option>
-                      <option>2023</option>
-                    </select>
-                  </div>
-                
-                  <!-- Select Categoría -->
-                  <div class="form-group">
-                    <label for="filtro-categoria">Filtro de categoría</label>
-                    <select class="form-control" id="filtro-categoria">
-                      <option>Selecciona una categoría</option>
-                      <option>Prensa</option>
-                      <option>Eventos</option>
-                    </select>
-                  </div>
-
-                  </div> 
-                </div>
-                <div class="col-md-6 text-right" style="display: flex; flex-direction: column; justify-content: space-between; height: 210px;">
-                  <p style="font-size: 14px;">
-                    Mostrando artículos publicados por:<br>
-                    <strong>PRESIDENCIA</strong><br>
-                    Publicado en la categoría: Prensa
-                  </p>
-                  <a href="">
-                    <button type="button" class="btn boton" >
-                    Búsqueda avanzada
+          <div class="row">
+            <div class="font-changer internal print" style="left: 17px;">
+                  <button
+                    class="inc-font font-modifier"
+                    title="Aumentar tamaño de texto"
+                    aria-hidden="true"
+                  >
+                    Aa+
                   </button>
-                  </a>
-                </div>
+                  <button
+                    class="dec-font font-modifier"
+                    title="Disminuir tamaño de texto"
+                    aria-hidden="true"
+                  >
+                    Aa-
+                  </button>
             </div>
-        </div>
+            <div class="col-sm-12 col-md-8">
+              <div class="clearfix">
+                
+                <div class="btn-group" role="group" style="position: relative">
+                  <button type="button" class="btn btn-sm btn-default">
+                    <span class="glyphicon glyphicon-th"></span>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-default"
+                    style="margin-right: 10px"
+                  >
+                    <span class="glyphicon glyphicon-th-list"></span>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-default">
+                    <span class="glyphicon glyphicon-sort-by-attributes"></span>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-default">
+                    <span
+                      class="glyphicon glyphicon-sort-by-attributes-alt"
+                    ></span>
+                  </button>
+                </div>
 
+                <div class="form-group" style="margin-top: 20px">
+                  <label for="filtro-anio">Filtro de año</label>
+                  <select class="form-control" id="filtro-anio">
+                    <option value="">Todos los años</option>
+                    <option>2025</option>
+                    <option>2024</option>
+                    <option>2023</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="filtro-categoria">Filtro de categoría</label>
+                  <select class="form-control" id="filtro-categoria">
+                    <option>Selecciona una categoría</option>
+                    <option>Prensa</option>
+                    <option>Eventos</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-sm-12 col-md-4 text-right"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 42vh;
+              "
+            >
+              <p style="font-size: 1em">
+                Mostrando artículos publicados por:<br />
+                <strong>PRESIDENCIA</strong><br />
+                Publicado en la categoría: Prensa
+              </p>
+              <a href="">
+                <button type="button" class="btn boton">
+                  Búsqueda avanzada
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="container">
         <section>
-          <div class="row" style="margin: 30px 0;">
+          <div class="row" style="margin-bottom: 20px; display: flex; flex-wrap: wrap;">
             <div class="col-md-4">
               <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/BTED 30 dic.jpg" alt="boletin">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Anteproyecto de Ley General de Educación Media Superior</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2025/difusion2.png"
+                  alt="boletin"
+                />
+                <strong>18 de Febrero de 2025</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
                 <div class="card-boletin-btn">
                   <a href="/boletin.html">
-                    <button type="button" class="btn boton" >Leer
+                    <button type="button" class="btn boton">
+                      Leer
                       <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                   </a>
@@ -188,13 +228,20 @@
             </div>
             <div class="col-md-4">
               <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/difusion2.png" alt="difusion">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2025/BOLETIN3.png"
+                  alt="difusion2"
+                />
+                <strong>17 de febrero de 2025</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Anteproyecto de Ley General de Educación Media Superior
+                </p>
                 <div class="card-boletin-btn">
                   <a href="#">
-                    <button type="button" class="btn boton" >Leer
+                    <button type="button" class="btn boton">
+                      Leer
                       <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                   </a>
@@ -203,61 +250,20 @@
             </div>
             <div class="col-md-4">
               <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/BTED 30 dic.jpg" alt="boletin">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2024/BTED 30 dic.jpg"
+                  alt="boletin"
+                />
+                <strong>30 de diciembre de 2024</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Participan 658 personas en el 1er Congreso BTED "Educación y deporte": SEP
+                </p>
                 <div class="card-boletin-btn">
                   <a href="#">
-                    <button type="button" class="btn boton" >Leer
-                      <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="margin: 30px 0;">
-            <div class="col-md-4">
-              <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/difusion2.png" alt="difusion">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
-                <div class="card-boletin-btn">
-                  <a href="#">
-                    <button type="button" class="btn boton" >Leer
-                      <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/difusion2.png" alt="difusion">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
-                <div class="card-boletin-btn">
-                  <a href="#">
-                    <button type="button" class="btn boton" >Leer
-                      <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/BTED 30 dic.jpg" alt="boletin">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
-                <div class="card-boletin-btn">
-                  <a href="#">
-                    <button type="button" class="btn boton" >Leer
+                    <button type="button" class="btn boton">
+                      Leer
                       <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                   </a>
@@ -266,16 +272,23 @@
             </div>
           </div>
 
-          <div class="row" style="margin-top:30px; margin-left: 0px; margin-right: 0px; margin-bottom: 90px;">
+          <div class="row" style="margin-bottom: 20px; display: flex; flex-wrap: wrap;">
             <div class="col-md-4">
               <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/difusion2.png" alt="difusion">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2024/BTED 30 dic.jpg"
+                  alt="difusion"
+                />
+                <strong>27 de diciembre de 2024</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Estudiantes del Conalep obtienen primer lugar en Torneo Mundial de Robótica en Shanghái: SEP
+                </p>
                 <div class="card-boletin-btn">
                   <a href="#">
-                    <button type="button" class="btn boton" >Leer
+                    <button type="button" class="btn boton">
+                      Leer
                       <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                   </a>
@@ -284,13 +297,20 @@
             </div>
             <div class="col-md-4">
               <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/difusion2.png" alt="difusion">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2024/25nov_LecturasRevolucionarias.png"
+                  alt="difusion"
+                />
+                <strong>25 de noviembre de 2024</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Atienden comunidades escolares llamado del titular de la SEP para sumarse al primer "Maratón por la Lectura"
+                </p>
                 <div class="card-boletin-btn">
                   <a href="#">
-                    <button type="button" class="btn boton" >Leer
+                    <button type="button" class="btn boton">
+                      Leer
                       <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                   </a>
@@ -299,13 +319,164 @@
             </div>
             <div class="col-md-4">
               <div class="card-boletin">
-                <img class="img-responsive" src="/assets/boletines/BTED 30 dic.jpg" alt="boletin">
-                <strong>18 de Marzo de 2025</strong>
-                <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
-                <button type="button" class="btn-boletin"><span >Boletin</span></button>
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2024/6oct.jpg"
+                  alt="boletin"
+                />
+                <strong> 06 de octubre de 2024</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Anuncia SEP construcción de nueva preparatoria en Hidalgo
+                </p>
                 <div class="card-boletin-btn">
                   <a href="#">
-                    <button type="button" class="btn boton" >Leer
+                    <button type="button" class="btn boton">
+                      Leer
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row"
+            style="margin-bottom: 20px; display: flex; flex-wrap: wrap;"
+          >
+            <div class="col-md-4">
+              <div class="card-boletin">
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2024/12.jpeg"
+                  alt="difusion"
+                />
+                <strong>18 de septiembre de 2024</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Conalep premia a estudiantes por excelencia académica, liderazgo, patriotismo, valor y servicio
+                </p>
+                <div class="card-boletin-btn">
+                  <a href="#">
+                    <button type="button" class="btn boton">
+                      Leer
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-boletin">
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2023/boletin 250.jpeg"
+                  alt="difusion"
+                />
+                <strong>02 de diciembre de 2023</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Convoca SEP a implementar acciones de vida saludable y desarrollo socioemocional en Educación Media Superior
+                </p>
+                <div class="card-boletin-btn">
+                  <a href="#">
+                    <button type="button" class="btn boton">
+                      Leer
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-boletin">
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2023/boletin236.jpeg"
+                  alt="boletin"
+                />
+                <strong>19 de noviembre de 2023</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Lanzan SEP y Unicef segunda versión de plataforma Pasaporte al aprendizaje offline para docentes y estudiantes de bachillerato
+                </p>
+                <div class="card-boletin-btn">
+                  <a href="#">
+                    <button type="button" class="btn boton">
+                      Leer
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row"
+            style="margin-bottom: 20px; display: flex; flex-wrap: wrap;"
+          >
+            <div class="col-md-4">
+              <div class="card-boletin">
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2023/bole1.jpeg"
+                  alt="difusion"
+                />
+                <strong>25 de octubre de 2023</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Las secretarías de Economía y Educación Pública convocan a fortalecer el talento en el sector de electromovilidad
+                </p>
+                <div class="card-boletin-btn">
+                  <a href="#">
+                    <button type="button" class="btn boton">
+                      Leer
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-boletin">
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2023/formacionOficios.jpeg"
+                  alt="difusion"
+                />
+                <strong>16 de septiembre de 2023</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Más de 445 mil personas reciben formación en oficios y profesiones a través de Cecati: SEP
+                </p>
+                <div class="card-boletin-btn">
+                  <a href="#">
+                    <button type="button" class="btn boton">
+                      Leer
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-boletin">
+                <img
+                  class="img-responsive"
+                  src="/assets/boletines/2022/SEP-PREPAENLINEA02.jpg"
+                  alt="boletin"
+                />
+                <strong>27 de diciembre de 2022</strong>
+                <p class="p-boletin">Boletín</p>
+                <p>
+                  Prepa en Línea SEP atendió más de 174 mil estudiantes durante 2022
+                </p>
+                <div class="card-boletin-btn">
+                  <a href="#">
+                    <button type="button" class="btn boton">
+                      Leer
                       <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                   </a>
@@ -314,6 +485,99 @@
             </div>
           </div>
         </section>
+      </div>
+
+      <div class="container cards-interes">
+        <h2>Te Puede Interesar</h2>
+        <hr />
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="card-info">
+              <img
+                style="width: 30%"
+                class="card-info-margin"
+                src="./assets/te-puede-interesar/55.png"
+                alt="Becas Benito Juárez"
+              />
+              <p class="card-info-margin">Becas Benito Juárez</p>
+              <div class="card-info-span">
+                <a href="#">
+                  <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card-info">
+              <img
+                style="width: 30%"
+                class="card-info-margin"
+                src="./assets/te-puede-interesar/55.png"
+                alt="red de Apoyo"
+              />
+              <p class="card-info-margin">Red de Apoyo</p>
+              <div class="card-info-span">
+                <a href="">
+                  <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card-info">
+              <img
+                style="width: 30%"
+                class="card-info-margin"
+                src="./assets/te-puede-interesar/ed.jpg"
+                alt="Eduacación Dual"
+              />
+              <p class="card-info-margin">
+                Comunidad <br />
+                Estudiantil
+              </p>
+              <div class="card-info-span">
+                <a href="">
+                  <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card-info">
+              <img
+                style="width: 30%"
+                class="card-info-margin"
+                src="./assets/te-puede-interesar/55.png"
+                alt="oferta educativa"
+              />
+              <p class="card-info-margin">
+                Oferta <br />
+                Educativa
+              </p>
+              <div class="card-info-span">
+                <a href="">
+                  <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 

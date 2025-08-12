@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendario</title>
+    <link href="/favicon.ico" rel="shortcut icon" />
+    <link
+      href="https://framework-gb.cdn.gob.mx/assets/styles/main.css"
+      rel="stylesheet"
+    />
+    <link
+      data-turbolinks-track="true"
+      href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#subenlaces"
+            >
+              <span class="sr-only">Interruptor de Navegación</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="subenlaces">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="http://127.0.0.1:5500/index.html">
+                  <span class="icon icon-home"></span>
+                </a>
+              </li>
+              <li><a href="#">¿Quiénes Somos?</a></li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
+                  >Comunicación<span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Boletines</a></li>
+                  <li><a href="#">Multimedia</a></li>
+                  <li><a href="#">Historico</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Normatividad</a></li>
+              <li><a href="#">SINEMS</a></li>
+              <li><a href="#">Transparencia</a></li>
+              <li><a href="#">Programas Presupuestarios</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container-fluid" style="margin-top: 70px; padding: 60px">
+        <h2>Calendario Escolar</h2>
+        <p class="text-center" style="margin-bottom: 60px;">
+          Consulta aquí las fechas clave del ciclo escolar: inicio y fin de
+          clases, periodos vacacionales, exámenes,
+          consejos técnicos y otras actividades relevantes. Mantente informado y
+          organiza tus tiempos de
+          estudio y participación escolar con anticipación.
+        </p>
+        <div class="row">
+          <div class="col-lg-9 col-sm-12">
+            <img class="img-responsive" src="/assets/calendario/header-calendario.png" alt="pleca calendario">  
+              <p class="media-superior">EDUCACIÓN MEDIA SUPERIOR</p>
+              <h1 class="media-h1 text-center">Calendario Escolar <span>2025-2026</span></h1>
+              <p class="text-center">
+                Vigente para las escuelas públicas y particulares incorporadas
+                al Sistema Educativo Nacional en los Estados Unidos Mexicanos.
+              </p>
+          </div>
+          <div  class="col-lg-3 col-sm-12">
+            <a class="boton-rojo" target="_blank" 
+              href="/assets/calendario/Calendario_sems_carta_2025_rectificado (3).pdf">  
+              
+              Descargar en <br> PDF 
+              <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+              </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-9">               
+               <div class="calendar" style="font-family: 'Noto Sans', Arial, Helvetica, sans-serif;">                    
+                <div class="month col-md-4 col-sm-6 col-xs-12">                       
+                   <div class="month-header">Agosto 2025</div>                        
+                   <div class="days-header">                           
+                     <div>D</div>                            
+                     <div>L</div>                           
+                      <div>M</div>                           
+                       <div>M</div>                           
+                        <div>J</div>                           
+                         <div>V</div>                           
+                          <div>S</div>                       
+                    </div>                        
+                    <div class="days">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span class="day">1</span>
+                          <span class="day">2</span>
+                          <span class="day">3</span>
+                          <span class="day">4</span>
+                          <span class="day">5</span>
+                          <span class="day">6</span>
+                          <span class="day">7</span>
+                          <span class="day">8</span>
+                          <span class="day">9</span>
+                          <span class="day">10</span>
+                          <span class="day">11</span>
+                            <span class="day">12</span>
+                            <span class="day">13</span>
+                            <span class="day">14</span>
+                            <span class="day">15</span>
+                            <span class="day">16</span>
+                            <span class="day">17</span>
+                            <span class="day">18</span>
+                            <span class="day">19</span>
+                            <span class="day">20</span>
+                            <span class="day">21</span>
+                            <span class="day">22</span>
+                            <span class="day">23</span>
+                            <span class="day">24</span>
+                            <span class="day planeacion">25</span>
+                            <span class="day planeacion">26</span>
+                            <span class="day planeacion">27</span>
+                            <span class="day planeacion">28</span>
+                            <span class="day planeacion">29</span>
+                            <span class="day">30</span>
+                            <span class="day">31</span>
+                    </div>                   
+                    </div>                    
+                         <div class="month col-md-4 col-sm-6 col-xs-12">                        
+                          <div class="month-header">Septiembre 2025</div>                       
+                           <div class="days-header">                            
+                            <div>D</div>                            
+                            <div>L</div>                            
+                            <div>M</div>                            
+                            <div>M</div>                            
+                            <div>J</div>                            
+                            <div>V</div>                            
+                            <div>S</div>                        
+                          </div>                        
+                          <div class="days">
+                            <span></span>
+                            <span class="day inicio-clases">1</span>
+                            <span class="day">2</span>
+                            <span class="day">3</span>
+                            <span class="day">4</span>
+                            <span class="day">5</span>
+                            <span class="day">6</span>
+                            <span class="day">7</span>
+                            <span class="day">8</span>
+                            <span class="day">9</span>
+                            <span class="day">10</span>
+                            <span class="day">11</span>
+                            <span class="day">12</span>
+                            <span class="day">13</span>
+                            <span class="day">14</span>
+                            <span class="day negritas">15</span>
+                            <span class="day suspension">16</span>
+                            <span class="day">17</span>
+                            <span class="day">18</span>
+                            <span class="day">19</span>
+                            <span class="day">20</span>
+                            <span class="day">21</span>
+                            <span class="day campana">22</span>
+                            <span class="day campana">23</span>
+                            <span class="day campana jornada-concientizacion">24</span>
+                            <span class="day campana">25</span>
+                            <span class="day campana">26</span>
+                            <span class="day campana">27</span>
+                            <span class="day campana">28</span>
+                            <span class="day campana">29</span>
+                            <span class="day campana">30</span>
+                          </div>                   
+                         </div>                    
+                         <div class="month col-md-4 col-sm-6 col-xs-12">                       
+                           <div class="month-header">Octubre 2025</div>                        
+                           <div class="days-header">                           
+                             <div>D</div>                            
+                             <div>L</div>                            
+                             <div>M</div>                            
+                             <div>M</div>                            
+                             <div>J</div>                            
+                             <div>V</div>                            
+                             <div>S</div>                        
+                            </div>                        
+                            <div class="days">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span class="day campana">1</span>
+                              <span class="day campana">2</span>
+                              <span class="day campana">3</span>
+                              <span class="day">4</span>
+                              <span class="day">5</span>
+                              <span class="day">6</span>
+                              <span class="day">7</span>
+                              <span class="day">8</span>
+                              <span class="day">9</span>
+                              <span class="day">10</span>
+                              <span class="day">11</span>
+                              <span class="day">12</span>
+                              <span class="day">13</span>
+                              <span class="day">14</span>
+                              <span class="day">15</span>
+                              <span class="day">16</span>
+                              <span class="day">17</span>
+                              <span class="day">18</span>
+                              <span class="day">19</span>
+                              <span class="day">20</span>
+                              <span class="day">21</span>
+                              <span class="day">22</span>
+                              <span class="day">23</span>
+                              <span class="day reunion-discusion">24</span>
+                              <span class="day">25</span>
+                              <span class="day">26</span>
+                              <span class="day">27</span>
+                              <span class="day">28</span>
+                              <span class="day">29</span>
+                              <span class="day">30</span>
+                              <span class="day cte-ordinario">31</span>
+                            </div>                   
+                           </div>                    
+                           <div class="month col-md-4 col-sm-6 col-xs-12">                       
+                             <div class="month-header">Noviembre 2025</div>                      
+                               <div class="days-header">                            
+                                <div>D</div>                            
+                                <div>L</div>                            
+                                <div>M</div>                            
+                                <div>M</div>                            
+                                <div>J</div>                            
+                                <div>V</div>                            
+                                <div>S</div>                        
+                              </div>                        
+                              <div class="days">                           
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span class="day">1</span>
+                                 <span class="day">2</span>
+                                 <span class="day">3</span>
+                                 <span class="day">4</span>
+                                 <span class="day">5</span>
+                                 <span class="day">6</span>
+                                 <span class="day">7</span>
+                                 <span class="day">8</span>
+                                 <span class="day">9</span>
+                                 <span class="day">10</span>
+                                 <span class="day">11</span>
+                                  <span class="day">12</span>
+                                  <span class="day">13</span>
+                                  <span class="day registro-calificaciones">14</span>
+                                  <span class="day">15</span><span class="day">16</span>
+                                  <span class="day suspension">17</span><span class="day">18</span>
+                                  <span class="day">19</span>
+                                  <span class="day negritas">20</span>
+                                  <span class="day">21</span>
+                                  <span class="day">22</span>
+                                  <span class="day">23</span>
+                                  <span class="day">24</span>
+                                  <span class="day">25</span>
+                                  <span class="day">26</span>
+                                  <span class="day">27</span>
+                                  <span class="day">28</span>
+                                  <span class="day">29</span><span class="day">30</span>                     
+                                   </div>                    
+                                  </div>                   
+                                   <div class="month col-md-4 col-sm-6 col-xs-12">                       
+                                     <div class="month-header">Diciembre 2025</div>                      
+                                       <div class="days-header">                           
+                                         <div>D</div>                            
+                                         <div>L</div>                            
+                                         <div>M</div>                            
+                                         <div>M</div>                            
+                                         <div>J</div>                            
+                                         <div>V</div>                            
+                                         <div>S</div>                        
+                                        </div>                        
+                                        <div class="days">
+                                          <span></span>
+                                          <span class="day">1</span>
+                                          <span class="day">2</span>
+                                          <span class="day">3</span>
+                                          <span class="day">4</span>
+                                          <span class="day">5</span>
+                                          <span class="day">6</span>
+                                          <span class="day">7</span>
+                                          <span class="day">8</span>
+                                          <span class="day">9</span>
+                                          <span class="day">10</span>
+                                          <span class="day">11</span>
+                                          <span class="day">12</span>
+                                          <span class="day">13</span>
+                                          <span class="day">14</span>
+                                          <span class="day">15</span>
+                                          <span class="day">16</span>
+                                          <span class="day">17</span>
+                                          <span class="day">18</span>
+                                          <span class="day">19</span>
+                                          <span class="day">20</span>
+                                          <span class="day">21</span>
+                                          <span class="day vacaciones">22</span>
+                                          <span class="day vacaciones">23</span>
+                                          <span class="day vacaciones">24</span>
+                                          <span class="day suspension">25</span>
+                                          <span class="day vacaciones">26</span>
+                                          <span class="day">27</span>
+                                          <span class="day">28</span>
+                                          <span class="day vacaciones">29</span>
+                                          <span class="day vacaciones">30</span>
+                                          <span class="day vacaciones">31</span>
+                                        </div>                    
+                                      </div>                   
+                                       <div class="month col-md-4 col-sm-6 col-xs-12">                        
+                                        <div class="month-header">Enero 2026</div>                        
+                                        <div class="days-header">                            
+                                          <div>D</div>                            
+                                          <div>L</div>                            
+                                          <div>M</div>                            
+                                          <div>M</div>                            
+                                          <div>J</div>                            
+                                          <div>V</div>                            
+                                          <div>S</div>                       
+                                         </div>                        
+                                         <div class="days">
+                                          <span></span>
+                                          <span></span>
+                                          <span></span>
+                                          <span></span>
+                                          <span class="day suspension">1</span>
+                                          <span class="day vacaciones">2</span>
+                                          <span class="day">3</span>
+                                          <span class="day">4</span>
+                                          <span class="day vacaciones">5</span>
+                                          <span class="day vacaciones">6</span>
+                                          <span class="day taller-directores">7</span>
+                                          <span class="day taller-docentes">8</span>
+                                          <span class="day taller-docentes">9</span>
+                                          <span class="day">10</span>
+                                          <span class="day">11</span>
+                                          <span class="day">12</span>
+                                          <span class="day">13</span>
+                                          <span class="day">14</span>
+                                          <span class="day">15</span>
+                                          <span class="day">16</span>
+                                          <span class="day">17</span>
+                                          <span class="day">18</span>
+                                          <span class="day">19</span>
+                                          <span class="day">20</span>
+                                          <span class="day">21</span>
+                                          <span class="day">22</span>
+                                          <span class="day">23</span>
+                                          <span class="day">24</span>
+                                          <span class="day">25</span>
+                                          <span class="day">26</span>
+                                          <span class="day">27</span>
+                                          <span class="day">28</span>
+                                          <span class="day">29</span>
+                                          <span class="day cte-ordinario">30</span>
+                                          <span class="day">31</span>
+                                        </div>                    
+                                      </div>                   
+                                       <div class="month col-md-4 col-sm-6 col-xs-12">                        
+                                        <div class="month-header">Febrero 2026</div>                       
+                                         <div class="days-header">                           
+                                           <div>D</div>                            
+                                           <div>L</div>                            
+                                           <div>M</div>                            
+                                           <div>M</div>                            
+                                           <div>J</div>                            
+                                           <div>V</div>                            
+                                           <div>S</div>                        
+                                          </div>                        
+                                          <div class="days"><span class="day">1</span>
+                                            <span class="day suspension">2</span>
+                                            <span class="day preinscripciones start" style="border-bottom: none;">3</span>
+                                            <span class="day preinscripciones interup">4</span>
+                                            <span class="day preinscripciones negritas interup">5</span>
+                                            <span class="day  preinscripciones end" style="border-bottom: none;">6</span>
+                                            <span class="day">7</span>
+                                            <span class="day">8</span>
+                                            <span class="day preinscripciones start">9</span>
+                                            <span class="day preinscripciones interdown">10</span>
+                                            <span class="day preinscripciones interdown">11</span>
+                                            <span class="day preinscripciones interdown">12</span>
+                                            <span class="day preinscripciones end" style="border-top: none;">13</span>
+                                            <span class="day">14</span>
+                                            <span class="day">15</span>
+                                            <span class="day">16</span>
+                                            <span class="day">17</span>
+                                            <span class="day">18</span>
+                                            <span class="day">19</span>
+                                            <span class="day">20</span>
+                                            <span class="day">21</span>
+                                            <span class="day">22</span>
+                                            <span class="day">23</span>
+                                            <span class="day negritas">24</span>
+                                            <span class="day">25</span>
+                                            <span class="day">26</span>
+                                            <span class="day cte-ordinario">27</span>
+                                            <span class="day">28</span>
+                                          </div>                    
+                                        </div>                   
+                                         <div class="month col-md-4 col-sm-6 col-xs-12">                        
+                                          <div class="month-header">Marzo 2026</div>                       
+                                           <div class="days-header">                            
+                                            <div>D</div>                           
+                                            <div>L</div>                          
+                                            <div>M</div>                        
+                                            <div>M</div>                            
+                                            <div>J</div>                            
+                                            <div>V</div>                            
+                                            <div>S</div>                        
+                                          </div>                        
+                                          <div class="days">
+                                            <span class="day">1</span>
+                                            <span class="day campana">2</span>
+                                            <span class="day campana">3</span>
+                                            <span class="day campana">4</span>
+                                            <span class="day campana">5</span>
+                                            <span class="day campana">6</span>
+                                            <span class="day">7</span>
+                                            <span class="day">8</span>
+                                            <span class="day campana">9</span>
+                                            <span class="day campana">10</span>
+                                            <span class="day campana">11</span>
+                                            <span class="day campana">12</span>
+                                            <span class="day campana">13</span>
+                                            <span class="day">14</span>
+                                            <span class="day">15</span>
+                                            <span class="day suspension">16</span>
+                                            <span class="day">17</span>
+                                            <span class="day">18</span>
+                                            <span class="day">19</span>
+                                            <span class="day negritas">20</span>
+                                            <span class="day negritas">21</span>
+                                            <span class="day">22</span>
+                                            <span class="day ">23</span>
+                                            <span class="day ">24</span>
+                                            <span class="day ">25</span>
+                                            <span class="day ">26</span>
+                                            <span class="day ">27</span>
+                                            <span class="day">28</span>
+                                            <span class="day">29</span>
+                                            <span class="day vacaciones">30</span>
+                                            <span class="day vacaciones">31</span>
+                                          </div>                    
+                                        </div>                    
+                                        <div class="month col-md-4 col-sm-6 col-xs-12">                        
+                                          <div class="month-header">Abril 2026</div>                        
+                                          <div class="days-header">                            
+                                            <div>D</div>                            
+                                            <div>L</div>                           
+                                            <div>M</div>                            
+                                            <div>M</div>                            
+                                            <div>J</div>                            
+                                            <div>V</div>                            
+                                            <div>S</div>                        
+                                          </div>                        
+                                          <div class="days">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span class="day vacaciones">1</span>
+                                            <span class="day vacaciones">2</span>
+                                            <span class="day vacaciones">3</span>
+                                            <span class="day">4</span>
+                                            <span class="day">5</span>
+                                            <span class="day vacaciones">6</span>
+                                            <span class="day vacaciones">7</span>
+                                            <span class="day vacaciones">8</span>
+                                            <span class="day vacaciones">9</span>
+                                            <span class="day vacaciones">10</span>
+                                            <span class="day">11</span>
+                                            <span class="day">12</span>
+                                            <span class="day">13</span>
+                                            <span class="day">14</span>
+                                            <span class="day">15</span>
+                                            <span class="day">16</span>
+                                            <span class="day">17</span>
+                                            <span class="day">18</span>
+                                            <span class="day">19</span>
+                                            <span class="day">20</span>
+                                            <span class="day">21</span>
+                                            <span class="day">22</span>
+                                            <span class="day">23</span>
+                                            <span class="day reunion-discusion">24</span>
+                                            <span class="day">25</span>
+                                            <span class="day">26</span>
+                                            <span class="day">27</span>
+                                            <span class="day">28</span>
+                                            <span class="day">29</span>
+                                            <span class="day negritas">30</span>
+                                          </div>                    
+                                        </div>                    
+                                        <div class="month col-md-4 col-sm-6 col-xs-12">                        
+                                          <div class="month-header">Mayo 2026</div>                        
+                                          <div class="days-header">                            
+                                            <div>D</div>                            
+                                            <div>L</div>                            
+                                            <div>M</div>                            
+                                            <div>M</div>                            
+                                            <div>J</div>                            
+                                            <div>V</div>                            
+                                            <div>S</div>                        
+                                          </div>                        
+                                          <div class="days">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span class="day suspension">1</span>
+                                            <span class="day">2</span>
+                                            <span class="day">3</span>
+                                            <span class="day negritas">4</span>
+                                            <span class="day suspension">5</span>
+                                            <span class="day">6</span>
+                                            <span class="day">7</span>
+                                            <span class="day">8</span>
+                                            <span class="day">9</span>
+                                            <span class="day">10</span>
+                                            <span class="day">11</span>
+                                            <span class="day">12</span>
+                                            <span class="day">13</span>
+                                            <span class="day">14</span>
+                                            <span class="day suspension">15</span>
+                                            <span class="day">16</span>
+                                            <span class="day">17</span>
+                                            <span class="day">18</span>
+                                            <span class="day">19</span>
+                                            <span class="day">20</span>
+                                            <span class="day">21</span>
+                                            <span class="day">22</span>
+                                            <span class="day">23</span>
+                                            <span class="day">24</span>
+                                            <span class="day">25</span>
+                                            <span class="day">26</span>
+                                            <span class="day">27</span>
+                                            <span class="day">28</span>
+                                            <span class="day cte-ordinario">29</span>
+                                            <span class="day">30</span>
+                                            <span class="day">31</span>                        
+                                          </div>                    
+                                        </div>                    
+                                        <div class="month col-md-4 col-sm-6 col-xs-12">                        
+                                          <div class="month-header">Junio 2026</div>                        
+                                          <div class="days-header">                            
+                                            <div>D</div>                            
+                                            <div>L</div>                            
+                                            <div>M</div>                            
+                                            <div>M</div>                            
+                                            <div>J</div>                            
+                                            <div>V</div>                            
+                                            <div>S</div>                        
+                                          </div>                        
+                                          <div class="days"><span></span>
+                                            <span class="day">1</span>
+                                            <span class="day">2</span>
+                                            <span class="day">3</span>
+                                            <span class="day">4</span>
+                                            <span class="day">5</span>
+                                            <span class="day">6</span>
+                                            <span class="day">7</span>
+                                            <span class="day">8</span>
+                                            <span class="day">9</span>
+                                            <span class="day">10</span>
+                                            <span class="day">11</span>
+                                            <span class="day">12</span>
+                                            <span class="day">13</span>
+                                            <span class="day">14</span>
+                                            <span class="day">15</span>
+                                            <span class="day">16</span>
+                                            <span class="day">17</span>
+                                            <span class="day">18</span>
+                                            <span class="day">19</span>
+                                            <span class="day">20</span>
+                                            <span class="day">21</span>
+                                            <span class="day">22</span>
+                                            <span class="day">23</span>
+                                            <span class="day">24</span>
+                                            <span class="day">25</span>
+                                            <span class="day cte-ordinario">26</span>
+                                            <span class="day">27</span><span class="day">28</span>
+                                            <span class="day">29</span><span class="day">30</span>
+                                          </div>                    
+                                        </div>                    
+                                        <div class="month col-md-4 col-sm-6 col-xs-12">                       
+                                           <div class="month-header">Julio 2026</div>                        
+                                           <div class="days-header">                            
+                                            <div>D</div>                            
+                                            <div>L</div>                            
+                                            <div>M</div>                            
+                                            <div>M</div>                            
+                                            <div>J</div>                            
+                                            <div>V</div>                            
+                                            <div>S</div>                        
+                                          </div>                       
+                                           <div class="days">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span class="day">1</span>
+                                            <span class="day">2</span>
+                                            <span class="day">3</span>
+                                            <span class="day">4</span>
+                                            <span class="day">5</span>
+                                            <span class="day">6</span>
+                                            <span class="day">7</span>
+                                            <span class="day">8</span>
+                                            <span class="day">9</span>
+                                            <span class="day">10</span>
+                                            <span class="day">11</span>
+                                            <span class="day">12</span>
+                                            <span class="day">13</span>
+                                            <span class="day">14</span>
+                                            <span class="day end fin-clases">15</span>
+                                            <span class="day evaluacion">16</span>
+                                            <span class="day evaluacion">17</span>
+                                            <span class="day">18</span>
+                                            <span class="day">19</span>
+                                            <span class="day evaluacion">20</span>
+                                            <span class="day evaluacion">21</span>
+                                            <span class="day evaluacion">22</span>
+                                            <span class="day">23</span>
+                                            <span class="day">24</span>
+                                            <span class="day">25</span>
+                                            <span class="day">26</span>
+                                            <span class="day">27</span>
+                                            <span class="day">28</span>
+                                            <span class="day">29</span>
+                                            <span class="day">30</span>
+                                            <span class="day">31</span>
+                                          </div>                   
+                                         </div>                
+                </div>            
+          </div>
+          <div class="col-lg-3">                
+            <div class="acotaciones">                        
+              <h3>Acotaciones</h3>                        
+              <ul>                                
+                <li>                            
+                  <div class="day cuadrito inicio-clases"></div> 
+                  INICIO DE CLASES DEL CICLO ESCOLAR 2025–2026                        
+                </li>                                
+                <li>                           
+                   <div class="day cuadrito fin-clases"></div> 
+                   FIN DE CLASES DEL CICLO ESCOLAR 2025–2026                        
+                  </li>                                
+                  <li>                            
+                    <div class="day cuadrito suspension circulito"></div> 
+                    SUSPENSIÓN DE LABORES DOCENTES                        
+                  </li>                                
+                  <li>                            
+                    <div class="day cuadrito jornada-concientizacion circulito-jornada" style="transform:scale(.9)">
+                    </div>                            
+                    JORNADA DE FORMACIÓN Y REFLEXIÓN SOBRE LA GRAVEDAD DEL ABUSO SEXUAL Y EL MALTRATO EN LAS ADOLESCENCIAS</li>                               
+                     <li>                            
+                      <div class="day cuadrito reunion-discusion"></div> 
+                      REUNIÓN DE DISCUSIÓN DEL MCCEMS Y EVALUACIÓN DE LOS APRENDIZAJES ALCANZADOS                      
+                    </li>                                
+                    <li>                            
+                      <div class="day cuadrito vacaciones"></div> 
+                      VACACIONES                   
+                     </li>                                
+                     <li>                            
+                      <div class="day cuadrito planeacion"></div> 
+                      REUNIÓN DE PLANEACIÓN DEL CICLO ESCOLAR
+                      CONSIDERAR LA SEMANA PREVIA AL INICIO DEL SEMESTRE 25-26/1 Y 25-26/2                 
+                    </li>                                
+                    <li>                            
+                      <div class="day cuadrito evaluacion"></div> 
+                      REUNIÓN DE EVALUACIÓN DEL CICLO ESCOLAR
+                      CONSIDERAR LA SEMANA POSTERIOR AL TÉRMINO DEL SEMESTRE 25-26/1 Y 25-26/2                 
+                    </li>                        
+                    <li>                            
+                      <div class="day cuadrito campana"></div> 
+                      CAMPAÑA "TE EXTRAÑAMOS EN EL SALÓN"                      
+                    </li>                                               
+                      <li>
+                        <span class="negritas">Negrillas:</span> Señalan días conmemorativos o de reflexión.
+                      </li>                                              
+                       </ul>  
+                      <li class="nota">
+                        <span class="negritas">Nota: El periodo intersemestral, de evaluación, recuperación de los aprendizajes 
+                        y receso de clases está sujeto a la organización de cada subsistema.</span>
+                      </li>             
+                      </div>            
+          </div>
+      </div>
+
+      <div class="container cards-interes">
+        <h2>Te Puede Interesar</h2>
+        <hr>
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="card-info">
+                <img style="width:30%" class="card-info-margin"
+                
+                  src="./assets/te-puede-interesar/55.png"
+                  alt="Becas Benito Juárez"
+                />
+                <p class="card-info-margin">Becas Benito Juárez</p>
+                <div class="card-info-span">
+                  <a href="#">
+                    <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                  </a>
+                  
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card-info">
+                <img style="width:30%" class="card-info-margin"
+                
+                  src="./assets/te-puede-interesar/55.png"
+                  alt="red de Apoyo"
+                />
+                <p class="card-info-margin">Red de Apoyo</p>
+                <div class="card-info-span">
+                  <a href="">
+                    <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                  </a>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card-info">
+                <img style="width:30%" class="card-info-margin"
+                
+                  src="./assets/te-puede-interesar/ed.jpg"
+                  alt="Eduacación Dual"
+                />
+                <p class="card-info-margin">Comunidad <br> Estudiantil</p>
+                <div class="card-info-span">
+                  <a href="">
+                    <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                  </a>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card-info">
+                <img style="width:30%" class="card-info-margin"
+                
+                  src="./assets/te-puede-interesar/55.png"
+                  alt="oferta educativa"
+                />
+                <p class="card-info-margin">Oferta <br> Educativa</p>
+                <div class="card-info-span">
+                  <a href="">
+                    <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
+                  </a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
