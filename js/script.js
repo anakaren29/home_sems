@@ -130,3 +130,86 @@ function scrollCarrusel(direction) {
       }
     });
   });
+
+
+  // SCRIPT FILTRO BOLETINES
+document.addEventListener("DOMContentLoaded", function () {
+  const filtroAnio = document.getElementById("filtro-anio");
+  const seccion = document.querySelector("section");
+  const todasColumnas = Array.from(seccion.querySelectorAll(".col-md-4"));
+
+  filtroAnio.addEventListener("change", function () {
+    const anioSeleccionado = filtroAnio.value;
+
+    // Limpiar la sección
+    seccion.innerHTML = "";
+
+    // Filtrar tarjetas
+    const visibles = todasColumnas.filter((col) => {
+      const fechaTexto = col.querySelector("strong").textContent.trim();
+      const anioEnCard = fechaTexto.match(/\b\d{4}\b/);
+      return (
+        anioSeleccionado === "" ||
+        (anioEnCard && anioEnCard[0] === anioSeleccionado)
+      );
+    });
+
+    // Reacomodar visibles
+    if (visibles.length > 0) {
+      let fila = document.createElement("div");
+      fila.classList.add("row");
+
+      visibles.forEach((col, index) => {
+        col.style.display = "";
+        col.classList.remove("col-md-4", "col-md-12");
+
+        if (visibles.length === 1) {
+          col.classList.add("col-md-12");
+        } else {
+          col.classList.add("col-md-4");
+        }
+
+        fila.appendChild(col);
+
+        if ((index + 1) % 3 === 0 && visibles.length > 1) {
+          seccion.appendChild(fila);
+          fila = document.createElement("div");
+          fila.classList.add("row");
+        }
+      });
+
+      if (fila.children.length > 0) {
+        seccion.appendChild(fila);
+      }
+
+      // Ajustar altura después de reacomodar
+      ajustarAlturaTarjetas();
+    } else {
+      const mensaje = document.createElement("p");
+      mensaje.textContent = "No hay boletines para este año.";
+      seccion.appendChild(mensaje);
+    }
+  });
+
+  function ajustarAlturaTarjetas() {
+    const tarjetas = document.querySelectorAll(".card-boletin");
+    let maxAltura = 0;
+
+    // Resetear altura
+    tarjetas.forEach(t => t.style.height = "auto");
+
+    // Calcular altura máxima
+    tarjetas.forEach(t => {
+      if (t.offsetHeight > maxAltura) {
+        maxAltura = t.offsetHeight;
+      }
+    });
+
+    // Aplicar altura máxima
+    tarjetas.forEach(t => t.style.height = maxAltura + "px");
+  }
+
+  // Ajustar también al cargar y al redimensionar
+  ajustarAlturaTarjetas();
+  window.addEventListener("resize", ajustarAlturaTarjetas);
+});
