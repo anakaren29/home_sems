@@ -56,6 +56,25 @@ function scrollCarrusel(direction) {
       behavior: 'smooth'
     });
   }
+
+  function scrollCarruselBachilleratoGeneral(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-bachillerato-general');
+    const cardWidth = carrusel.querySelector('.contenedor-imgCarrusel').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+    function scrollCarruselBachilleratoTecnico(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-bachillerato-tecnico');
+    const cardWidth = carrusel.querySelector('.contenedor-imgCarrusel').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
   
   document.querySelectorAll('.carrusel-scroll').forEach(carrusel => {
     let isDown = false;
