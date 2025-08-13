@@ -89,7 +89,6 @@ h2{
 /* vida academica */
 .card-info{
     display: flex; 
-    flex-wrap: wrap;
     flex-direction: column; 
     align-items: flex-start; 
     justify-content: space-between; 
@@ -98,6 +97,7 @@ h2{
     background-color: #ffffff;
     border-radius: 12px;
     margin-top: 20px;
+    text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 
     img{
@@ -128,13 +128,9 @@ h2{
   justify-content: space-around;
   align-items: baseline;
 
-  a{
-    text-decoration: none;
-  }
   span{
     width: 60px;
     height: 60px;
-    color: #ffffff;
   }
 }
 .card-info-span:hover{
@@ -143,16 +139,11 @@ h2{
     color: #FFFFFF;
     cursor: pointer;
     width: 100%;
-
-}
-.card-info-span a:focus{
-  outline: none;
 }
 .hover-text {
   opacity: 0;
   transition: opacity 0.3s ease;
   white-space: nowrap;
-  text-decoration: none;
 }
 .card-info-span:hover .hover-text {
   opacity: 1;
@@ -327,113 +318,6 @@ h2{
 .carousel-btn:hover {
   cursor: pointer;
 }
-
-/* CARRUSEL BOLETIN */
-.carrusel-boletin{
-  margin-top: 120px;
-}
-.carrusel-scroll.vertical {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: 800px; 
-   cursor: grab;
-}
-.carrusel-scroll.dragging {
-  cursor: grabbing;
-  user-select: none;
-}
-/* termina carrusel boletin */
-
-/* BOLETINES */
-.carousel-boletines{
-  padding: 30px 45px;
-  background-color: #f1f1f1;
-}
-.carousel-control.left, 
-.carousel-control.right{
-  background-image: none;
-}
-
-.buscador{
-  max-width: 900px;
-  margin: 60px auto;
-}
-
-.font-changer {
-    position: fixed;
-    margin-top: 138px;
-}
-.internal {
-    top: 184px !important;
-}
-.font-changer button {
-    display: block;
-    background: none;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-    border: 1px solid white;
-    outline: 0;
-    border-radius: 5px;
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    font-size: 13px;
-    margin-bottom: 7px;
-}
-.font-modifier {
-    background-color: white !important;
-}
-.card-boletin{
-  display: flex;
-  border-radius: 23px;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  background-color: #f6f6f6;
-  border: 1px solid #ddd;
-  padding: 15px;
-  box-sizing: border-box;
-
-  img{
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    padding: 5px;
-  }
-  strong{
-    color: var(--text-secondary);
-  }
-}
-.card-boletin-btn{
-  text-align: right;
-
-  button > span{
-    margin-left: 15px;
-  }
-}
-
-.p-boletin{
-  color: var(--text-secondary);
-  background-color: #9F22410D;
-  width: 28%;
-  padding: 7px;
-  text-align: center;
-  border-radius: 10px;
-  font-weight: 500;
-}
-
-.cards-interes{
-  margin-bottom: 120px;
-
-  hr{
-    height: 2px;
-    background-color: var(--bg-separator);
-  }
-}
-/* termina boletines */
-
-
 .card-noticia {
   background: #fff;
   border-radius: 12px;
@@ -504,7 +388,7 @@ h2{
     flex-direction: column; 
     align-items: start; 
     justify-content: flex-start; 
-    min-height: 250px;
+    height: 250px;
     width: 100%;
     background-color: var(--bg-secondary);
     border-radius: 12px;
@@ -1430,3 +1314,4 @@ h2{
     }
 }
 /* *MULTIMEDIA* */
+
