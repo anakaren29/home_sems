@@ -949,7 +949,6 @@ h2{
     max-width: 280px;
     color: #fff;
     text-decoration: none;
-    box-shadow: #4a0d27 0.3em 0.3em 0 0;
     display: block;
 }
 .boton-rojo:hover, .boton-rojo:focus {
@@ -1063,6 +1062,54 @@ h2{
 }
 .planeacion {
     border: 3px dashed var(--text-secondary);
+}
+
+.inicio-clases::after, .planeacion::after , .campana::after, .fin-clases::after, .receso-clases::after, .suspension::after, .jornada-concientizacion::after, .cte-intensivo::after, .cte-ordinario::after, .evaluacion::after, .vacaciones::after, .registro-calificaciones::after, .taller-directores::after, .taller-docentes::after, .preinscripciones::after {
+    padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
+}
+.day::after {
+    content: "";
+    position: absolute;
+    bottom: 2em;
+    left: -3.5em;
+    text-align: center;
+    background: #611232;
+    color: whitesmoke;
+    padding: 0;
+    width: 0;
+    z-index: 100;
+    font-size: .8em;
+    display: none;
+    line-height: 1.2;
+}
+.day:hover::after {            display: block;            } 
+
+.planeacion::after{
+  content: "REUNIÓN DE PLANEACIÓN DEL CICLO ESCOLAR CONSIDERAR LA SEMANA PREVIA AL INICIO DEL SEMESTRE 25-26/1 Y 25-26/2";
+  width: 15em;
+  left: -7em;
+  background-color: #235B4E;
+}
+.campana::after{
+  content: "REUNIÓN DE CAMPANA";
+  width: 15em;
+  left: -7em;
+  background-color: #235B4E;
+}
+.start {
+    border-right: none;
+    padding: calc(0.5em - 3px) 0.5em;
+}
+.inter {
+    border-left: none;
+    border-right: none;
+    padding: calc(0.5em - 3px);
+}
+.end {
+    border-left: none;
+    padding: calc(0.5em - 3px) 0.5em;
 }
 .evaluacion {
     border: 3px dashed #fd5252;
@@ -1382,3 +1429,4 @@ h2{
    
     }
 }
+/* *MULTIMEDIA* */
