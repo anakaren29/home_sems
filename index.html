@@ -50,7 +50,7 @@
                   data-toggle="dropdown"
                   role="button"
                   aria-expanded="false"
-                  >Comunicación<span class="caret"></span
+                  >Difusión<span class="caret"></span
                 ></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="#">Boletines</a></li>
@@ -60,8 +60,8 @@
               </li>
               <li><a href="./marco_normativo.html">Normatividad</a></li>
               <li><a href="#">SINEMS</a></li>
-              <li><a href="./transparencia.html">Transparencia</a></li>
-              <li><a href="Informacion_de_programas_presupuestarios.html">Programas Presupuestarios</a></li>
+              <li><a href="#">Transparencia</a></li>
+              <li><a href="#">Programas Presupuestarios</a></li>
               <li><a href="#">Contacto</a></li>
             </ul>
           </div>
@@ -69,7 +69,7 @@
       </nav>
     </header>
 
-    <main style="margin-top: 70px">
+    <main class="page" style="margin-top: 70px">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -106,10 +106,12 @@
           <div class="row vertical-wrapper">
             <div class="col-xs-12 col-sm-6">
               <div class="video">
-                <iframe width="100%" height="300px" 
-                style="border-radius: 20px;"
-                src="https://www.youtube.com/embed/xjoIdV5eLeQ?si=I6Qdo1kjzURQIxlm" 
-                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <img
+                  style="border-radius: 18px"
+                  src="/assets/iconos-quienes-somos/quienes somos.jpg"
+                  alt="quienes-somos"
+                  class="img-responsive"
+                />
               </div>
             </div>
             <div class="vertical-line hidden-xs"></div>
@@ -138,10 +140,10 @@
               <div class="info-icono">
                 <img
                   class="img-icono"
-                  src="./assets/iconos-quienes-somos/bachillerato_general.png"
+                  src="./assets/iconos-quienes-somos/Bachillerato_general.png"
                   alt="bachillerato general"
                 />
-                <strong class="contador" data-contar="3581454">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>Bachillerato <br />General</p>
               </div>
             </div>
@@ -152,7 +154,7 @@
                   src="./assets/iconos-quienes-somos/bachillerato_tecnologico.png"
                   alt="bachillerato Tecnológico"
                 />
-                <strong class="contador" data-contar="1911037">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>
                   Bachillerato <br />
                   Tecnológico
@@ -166,7 +168,7 @@
                   src="./assets/iconos-quienes-somos/docentes.png"
                   alt="docentes"
                 />
-                <strong class="contador" data-contar="423587">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>Docentes</p>
               </div>
             </div>
@@ -177,19 +179,19 @@
                   src="./assets/iconos-quienes-somos/planteles.png"
                   alt="planteles"
                 />
-                <strong class="contador" data-contar="17798">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>Planteles</p>
               </div>
             </div>
-            <div class="col-sm-2 col-carreras-tecnicas">
+            <div class="col-sm-2">
               <div class="info-icono">
                 <img
                   class="img-icono"
                   src="./assets/iconos-quienes-somos/carreras_tecnicas.png"
                   alt="Carreras tecnicas"
                 />
-                <strong class="contador" data-contar="181">0</strong>
-                <p>Carreras Técnicas que se ofrecen</p>
+                <strong class="contador" data-contar="21000">0</strong>
+                <p style="font-size: 17px">Carreras Técnicas que se ofrecen</p>
               </div>
             </div>
             <div class="col-sm-1"></div>
@@ -205,122 +207,135 @@
             Herramientas y recusos académicos escenciales para estudiantes y
             <br />docentes de educación media superior.
           </p>
-          <div class="row centrado">
-            <div class="col-md-4">
+          <div class="row">
+            <div class="col-sm-3">
               <div class="card-info">
-                <img style="width:30%" class="card-info-margin"
-                
-                  src="./assets/iconos-vida-academica/bachillerato_nacional.png"
+                <img
+                  src="./assets/iconos-vida-academica/oferta.PNG"
                   alt="Oferta Educativa del Bachillerato Nacional"
                 />
-                <p class="card-info-margin">Bachillerato Nacional</p>
+                <p>Oferta Educativa del Bachillerato Nacional</p>
                 <div class="card-info-span">
-                  <a href="">
-                    <span class="hover-text">Ver más</span>
-                    <span
+                  <span class="hover-text">Ver más</span>
+                  <span
                     class="glyphicon glyphicon-chevron-right"
                     aria-hidden="true"
-                    ></span>
-                  </a>
+                  ></span>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-3">
               <div class="card-info">
-                <img class="card-info-margin"
-                  src="./assets/iconos-vida-academica/COSFAC.png"
+                <img
+                  src="./assets/iconos-vida-academica/marco.PNG"
                   alt="Marco Curricular"
                 />
-                <p class="card-info-margin" style="text-align: left;">Coordinación Sectorial <br> 
-                  de Fortalecimiento <br> Academico
-                </p>
+                <p>Marco Curricular</p>
                 <div class="card-info-span">
-                  <a href="https://cosfac.sems.gob.mx/" target="_blank">
-                    <span class="hover-text">Ver más</span>
+                  <span class="hover-text">Ver más</span>
                   <span
                     class="glyphicon glyphicon-chevron-right"
                     aria-hidden="true"
                   ></span>
-                  </a>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-3">
               <div class="card-info">
-                <img class="card-info-margin"
-                  src="./assets/iconos-vida-academica/certificacion_academica.png"
+                <img
+                  src="./assets/iconos-vida-academica/certificacion.PNG"
                   alt="Certificación Acádemica"
                 />
-                <p class="card-info-margin">Certificación Acádemica</p>
+                <p>Certificación Acádemica</p>
                 <div class="card-info-span">
-                  <a href="">
-                    <span class="hover-text">Ver más</span>
+                  <span class="hover-text">Ver más</span>
                   <span
                     class="glyphicon glyphicon-chevron-right"
                     aria-hidden="true"
                   ></span>
-                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-info">
+                <img
+                  src="./assets/iconos-vida-academica/coordinacion.PNG"
+                  alt="COSFAC"
+                />
+                <p>Coordinación Sectorial de Fortalecimiento Acádemico</p>
+                <div class="card-info-span">
+                  <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row centrado">
-            <div class="col-md-4">
+          <div class="row">
+            <div class="col-sm-3">
               <div class="card-info">
-                <img class="card-info-margin"
-                  src="./assets/iconos-vida-academica/formacion_y_certificacion.png"
-                  alt="Formación y certificación"
+                <img
+                  src="./assets/iconos-vida-academica/biblioteca.PNG"
+                  alt="Biblioteca Digital"
                 />
-                <p class="card-info-margin" style="text-align: start;">
-                  Formación y<br />
-                  Certificación para el <br />
-                  Trabajo
-                </p>
+                <p>Biblioteca Digital</p>
                 <div class="card-info-span">
-                  <a href="">
-                    <span class="hover-text">Ver más</span>
+                  <span class="hover-text">Ver más</span>
                   <span
                     class="glyphicon glyphicon-chevron-right"
                     aria-hidden="true"
                   ></span>
-                  </a>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-3">
               <div class="card-info">
-                <img class="card-info-margin"
-                  src="./assets/iconos-vida-academica/Marco Curricular.png"
-                  alt="Marco Curricular"
+                <img
+                  src="./assets/iconos-vida-academica/bachiller.PNG"
+                  alt="Bachiller"
                 />
-                <p class="card-info-margin">Marco Curricular</p>
+                <p>Bachiller</p>
                 <div class="card-info-span">
-                  <a href="">
-                    <span class="hover-text">Ver más</span>
+                  <span class="hover-text">Ver más</span>
                   <span
                     class="glyphicon glyphicon-chevron-right"
                     aria-hidden="true"
                   ></span>
-                  </a>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-3">
               <div class="card-info">
-                <img class="card-info-margin"
-                  src="./assets/iconos-vida-academica/Icono_SEMS_en_cifras.png"
+                <img
+                  src="./assets/iconos-vida-academica/sems.PNG"
                   alt="SEMS en cifras"
                 />
-                <p class="card-info-margin">SEMS en cifras</p>
+                <p>SEMS en cifras</p>
                 <div class="card-info-span">
-                  <a href="https://educacionmediasuperior.sep.gob.mx/SEMS_en_cifras" target="_blank">
-                    <span class="hover-text">Ver más</span>
+                  <span class="hover-text">Ver más</span>
                   <span
                     class="glyphicon glyphicon-chevron-right"
                     aria-hidden="true"
                   ></span>
-                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-info">
+                <img
+                  src="./assets/iconos-vida-academica/formacion.PNG"
+                  alt="Formación y Certificación para el trabajo"
+                />
+                <p>Formación y Certificación para el trabajo</p>
+                <div class="card-info-span">
+                  <span class="hover-text">Ver más</span>
+                  <span
+                    class="glyphicon glyphicon-chevron-right"
+                    aria-hidden="true"
+                  ></span>
                 </div>
               </div>
             </div>
@@ -473,9 +488,12 @@
           <div class="row vertical-wrapper">
             <div class="col-xs-12 col-sm-6">
               <div class="video">
-                <iframe width="100%" height="300" 
-                style="border-radius: 20px;"
-                src="https://www.youtube.com/embed/G6Vdh4tO2Y0?si=-GQMar6ucrRwDDLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <img
+                  style="border-radius: 18px"
+                  src="/assets/comunidad-estudiantil/img.jpg"
+                  alt="comunidad"
+                  class="img-responsive"
+                />
               </div>
             </div>
             <div class="vertical-line hidden-xs"></div>
@@ -487,7 +505,7 @@
                 Descubre cómo viven su bachillerato, sus éxitos, sus voces y los
                 resultados de su participación activa.
               </p>
-              <div class="btn-description" style="margin-top: 30px;">
+              <div class="btn-description">
                 <a href="#">
                   <button type="button" class="btn boton">
                     Conocer más
@@ -503,10 +521,10 @@
               <div class="info-icono">
                 <img
                   class="img-icono"
-                  src="./assets/comunidad-estudiantil/hombres.png"
-                  alt="Total hombre"
+                  src="./assets/iconos-quienes-somos/Bachillerato_general.png"
+                  alt="bachillerato general"
                 />
-                <strong class="contador" data-contar="2630372">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>Total de<br />Hombres</p>
               </div>
             </div>
@@ -514,10 +532,10 @@
               <div class="info-icono">
                 <img
                   class="img-icono"
-                  src="./assets/comunidad-estudiantil/mujeres.png"
-                  alt="Total mujeres"
+                  src="./assets/iconos-quienes-somos/bachillerato_tecnologico.png"
+                  alt="bachillerato Tecnológico"
                 />
-                <strong class="contador" data-contar="2862119">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>
                   Total de<br />
                   Mujeres
@@ -528,10 +546,10 @@
               <div class="info-icono">
                 <img
                   class="img-icono"
-                  src="./assets/comunidad-estudiantil/egresados.png"
-                  alt="egresados"
+                  src="./assets/iconos-quienes-somos/docentes.png"
+                  alt="docentes"
                 />
-                <strong class="contador" data-contar="1470882">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>Egresados <br />Ciclo 2023-2024</p>
               </div>
             </div>
@@ -539,10 +557,10 @@
               <div class="info-icono">
                 <img
                   class="img-icono"
-                  src="./assets/comunidad-estudiantil/matriculas.png"
+                  src="./assets/iconos-quienes-somos/planteles.png"
                   alt="planteles"
                 />
-                <strong class="contador" data-contar="509405">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>Matriculas en <br />Carreras STEAM</p>
               </div>
             </div>
@@ -550,10 +568,10 @@
               <div class="info-icono">
                 <img
                   class="img-icono"
-                  src="./assets/comunidad-estudiantil/nuevo_ingreso.png"
-                  alt="Nuevo ingreso"
+                  src="./assets/iconos-quienes-somos/carreras_tecnicas.png"
+                  alt="Carreras tecnicas"
                 />
-                <strong class="contador" data-contar="2037322">0</strong>
+                <strong class="contador" data-contar="21000">0</strong>
                 <p>
                   Nuevo <br />
                   Ingreso
@@ -569,31 +587,30 @@
         <div class="container">
           <h2>A Tu Alcance</h2>
           <div class="row centrado">
+            
             <div class="col-md-4">
               <div class="card-info">
-                <img class="card-info-margin"
+                <img
                   src="./assets/a-tu-alcance/becas.PNG"
                   alt="Oferta Educativa del Bachillerato Nacional"
                 />
-                <p class="card-info-margin">Becas Benito Juárez</p>
+                <p>Becas Benito Juárez</p>
                 <div class="card-info-span">
-                  <a href="https://www.gob.mx/becasbenitojuarez" target="_blank">
-                    <span class="hover-text">Ver más</span>
+                  <span class="hover-text">Ver más</span>
                   <span
                     class="glyphicon glyphicon-chevron-right"
                     aria-hidden="true"
                   ></span>
-                  </a>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card-info">
-                <img class="card-info-margin"
+                <img
                   src="./assets/a-tu-alcance/te-extranamos.PNG"
                   alt="Marco Curricular"
                 />
-                <p class="card-info-margin">Te extrañamos en el salón</p>
+                <p>Te extrañamos en el salón</p>
                 <div class="card-info-span">
                   <span class="hover-text">Ver más</span>
                   <span
@@ -605,11 +622,11 @@
             </div>
             <div class="col-md-4">
               <div class="card-info">
-                <img class="card-info-margin"
+                <img
                   src="./assets/a-tu-alcance/calendario.PNG"
                   alt="Marco Curricular"
                 />
-                <p class="card-info-margin">Calendario Escolar</p>
+                <p>Calendario Escolar</p>
                 <div class="card-info-span">
                   <span class="hover-text">Ver más</span>
                   <span
@@ -619,16 +636,17 @@
                 </div>
               </div>
             </div>
+            
           </div>
 
           <div class="row centrado">
             <div class="col-md-4">
               <div class="card-info">
-                <img class="card-info-margin"
+                <img
                   src="./assets/a-tu-alcance/construccion.PNG"
                   alt="Oferta Educativa del Bachillerato Nacional"
                 />
-                <p class="card-info-margin">
+                <p>
                   Proceso de <br />
                   Construcción de la <br />
                   Ley
@@ -644,11 +662,11 @@
             </div>
             <div class="col-md-4">
               <div class="card-info">
-                <img class="card-info-margin"
+                <img
                   src="./assets/a-tu-alcance/mi-derecho.PNG"
                   alt="Marco Curricular"
                 />
-                <p class="card-info-margin">Mi Derecho Mi Lugar</p>
+                <p>Mi Derecho Mi Lugar</p>
                 <div class="card-info-span">
                   <span class="hover-text">Ver más</span>
                   <span
@@ -660,11 +678,11 @@
             </div>
             <div class="col-md-4">
               <div class="card-info">
-                <img class="card-info-margin"
+                <img
                   src="./assets/a-tu-alcance/educacion-dual.PNG"
                   alt="Marco Curricular"
                 />
-                <p class="card-info-margin">Educación Dual</p>
+                <p>Educación Dual</p>
                 <div class="card-info-span">
                   <span class="hover-text">Ver más</span>
                   <span
@@ -680,12 +698,12 @@
           <h2>Mi Escuela Me Cuida</h2>
           <div class="row centrado">
             <div class="col-md-4">
-              <div class="card-info">
-                <img class="card-info-margin"
+              <div class="cards">
+                <img
                   src="./assets/mi-escuela-me-cuida/cultura.PNG"
                   alt="Oferta Educativa del Bachillerato Nacional"
                 />
-                <p class="card-info-margin">Cultura de Paz</p>
+                <p>Cultura de Paz</p>
                 <div class="card-info-span">
                   <span class="hover-text">Ver más</span>
                   <span
@@ -696,12 +714,12 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card-info">
-                <img class="card-info-margin"
+              <div class="cards">
+                <img
                   src="./assets/mi-escuela-me-cuida/Fentanilo.PNG"
                   alt="Marco Curricular"
                 />
-                <p class="card-info-margin">Fentanilo Te Mata</p>
+                <p>Fentanilo Te Mata</p>
                 <div class="card-info-span">
                   <span class="hover-text">Ver más</span>
                   <span
@@ -712,12 +730,12 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card-info">
-                <img class="card-info-margin"
+              <div class="cards">
+                <img
                   src="./assets/mi-escuela-me-cuida/saludable.PNG"
                   alt="Marco Curricular"
                 />
-                <p class="card-info-margin">Vida Saludable</p>
+                <p>Vida Saludable</p>
                 <div class="card-info-span">
                   <span class="hover-text">Ver más</span>
                   <span
@@ -730,7 +748,7 @@
           </div>
 
           <div class="row card-red-de-apoyo text-center">
-            <img src="/assets/mi-escuela-me-cuida/altavoz.png" alt="altavoz" />
+            <img src="/assets/mi-escuela-me-cuida/bocina.PNG" alt="bocina" />
             <h2>Red de Apoyo</h2>
             <p>
               Creemos que cada estudiante merece sentirse valorado, escuchado y
@@ -747,69 +765,132 @@
       </div>
 
       <!-- Tu voz nos importa -->
-       <div style="background-color: var(--bg-secondary)">
-          <div  class="container" >
-            <h2>Tu Voz Nos Importa</h2>
-            <div class="row " style="max-width: 900px; margin: 0 auto; border-radius: 20px; box-shadow: 2px 8px rgba(0,0,0,0.12); padding: 40px 60px; margin-bottom: 40px; background-color: #FFFFFF;" >
-                <div class="col-md-8" style="display: flex; flex-direction: column; padding: 20px;">
-                  <div class="info-item">
-                    <div>
-                      <img src="/assets/tu-voz-nos-importa/correo.png" alt="" />
-                    </div>
-                    <div style="margin-right: 29px">
-                      <strong>Correo:</strong>
-                    </div>
-                    <div>
-                      <p>atencion.sems@sems.gob.mx</p>
-                    </div>
-                  </div>
-                
-                  <div class="info-item">
-                    <img src="/assets/tu-voz-nos-importa/telefono.png" alt="" />
-                    <div style="margin-right: 12px">
-                      <strong>Teléfono:</strong>
-                    </div>
-                    <div><p>800 522 6798</p></div>
-                  </div>
-                
-                  <div class="info-item">
-                    <img src="/assets/tu-voz-nos-importa/ubicacion.png" alt="" />
-                    <div style="margin-right: 10px">
-                      <strong>Dirección:</strong>
-                    </div>
-                    <div>
-                      <p>
-                        Av. Universidad # 1200 <br />
-                        Col. Xoco, Alcaldía Benito Juárez <br />
-                        CDMX, C.P. 03330 <br />
-                      </p>
-                    </div>
-                  </div>
+      <!-- <div style="background-color: var(--bg-secondary)">
+           <div class="container" style="text-align: center;">
+            <h2>Tu Voz Nos Importa </h2>
+            <div class="container-cards-voz">
+              <div class="card-info-voz" >
+                <img src="/assets/tu-voz-nos-importa/phone.PNG" alt="phone">
+                <strong >Teléfono</strong>
+                <p class="p-voz">800 522 6798</p>
+              </div>
+              <div class="card-info-voz">
+                <img src="/assets/tu-voz-nos-importa/email.PNG" alt="email">
+                <strong>Correo</strong>
+                <p class="p-voz" style="font-size: 16px;">atencion.sems@sems.gob.mx</p>
+              </div>
+              <div class="card-info" style="height: 250px; ">
+                <img src="/assets/tu-voz-nos-importa/direccion.PNG" alt="direccion">
+                <strong>Dirección</strong>
+                <p class="p-voz" style="font-size: 13px;">Av. Universidad #1200 Col.Xoco. Alcaldia <br>Benito Juárez CDMX, C.P. 03300. <br>Lunes a Viernes</p>
+                <div class="card-info-span">
+                  <span  class="hover-text">Ir a Maps</span>
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 </div>
-                <div class="col-md-4" style="border-radius: 12px">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.163192548651!2d-99.17133672574064!3d19.362085242930966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff05f61fa817%3A0x15cc0fb3a7d3c490!2sSecretaria%20de%20Educaci%C3%B3n%20Publica!5e0!3m2!1ses!2smx!4v1754500185100!5m2!1ses!2smx"
-                    width="100%"
-                    height="230"
-                    style="border: 0; border-radius: 20px;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
+              </div>
             </div>
-            <div class="text-center">
-                <a href="#">
-                  <button style="margin-bottom: 20px;" type="button" class="btn boton">
-                   Ingresa petición <span class="glyphicon glyphicon-chevron-right"></span></button>
-                </a>
+            <button style="margin: 30px 0;" type="button" class="btn boton">Ingresa petición <span class="glyphicon glyphicon-chevron-right"></span></button>
+           </div>
+         </div> -->
+      <div class="container">
+        <section class="info-subsecretaria" style="margin: 50px 0px">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-sm-12">
+                <h3 style="color: #a42145">Directorio</h3>
+                <div class="container">
+                  <div class="row">
+                    <div
+                      class="col-md-4 office-sm-structure pull-left col-xs-12 col-sm-12"
+                    >
+                      <img
+                        alt="Foto de Tania Rodríguez Mora"
+                        class="media-object pull-left right-mini-space"
+                        src="https://educacionmediasuperior.sep.gob.mx//work/models/sems/Resource/13895/1/images/sep.jpeg"
+                        style="
+                          margin-right: 80px;
+                          max-width: 90px;
+                          height: auto;
+                        "
+                      />
+                      <div class="figure">
+                        <h5>
+                          <a
+                            style="
+                              text-decoration: none;
+                              color: #000;
+                              font-weight: 400;
+                            "
+                            href="https://www.gob.mx/sep/estructuras/tania-rodriguez-mora"
+                            >Tania Rodríguez Mora</a
+                          >
+                        </h5>
+                        <span
+                          style="
+                            font-size: 77%;
+                            text-align: center;
+                            color: #a42145;
+                          "
+                        >
+                          Subsecretaria de Educación Media Superior</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-       </div>
-      
-        
-    </main>
-    
+        </section>
+        <section class="info-ubicacion" style="margin: 30px 0px">
+          <div>
+            <h2 style="margin-bottom: 20px">
+              <span>Información de Contacto</span>
+            </h2>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-12">
+              <address>
+                Av. Universidad # 1200 <br />
+                Col. Xoco, Alcaldía Benito Juárez <br />
+                CDMX, C.P. 03330 <br />Atención a la ciudadanía: 800 522 6798
+                <br />
+                Correo:
+                <a href="mailto:atencion.sems@sems.gob.mx"
+                  >atencion.sems@sems.gob.mx</a
+                >
+                <br />Secretaría de Educación Pública <br />
+                <input
+                  name="organization[latitude]"
+                  type="hidden"
+                  value="19.4367689005793"
+                />
+                <input
+                  name="organization[longitude]"
+                  type="hidden"
+                  value="-99.1316986083984"
+                />
+              </address>
+              <div>
+                <a href="https://contacto.sep.gob.mx/"
+                  ><h4>Ingresa tu petición aquí</h4></a
+                >
+              </div>
+            </div>
+            <div class="col-md-8">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240906.4517742977!2d-99.47363240546875!3d19.36208020000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff05f61fa817%3A0x15cc0fb3a7d3c490!2sSecretaria%20de%20Educaci%C3%B3n%20Publica!5e0!3m2!1ses!2smx!4v1711143658167!5m2!1ses!2smx"
+                width="100%"
+                height="440"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
