@@ -1,0 +1,122 @@
+/*********Marco curricular***********/
+
+.card-marco-curricular {
+    background-color: #EEF2F1;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+
+.section-docs {
+    background: #ecf1f0;
+    padding: 24px 0 36px;
+}
+
+.doc-card {
+    position: relative;
+    display: block;
+    background: #175e51;
+    /* verde oscuro */
+    color: #fff;
+    border-radius: 18px;
+    padding: 22px 22px 54px;
+    margin: 14px auto;
+    max-width: 223px;
+    height: 223px;
+    /* centra en móviles */
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.doc-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
+}
+
+.doc-icon img {
+    width: 75px;
+    height: auto;
+}
+
+.doc-body {
+    margin-top: 12px;
+}
+
+.doc-title {
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.doc-download {
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    opacity: .95;
+}
+
+/**********Asignaturas********/
+.section-subjects {
+    background: #fff;
+    padding: 24px 0 44px;
+}
+
+.subject-card {
+    display: block;
+    background: #fff;
+    border: 2px solid #1f6a5a;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    box-shadow: 0 -6px 1px -2px rgba(31, 106, 90);
+    padding: 24px 16px 18px;
+    margin: 14px auto;
+    width: 300px;
+    height: 228px;
+    color: #2b2b2b;
+    transition: transform .15s ease, box-shadow .2s ease;
+    text-decoration: none;
+}
+
+.subject-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .14);
+    color: #2b2b2b;
+}
+
+.subject-icon {
+    height: 90px;
+    margin: 4px 0 12px;
+}
+
+.subject-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: normal;
+    text-decoration: none;
+}
+
+
+@media (max-width:990px) {
+
+    .doc-card,
+    .subject-card {
+        width: 80%;
+    }
+}
