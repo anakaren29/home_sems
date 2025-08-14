@@ -57,6 +57,25 @@ function scrollCarrusel(direction) {
     });
   }
 
+function scrollCarruselCompartimiento1(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-compartimiento1');
+    const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollCarruselCompartimiento2(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-compartimiento2');
+    const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+
   function scrollCarruselBachilleratoGeneral(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-bachillerato-general');
     const cardWidth = carrusel.querySelector('.contenedor-imgCarrusel').offsetWidth + 20;
