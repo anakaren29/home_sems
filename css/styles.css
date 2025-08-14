@@ -117,6 +117,13 @@ h2{
   margin-left: 20px;
 }
 
+.card-info a{
+  text-decoration: none;
+}
+.card-info a:focus{
+  outline: none;
+}
+
 .card-info-span{
   display: flex;         
   width: 100%;   
@@ -127,10 +134,9 @@ h2{
   padding: 20px;
   justify-content: space-around;
   align-items: baseline;
+  text-decoration: none;
 
-  a{
-    text-decoration: none;
-  }
+  
   span{
     width: 60px;
     height: 60px;
@@ -151,6 +157,9 @@ h2{
 }
 .card-info-span:hover .hover-text {
   opacity: 1;
+}
+.card-info-span a:focus{
+  outline: none;
 }
 
 /* a tu alcance*/
@@ -260,6 +269,18 @@ h2{
     justify-content: space-around; 
     align-items: center; 
     gap: 10px;
+}
+.carrusel-a, .carrusel-a:visited{
+  color: #FFFFFF; 
+  text-decoration: none;
+}
+.carrusel-a:hover{
+  color: var(--text-primary); 
+  text-decoration: none;
+}
+.carrusel-a:focus{
+  outline: none;
+  text-decoration: none;
 }
 .carousel-wrapper {
   position: relative;
@@ -925,6 +946,9 @@ h2{
     margin: 0 auto;
     padding-left: 0.3em;
 }
+.suspension::after{
+  content: "SUSPENSIÓN DE LABORES DOCENTES";
+}
 .circulito {
     width: 2.5em;
     height: 2.5em;
@@ -963,7 +987,7 @@ h2{
     bottom: 2em;
     left: -3.5em;
     text-align: center;
-    background: #611232;
+    background-color: #611232;
     color: whitesmoke;
     padding: 0;
     width: 0;
@@ -972,16 +996,25 @@ h2{
     display: none;
     line-height: 1.2;
 }
-.day:hover::after {            display: block;            } 
+.day:hover::after {           
+   display: block;            
+  } 
 
+.inicio-clases::after {
+    content: "Inicio de clases";
+    
+}
 .planeacion::after{
   content: "REUNIÓN DE PLANEACIÓN DEL CICLO ESCOLAR CONSIDERAR LA SEMANA PREVIA AL INICIO DEL SEMESTRE 25-26/1 Y 25-26/2";
   width: 15em;
   left: -7em;
   background-color: #235B4E;
 }
+.campana {
+    border: 3px dashed #7c9ab5;
+}
 .campana::after{
-  content: "REUNIÓN DE CAMPANA";
+  content: "CAMPAÑA ''TE EXTRAÑAMOS EN EL SALÓN''";
   width: 15em;
   left: -7em;
   background-color: #235B4E;
@@ -1002,9 +1035,13 @@ h2{
 .evaluacion {
     border: 3px dashed #fd5252;
 }
-.campana {
-    border: 3px dashed #7c9ab5;
+.evaluacion::after{
+  content: "REUNIÓN DE EVALUACIÓN DEL CICLO ESCOLAR CONSIDERAR LA SEMANA POSTERIOR AL TÉRMINO DEL SEMESTRE 25-26/1 Y 25-26/2";
+  width: 15em;
+  left: -7em;
+  background-color: #235B4E;
 }
+
 .negritas {
     font-weight: bold;
 }
