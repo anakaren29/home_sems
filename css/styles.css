@@ -128,9 +128,13 @@ h2{
   justify-content: space-around;
   align-items: baseline;
 
+  a{
+    text-decoration: none;
+  }
   span{
     width: 60px;
     height: 60px;
+    color: #ffffff;
   }
 }
 .card-info-span:hover{
