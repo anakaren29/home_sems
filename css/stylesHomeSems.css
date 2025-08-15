@@ -231,3 +231,14 @@
 .pt-20 {
     padding-top: 20px;
 }
+
+
+.navbar-collapse.in {
+    overflow-y: hidden!important;
+    overflow-x: hidden!important;
+}
+
+.navbar-fixed-top .navbar-collapse
+ {
+    max-height: 380px!important;
+}
