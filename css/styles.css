@@ -1,3 +1,4 @@
+@import "stylesHomeSems.css";
 :root{
     --bg-primary: #691C32;
     --bg-secondary:#fcf8f9;
@@ -92,8 +93,8 @@ h2{
     flex-direction: column; 
     align-items: flex-start; 
     justify-content: space-between; 
-    min-height: 220px; 
-    width: 100%;
+    min-height: 219px; 
+    width: 236px;
     background-color: #ffffff;
     border-radius: 12px;
     margin-top: 20px;
@@ -108,13 +109,20 @@ h2{
 
      p{
         font-weight: bold;
-        
+        text-align: left;
     }
 
 }
 
 .card-info-margin{
-  margin-left: 20px;
+  margin-left: 13px;
+}
+
+.card-info a{
+  text-decoration: none;
+}
+.card-info a:focus{
+  outline: none;
 }
 
 .card-info-span{
@@ -127,10 +135,13 @@ h2{
   padding: 20px;
   justify-content: space-around;
   align-items: baseline;
+  text-decoration: none;
 
+  
   span{
     width: 60px;
     height: 60px;
+    color: #ffffff;
   }
 }
 .card-info-span:hover{
@@ -147,6 +158,9 @@ h2{
 }
 .card-info-span:hover .hover-text {
   opacity: 1;
+}
+.card-info-span a:focus{
+  outline: none;
 }
 
 /* a tu alcance*/
@@ -201,6 +215,23 @@ h2{
 }
 
 /* tu voz nos importa*/
+.vertical-wrapper-voz{
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.vertical-line-voz {
+  position: absolute;
+  top: 41px;
+  bottom: 0;
+  width: 1.2px;
+  background-color: var(--bg-separator);
+  left: 58%; 
+  z-index: 1;
+  height: 33vh;
+}
 .container-cards-voz{
     display: grid; 
     grid-template-columns: repeat(3, 250px);
@@ -256,6 +287,18 @@ h2{
     justify-content: space-around; 
     align-items: center; 
     gap: 10px;
+}
+.carrusel-a, .carrusel-a:visited{
+  color: #FFFFFF; 
+  text-decoration: none;
+}
+.carrusel-a:hover{
+  color: var(--text-primary); 
+  text-decoration: none;
+}
+.carrusel-a:focus{
+  outline: none;
+  text-decoration: none;
 }
 .carousel-wrapper {
   position: relative;
@@ -807,6 +850,221 @@ h2{
   box-shadow: 0 2px 8px var(--bg-primary);
   transition: box-shadow 0.3s ease;
   border: 1px solid var(--bg-primary);
+}
+
+
+/* CALENDARIO */
+.media-superior{
+  color: #7c7c7b;
+    font-weight: 900;
+    font-size: 1.8em;
+    text-align: center;
+}
+.media-h1{
+  color: var(--text-primary);
+  span{
+    color: var(--bg-separator);
+  }
+}
+.boton-rojo {
+    background: #9f2241;
+    color: #fff;
+    margin: 64px auto 32px;
+    border-radius: 20px;
+    padding: 16px 10px;
+    font-weight: 600;
+    max-width: 280px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+.boton-rojo:hover, .boton-rojo:focus {
+    color: #fff;
+    text-decoration: none;
+    box-shadow: #4a0d27 0.15em 0.15em 0 0;
+    translate: 0.15em 0.15em;
+}
+.calendar{
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1;
+}    
+.calendar > [class*="col-"] {
+                        display: flex;
+                        flex-direction: column;
+                    }
+.month{
+  padding: 5px;
+}
+.month-header {
+    background-color: var(--bg-primary);
+    color: #fff;
+    text-align-last: justify;
+    padding: 0.3em 0.5em;
+    font-family: 'Patria', 'Noto Sans', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.days-header, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.days-header div {
+    background-color: #eaeaec;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+}
+.day {
+    text-align: center;
+    padding: 0.5em;
+    position: relative;
+}
+.reunion-discusion {
+    background-color: #60113d;
+    color: white;
+}
+.vacaciones {
+    background-color: #817f7e;
+    color: white;
+}
+
+/* ACOTACIONES DEL CALENDARIO */
+.acotaciones {
+    font-size: .8em;
+}
+.acotaciones ul {
+    list-style: none;
+    padding: 0;
+}
+.acotaciones li {
+    margin: 1em;
+}
+.cuadrito {
+    display: inline-block;
+    width: 3em;
+    text-align: center;
+    margin-right: 0.5em;
+    height: 2em;
+}
+.inicio-clases {
+    background: url(/assets/calendario/icono-inicio-clases.png) right center;
+    color: white;
+}
+.fin-clases {
+    background: url(/assets/calendario/icono-fin-clases.png) left center;
+    color: white;
+}
+.suspension {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0 auto;
+    padding-left: 0.3em;
+}
+.suspension::after{
+  content: "SUSPENSIÓN DE LABORES DOCENTES";
+}
+.circulito {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+}
+.circulito-jornada{
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+}
+.jornada-concientizacion {
+    border: 3px solid black;
+    border-radius: 50%;
+    height: 1.9em;
+    width: 1.9em;
+    margin: 0 auto;
+    padding-top: 0.4em;
+    padding-left: 0.2em;
+    background-color: #d86ecc;
+}
+.borde {
+    width: calc(3em - 6px);
+}
+.planeacion {
+    border: 3px dashed var(--text-secondary);
+}
+
+.inicio-clases::after, .planeacion::after , .campana::after, .fin-clases::after, .receso-clases::after, .suspension::after, .jornada-concientizacion::after, .cte-intensivo::after, .cte-ordinario::after, .evaluacion::after, .vacaciones::after, .registro-calificaciones::after, .taller-directores::after, .taller-docentes::after, .preinscripciones::after {
+    padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
+}
+.day::after {
+    content: "";
+    position: absolute;
+    bottom: 2em;
+    left: -3.5em;
+    text-align: center;
+    background-color: #611232;
+    color: whitesmoke;
+    padding: 0;
+    width: 0;
+    z-index: 100;
+    font-size: .8em;
+    display: none;
+    line-height: 1.2;
+}
+.day:hover::after {           
+   display: block;            
+  } 
+
+.inicio-clases::after {
+    content: "Inicio de clases";
+    
+}
+.planeacion::after{
+  content: "REUNIÓN DE PLANEACIÓN DEL CICLO ESCOLAR CONSIDERAR LA SEMANA PREVIA AL INICIO DEL SEMESTRE 25-26/1 Y 25-26/2";
+  width: 15em;
+  left: -7em;
+  background-color: #235B4E;
+}
+.campana {
+    border: 3px dashed #7c9ab5;
+}
+.campana::after{
+  content: "CAMPAÑA ''TE EXTRAÑAMOS EN EL SALÓN''";
+  width: 15em;
+  left: -7em;
+  background-color: #235B4E;
+}
+.start {
+    border-right: none;
+    padding: calc(0.5em - 3px) 0.5em;
+}
+.inter {
+    border-left: none;
+    border-right: none;
+    padding: calc(0.5em - 3px);
+}
+.end {
+    border-left: none;
+    padding: calc(0.5em - 3px) 0.5em;
+}
+.evaluacion {
+    border: 3px dashed #fd5252;
+}
+.evaluacion::after{
+  content: "REUNIÓN DE EVALUACIÓN DEL CICLO ESCOLAR CONSIDERAR LA SEMANA POSTERIOR AL TÉRMINO DEL SEMESTRE 25-26/1 Y 25-26/2";
+  width: 15em;
+  left: -7em;
+  background-color: #235B4E;
+}
+
+.negritas {
+    font-weight: bold;
+}
+.nota{
+  list-style: none;
 }
 
 

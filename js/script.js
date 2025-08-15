@@ -57,6 +57,25 @@ function scrollCarrusel(direction) {
     });
   }
 
+function scrollCarruselCompartimiento1(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-compartimiento1');
+    const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollCarruselCompartimiento2(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-compartimiento2');
+    const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+
   function scrollCarruselBachilleratoGeneral(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-bachillerato-general');
     const cardWidth = carrusel.querySelector('.contenedor-imgCarrusel').offsetWidth + 20;
@@ -141,10 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
   filtroAnio.addEventListener("change", function () {
     const anioSeleccionado = filtroAnio.value;
 
-    // Limpiar la sección
     seccion.innerHTML = "";
 
-    // Filtrar tarjetas
     const visibles = todasColumnas.filter((col) => {
       const fechaTexto = col.querySelector("strong").textContent.trim();
       const anioEnCard = fechaTexto.match(/\b\d{4}\b/);
@@ -154,7 +171,6 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
 
-    // Reacomodar visibles
     if (visibles.length > 0) {
       let fila = document.createElement("div");
       fila.classList.add("row");
@@ -182,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
         seccion.appendChild(fila);
       }
 
-      // Ajustar altura después de reacomodar
       ajustarAlturaTarjetas();
     } else {
       const mensaje = document.createElement("p");
@@ -195,21 +210,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const tarjetas = document.querySelectorAll(".card-boletin");
     let maxAltura = 0;
 
-    // Resetear altura
+    
     tarjetas.forEach(t => t.style.height = "auto");
 
-    // Calcular altura máxima
+    
     tarjetas.forEach(t => {
       if (t.offsetHeight > maxAltura) {
         maxAltura = t.offsetHeight;
       }
     });
 
-    // Aplicar altura máxima
+    
     tarjetas.forEach(t => t.style.height = maxAltura + "px");
   }
 
-  // Ajustar también al cargar y al redimensionar
+  
   ajustarAlturaTarjetas();
   window.addEventListener("resize", ajustarAlturaTarjetas);
 });
