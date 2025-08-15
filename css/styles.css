@@ -394,7 +394,7 @@ h2{
     flex-direction: column; 
     align-items: center; 
     justify-content: flex-start; 
-    height: 500px;
+    min-height: 500px;
     width: 100%;
     background-color:var(--bg-secondary);
     border-radius: 12px;
@@ -431,7 +431,7 @@ h2{
     flex-direction: column; 
     align-items: start; 
     justify-content: flex-start; 
-    height: 250px;
+    min-height: 250px;
     width: 100%;
     background-color: var(--bg-secondary);
     border-radius: 12px;
@@ -1372,5 +1372,115 @@ h2{
    
     }
 }
-/* *MULTIMEDIA* */
 
+
+ /*Responsive Quienes somos sección Directorio*/
+ @media (max-width: 576px) {
+  .card-directorio {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .card-directorio img {
+    width: 100px;
+  }
+
+  .card-directorio h4, 
+  .card-directorio p {
+    text-align: center;
+  }
+
+  .btn-description {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/*Responsive Quienes somos sección Bachillerato*/
+@media (max-width: 576px) {
+  .card-oferta-educativa .col-sm-8 {
+    margin-left: 0 !important;
+    padding: 0 15px; 
+  }
+
+  .card-oferta-educativa p {
+    text-align: center !important;
+  }
+
+  .card-oferta-educativa img[alt="Bachillerato nacional"] {
+    width: 180px !important;
+  }
+
+  .card-oferta-educativa div[style*="border-top"] {
+    width: 150px !important;
+  }
+
+  .card-oferta-educativa div[style*="gap: 400px"] {
+    flex-direction: row !important; 
+    justify-content: space-between !important;
+    gap: 130px !important;
+    flex-wrap: nowrap;
+    align-items: flex-start !important;
+  }
+
+  .card-oferta-educativa img[alt="Bachillerato general"],
+  .card-oferta-educativa img[alt="Bachillerato tecnologico"] {
+    width: 100px !important;
+  }
+
+  .card-oferta-educativa button {
+    margin-top: 20px;
+  }
+}
+
+/*Responsive Marco normativo*/
+@media (max-width: 576px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .card-marco-n {
+    padding: 15px;
+  }
+
+  .card-marco-n h5 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .col-sm-6 {
+    width: 100% !important;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .card-contenedor {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .card-contenedor p,
+  .card-marco-n p {
+    font-size: 1.1rem;
+    text-align: center !important;
+    word-break: break-word;
+  }
+
+  .card-contenedor img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
