@@ -99,7 +99,7 @@ h2{
     border-radius: 12px;
     margin-top: 20px;
     text-align: center;
-    box-shadow: 0 8px 8px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 
     img{
         margin-top: 20px;
@@ -125,44 +125,43 @@ h2{
   outline: none;
 }
 
-.card-info-span{
+.card-info-span {
   display: flex;         
+  justify-content: space-between;
+  align-items: center;
   width: 100%;   
   height: 50px; 
-  text-align: right;      
+  padding: 0 20px;
+  border-radius: 0 0 12px 12px;
   transition: all 0.3s ease; 
+  text-decoration: none!important;
   position: relative;
-  padding: 20px;
-  justify-content: space-around;
-  align-items: baseline;
-  text-decoration: none;
-
-  
-  span{
-    width: 60px;
-    height: 60px;
-    color: #ffffff;
-  }
-}
-.card-info-span:hover{
-    border-radius: 0 0 12px 12px;
-    background-color: var(--bg-primary);
-    color: #FFFFFF;
-    cursor: pointer;
-    width: 100%;
+  gap: 8px; 
+  color: var(--text-primary)!important;
 }
 
 
 .hover-text {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  visibility: hidden;  
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   white-space: nowrap;
 }
+
+
+.card-info-span:hover {
+  background-color: var(--bg-primary);
+  cursor: pointer;
+}
+
 .card-info-span:hover .hover-text {
   opacity: 1;
+  visibility: visible; 
+  color: #ffffff;
 }
-.card-info-span a:focus{
-  outline: none;
+
+.card-info-span:hover .glyphicon {
+  color: #ffffff;
 }
 
 /* a tu alcance*/
