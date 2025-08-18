@@ -922,81 +922,16 @@ h2{
     padding: 0.5em;
     position: relative;
 }
-.reunion-discusion {
-    background-color: #60113d;
-    color: white;
-}
-.vacaciones {
-    background-color: #817f7e;
-    color: white;
-}
+
 
 /* ACOTACIONES DEL CALENDARIO */
-.acotaciones {
-    font-size: .8em;
-}
-.acotaciones ul {
-    list-style: none;
-    padding: 0;
-}
-.acotaciones li {
-    margin: 1em;
-}
-.cuadrito {
-    display: inline-block;
-    width: 3em;
-    text-align: center;
-    margin-right: 0.5em;
-    height: 2em;
-}
-.inicio-clases {
-    background: url(/assets/calendario/icono-inicio-clases.png) right center;
-    color: white;
-}
-.fin-clases {
-    background: url(/assets/calendario/icono-fin-clases.png) left center;
-    color: white;
-}
-.suspension {
-    background-color: black;
-    color: white;
-    border-radius: 50%;
-    height: 1.8em;
-    width: 1.8em;
-    margin: 0 auto;
-    padding-left: 0.3em;
-}
-.suspension::after{
-  content: "SUSPENSIÓN DE LABORES DOCENTES";
-}
-.circulito {
-    width: 2.5em;
-    height: 2.5em;
-    padding: 0;
-}
-.circulito-jornada{
-    width: 2.5em;
-    height: 2.5em;
-    padding: 0;
-}
-.jornada-concientizacion {
-    border: 3px solid black;
-    border-radius: 50%;
-    height: 1.9em;
-    width: 1.9em;
-    margin: 0 auto;
-    padding-top: 0.4em;
-    padding-left: 0.2em;
-    background-color: #d86ecc;
-}
-.borde {
-    width: calc(3em - 6px);
-}
-.planeacion {
-    border: 3px dashed var(--text-secondary);
-}
-
-.inicio-clases::after, .planeacion::after , .campana::after, .fin-clases::after, .receso-clases::after, .suspension::after, .jornada-concientizacion::after, .cte-intensivo::after, .cte-ordinario::after, .evaluacion::after, .vacaciones::after, .registro-calificaciones::after, .taller-directores::after, .taller-docentes::after, .preinscripciones::after {
+.inicio-clases::after, .planeacion::after , 
+.campana::after, .fin-clases::after, 
+.receso-clases::after, .suspension::after, 
+.jornada-concientizacion::after, .cte-intensivo::after, 
+.cte-ordinario::after, .evaluacion::after, .vacaciones::after, 
+.registro-calificaciones::after, 
+ .preinscripciones::after, .reunion-discusion::after {
     padding: 0.5em;
     width: 10em;
     box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
@@ -1020,24 +955,96 @@ h2{
    display: block;            
   } 
 
+.acotaciones {
+    font-size: .8em;
+}
+.acotaciones ul {
+    list-style: none;
+    padding: 0;
+}
+.acotaciones li {
+    margin: 1em;
+}
+.cuadrito {
+    display: inline-block;
+    width: 3em;
+    text-align: center;
+    margin-right: 0.5em;
+    height: 2em;
+}
+.inicio-clases {
+    background: url(/assets/calendario/icono-inicio-clases.png) right center;
+    color: white;
+}
+
+.suspension {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0 auto;
+    padding-left: 0.3em;
+}
+.suspension::after{
+  content: "SUSPENSIÓN DE LABORES DOCENTES";
+}
+.circulito {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+}
+.circulito-jornada{
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+}
+.jornada-concientizacion {
+    border-radius: 50%;
+    background-color: #d86ecc;
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0 auto;
+    padding-top: 4px;
+    padding: 1px;
+}
+.jornada-concientizacion::after{
+  content: "JORNADA CONTRA EL ABUSO SEXUAL Y EL MALTRATO EN LAS ADOLESCENCIAS";
+}
+.borde {
+    width: calc(3em - 6px);
+}
+.planeacion {
+    border: 3px dashed var(--text-secondary);
+}
+
+
 .inicio-clases::after {
     content: "Inicio de clases";
-    
+    padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
 }
 .planeacion::after{
-  content: "REUNIÓN DE PLANEACIÓN DEL CICLO ESCOLAR CONSIDERAR LA SEMANA PREVIA AL INICIO DEL SEMESTRE 25-26/1 Y 25-26/2";
-  width: 15em;
-  left: -7em;
-  background-color: #235B4E;
+  content: "REUNIÓN DE PLANEACIÓN DEL CICLO ESCOLAR";
+    padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
+}
+.suspension::after {
+    content: "Suspensión de labores docentes";
+    padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
 }
 .campana {
     border: 3px dashed #7c9ab5;
 }
 .campana::after{
-  content: "CAMPAÑA ''TE EXTRAÑAMOS EN EL SALÓN''";
-  width: 15em;
-  left: -7em;
-  background-color: #235B4E;
+  content: "CAMPAÑA ''TE EXTRAÑAMOS EN EL SALÓN'";
+  padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
 }
 .start {
     border-right: none;
@@ -1056,10 +1063,9 @@ h2{
     border: 3px dashed #fd5252;
 }
 .evaluacion::after{
-  content: "REUNIÓN DE EVALUACIÓN DEL CICLO ESCOLAR CONSIDERAR LA SEMANA POSTERIOR AL TÉRMINO DEL SEMESTRE 25-26/1 Y 25-26/2";
+  content: "REUNIÓN DE EVALUACIÓN DEL CICLO ESCOLAR";
   width: 15em;
   left: -7em;
-  background-color: #235B4E;
 }
 
 .negritas {
@@ -1068,8 +1074,36 @@ h2{
 .nota{
   list-style: none;
 }
-
-
+.reunion-discusion {
+    background-color: #60113d;
+    color: white;
+}
+.reunion-discusion::after{
+  content: "REUNIÓN DE DISCUSIÓN DEL MCCEMS ";
+  padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
+}
+.vacaciones {
+    background-color: #817f7e;
+    color: white;
+}
+.vacaciones::after {
+    content: "Vacaciones";
+    width: 6.5em;
+    left: -1.7em;
+    padding: 0.5em;
+}
+.fin-clases {
+    background: url(/assets/calendario/icono-fin-clases.png) left center;
+    color: white;
+}
+.fin-clases::after {
+    content: "Fin de clases";
+    padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
+}
 /****************Bachillerato nacional*****************/
 .mb-30{
   margin-bottom: 30px;
