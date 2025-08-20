@@ -150,6 +150,27 @@ function scrollCarruselCompartimiento1(direction) {
     });
   });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const intervalTime = 3000; 
+  const carrusel = document.getElementById('carrusel-horizontal');
+  const cards = carrusel.querySelectorAll('.card-noticia');
+  const cardWidth = cards[0].offsetWidth + 20; 
+  let index = 0;
+
+  function autoScrollCarrusel() {
+    index++;
+
+    if (index >= cards.length) {
+      index = 0;
+      carrusel.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      carrusel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    }
+  }
+
+  setInterval(autoScrollCarrusel, intervalTime);
+});
+
 
   // SCRIPT FILTRO BOLETINES
 document.addEventListener("DOMContentLoaded", function () {
