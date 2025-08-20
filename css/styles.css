@@ -306,6 +306,32 @@ h2{
   max-width: 900px;
   margin: 0 auto;
 }
+.voz-movil{
+  max-width: 75%; 
+  margin: 0 auto; 
+  border-radius: 20px; 
+  box-shadow: 2px 8px rgba(0,0,0,0.12); 
+  padding: 40px 60px; 
+  margin-bottom: 40px; 
+  background-color: #FFFFFF;
+}
+.voz-correo{
+  margin-right: 29px
+}
+@media (max-width: 576px) {
+  .voz-movil{
+  max-width: 100%;
+  padding: 40px 18px;
+}
+.voz-correo{
+  margin-right: 2px;
+}
+.info-item{
+  flex-direction: column;
+}
+}
+
+
 /* carrusel lo que estamos haciendo */
 .container-description{
     display: flex; 
