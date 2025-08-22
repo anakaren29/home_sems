@@ -508,18 +508,6 @@ h2{
     width: 100%;
 }
 
-.card-oferta-educativa {
-  background-color: #fcf8f9;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 30px;
-  box-sizing: border-box;
-}
-
 .card-directorio {
   display: flex; 
   flex-direction: row; 
@@ -1493,7 +1481,7 @@ h2{
     padding: 0 15px; 
   }
 
-  .card-oferta-educativa p {
+  .p {
     text-align: center !important;
   }
 
@@ -1569,3 +1557,35 @@ h2{
     height: auto;
   }
 }
+
+/* Sección proceso de construccion de la ley */
+.card-proceso{
+  width: 320px;
+  height: auto;
+  background-color: var(--text-secondary);
+  color: #ffffff;
+}
+.card-info-proceso:hover{
+  background-color: #ffffff;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+.card-info-proceso:hover .hover-text{
+  opacity: 1;
+  visibility: visible; 
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.icon-descarga{
+  width: 45px;
+  height: 44px;
+  background: url("/assets/proceso-ley/descarga_blanco.png") no-repeat center/contain;
+  transition: background 0.3s ease;
+}
+
+.card-info-proceso:hover .icon-descarga {
+  background: url("/assets/proceso-ley/Descargar_verde.png") no-repeat center/contain;
+}
+
+/* Termina sección proceso de construccion de la ley */
