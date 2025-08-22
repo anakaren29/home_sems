@@ -1206,7 +1206,9 @@ h2{
 }
 
 .hr-dorado{
-  border-top: 2px solid #A48138;
+  border-top: 2px solid var(--bg-separator);
+   max-width: 990px; 
+   margin: 0 auto;
 }
 
 .contenedor-mapa-interactivo{
@@ -1589,3 +1591,34 @@ h2{
 }
 
 /* Termina sección proceso de construccion de la ley */
+
+/* BOLETINES */
+.card-boletin{
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 5px;
+  padding: 20px;
+  border-radius: 20px;
+  height: 450px;
+}
+.p-boletin{
+  color: var(--text-secondary);
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #d8d9d9;
+  max-width: 33%;
+  border-radius: 5px;
+  text-align: center;
+  padding: 3px;
+}
+.card-boletin > strong{
+  color: var(--text-secondary);
+}
+.card-boletin > img{
+  border-radius: 20px;
+}
+.card-boletin-btn{
+  text-align: end;
+}

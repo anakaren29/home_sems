@@ -77,7 +77,8 @@
           actualizaciones sobre las acciones, programas y políticas dirigidas a
           la Educación Media Superior en todo el país.
         </p>
-        <div
+        <div class="carrusel-boletines" style="background-color: #f1f1f1; padding-top: 50px; padding-bottom: 50px; border-radius: 30px; margin-bottom: 20px;">
+          <div style="max-width: 1010px; margin: 0 auto;"
           id="myCarousel"
           class="carousel slide carousel-boletines"
           data-ride="carousel"
@@ -116,10 +117,12 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
+        </div>
+        
 
         <div class="container buscador">
           <div class="row">
-            <div class="font-changer internal print" style="left: 17px;">
+            <!-- <div class="font-changer internal print" style="left: 17px;">
                   <button
                     class="inc-font font-modifier"
                     title="Aumentar tamaño de texto"
@@ -178,14 +181,14 @@
                   </select>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div
-              class="col-sm-12 col-md-4 text-right"
+              class="col-sm-12 col-md-4 text-right col-md-offset-7"
               style="
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                height: 42vh;
+                /* height: 42vh; */
               "
             >
               <p style="font-size: 1em">
@@ -193,11 +196,11 @@
                 <strong>PRESIDENCIA</strong><br />
                 Publicado en la categoría: Prensa
               </p>
-              <a href="">
+              <!-- <a href="">
                 <button type="button" class="btn boton">
                   Búsqueda avanzada
                 </button>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -205,7 +208,7 @@
 
       <div class="container">
         <section>
-          <div class="row" style="margin-bottom: 20px; display: flex; flex-wrap: wrap;">
+          <div class="row" style="margin:40px 0; display: flex; flex-wrap: wrap;">
             <div class="col-md-4">
               <div class="card-boletin">
                 <img
@@ -214,7 +217,7 @@
                   alt="boletin"
                 />
                 <strong>18 de Febrero de 2025</strong>
-                <p class="p-boletin">Boletín</p>
+                <p class="p-boletin">Boletín 219</p>
                 <p>Comisión de Educación Palacio Legislativo de San Lázaro Tercera reunión ordinaria</p>
                 <div class="card-boletin-btn">
                   <a href="/boletin.html">
@@ -340,7 +343,7 @@
               </div>
             </div>
           </div>
-
+<!-- 
           <div
             class="row"
             style="margin-bottom: 20px; display: flex; flex-wrap: wrap;"
@@ -411,9 +414,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div
+         <!--  <div
             class="row"
             style="margin-bottom: 20px; display: flex; flex-wrap: wrap;"
           >
@@ -486,96 +489,78 @@
           </div>
         </section>
       </div>
-
-      <div class="container cards-interes">
-        <h2>Te Puede Interesar</h2>
-        <hr />
+ -->
+      <div class="container cards-interes" style="margin-bottom: 40px;">
+        <h2>Te puede interesar</h2>
+        <hr class="hr-dorado">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-md-3">
             <div class="card-info">
-              <img
-                style="width: 30%"
-                class="card-info-margin"
-                src="./assets/te-puede-interesar/55.png"
-                alt="Becas Benito Juárez"
-              />
-              <p class="card-info-margin">Becas Benito Juárez</p>
-              <div class="card-info-span">
-                <a href="#">
-                  <span class="hover-text">Ver más</span>
-                  <span
-                    class="glyphicon glyphicon-chevron-right"
-                    aria-hidden="true"
-                  ></span>
-                </a>
+              <div class="img-box">
+                <img 
+                  src="./assets/te-puede-interesar/55.png"
+                  alt="Becas Benito Juárez"
+                />
               </div>
-            </div>
+                <p class="card-info-margin">Becas Benito Juárez</p>
+                <a href="https://www.gob.mx/becasbenitojuarez" class="card-info-span" target="_blank">
+                    <span class="hover-text">Ver más</span>
+                    <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"/>
+                    </svg>
+                  </a>
+              </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-md-3">
             <div class="card-info">
-              <img
-                style="width: 30%"
-                class="card-info-margin"
-                src="./assets/te-puede-interesar/55.png"
-                alt="red de Apoyo"
-              />
-              <p class="card-info-margin">Red de Apoyo</p>
-              <div class="card-info-span">
-                <a href="">
-                  <span class="hover-text">Ver más</span>
-                  <span
-                    class="glyphicon glyphicon-chevron-right"
-                    aria-hidden="true"
-                  ></span>
-                </a>
+              <div class="img-box">
+                <img
+                  src="./assets/te-puede-interesar/55.png"
+                  alt="red de Apoyo"
+                />
               </div>
-            </div>
+                <p class="card-info-margin">Red de Apoyo</p>
+                 <a href="/redDeApoyo.html" class="card-info-span" target="_self">
+                    <span class="hover-text">Ver más</span>
+                    <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"/>
+                    </svg>
+                  </a>
+              </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-md-3">
             <div class="card-info">
-              <img
-                style="width: 30%"
-                class="card-info-margin"
-                src="./assets/te-puede-interesar/ed.jpg"
-                alt="Eduacación Dual"
-              />
-              <p class="card-info-margin">
-                Comunidad <br />
-                Estudiantil
-              </p>
-              <div class="card-info-span">
-                <a href="">
-                  <span class="hover-text">Ver más</span>
-                  <span
-                    class="glyphicon glyphicon-chevron-right"
-                    aria-hidden="true"
-                  ></span>
-                </a>
+              <div class="img-box">
+                <img 
+                  src="./assets/a-tu-alcance/educacion-dual.PNG"
+                  alt="Educación Dual"
+                />
               </div>
-            </div>
+                <p class="card-info-margin">Comunidad <br> Estudiantil</p>
+                <a href="" class="card-info-span" target="_self">
+                    <span class="hover-text">En proceso</span>
+                    <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"/>
+                    </svg>
+                  </a>
+              </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-md-3">
             <div class="card-info">
-              <img
-                style="width: 30%"
-                class="card-info-margin"
-                src="./assets/te-puede-interesar/55.png"
-                alt="oferta educativa"
-              />
-              <p class="card-info-margin">
-                Oferta <br />
-                Educativa
-              </p>
-              <div class="card-info-span">
-                <a href="">
-                  <span class="hover-text">Ver más</span>
-                  <span
-                    class="glyphicon glyphicon-chevron-right"
-                    aria-hidden="true"
-                  ></span>
-                </a>
+              <div class="img-box">
+                <img
+                  src="./assets/te-puede-interesar/55.png"
+                  alt="oferta educativa"
+                />
               </div>
-            </div>
+                <p class="card-info-margin">Oferta <br> Educativa</p>
+                <a href="" class="card-info-span" target="_self">
+                    <span class="hover-text">Ver más</span>
+                    <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"/>
+                    </svg>
+                  </a>
+              </div>
           </div>
         </div>
       </div>
