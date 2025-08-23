@@ -238,6 +238,13 @@ h2{
     }
 
 }
+.img-escuela{
+  height: 100px;
+}
+.img-escuela > img{
+  margin-top: 77px;
+  margin-left: 30px;
+}
 
 /* tu voz nos importa*/
 .vertical-wrapper-voz{
