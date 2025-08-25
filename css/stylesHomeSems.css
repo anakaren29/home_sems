@@ -242,3 +242,8 @@
  {
     max-height: 380px!important;
 }
+
+.modal-backdrop {
+    background: transparent !important;
+    pointer-events: none;
+}
