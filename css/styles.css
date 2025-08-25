@@ -7,6 +7,7 @@
 
     --text-primary: #691C32;
     --text-secondary: #235B4E;
+    --color-boton: #9F2241;
 }
 
 .espaciado{
@@ -55,13 +56,13 @@ h2{
 }
 
 .boton{
-    background-color: var(--bg-primary);
+    background-color: var(--color-boton);
     color: #FFFFFF;
     border-radius: 25px;   
 }
 .boton:hover{
     background-color: #FFFFFF;
-    color: var(--bg-primary);
+    color: var(--color-boton);
     border: 1px solid var(--bg-primary);
     transition: all .3s ease;
 }
@@ -1643,3 +1644,12 @@ h2{
 .card-boletin-btn{
   text-align: end;
 }
+
+/* seccion quienes somos carrusel de documentos */
+.card-documentos{
+  width: 305px;
+  height: 268px;
+  background-color: var(--text-secondary);
+}
+
+/* termina seccion quienes somos carrusel de documentos */

@@ -116,7 +116,7 @@
               mapa interactivo, conoce la ubicación de cada plantel y descubre todo lo que el Bachillerato Nacional
               tiene para ti.</p><br />
             <div style="display: flex; flex-direction: column; align-items: center;">
-              <img src="./assets/iconos-quienes-somos/reciente_bachillerato.png" alt="Bachillerato nacional"
+              <img src="./assets/bachillerato-nacional/Logo_bachillerato_nacioal_final.png" alt="Bachillerato nacional"
                 style="width: 300px; display: block;" />
               <div style="border-left: 2px solid #235B4E; height: 50px;"></div>
               <div style="display: flex; align-items: flex-start; height: 50px;">
@@ -130,10 +130,10 @@
                 </div>
               </div>
               <div style="display: flex; justify-content: center; gap: 400px; margin-top: 0;">
-                <img src="./assets/iconos-quienes-somos/logo_bachillerato_verde-oro.png" alt="Bachillerato general"
-                  style="width: 200px; display: block;" />
-                <img src="./assets/iconos-quienes-somos/logo_bachillerato_verde-guinda.png" alt="Bachillerato tecnologico"
-                  style="width: 200px; display: block;" />
+                <img src="./assets/bachillerato-nacional/Logo_bachillerato_gral_final.png" alt="Bachillerato general"
+                  style="width: 220px; display: block;" />
+                <img src="./assets/bachillerato-nacional/Logo_bachillerato_tec_final.png" alt="Bachillerato tecnologico"
+                  style="width: 220px; display: block;" />
               </div>
             </div>
 
@@ -146,6 +146,8 @@
             </div><br/><br/>
           </div>
         </div>
+
+        <!-- section documentos de consulta -->
         <div class="row" style="padding-bottom: 40px;">
           <h2>Documentos de consulta</h2>
           <div class="col-sm-3"></div>
@@ -190,7 +192,52 @@
           </div>
           <div class="col-sm-3"></div>
           <br/><br/>
+
+          <div class="carousel-wrapper">
+              <h2>Documentos de consulta</h2>
+             <button class="carousel-btn left" onclick="scrollCarrusel(-1)">&#10094;</button>
+              <div class="carrusel-scroll horizontal" id="carrusel-horizontal">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="card-info card-documentos">
+                      <div class="img-box">
+                        <img src="./assets/iconos-quienes-somos/doc_cifras.png" alt="Documento">
+                      </div>
+                      <p class="card-info-margin" style="text-align: left;"> ACUERDO número 21/08/25 por el que se establece y regula el Marco Curricular 
+                        Común de la Educación Media Superior.
+                      </p>
+                      <a href="https://dof.gob.mx/nota_detalle.php?codigo=5765757&fecha=15/08/2025#gsc.tab=0" target="_blank">
+                        <span class="hover-text">Ver más</span>
+                        <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card-info card-documentos">
+                      <div class="img-box">
+                        <img src="./assets/iconos-quienes-somos/doc_cifras.png" alt="Documento">
+                      </div>
+                      <p class="card-info-margin" style="text-align: left;"> ACUERDO número 22/08/25 por el que se establece y regula el Sistema Nacional
+                         de Bachillerato de la Nueva Escuela Mexicana (SINBANEM).
+                      </p>
+                      <a href="https://dof.gob.mx/nota_detalle.php?codigo=5765758&fecha=15/08/2025#gsc.tab=0" target="_blank">
+                        <span class="hover-text">Ver más</span>
+                        <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <button class="carousel-btn right" onclick="scrollCarrusel(1)">&#10095;</button>
+          </div>
         </div>
+
+        <!-- section Directorio -->
         <div class="row card-oferta-educativa" style="box-shadow: rgba(0, 0, 0, 0.12);">
           <h2>Directorio</h2>
           <div class="col-sm-10 col-md-8 mx-auto">
@@ -219,11 +266,11 @@
               <div class="modal-body">
               <div class="modal-img">
                 <img alt="Foto de Tania Rodríguez Mora"
-                  src="https://educacionmediasuperior.sep.gob.mx//work/models/sems/Resource/13895/1/images/sep.jpeg" />
+                  src="/assets/iconos-quienes-somos/Dra.Tania.jpeg" />
               </div>
               <div class="modal-texto">
                 <h3>Subsecretaria de Educación Media Superior</h3>
-                <p>Tania Hogla Rodríguez Mora es Socióloga egresada de la Universidad Nacional Autónoma de México
+                <p>Tania Rodríguez Mora es Socióloga egresada de la Universidad Nacional Autónoma de México
                   (UNAM) y Doctora en Ciencia Social con especialidad en Sociología por el Colegio de México.
                   Además cuenta con un Diplomado Internacional de Actualización Profesional “Feminismo, desarrollo
                   y democracia” por el Centro de Investigaciones Interdisciplinarias en Ciencias y Humanidades en la UNAM.<br/>
@@ -263,6 +310,8 @@
             </div>
           </div>
         </div>
+
+        <!-- carrusel sems en cifras -->
         <div class="row">
           <h2>SEMS en Cifras</h2>
           <p style="text-align: center;"><strong>Conoce los principales indicadores y estadísticas que muestran el trabajo,
@@ -591,6 +640,8 @@
             </div>
         </div>
       </div>
+
+
 
       <!-- seccion explora la SEMS -->
       <div style="background-color: #FDF5F5; margin-bottom: 50px;">
