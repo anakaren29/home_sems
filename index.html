@@ -949,27 +949,21 @@
           </div>
        </div>
       
-      <!-- Modal -->
-              <div class="modal fade" id="comunicadoModal" tabindex="-1" role="dialog" aria-labelledby="comunicadoModalLabel"
-                aria-hidden="true" style="margin-top: 130px;">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Comunicado Institucional: Mi Derecho Mi Lugar</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <img src="/assets/carousel/modal/Comunicado 19 agosto.png" alt="comunicados" class="img-fluid" style="width: 100%;">
-                    </div>
-              
-                  </div>
-                </div>
+       <!-- MODAL -->
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding-top: 120px;">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Comunicado Institucional: Mi Derecho Mi Lugar</h4>
               </div>
               <!--termina MODAL-->
         
     </main>
+
+    
 
 
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
@@ -978,18 +972,26 @@
     <script src="/js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
     <script>
-      window.addEventListener('load', function () {
-        var modal = document.getElementById('comunicadoModal');
-        var closeBtns = modal.querySelectorAll('[data-dismiss="modal"], .close');
+      $gmx(document).ready(function() {
+        // Asegura que todos los plugins y scripts se han cargado
+        $('#myModal').modal('show');
+      });
 
         // Mostrar
         document.body.classList.add('modal-open'); // opcional
         modal.classList.add('in');
         modal.style.display = 'block';
 
-        // Cerrar al pulsar botones
-        closeBtns.forEach(function (btn) {
-          btn.addEventListener('click', hideModal);
+    </script> 
+
+      <!-- Script para abrir el modal -->
+      <script>
+      $(document).ready(function () {
+        $('.open-modal').click(function (e) {
+          e.preventDefault();
+          var imgSrc = $(this).data('img');
+          $('#modalImage').attr('src', imgSrc);
+          $('#bannerModal').modal('show');
         });
 
         // Cerrar con ESC
@@ -1010,7 +1012,7 @@
           document.querySelectorAll('.modal-backdrop').forEach(function (b) { b.remove(); });
         }
       });
-    </script>
+      </script>
 
   </body>
 </html>
