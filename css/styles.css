@@ -339,7 +339,19 @@ h2{
   flex-direction: column;
 }
 }
+/* Ocultar en mobile (ejemplo: hasta 991px) */
+@media (max-width: 991px) {
+  .vertical-line-voz {
+    display: none;
+  }
+}
 
+/* Mover a 65% en pantallas medianas (hasta 1195px) */
+@media (max-width: 1195px) {
+  .vertical-line-voz {
+    left: 65%;
+  }
+}
 
 /* carrusel lo que estamos haciendo */
 .container-description{
