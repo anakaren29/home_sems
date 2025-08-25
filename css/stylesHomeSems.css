@@ -247,3 +247,19 @@
     background: transparent !important;
     pointer-events: none;
 }
+
+.navbar,
+.navbar-fixed-top,
+.menu,
+.header-fixed {
+    z-index: 1000 !important;
+}
+
+/* Modal por encima */
+.modal {
+    z-index: 1050 !important;
+}
+
+.modal-backdrop {
+    z-index: 1040 !important;
+}
