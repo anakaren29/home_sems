@@ -184,7 +184,9 @@ h2{
 .card-info-span .svg-hover {
   transition: color 0.2s ease;
 }
-
+.card-info-span:visited{
+  color: var(--bg-primary);
+}
 
 
 /* a tu alcance*/
