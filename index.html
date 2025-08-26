@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SEMS</title>
-    <link href="/favicon.ico" rel="shortcut icon" />
+    <title>Subsecretaría de Educación Media Superior</title>
+    <link href="/assets/icons/favicon_io/" rel="shortcut icon" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon_io/favicon-16x16.png">
+    
     <link
       href="https://framework-gb.cdn.gob.mx/assets/styles/main.css"
       rel="stylesheet"
@@ -55,7 +60,7 @@
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="https://www.gob.mx/sep/archivo/prensa">Boletines</a></li>
                   <li><a href="https://www.youtube.com/@MediaSuperiorMxSEP">Multimedia</a></li>
-                  <li><a href="http://168.255.153.170/es_mx/sems/boletines_informativos_sems">Historico</a></li>
+                  <li><a href="http://168.255.153.170/es_mx/sems/boletines_informativos_sems">Histórico</a></li>
                 </ul>
               </li>
               <li><a href="./marco_normativo.html">Normatividad</a></li>
@@ -79,7 +84,6 @@
           <li data-target="#myCarousel" data-slide-to="3"></li>
           <li data-target="#myCarousel" data-slide-to="4"></li>
           <li data-target="#myCarousel" data-slide-to="5"></li>
-          <li data-target="#myCarousel" data-slide-to="6"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -145,16 +149,6 @@
                     <source media="(max-width: 499px)" srcset="/assets/carousel/mobil/inegivertical.png" />
                     <source media="(min-width: 500px)" srcset="/assets/carousel/INEGI.jpeg" />
                     <img src="/assets/carousel/INEGI.jpeg" alt="INEGI" style="width:100%;" />
-                  </picture>
-                </a>
-              </div>
-         <!-- Slide 7 -->
-              <div class="item">
-                <a href="https://www.whatsapp.com/channel/0029VaJFnWCCcW4x0YsjVR3j" target="_blank">
-                  <picture>
-                    <source media="(max-width: 499px)" srcset="/assets/carousel/mobil/WHATS_movil.png" />
-                    <source media="(min-width: 500px)" srcset="/assets/carousel/whatsapp.png" />
-                    <img src="/assets/carousel/whatsapp.png" alt="Canal de whatsapp" style="width:100%;" />
                   </picture>
                 </a>
               </div>
@@ -293,13 +287,12 @@
           <div class="row">
             <div class="col-md-3">
               <div class="card-info">
-                <div class="img-box">
-                  <img
+                <div class="img-box" style="height: 80px;">
+                  <img style="margin-top: 70px;"
                   src="./assets/bachillerato-nacional/Logo_bachillerato_nacioal_final.png"
                   alt="Oferta Educativa del Bachillerato Nacional"
                   />
                 </div>
-                <p class="card-info-margin">Bachillerato Nacional</p>
                   <a href="/bachilleratoNacional.html" class="card-info-span" target="_self">
                     <span class="hover-text">Ver más</span>
                     <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -357,7 +350,7 @@
                 />
               </div>
                 
-                <p class="card-info-margin">Bachiller</p>
+                <p class="card-info-margin">Revista mensual <br> para el magisterio del Bachillerato Nacional </p>
                 
                   <a class="card-info-span" href="" target="_self">
                     <span class="hover-text">En proceso</span>
@@ -957,7 +950,7 @@
        </div>
       
        <!-- MODAL -->
-       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding-top: 120px;">
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -975,23 +968,7 @@
             </div>
           </div>
         </div>
-
-        <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="bannerModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body text-center" style="overflow-x: auto;">
-                <img id="modalImage" style="max-width: 100%; height: auto;" alt="Vista ampliada">
-              </div>
-            </div>
-          </div>
-        </div>
-
+              <!--termina MODAL-->
         
     </main>
 
@@ -1009,6 +986,10 @@
         $('#myModal').modal('show');
       });
 
+        // Mostrar
+        document.body.classList.add('modal-open'); // opcional
+        modal.classList.add('in');
+        modal.style.display = 'block';
 
     </script> 
 
@@ -1021,6 +1002,24 @@
           $('#modalImage').attr('src', imgSrc);
           $('#bannerModal').modal('show');
         });
+
+        // Cerrar con ESC
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') hideModal();
+        });
+
+        // Cerrar al click fuera del .modal-content
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) hideModal();
+        });
+
+        function hideModal() {
+          modal.classList.remove('in');
+          modal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+          // elimina backdrops huérfanos si los creaste manualmente
+          document.querySelectorAll('.modal-backdrop').forEach(function (b) { b.remove(); });
+        }
       });
       </script>
 

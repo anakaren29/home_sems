@@ -96,6 +96,23 @@ function scrollCarruselCompartimiento1(direction) {
     });
   }
 
+  function scrollCarruselDocumentos(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-documentos');
+    const cardWidth = carrusel.querySelector('.card-info').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollCarruselSEMSCifras(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-SEMS');
+    const cardWidth = carrusel.querySelector('.card-cifras').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
   
   document.querySelectorAll('.carrusel-scroll').forEach(carrusel => {
     let isDown = false;
