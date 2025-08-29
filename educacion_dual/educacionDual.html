@@ -19,11 +19,9 @@
       media="all"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
-  <style type="text/css">        
-    /* Slider */        .slick-slide {            margin: 0px 30px;        }        .slick-slide img {            width: 100%;        }        .slick-slider {            position: relative;            display: block;            box-sizing: border-box;            -webkit-user-select: none;            -moz-user-select: none;            -ms-user-select: none;            user-select: none;            -webkit-touch-callout: none;            -khtml-user-select: none;            -ms-touch-action: pan-y;            touch-action: pan-y;            -webkit-tap-highlight-color: transparent;        }        .slick-list {            position: relative;            display: block;            overflow: hidden;            margin: 0;            padding: 0;        }        .slick-list:focus {            outline: none;        }        .slick-list.dragging {            cursor: pointer;            cursor: hand;        }        .slick-slider .slick-track,        .slick-slider .slick-list {            -webkit-transform: translate3d(0, 0, 0);            -moz-transform: translate3d(0, 0, 0);            -ms-transform: translate3d(0, 0, 0);            -o-transform: translate3d(0, 0, 0);            transform: translate3d(0, 0, 0);        }        .slick-track {            position: relative;            top: 0;            left: 0;            display: block;        }        .slick-track:before,        .slick-track:after {            display: table;            content: '';        }        .slick-track:after {            clear: both;        }        .slick-loading .slick-track {            visibility: hidden;        }        .slick-slide {            display: none;            float: left;            height: 100%;            min-height: 1px;        }        [dir='rtl'] .slick-slide {            float: right;        }        .slick-slide img {            display: block;        }        .slick-slide.slick-loading img {            display: none;        }        .slick-slide.dragging img {            pointer-events: none;        }        .slick-initialized .slick-slide {            display: block;        }        .slick-loading .slick-slide {            visibility: hidden;        }        .slick-vertical .slick-slide {            display: block;            height: auto;            border: 1px solid transparent;        }        .slick-arrow.slick-hidden {            display: none;        }        .desaturate {            filter: none;            -webkit-filter: sepia(80%) grayscale(60%) opacity(70%);            -moz-filter: sepia(80%) grayscale(60%) opacity(70%);            -ms-filter: sepia(80%) grayscale(60%) opacity(70%);            -o-filter: sepia(80%) grayscale(60%) opacity(70%);            cursor: pointer;            transition: all 300ms ease;        }        .desaturate:hover {            filter: none;            -webkit-filter: sepia(0%) grayscale(0%) opacity(100%);            -moz-filter: sepia(0%) grayscale(0%) opacity(100%);            -ms-filter: sepia(0%) grayscale(0%) opacity(100%);            -o-filter: sepia(0%) grayscale(0%) opacity(100%);        }        .acess_hover time {            font-size: small;        }        .acess_hover h4 {            font-weight: 400;        }        .acess_hover a.small-link,        .acess_hover a.small-link:hover {            background: #a42145;            color: #fff !important;            margin: 1rem auto;            border-radius: 50px;            width: 146px;            padding: 8px;            text-decoration: none !important;            font-size: 10px;            float: right;            text-transform: uppercase;            text-align: center;        }    
-  </style>
   <body>
     <header>
       <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
@@ -254,7 +252,7 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <div class="container">
+      <div class="container" style="margin-top: 40px;">
         <h2 class="text-left">Educación Dual en Nivel Medio Superior</h2>
         <p>
           La Educación Dual con Formación en Escuela y Empresa es una opción
@@ -277,6 +275,7 @@
           >
         </p>
       </div>
+      <!-- oferta educativa -->
       <div class="container">
         <h2>OFERTA EDUCATIVA</h2>
         <div class="pleca-roja mid-buffer"></div>
@@ -286,7 +285,7 @@
             <a href="https://www.conalep.edu.mx/oferta" target="_blank"
               ><img
                 class="desaturate"
-                src="../assets/educacion-dual/conalep.png"
+                src="../assets/eduacion-dual/conalep.png"
                 style="width: 55% !important; margin-top: 16% !important"
                 alt=""
             /></a>
@@ -295,7 +294,7 @@
             <a href="http://www.dgeti.sep.gob.mx/" target="_blank"
               ><img
                 class="desaturate"
-                src="../assets/educacion-dual/dgeti.png"
+                src="../assets/eduacion-dual/dgeti.png"
                 style="width: 50% !important; margin-top: 14% !important"
                 alt=""
             /></a>
@@ -304,7 +303,7 @@
             <a href="https://dgetaycm.sep.gob.mx" target="_blank"
               ><img
                 class="desaturate"
-                src="../assets/educacion-dual/DGETAyCM.png"
+                src="../assets/eduacion-dual/DGETAyCM.png"
                 style="width: 55% !important; margin-top: 50% !important"
                 alt=""
             /></a>
@@ -313,7 +312,7 @@
             <a href="https://www.ceti.mx/" target="_blank"
               ><img
                 class="desaturate"
-                src="../assets/educacion-dual/ceti.jpeg"
+                src="../assets/eduacion-dual/ceti.jpeg"
                 style="width: 35% !important; margin-top: 13% !important"
                 alt=""
             /></a>
@@ -321,9 +320,407 @@
         </div>
         <div class="pleca-roja mid-buffer"></div>
       </div>
+
+      <!-- aliados -->
+      <div class="container" id="aliados">
+        <br />
+        <br />
+        <h2>ALIADOS DE EDUCACIÓN DUAL</h2>
+        <h2 class="sr-only">aliados</h2>
+        <div class="customer-logos">
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/cooperacion-alemana.png"
+              style="width: 45% !important; margin-top: 35% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/euro-tranciatura.png"
+              style="width: 65% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/cce.png"
+              style="width: 45% !important; margin-top: 35% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/unicef.png"
+              style="width: 55% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/nestle.png"
+              style="width: 45% !important; margin-top: 30% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/coparmex.png"
+              style="width: 65% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/embajada-suiza.png"
+              style="width: 65% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/hisense.png"
+              style="width: 65% !important; margin-top: 35% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/mabe.png"
+              style="width: 65% !important; margin-top: 32% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/mubea.png"
+              style="width: 65% !important; margin-top: 30% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/bmw.png"
+              style="width: 50% !important; margin-top: 30% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/bosch.png"
+              style="width: 65% !important; margin-top: 30% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/audi.png"
+              style="width: 50% !important; margin-top: 30% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/jarritos.png"
+              style="width: 65% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/bachoco.png"
+              style="width: 65% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/jhon-deere.png"
+              style="width: 60% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/chrysle.png"
+              style="width: 70% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/W.png"
+              style="width: 45% !important; margin-top: 35% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/honda.png"
+              style="width: 50% !important; margin-top: 35% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/siemens.png"
+              style="width: 65% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/krystal.png"
+              style="width: 65% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/palace-resorts.png"
+              style="width: 65% !important; margin-top: 30% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/secrets.png"
+              style="width: 65% !important; margin-top: 30% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/maya-hooney.png"
+              style="width: 55% !important; margin-top: 25% !important"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              class="desaturate"
+              src="../assets/eduacion-dual/aliados/gm.png"
+              style="width: 45% !important; margin-top: 35% !important"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="pleca-roja mid-buffer"></div>
+      </div>
+
+      <!-- iconos -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <a
+              href="http://modeloqa.formaciondual.sems.gob.mx/exitos/"
+              target="_blank"
+              ><img
+                class="img-responsive"
+                src="../assets/eduacion-dual/casos_de_exito.png"
+                alt=""
+            /></a>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-2">
+            <a
+              href="http://168.255.153.170/es_mx/sems/beneficios_mmfd"
+              target="_blank"
+              ><img
+                class="img-responsive"
+                src="../assets/eduacion-dual/beneficios.png"
+                alt=""
+            /></a>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-2">
+            <a
+              href="http://168.255.153.170/es_mx/sems/actores_mmfd"
+              target="_blank"
+              ><img
+                class="img-responsive"
+                src="../assets/eduacion-dual/actores.png"
+                alt=""
+            /></a>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+
+      <!-- Multimedia -->
+      <div class="container">
+        <h2>MULTIMEDIA</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            class="embed-responsive-item"
+            src="https://www.youtube.com/embed/BXgQHpKk3i4"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+
+        <!-- seccion videos -->
+        <div class="row" style="margin-top: 80px; margin-bottom: 30px;">
+            <div class="col-md-4 text-center"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/671Vhdxh3os?si=vZYSYOMpDwHWHIbl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+            <p><strong>La Educación Dual en CETI</strong></p>
+            </div>
+            <div class="col-md-4 text-center"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1E-hsaGE5vc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+            <p><strong>Educación Dual en Conalep</strong></p>
+            </div>
+            <div class="col-md-4 text-center"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/J2S3O-X9Jvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+            <p><strong>Educación Dual en el Sector Automotriz</strong></p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 30px;">
+           <div class="col-md-4 text-center"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3eJZUanyTRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+           <p><strong>Educación Dual en diferentes Sectores Industriales</strong></p>
+           </div>
+           <div class="col-md-4 text-center"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xDw1___bNVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+           <p><strong>Educación Dual en el Sector Apícola</strong></p>
+           </div>
+           <div class="col-md-4 text-center"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EuBZw80Kdfs?si=n2_QEuEYEFHMQrsz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+           <p><strong>Segunda Sesión Ordinaria del Comité Directivo de Educación Dual</strong></p>
+           </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
+          <div class="col-md-4 text-center"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DNZC_OEAHA8?si=jHWmZZ3VJGjRJ84Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+          <p><strong>Educación Dual en CECYTES</strong></p>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
+        </div>
+
+      </div>
+
+      <!-- section difusión -->
+      <div class="container">
+        <h2 style="text-align: center;">DIFUSIÓN</h2>
+        <br />
+        <div class="row">
+        <div class="col-md-4"><img class="img-responsive" src="../assets/eduacion-dual/coperacion_alemana.png" alt="" /> <br />
+        01 de Agosto de 2023
+        <p><strong> RESULTADOS DE LA ENCUESTA DE MONITOREO Y EVALUACIÓN DEL SISTEMA DE EDUCACIÓN                        DE EDUCACIÓN DUAL EN MÉXICO 2022 &ndash; 2023. </strong></p>
+        <p><a target="_blank" href="https://monitoreoeducaciondual.org.mx/resultados2022-2023.html ">continuar                        leyendo</a></p>
+        </div>
+        <div class="col-md-4"><img class="img-responsive" src="https://www.gob.mx/cms/uploads/image/file/806405/talento_ing.png" alt="" /> <br />
+        02 de agosto de 2023
+        <p><strong>Talento Mexicano</strong></p>
+        <p><a target="_blank" href="https://www.gob.mx/se/acciones-y-programas/talento-mexicano-334868#:~:text=Talento%20mexicano%20para%20el%20crecimiento%20y%20la%20relocalizaci%C3%B3n.&amp;text=Se%20trata%20de%20una%20iniciativa,y%20para%20aprovechar%20la%20relocalizaci%C3%B3n">continuar                        leyendo</a></p>
+        </div>
+        <div class="col-md-4"><img class="img-responsive" src="https://www.gob.mx/cms/uploads/article/main_image/127486/IMG-20221202-WA0005.jpg" alt="" />                <br />
+        02 de agosto de 2023
+        <p><strong>Colaboración con sector empresarial para ampliar el Sistema de Educación Dual                        en nivel Media Superior: SEP</strong></p>
+        <p><a target="_blank" href="https://www.gob.mx/sep/articulos/boletin-sep-no-187-colaboracion-con-sector-empresarial-para-ampliar-el-sistema-de-educacion-dual-en-nivel-media-superior-sep">continuar                        leyendo</a></p>
+        </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <!-- section recursos -->
+       <div class="container" >
+        <h2>RECURSOS</h2>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2"><a href="./habilidadesVidaTrabajo.html" target="_blank"> <img class="img-responsive" src="../assets/eduacion-dual/Icono_recursos.png" alt="" /></a></div>
+            <div class="col-md-2"><a href="http://modelo.formaciondual.sems.gob.mx/" target="_blank"> <img class="img-responsive" src="../assets/eduacion-dual/plataforma_academica.png" alt="" /></a></div>
+            <div class="col-md-2"><a href="http://168.255.153.170/es_mx/sems/en_que_consiste_modelo_mexicano_formacion_dual        " target="_blank"><img class="img-responsive" src="../assets/eduacion-dual/icono_antecedentes.png" alt="" /></a></div>
+            <div class="col-md-2"><a href="https://www.gob.mx/becasbenitojuarez/articulos/beca-benito-juarez-para-jovenes-de-educacion-media-superior-216589        " target="_blank"><img class="img-responsive" src="../assets/eduacion-dual/icono_beca_benito.png" alt="" /></a></div>
+            <div class="col-md-2"><a href="https://www.gob.mx/becasbenitojuarez/articulos/becas-elisa-acuna" target="_blank"><img class="img-responsive" src="../assets/eduacion-dual/icono_beca_elisa.png" alt="" /></a></div>
+            <div class="col-md-1"></div>
+        </div>
+       </div>
+       <br>
+       <br>
+       <div class="container">
+        <h2>CONOCE MÁS</h2>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2"><a href="http://168.255.153.170/es_mx/sems/Criterios_para_la_autorizacion_de_la_imparticion_de_planes_y_programas_de_estudio_del_tipo_medio_superior_mediante_los_estudios_de_pertinencia_factibilidad_y_prospectiva" target="_blank"><img class="img-responsive" src="../assets/eduacion-dual/icono_criterios.png" alt="" /></a></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><a href="http://168.255.153.170/es_mx/sems/Lineamientos_Generales_para_la_imparticion_del_Tipo_Medio_Superior_mediante_la_Opcion_de_Educacion_Dual" target="_blank"><img class="img-responsive" src="../assets/eduacion-dual/icono-lineamientos.png" alt="" /></a></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><a href="http://168.255.153.170/es_mx/sems/Metodologia_y_criterios_para_la_planificacion_de_la_Educacion_Dual_en_Media_Superior" target="_blank"><img class="img-responsive" src="../assets/eduacion-dual/icono_metodologia_criterios.png" alt="" /></a></div>
+            <div class="col-md-1"></div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <!-- directorio -->
+       <section class="structure dependency list-article">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+        <h2 class="text-left">Directorio</h2>
+        <hr class="red" />
+        <div class="structure-wrapper">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-4 office-sm-structure pull-left"><img alt="Foto de Tania Rodríguez Mora" class="media-object pull-left right-mini-space" src="http://168.255.153.170/work/models/sems/Resource/13895/1/images/sep.jpeg" style="margin-right: 8px;" />
+        <div class="figure">
+        <h5 class="structure-heading"><a href="https://www.gob.mx/sep/estructuras/tania-rodriguez-mora"> Tania Rodríguez Mora</a></h5>
+        <span class="attribues small">Subsecretaria de Educación Media Superior</span></div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      </section>
+      <div class="container"><section class="press list-article documents bottom-buffer">
+        <div class="clearfix">
+        <h2 class="text-left"><span tabindex="0">Información de Contacto</span></h2>
+        </div>
+        <hr class="red" />
+        <div class="row">
+        <div class="col-md-4">
+        <address tabindex="0">Av. Universidad # 1200 <br />
+        Col. Xoco, Alcaldía Benito Juárez <br />
+        CDMX, C.P. 03330<br />
+        Atención a la ciudadanía: 800 522 6798 <br />
+        Correo: <a href="mailto:atencion.sems@sems.gob.mx">atencion.sems@sems.gob.mx</a> <br />
+        Secretaría de Educación Pública <br />
+        <input name="organization[latitude]" type="hidden" value="19.4367689005793" /> <input name="organization[longitude]" type="hidden" value="-99.1316986083984" /></address>
+        <div><a class="sendEst" href="https://contacto.sep.gob.mx/">
+        <h4>Ingresa tu petición aquí</h4>
+        </a></div>
+        </div>
+        <div class="col-md-8"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240906.4517742977!2d-99.47363240546875!3d19.36208020000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff05f61fa817%3A0x15cc0fb3a7d3c490!2sSecretaria%20de%20Educaci%C3%B3n%20Publica!5e0!3m2!1ses!2smx!4v1711143658167!5m2!1ses!2smx" width="100%" height="440" frameborder="0" style="border:0" allowfullscreen=""></iframe></div>
+        </div>
+        </section>
+    </div>
     </main>
 
-    <!-- MODAL 
+    
        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -342,9 +739,9 @@
             </div>
           </div>
         </div>
-              termina MODAL-->
+              <!-- termina MODAL -->
 
-    <!-- MODAL 
+     <!-- MODAL  -->
         <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -363,8 +760,8 @@
             </div>
           </div>
         </div>
-        termina MODAL-->
-    
+        <!-- termina MODAL -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
@@ -387,7 +784,7 @@
         });
       });
     </script>
-    <!-- <script>
+     <script>
       $gmx(document).ready(function() {
         // Asegura que todos los plugins y scripts se han cargado
         $('#myModal').modal('show');
@@ -428,6 +825,6 @@
           document.querySelectorAll('.modal-backdrop').forEach(function (b) { b.remove(); });
         }
       });
-      </script> -->
+      </script>
   </body>
 </html>
