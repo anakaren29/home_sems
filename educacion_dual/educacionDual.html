@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subsecretaría de Educación Media Superior</title>
+    <link
+      href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png"
+      rel="shortcut icon"
+    />
+    <link
+      href="https://framework-gb.cdn.gob.mx/assets/styles/main.css"
+      rel="stylesheet"
+    />
+    <link
+      data-turbolinks-track="true"
+      href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <style type="text/css">        
+    /* Slider */        .slick-slide {            margin: 0px 30px;        }        .slick-slide img {            width: 100%;        }        .slick-slider {            position: relative;            display: block;            box-sizing: border-box;            -webkit-user-select: none;            -moz-user-select: none;            -ms-user-select: none;            user-select: none;            -webkit-touch-callout: none;            -khtml-user-select: none;            -ms-touch-action: pan-y;            touch-action: pan-y;            -webkit-tap-highlight-color: transparent;        }        .slick-list {            position: relative;            display: block;            overflow: hidden;            margin: 0;            padding: 0;        }        .slick-list:focus {            outline: none;        }        .slick-list.dragging {            cursor: pointer;            cursor: hand;        }        .slick-slider .slick-track,        .slick-slider .slick-list {            -webkit-transform: translate3d(0, 0, 0);            -moz-transform: translate3d(0, 0, 0);            -ms-transform: translate3d(0, 0, 0);            -o-transform: translate3d(0, 0, 0);            transform: translate3d(0, 0, 0);        }        .slick-track {            position: relative;            top: 0;            left: 0;            display: block;        }        .slick-track:before,        .slick-track:after {            display: table;            content: '';        }        .slick-track:after {            clear: both;        }        .slick-loading .slick-track {            visibility: hidden;        }        .slick-slide {            display: none;            float: left;            height: 100%;            min-height: 1px;        }        [dir='rtl'] .slick-slide {            float: right;        }        .slick-slide img {            display: block;        }        .slick-slide.slick-loading img {            display: none;        }        .slick-slide.dragging img {            pointer-events: none;        }        .slick-initialized .slick-slide {            display: block;        }        .slick-loading .slick-slide {            visibility: hidden;        }        .slick-vertical .slick-slide {            display: block;            height: auto;            border: 1px solid transparent;        }        .slick-arrow.slick-hidden {            display: none;        }        .desaturate {            filter: none;            -webkit-filter: sepia(80%) grayscale(60%) opacity(70%);            -moz-filter: sepia(80%) grayscale(60%) opacity(70%);            -ms-filter: sepia(80%) grayscale(60%) opacity(70%);            -o-filter: sepia(80%) grayscale(60%) opacity(70%);            cursor: pointer;            transition: all 300ms ease;        }        .desaturate:hover {            filter: none;            -webkit-filter: sepia(0%) grayscale(0%) opacity(100%);            -moz-filter: sepia(0%) grayscale(0%) opacity(100%);            -ms-filter: sepia(0%) grayscale(0%) opacity(100%);            -o-filter: sepia(0%) grayscale(0%) opacity(100%);        }        .acess_hover time {            font-size: small;        }        .acess_hover h4 {            font-weight: 400;        }        .acess_hover a.small-link,        .acess_hover a.small-link:hover {            background: #a42145;            color: #fff !important;            margin: 1rem auto;            border-radius: 50px;            width: 146px;            padding: 8px;            text-decoration: none !important;            font-size: 10px;            float: right;            text-transform: uppercase;            text-align: center;        }    
+  </style>
+  <body>
+    <header>
+      <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#subenlaces"
+            >
+              <span class="sr-only">Interruptor de Navegación</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="subenlaces">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="/index.html">
+                  <span class="icon icon-home"></span>
+                </a>
+              </li>
+              <li><a href="./quienesSomos.html">¿Quiénes Somos?</a></li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
+                  >Comunicación<span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/boletines.html">Boletines</a></li>
+                  <li>
+                    <a href="https://www.youtube.com/@MediaSuperiorMxSEP"
+                      >Multimedia</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://168.255.153.170/es_mx/sems/boletines_informativos_sems"
+                      >Histórico</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="./marco_normativo.html">Normatividad</a></li>
+              <li><a href="http://168.255.153.170/SINBANEM">SINBANEM</a></li>
+              <li><a href="./transparencia.html">Transparencia</a></li>
+              <li>
+                <a href="Informacion_de_programas_presupuestarios.html"
+                  >Programas Presupuestarios</a
+                >
+              </li>
+              <li><a href="/index.html#tu-voz-nos-importa">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main style="margin-top: 93px; margin-bottom: 30px">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+          <li data-target="#myCarousel" data-slide-to="4"></li>
+          <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide 1 -->
+          <div class="item active">
+            <a href="/modeloeducativo2025.html" target="_blank">
+              <picture>
+                <source
+                  media="(max-width: 499px)"
+                  srcset="/assets/carousel/mobil/mccvertical.jpeg"
+                />
+                <source
+                  media="(min-width: 500px)"
+                  srcset="/assets/carousel/bannerMCCEMS.png"
+                />
+                <img
+                  src="/assets/carousel/bannerMCCEMS.png"
+                  alt="Marco curricular 2025"
+                  style="width: 100%"
+                />
+              </picture>
+            </a>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="item">
+            <a
+              href="https://prepaenlinea.sep.gob.mx/convocatorias-2025/"
+              target="_blank"
+            >
+              <picture>
+                <source
+                  media="(max-width: 499px)"
+                  srcset="/assets/carousel/mobil/registrate_movil.png"
+                />
+                <source
+                  media="(min-width: 500px)"
+                  srcset="/assets/carousel/g81.png"
+                />
+                <img
+                  src="/assets/carousel/g81.png"
+                  alt="Convocatoria G81"
+                  style="width: 100%"
+                />
+              </picture>
+            </a>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="item">
+            <a href="https://www.miderechomilugar.gob.mx/" target="_blank">
+              <picture>
+                <source
+                  media="(max-width: 499px)"
+                  srcset="
+                    /assets/carousel/mobil/banner_web_vertical_sin_escuela_SEMS.png
+                  "
+                />
+                <source
+                  media="(min-width: 500px)"
+                  srcset="/assets/carousel/Nadie_sin_escuela.png"
+                />
+                <img
+                  src="/assets/carousel/Nadie_sin_escuela.png"
+                  alt="Campaña SEMS"
+                  style="width: 100%"
+                />
+              </picture>
+            </a>
+          </div>
+          <!-- Slide 4 -->
+          <div class="item">
+            <a
+              href="#"
+              class="open-modal"
+              data-img="/assets/carousel/RVOE_modal.jpeg"
+            >
+              <picture>
+                <source
+                  media="(max-width: 499px)"
+                  srcset="/assets/carousel/mobil/rvoe.png"
+                />
+                <source
+                  media="(min-width: 500px)"
+                  srcset="/assets/carousel/RVOE.png"
+                />
+                <img
+                  src="/assets/carousel/RVOE.png"
+                  alt="RVOE"
+                  style="width: 100%"
+                />
+              </picture>
+            </a>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="item">
+            <a
+              href="#"
+              class="open-modal"
+              data-img="/assets/carousel/certificacion_modal.jpeg"
+            >
+              <picture>
+                <source
+                  media="(max-width: 499px)"
+                  srcset="
+                    /assets/carousel/mobil/CertificacionelectronicaVertical.png
+                  "
+                />
+                <source
+                  media="(min-width: 500px)"
+                  srcset="
+                    /assets/carousel/Certificacionelectronicahorizontal.png
+                  "
+                />
+                <img
+                  src="/assets/carousel/Certificacionelectronicahorizontal.png"
+                  alt="Certificacion electronica"
+                  style="width: 100%"
+                />
+              </picture>
+            </a>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="item">
+            <a href="https://intercensal2025.mx/" target="_blank">
+              <picture>
+                <source
+                  media="(max-width: 499px)"
+                  srcset="/assets/carousel/mobil/inegivertical.png"
+                />
+                <source
+                  media="(min-width: 500px)"
+                  srcset="/assets/carousel/INEGI.jpeg"
+                />
+                <img
+                  src="/assets/carousel/INEGI.jpeg"
+                  alt="INEGI"
+                  style="width: 100%"
+                />
+              </picture>
+            </a>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <div class="container">
+        <h2 class="text-left">Educación Dual en Nivel Medio Superior</h2>
+        <p>
+          La Educación Dual con Formación en Escuela y Empresa es una opción
+          educativa para los educandos de bachillerato tecnológico, profesional
+          técnico y profesional técnico bachiller de modalidad mixta que tiene
+          por objetivo central incrementar el bienestar de los educandos y su
+          desarrollo integral.
+        </p>
+        <p>
+          La implicación más importante de la modalidad mixta es que las
+          actividades de aprendizaje previstas en el plan de estudios se
+          desarrollan tanto en la escuela que lo ofrece, como en las empresas
+          que forman parte del Sistema de Educación Dual (SED).
+        </p>
+        <p>
+          <a
+            href="http://168.255.153.170/es_mx/sems/en_que_consiste_modelo_mexicano_formacion_dual"
+            target="_blank"
+            >Seguir leyendo...</a
+          >
+        </p>
+      </div>
+      <div class="container">
+        <h2>OFERTA EDUCATIVA</h2>
+        <div class="pleca-roja mid-buffer"></div>
+        <h2 class="sr-only">Órganos desconcentrados y descentralizados</h2>
+        <div class="customer-logos">
+          <div class="slide">
+            <a href="https://www.conalep.edu.mx/oferta" target="_blank"
+              ><img
+                class="desaturate"
+                src="../assets/educacion-dual/conalep.png"
+                style="width: 55% !important; margin-top: 16% !important"
+                alt=""
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="http://www.dgeti.sep.gob.mx/" target="_blank"
+              ><img
+                class="desaturate"
+                src="../assets/educacion-dual/dgeti.png"
+                style="width: 50% !important; margin-top: 14% !important"
+                alt=""
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="https://dgetaycm.sep.gob.mx" target="_blank"
+              ><img
+                class="desaturate"
+                src="../assets/educacion-dual/DGETAyCM.png"
+                style="width: 55% !important; margin-top: 50% !important"
+                alt=""
+            /></a>
+          </div>
+          <div class="slide" id="aliados">
+            <a href="https://www.ceti.mx/" target="_blank"
+              ><img
+                class="desaturate"
+                src="../assets/educacion-dual/ceti.jpeg"
+                style="width: 35% !important; margin-top: 13% !important"
+                alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="pleca-roja mid-buffer"></div>
+      </div>
+    </main>
+
+    <!-- MODAL 
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Comunicado Institucional: Mi Derecho Mi Lugar</h4>
+              </div>
+              <div class="modal-body">
+               <img class="img-responsive" src="/assets/carousel/modal/Comunicado 19 agosto.png">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+              termina MODAL-->
+
+    <!-- MODAL 
+        <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="bannerModalLabel">...</h4>
+              </div>
+              <div class="modal-body">
+                <img class="img-responsive" id="modalImage" src="/assets/carousel/modal/Comunicado 19 agosto.png">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        termina MODAL-->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".customer-logos").slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 1500,
+          arrows: false,
+          dots: false,
+          pauseOnHover: false,
+          responsive: [
+            { breakpoint: 768, settings: { slidesToShow: 3 } },
+            { breakpoint: 520, settings: { slidesToShow: 2 } },
+          ],
+        });
+      });
+    </script>
+    <!-- <script>
+      $gmx(document).ready(function() {
+        // Asegura que todos los plugins y scripts se han cargado
+        $('#myModal').modal('show');
+      });
+
+        // Mostrar
+        document.body.classList.add('modal-open'); // opcional
+        modal.classList.add('in');
+        modal.style.display = 'block';
+
+    </script> 
+
+      
+      <script>
+      $(document).ready(function () {
+        $('.open-modal').click(function (e) {
+          e.preventDefault();
+          var imgSrc = $(this).data('img');
+          $('#modalImage').attr('src', imgSrc);
+          $('#bannerModal').modal('show');
+        });
+
+        // Cerrar con ESC
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') hideModal();
+        });
+
+        // Cerrar al click fuera del .modal-content
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) hideModal();
+        });
+
+        function hideModal() {
+          modal.classList.remove('in');
+          modal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+          // elimina backdrops huérfanos si los creaste manualmente
+          document.querySelectorAll('.modal-backdrop').forEach(function (b) { b.remove(); });
+        }
+      });
+      </script> -->
+  </body>
+</html>
