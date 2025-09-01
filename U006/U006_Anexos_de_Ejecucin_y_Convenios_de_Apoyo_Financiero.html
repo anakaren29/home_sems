@@ -114,5 +114,19 @@
 <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/script.js"></script>
+<script>
+  (function() {
+    const currentPath = window.location.pathname;
+    const redirects = {
+        '/es_mx/sems/Anexos_de_Ejecucin_y_Convenios_de_Apoyo_Financiero_': '/U006/U006_Anexos_de_Ejecucin_y_Convenios_de_Apoyo_Financiero.html'
+    };                                                                            
+    
+    if (redirects[currentPath]) {
+        window.location.replace(redirects[currentPath]);
+    }
+})()
+;
+
+</script>
 </body>
 </html>
