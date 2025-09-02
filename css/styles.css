@@ -1068,8 +1068,15 @@ h2{
     padding: 1px;
 }
 .jornada-concientizacion::after{
-  content: "JORNADA CONTRA EL ABUSO SEXUAL Y EL MALTRATO EN LAS ADOLESCENCIAS";
+  content: "Jornada contra el abuso sexual y el maltrato en las adolescencias";
 }
+.jornada-concientizacion::after{
+  content: "Jornada contra el abuso sexual y el maltrato en las adolescencias";
+  padding: 0.5em;
+    width: 10em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
+}
+
 .borde {
     width: calc(3em - 6px);
 }
@@ -1085,7 +1092,7 @@ h2{
     box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
 }
 .planeacion::after{
-  content: "REUNIÓN DE PLANEACIÓN DEL CICLO ESCOLAR";
+  content: "Reunión de planeación del ciclo escolar";
     padding: 0.5em;
     width: 10em;
     box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
@@ -1100,7 +1107,7 @@ h2{
     border: 3px dashed #7c9ab5;
 }
 .campana::after{
-  content: "CAMPAÑA ''TE EXTRAÑAMOS EN EL SALÓN'";
+  content: "Campaña ''Te extrañamos en el salón'";
   padding: 0.5em;
     width: 10em;
     box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
@@ -1122,7 +1129,7 @@ h2{
     border: 3px dashed #fd5252;
 }
 .evaluacion::after{
-  content: "REUNIÓN DE EVALUACIÓN DEL CICLO ESCOLAR";
+  content: "Reunión de evaluación del ciclo escolar";
   width: 15em;
   left: -7em;
 }
@@ -1138,7 +1145,7 @@ h2{
     color: white;
 }
 .reunion-discusion::after{
-  content: "REUNIÓN DE DISCUSIÓN DEL MCCEMS ";
+  content: "Reunión de discusión del MCCEMS ";
   padding: 0.5em;
     width: 10em;
     box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
