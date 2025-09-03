@@ -684,7 +684,7 @@
         <div class="structure-wrapper">
         <div class="container">
         <div class="row">
-        <div class="col-md-4 office-sm-structure pull-left"><img alt="Foto de Tania Rodríguez Mora" class="media-object pull-left right-mini-space" src="http://168.255.153.170/work/models/sems/Resource/13895/1/images/sep.jpeg" style="margin-right: 8px;" />
+        <div class="col-md-4 office-sm-structure pull-left"><img alt="Foto de Tania Rodríguez Mora" class="media-object pull-left right-mini-space" src="../assets/iconos-quienes-somos/Dra.Tania.jpeg" style="margin-right: 8px;" />
         <div class="figure">
         <h5 class="structure-heading"><a href="https://www.gob.mx/sep/estructuras/tania-rodriguez-mora"> Tania Rodríguez Mora</a></h5>
         <span class="attribues small">Subsecretaria de Educación Media Superior</span></div>
@@ -720,7 +720,7 @@
     </div>
     </main>
 
-    
+    <!---
        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -738,10 +738,10 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
               <!-- termina MODAL -->
 
-     <!-- MODAL  -->
+     <!--
         <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -760,7 +760,7 @@
             </div>
           </div>
         </div>
-        <!-- termina MODAL -->
+         termina MODAL -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
@@ -784,47 +784,50 @@
         });
       });
     </script>
-     <script>
-      $gmx(document).ready(function() {
-        // Asegura que todos los plugins y scripts se han cargado
-        $('#myModal').modal('show');
-      });
-
-        // Mostrar
-        document.body.classList.add('modal-open'); // opcional
-        modal.classList.add('in');
-        modal.style.display = 'block';
-
-    </script> 
-
       
       <script>
       $(document).ready(function () {
-        $('.open-modal').click(function (e) {
-          e.preventDefault();
-          var imgSrc = $(this).data('img');
-          $('#modalImage').attr('src', imgSrc);
-          $('#bannerModal').modal('show');
-        });
+    var modal = document.getElementById('modalImage');
 
-        // Cerrar con ESC
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') hideModal();
-        });
+    // Abrir modal al dar clic en .open-modal
+    $('.open-modal').click(function (e) {
+      e.preventDefault();
+      var imgSrc = $(this).data('img');
+      $('#modalImage').attr('src', imgSrc);
+      $('#imageModal').modal('show'); // este es el modal que sí ocupas
+    });
 
-        // Cerrar al click fuera del .modal-content
-        modal.addEventListener('click', function (e) {
-          if (e.target === modal) hideModal();
-        });
+    // Cuando se abre el modal
+    $('#imageModal').on('shown.bs.modal', function () {
+      document.body.classList.add('modal-open');
+    });
 
-        function hideModal() {
-          modal.classList.remove('in');
-          modal.style.display = 'none';
-          document.body.classList.remove('modal-open');
-          // elimina backdrops huérfanos si los creaste manualmente
-          document.querySelectorAll('.modal-backdrop').forEach(function (b) { b.remove(); });
-        }
+    // Cuando se cierra el modal
+    $('#imageModal').on('hidden.bs.modal', function () {
+      // Solo quitar modal-open si ya no hay ningún modal visible
+      if (!$('.modal.show').length) {
+        document.body.classList.remove('modal-open');
+      }
+      // Elimina backdrops huérfanos
+      document.querySelectorAll('.modal-backdrop').forEach(function (b) {
+        b.remove();
       });
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        $('#imageModal').modal('hide');
+      }
+    });
+
+    // Cerrar al hacer clic fuera del contenido
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        $('#imageModal').modal('hide');
+      }
+    });
+  });
       </script>
   </body>
 </html>
