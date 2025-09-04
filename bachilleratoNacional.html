@@ -11,6 +11,7 @@
       href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css"
       media="all" rel="stylesheet"/>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/lricano.css" />
   </head>
   <body>
     <header>
@@ -68,19 +69,31 @@
         <p class="mb-30" style="text-align: center; "><strong>Bienvenido al Bachillerato Nacional, el espacio donde podrás conocer a fondo todo lo relacionado con este nivel educativo. Aquí encontrarás 
           información sobre las dos modalidades que lo conforman: 
           Bachillerato General y Bachillerato Tecnológico.</strong></p>
+        </div>
         
-        
-        <div class="row card-oferta-educativa">
-          <h2 class="mb-30" style="text-align: left;">¿Qué es el Bachillerato Nacional?</h2>
-          <div class="col-sm-10 col-md-12" style="align-items: center;">
-            <p style="text-align: justify;">
+        <div class="row" style="background-color: #FDF5F5; margin-bottom: 50px;">
+          <div class="container">
+          <h2 class="mb-30" style="text-align: center;">¿Qué es el Bachillerato Nacional?</h2>
+          <div class="row vertical-wrapper">
+            <div class="col-xs-12 col-sm-6">
+              <div class="video">
+                <video width="100%" height="300px" style="border-radius: 20px;" controls autoplay muted>
+                  <source src="./assets/bachillerato-nacional/BACHILLERATO NACIONAL 11 PUNTOS 02.mp4" type="video/mp4">
+                </video>
+              
+              </div>
+            </div>
+            <div class="vertical-line hidden-xs"></div>
+            <div class="col-xs-12 col-sm-6 d-flex-col text-left">
+              <p style="text-align: justify;">
               El Bachillerato Nacional es el nivel educativo que brinda a los estudiantes las herramientas
                académicas y formativas necesarias para continuar con estudios superiores o incorporarse al ámbito 
                laboral. Forma parte del Sistema 
               Educativo Mexicano y está coordinado por la Subsecretaría de Educación Media Superior (SEMS).</p>
-
+            </div>
+          </div>
+          <div class="col-sm-10 col-md-12" style="align-items: center;"><br/><br/>
             <p style="text-align: left;">Este nivel se ofrece en dos modalidades:
-            
                 <div>
                     <ul class="ml-30">
                         <li>
@@ -94,58 +107,124 @@
                 En todo el país, el Bachillerato Nacional busca garantizar una educación incluyente, equitativa y de calidad, alineada
                 con los principios de la Nueva Escuela Mexicana.</p>
           </div>
+          </div>
         </div>
 
 
 
-        <div class="row text-center" style="padding-bottom: 40px;">
-            
-            <img src="/assets/bachillerato-nacional/Logo_bachillerato_nacioal_final.png" style="max-width: 224px;" alt="Logo bachillerato nacional">
-            
+        <div class="container">
+          <div class="row text-center" style="padding-bottom: 40px;">
+
+            <img src="./assets/bachillerato-nacional/Logo_bachillerato_nacioal_final.png" style="max-width: 224px;"
+              alt="Logo bachillerato nacional">
+
 
             <p><strong>
-                Accede a las páginas oficiales dando click en cada imágen de los subsistemas para obtener detalles sobre planes de estudio, servicios y oportunidades.
-            </strong></p>
+                Accede a las páginas oficiales dando click en cada imágen de los subsistemas para obtener detalles sobre planes
+                de estudio, servicios y oportunidades.
+              </strong></p>
 
             <!--bachillerato General-->
-            <img src="/assets/bachillerato-nacional/Logo_bachillerato_gral_final.png" style="max-width: 180px;" alt="Logo bachillerato nacional verde-oro" class="mt-30">
-            <br>            
-            <hr class="hr-dorado" >                          
+            <img src="./assets/bachillerato-nacional/Logo_bachillerato_gral_final.png" style="max-width: 180px;"
+              alt="Logo bachillerato nacional verde-oro" class="mt-30">
+            <br>
+            <hr class="hr-dorado"><br/>
             <!-- Carrusel bachillerato -->
-            
-
-                <div class="contenedor-imgCarrusel" style="display: flex; justify-content: center; background-color: #F6CECE47;">                  
-                    <a href="https://www.gob.mx/bachilleres" target="_blank"><img src="/assets/icons/colegioBachilleres.png" alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
-                    <a href="https://dgb.sep.gob.mx/" target="_blank"><img src="/assets/icons/dgc.png" alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
-                    <a href="https://prepaabierta.sep.gob.mx/" target="_blank"><img src="/assets/icons/prepa-abierta.png" alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
-                    <a href="https://prepaenlinea.sep.gob.mx/" target="_blank"><img src="/assets/icons/prepa-en-linea.png" alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
-                    <a href="https://tbc.sep.gob.mx/" target="_blank"><img src="/assets/icons/telebachilleratos.png" alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
-                   
+            <div style="background-color: #FFF1F1; border-radius: 12px; padding: 10px; margin-left: 5%; margin-right: 5%;">
+              <div class="carousel-wrapper">
+                <button class="carousel-btn left" onclick="scrollCarruselSEMSCifras(-1)">&#10094;</button>
+                <div class="carrusel-scroll horizontal" id="carrusel-horizontal-SEMS">
+                  <a href="https://dgb.sep.gob.mx/" target="_blank"><img src="./assets/icons/dgc.png" alt="logo colegio bachilleres"
+                      class="imgCarrusel-bachillerato"></a>
+                  <a href="https://www.gob.mx/bachilleres" target="_blank"><img src="./assets/icons/colegioBachilleres.png"
+                      alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
+                  <a href="https://prepaenlinea.sep.gob.mx/" target="_blank"><img src="./assets/icons/prepa-en-linea.png"
+                      alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
+                  <a href="https://prepaabierta.sep.gob.mx/" target="_blank"><img src="./assets/icons/prepa-abierta.png"
+                      alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
+                  <a href="https://dgb.sep.gob.mx/oferta-educativa/telebachillerato-comunitario" target="_blank"><img src="./assets/icons/telebachilleratos.png"
+                      alt="logo colegio bachilleres" class="imgCarrusel-bachillerato"></a>
                 </div>
-
+                <button class="carousel-btn right" onclick="scrollCarruselSEMSCifras(1)">&#10095;</button>
+              </div>
+            </div>
 
             <!--bachillerato Tecnologico-->
-            <img src="/assets/bachillerato-nacional/Logo_bachillerato_tec_final.png" style="max-width: 180px;"
+            <img src="./assets/bachillerato-nacional/Logo_bachillerato_tec_final.png" style="max-width: 180px;"
               alt="Logo bachillerato nacional tecnologico" class="mt-30">
             <br>
-            <hr class="hr-dorado">
+            <hr class="hr-dorado"><br/>
             <!-- Carrusel bachillerato tecnologico -->
-
-                <div class="contenedor-imgCarrusel" style="display: flex; justify-content: center; background-color: #F6CECE47;">
-                  <a href="https://dgetaycm.sep.gob.mx/" target="_blank"><img src="/assets/icons/dgetaycm.png" alt="logo dgetaycm" class="imgCarrusel-bachillerato"></a>
-                  <a href="https://bachilleratodeportivo.sep.gob.mx/" target="_blank"><img src="/assets/icons/bted.png" alt="logo bted" class="imgCarrusel-bachillerato"></a>
-                  <a href="https://dgeti.sep.gob.mx/" target="_blank"><img src="/assets/icons/dgeti.png" alt="logo dgeti" class="imgCarrusel-bachillerato"></a>
-                  <a href="https://www.conalep.edu.mx/inicio" target="_blank"><img src="/assets/icons/conalep.png" alt="logo conalep" class="imgCarrusel-bachillerato"></a>
-                  <a href="https://www.ceti.mx/" target="_blank"><img src="/assets/icons/ceti.png" alt="logo ceti" class="imgCarrusel-bachillerato"></a>
-                   <a href="https://cecyte.edu.mx/" target="_blank"><img src="/assets/icons/cecytes.png"
-                        alt="logo cecytes" class="imgCarrusel-bachillerato"></a>
+            <div style="background-color: #FFF1F1; border-radius: 12px; padding: 10px; margin-left: 5%; margin-right: 5%;">
+              <div class="carousel-wrapper">
+                <button class="carousel-btn left" onclick="scrollCarruselSEMSCifras(-1)">&#10094;</button>
+                <div class="carrusel-scroll horizontal" id="carrusel-horizontal-SEMS">
+                  <a href="https://dgetaycm.sep.gob.mx/" target="_blank"><img src="./assets/icons/dgetaycm.png" alt="logo dgetaycm"
+                      class="imgCarrusel-bachillerato"></a>
+                  <a href="https://bachilleratodeportivo.sep.gob.mx/" target="_blank"><img src="./assets/icons/bted.png"
+                      alt="logo bted" class="imgCarrusel-bachillerato"></a>
+                  <a href="https://dgeti.sep.gob.mx/" target="_blank"><img src="./assets/icons/dgeti.png" alt="logo dgeti"
+                      class="imgCarrusel-bachillerato"></a>
+                  <a href="https://www.conalep.edu.mx/inicio" target="_blank"><img src="./assets/icons/conalep.png"
+                      alt="logo conalep" class="imgCarrusel-bachillerato"></a>
+                  <a href="https://www.ceti.mx/" target="_blank"><img src="./assets/icons/ceti.png" alt="logo ceti"
+                      class="imgCarrusel-bachillerato"></a>
+                  <a href="https://cecyte.edu.mx/" target="_blank"><img src="./assets/icons/cecytes.png" alt="logo cecytes"
+                      class="imgCarrusel-bachillerato"></a>
                 </div>
-
-
-          <br/><br/>
+                <button class="carousel-btn right" onclick="scrollCarruselSEMSCifras(1)">&#10095;</button>
+              </div>
+            </div>
+            
+          </div>
         </div>
 
-
+        <div style="background-color: #FDF5F5;">
+          <div class="container">
+            <h2>Me gusta mi escuela</h2>
+            <p style="text-align: center;"><strong>En esta sección del Bachillerato Nacional podrás conocer de cerca las experiencias de
+              nuestras y nuestros estudiantes. A través de sus testimonios comparten lo que más les gusta de su escuela,
+              sus actividades favoritas y la forma en que viven su día a día en esta etapa tan importante.</strong></p><br />
+              <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                  <div class="video">
+                    <video width="100%" height="300px" style="border-radius: 20px;" controls autoplay muted>
+                      <source src="./assets/bachillerato-nacional/ME GUSTA MI ESCUELA.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="col-sm-3"></div>
+              </div><br/><br/>
+              <div class="row container">
+                <div class="col-sm-3">
+                  <div class="card-mi-escuela">
+                    <img src="./assets/bachillerato-nacional/comillas.png" alt="comillas" />
+                    <p>Me encantan los <br/>clubes y las <br/>actividades <br/>recreativas que <br/>podemos hacer <br/>después de
+                      clases</p>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card-mi-escuela">
+                    <img src="./assets/bachillerato-nacional/comillas.png" alt="comillas" />
+                    <p>Las instalaciones <br/>están muy <br/>preparadas para <br/>enseñarme diseño <br/>de modas.</p>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card-mi-escuela">
+                    <img src="./assets/bachillerato-nacional/comillas.png" alt="comillas" />
+                    <p>Es fabuloso <br/>entrenar y tener <br/>escuelas para <br/>aprender y hacer <br/>todo al mismo <br/>tiempo. </p>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card-mi-escuela">
+                    <img src="./assets/bachillerato-nacional/comillas.png" alt="comillas" />
+                    <p>Mis profesores <br/>están muy <br/>capacitados para <br/>enseñarme lo que <br/>estoy aprendiendo <br/>en este momento.</p>
+                  </div>
+                </div>
+              </div><br/><br/>
+          </div>
+        </div>
 
         <div class="row card-oferta-educativa">
           <h2>Mapa Interactivo</h2>
@@ -153,10 +232,10 @@
             <div class="row text-center mt-30 pt-30 pb-30 contenedor-mapa">
               <div class="col-sm-6 " style="padding: 25px;">
                 <p >
-                  Además, explora nuestro mapa interactivo de SEMS en Cifras, una herramienta diseñada para que localices fácilmente los
-                  planteles de educación media superior en los 32 estados de la República. Descubre su ubicación, características,
-                  modalidades educativas (general o tecnológica) y accede a información clave sobre cada subsistema. Este recurso te
-                  permitirá planificar tu formación con base en la oferta educativa disponible en tu región.
+                  Ahora puedes explora nuestro mapa interactivo de la SEMS en cifras, una herramienta diseñada para que localices 
+                  fácilmente los planteles de educación media superior en los 32 estados de la República. Descubre su ubicación, 
+                  características, modalidades educativas (general o tecnológica) y accede a información clave sobre cada subsistema. 
+                  Este recurso te permitirá planificar tu formación, con base en la oferta educativa disponible en tu región.
                 </p>
                 
                 <a href="/SEMS_en_cifras.html" target="_self">
@@ -169,14 +248,14 @@
 
               </div>
               <div class="col-sm-6 ">
-                <img src="/assets/icons/mapaInteractivo.png" alt="Mapa interactivo" class="img-responsive contenedor-mapa-interactivo">
+                <img src="./assets/icons/mapaInteractivo.png" alt="Mapa interactivo" class="img-responsive contenedor-mapa-interactivo">
               </div>
             </div>
           </div>          
         </div>
 
 
-        <div style="margin-bottom: 50px;">
+        <div style="background-color: #FDF5F5;">
           <div class="container">
             <h2>Explora la SEMS</h2>
             <hr class="hr-dorado">
@@ -248,7 +327,6 @@
       </div>
         
         
-      </div>
     </main>
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>

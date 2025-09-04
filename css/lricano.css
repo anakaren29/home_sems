@@ -571,3 +571,19 @@
     padding: 0;
 }
 
+.card-mi-escuela {
+    background-color: #10312B;
+    color: #FFFFFF;
+    border-radius: 10px;
+    width: 190px;
+    height: 193px;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.card-mi-escuela img {
+    height: 45px;
+    width: 50px;
+}
+
