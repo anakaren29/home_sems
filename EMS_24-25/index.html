@@ -1,590 +1,951 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
-user-scalable=no" />
-<title>Planteles EMS 2024-2025</title>
-<link rel="icon" href="escudo_mexico.ico">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Planteles EMS 2024-2025</title>
+    <meta name="description" content="Mapa interactivo de planteles públicos de Educación Media Superior en México para el ciclo escolar 2024-2025">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="escudo_mexico.ico" type="image/x-icon">
+    
+    <!-- Preconexión para recursos externos -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.maptiler.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Precarga de hojas de estilo críticas -->
+    <link rel="preload" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"></noscript>
+    
+    <!-- Hojas de estilo con carga diferida -->
+    <link rel="stylesheet" href="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="Control.MiniMap.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="leaflet-search-master/src/leaflet-search.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="L.Control.Window.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" media="print" onload="this.media='all'">
 
-    <!-- Mapas -->
-<script src="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
-<script src="https://cdn.maptiler.com/mapbox-gl-leaflet/latest/leaflet-mapbox-gl.js"></script>
-<link rel="stylesheet" href="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
+    <style>
+        :root {
+            --color-primario: #691C32;
+            --color-secundario: #8a2442;
+            --color-fondo: #ffffff;
+            --color-texto: #333;
+            --color-borde: #ddd;
+            --sombra: 0 0 15px rgba(0,0,0,0.2);
+        }
+        
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+        
+        html, body, #map {
+            height: 91%;
+            width: 100%;
+        }
+        
+        #panel {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-left: 15px;
+            background-color: var(--color-fondo);
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 8px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .info {
+            padding: 6px 8px;
+            background: rgba(255,255,255,0.9);
+            box-shadow: var(--sombra);
+            border-radius: 5px;
+        }
+        
+        .info h2 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+        
+        .legend {
+            line-height: 18px;
+            color: #555;
+        }
+        
+        .legend i {
+            width: 14px;
+            height: 14px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+            border-radius: 50%;
+        }
+        
+        .titulo {
+            margin: 1px 0;
+            padding: 0;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .img {
+            margin-left: 10px;
+            margin-bottom: -28px;
+        }
+        
+        .footer {
+            margin-top: 5px;
+        }
+        
+        select {
+            padding: 5px;
+            border: 1px solid var(--color-primario);
+            border-radius: 4px;
+            font-family: 'Noto Sans', sans-serif;
+            min-width: 200px;
+        }
+        
+        button {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover, button:focus {
+            background-color: var(--color-secundario);
+            outline: none;
+        }
+        
+        /* Info overlay styling */
+        .info-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 10000;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow: auto;
+            display: none;
+        }
+        
+        .overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--color-borde);
+            padding-bottom: 10px;
+        }
+        
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-primario);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primario);
+            padding: 0 5px;
+        }
+        
+        .overlay-content {
+            line-height: 1.6;
+        }
+        
+        .overlay-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            display: none;
+        }
+        
+        /* Tablas responsivas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table td {
+            padding: 3px 5px;
+            vertical-align: top;
+        }
+        
+        /* Media queries para dispositivos móviles */
+        @media (max-width: 768px) {
+            #panel {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 5px;
+                gap: 8px;
+            }
+            
+            .titulo p {
+                font-size: 1rem !important;
+            }
+            
+            select, button {
+                width: 95%;
+                font-size: 0.9rem;
+            }
+            
+            #map {
+                height: 85%;
+            }
+            
+            .info-overlay {
+                max-width: 95%;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .titulo p {
+                font-size: 0.9rem !important;
+            }
+            
+            #panel {
+                padding: 5px 0;
+            }
+        }
+        
+        /* Mejoras de accesibilidad */
+        [tabindex]:focus {
+            outline: 2px solid var(--color-primario);
+            outline-offset: 2px;
+        }
+        
+        /* Animaciones suaves */
+        @media (prefers-reduced-motion: no-preference) {
+            .info-overlay, .overlay-backdrop {
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+        }
+        
+        /* Indicador de carga */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        /* Mensaje de error */
+        .error-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: #ffebee;
+            color: #c62828;
+            z-index: 10000;
+            text-align: center;
+            display: none;
+        }
 
-<!-- Leaflet Plugins -->
-<link rel="stylesheet" href= "Control.MiniMap.css" />
-<script src="Control.MiniMap.js"></script>
-<link rel="stylesheet" href="leaflet-search-master\src\leaflet-search.css" />
-<script src="leaflet-search-master\src\leaflet-search.js"></script>
-<link rel="stylesheet" href="L.Control.Window.css" />
-<script src="L.Control.Window.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
-
-    <!-- Capas Geojson -->
-<script src="nvomun.js"></script>
-<script src="Planteles.js"></script>
-
-<style>
-body {
-padding: 0;
-margin: 0;
+        /* Quitar borde punteado de enfoque en los marcadores */
+.leaflet-marker-icon:focus, 
+.leaflet-marker-icon:active, 
+.leaflet-marker-icon:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
-html, body, 
-#map {
-height: 89.5%;
-}
-#panel{
-display: flex;
-justify-content: left;
-margin-left:15px;
-background-color:#ffffff;
-margin-top: 0px;
-margin-bottom: 0px;
-font: 14px/16px Patria, patria, patria;
-}
-.info {
-padding: 6px 8px;
-font: Noto sans;
-background: gray;
-background: rgba(255,255,255,0.8);
-box-shadow: 0 0 15px rgba(0,0,0,0.2);
-border-radius: 5px;
-}
-.info h2 {
-margin: 0 0 5px;
-color: #777;
-}
-.legend {
- line-height: 18px;
- color: #555;
-}
-.legend i {
- width: 18px;
- height: 18px;
- float: left;
- margin-right: 8px;
- opacity: 0.7;
-}
-.titulo {
-margin: 1px 0;
-padding: 0;
-line-height: 1.2;
-text-align: center;
-}
-.img {
-margin-left: 10px;
-margin-bottom: -28px;
-}
-.footer {
-margin-top: 5px;
-}
-</style>
+    </style>
 </head>
 
-<body bgcolor="#ffffff", onload="estiloSelect()">
+<body>
+    <!-- Indicador de carga -->
+    <div id="loading">Cargando planteles...</div>
+    
+    <!-- Mensaje de error -->
+    <div class="error-message" id="errorMessage"></div>
+    
     <div class="titulo">
-        <p style="color: #691C32; font-size:1.5vw; font-family: patria; text-align: center; margin: 0;">
+        <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
             <b>Planteles públicos de Educación Media Superior</b>
         </p>
-        <p style="color: #691C32; font-size: 1vw; font-family: noto sans; text-align: center; margin: 0;">
+        <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">
             Ciclo escolar 2024-2025
         </p>
     </div>
 
-    <!-- Selector de subsistemas -->
-<div id="panel">
-<label><p style="color: #691C32; font-size:1vw; font-family: noto sans; text-align:left;"><b>Selección&nbsp;</b></label>
-<select id="Subsistema" onchange="actualizarSeleccion('Subsistema')">
-<option value="Todos" selected>Subsistemas</option>
-<option value="DGETAyCM" >DGETAyCM</option>
-<option value="DGETI">DGETI</option>
-<option value="DGB" >DGB</option>
-<option value="BTED" >BTED</option>
-<option value="COLBACH (CDMX-EdoMéx)" >COLBACH (CDMX-EdoMéx)</option>
-<option value="COBACH" >COBACH (Estados)</option>
-<option value="CETI" >CETI (Jalisco)</option>
-<option value="CECyTE" >CECyTE</option>
-<option value="CONALEP (CDMX-OAX)" >CONALEP (CDMX-OAX)</option>
-<option value="CONALEP (Estados)" >CONALEP (Estados)</option>
-<option value="EMSaD" >EMSaD</option>
-<option value="TBC" >TBC</option>
-<option value="BIC" >BIC</option>
-<option value="Otros programas estatales" >Otros programas estatales</option>
-<option value="INBAL" >INBAL</option>
-<option value="IPN" >IPN</option>
-<option value="Otras Secretarías" >Otras Secretarías</option>
-<option value="Bachillerato Estatal" >Bachillerato Estatal</option>
-<option value="IEMS" >IEMS</option>
-<option value="Bachillerato SECTEI" >Secretaría de Educación, Ciencia, Tecnología e Innovación (CDMX)</option>
-<option value="Escuela Nacional para Ciegos" >Escuela Nacional para Ciegos</option>
-<option value="IEBAS" >IEBAS</option>
-<option value="CBDC" >CBDC</option>
-<option value="Telebachillerato" >Telebachillerato</option>
-<option value="Bachillerato de Universidades Públicas Autónomas" >Bachillerato de Universidades Públicas Autónoma</option>
-</p></select>
+    <!-- Panel de controles -->
+    <div id="panel" aria-live="polite" aria-atomic="true">
+        <label for="Subsistema" id="subsistema-label" style="color: #691C32; font-size:0.9rem; font-family: noto sans;">
+            <b>Selección&nbsp;</b>
+        </label>
+        <select id="Subsistema" aria-labelledby="subsistema-label">
+            <option value="Todos" selected>Subsistemas</option>
+            <option value="DGETAyCM">Bachillerato de Educación Tecnológica Agropecuaria y Ciencias del Mar</option>
+            <option value="DGETI">Bachillerato de Educación Tecnológica Industrial y de Servicios</option>
+            <option value="Bachillerato de Universidades Públicas Autónomas">Bachillerato de Universidades Públicas Autónomas</option>
+            <option value="Bachillerato Estatal">Bachillerato Estatal</option>            
+            <option value="DGB">Bachillerato General</option>
+            <option value="BIC">Bachillerato Intercultural Bilingüe</option>            
+            <option value="BTED">Bachillerato Tecnológico de Educación y Promoción Deportiva</option>
+            <option value="CBDC">Centro de Bachillerato de Desarrollo Comunitario</option>
+            <option value="CETI">Centro de Enseñanza Técnica Industrial</option>
+            <option value="COLBACH (CDMX-EdoMéx)">Colegio de Bachilleres (CDMX-EdoMéx)</option>
+            <option value="COBACH">Colegio de Bachilleres Estatal</option>
+            <option value="CECyTE">Centro de Estudios Científicos y Tecnológicos</option>
+            <option value="CONALEP (CDMX-OAX)">Colegio Nacional de Educación Profesional (CDMX-OAX)</option>
+            <option value="CONALEP (Estados)">Colegio Nacional de Educación Profesional Estatal</option>
+            <option value="EMSaD">Educación Media Superior a Distancia</option>
+            <option value="Escuela Nacional para Ciegos">Escuela Nacional para Ciegos</option>
+            <option value="IEMS">Instituto de Educación Media Superior</option>
+            <option value="INBAL">Instituto Nacional de Bellas Artes y Literatura</option>
+            <option value="IPN">Instituto Politécnico Nacional</option>
+            <option value="IEBAS">Institutos Estatales de Bellas Artes</option>
+            <option value="Otras Secretarías">Otras Secretarías</option>
+            <option value="Otros programas estatales">Otros programas estatales</option>
+            <option value="Bachillerato SECTEI">Secretaría de Educación, Ciencia, Tecnología e Innovación (CDMX)</option>
+            <option value="Telebachillerato">Telebachillerato</option>
+            <option value="TBC">Telebachillerato Comunitario</option>
+        </select>
 
-    <!-- Selector por entidades -->
-<select id="Entidad" onchange="actualizarSeleccion('Entidad')">
-<option value="Todos" selected>Entidades federativas</option>
-<option value="Aguascalientes" >Aguascalientes</option>
-<option value="Baja California" >Baja California</option>
-<option value="Baja California Sur">Baja California Sur</option>
-<option value="Campeche" >Campeche</option>
-<option value="Chiapas" >Chiapas</option>
-<option value="Chihuahua" >Chihuahua</option>
-<option value="Ciudad de México" >Ciudad de México</option>
-<option value="Coahuila de Zaragoza" >Coahuila de Zaragoza</option>
-<option value="Colima" >Colima</option>
-<option value="Durango" >Durango</option>
-<option value="Guanajuato" >Guanajuato</option>
-<option value="Guerrero" >Guerrero</option>
-<option value="Hidalgo" >Hidalgo</option>
-<option value="Jalisco" >Jalisco</option>
-<option value="México" >México</option>
-<option value="Michoacán de Ocampo" >Michoacán de Ocampo</option>
-<option value="Morelos" >Morelos</option>
-<option value="Nayarit" >Nayarit</option>
-<option value="Nuevo León" >Nuevo León</option>
-<option value="Oaxaca" >Oaxaca</option>
-<option value="Puebla" >Puebla</option>
-<option value="Querétaro" >Querétaro</option>
-<option value="Quintana Roo" >Quintana Roo</option>
-<option value="San Luis Potosí" >San Luis Potosí</option>
-<option value="Sinaloa" >Sinaloa</option>
-<option value="Sonora" >Sonora</option>
-<option value="Tabasco" >Tabasco</option>
-<option value="Tamaulipas" >Tamaulipas</option>
-<option value="Tlaxcala" >Tlaxcala</option>
-<option value="Veracruz de Ignacio de la Llave" >Veracruz de Ignacio de la Llave</option>
-<option value="Yucatán" >Yucatán</option>
-<option value="Zacatecas" >Zacatecas</option>
-</p></select>
+        <select id="Entidad">
+            <option value="Todos" selected>Entidades federativas</option>
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Ciudad de México">Ciudad de México</option>
+            <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="México">México</option>
+            <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
 
-<button id="limpiarBtn" style="display: none; margin-left: 10px; font-family: geomanist; background-color: #691C32; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;" onclick="limpiarSeleccion()">Limpiar selección</button>
-</div>
+        <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
+    </div>
 
-    <!-- Mapa base -->
-<div id="map"></div>
-<script type="text/javascript">
-var map = L.map('map', {
-center: [23.8173, -101.9665],
-zoomSnap: 0.25,
-zoom: 5.5,
-maxBounds: [
-//suroeste
-[-0.3538, -141.4463],
-//noreste
-[53.8564, -52.8319]
-],
-zoomControl: false
-});
-
-L.control.zoom({
-    zoomInTitle: 'Acercar',
-    zoomOutTitle:'Alejar'
-}).addTo(map);
-
-var grises = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {minZoom: 5, maxZoom: 16}).addTo(map);
-
-var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {minZoom: 5, maxZoom: 18});
-
-var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}');
-
-    // Ventana emergente instrucciones
-var win =  L.control.window(map,{title: '¿Cómo navegar el mapa interactivo?', content:'El mapa interactivo muestra los planteles públicos de Educación Media Superior por subsistema y/o servicio educativo del ciclo escolar 2024-2025 con información estadística, también brinda información contextual por municipio. Se puede realizar una selección a través del subsistema y/o de entidad federativa, así como una búsqueda por Clave de Centro de Trabajo (CCT). Al seleccionar por entidad federativa solo se muestra los subsistemas presentes en la misma.', position: 'top'})
-           .show()
-
-    //Reseteo zoom
-L.control.resetView({
-        position: "topleft",
-        title: "Restaurar vista",
-        latlng: L.latLng([23.8173, -101.9665]),
-        zoom: 5.5,
-}).addTo(map);
-
-// Variables para almacenar las capas de resaltado
-var municipiosResaltadosEntidad = null;
-
-// Crear un pane especial para el resaltado de municipios (debajo de los planteles)
-map.createPane('municipiosResaltados');
-map.getPane('municipiosResaltados').style.zIndex = 350; // Valor menor que el overlayPane (400)
-
-    //Capa municipios base
-var mun = L.geoJSON(nvomun, {
-    style: function() {
-        return {
-            fillColor: '#e6d194',
-            weight: 0.8,
-            opacity: 0.4,
-            color: '#6F7271',
-            dashArray: '0',
-            fillOpacity: 0.6
-        };
-    },
-    pane: 'tilePane', 
-    onEachFeature: popup
-}).addTo(map);
-
-// Función para limpiar todas las selecciones
-function limpiarSeleccion() {
-    // Restablecer los selectores a "Todos"
-    document.getElementById("Subsistema").value = "Todos";
-    document.getElementById("Entidad").value = "Todos";
+    <!-- Mapa -->
+    <div id="map"></div>
     
-    // Ocultar el botón de limpiar
-    document.getElementById("limpiarBtn").style.display = "none";
-    
-    // Actualizar el mapa
-    actualizarSeleccion('Subsistema');
-    actualizarSeleccion('Entidad');
-}
+    <!-- Superposición de información -->
+    <div class="overlay-backdrop" id="overlayBackdrop"></div>
+    <div class="info-overlay" id="infoOverlay">
+        <div class="overlay-header">
+            <div class="overlay-title" id="overlayTitle"></div>
+            <button class="close-btn" id="closeOverlayBtn">×</button>
+        </div>
+        <div class="overlay-content" id="overlayContent"></div>
+    </div>
 
-// Función para verificar si hay alguna selección activa
-function haySeleccionActiva() {
-    var subsistema = document.getElementById("Subsistema").value;
-    var entidad = document.getElementById("Entidad").value;
-    return subsistema !== "Todos" || entidad !== "Todos";
-}
-
-// Función para actualizar la visibilidad del botón de limpiar
-function actualizarBotonLimpiar() {
-    var limpiarBtn = document.getElementById("limpiarBtn");
-    if (haySeleccionActiva()) {
-        limpiarBtn.style.display = "inline-block";
-    } else {
-        limpiarBtn.style.display = "none";
-    }
-}
-
-// Función para actualizar la selección
-function actualizarSeleccion(tipo) {
-    // Obtener valores actuales
-    var subsistemaSeleccionado = document.getElementById("Subsistema").value;
-    var entidadSeleccionada = document.getElementById("Entidad").value;
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-leaflet/latest/leaflet-mapbox-gl.js"></script>
+    <script src="Control.MiniMap.js"></script>
+    <script src="leaflet-search-master/src/leaflet-search.js"></script>
+    <script src="L.Control.Window.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
     
-    // Actualizar visibilidad del botón de limpiar
-    actualizarBotonLimpiar();
-    
-    // Si estamos cambiando el subsistema, mostrar texto informativo si es necesario
-    if (tipo === 'Subsistema' && subsistemaSeleccionado !== "Todos") {
-        mostrarTexto();
-    }
-    
-    // Si estamos cambiando la entidad, resaltar municipios si es necesario
-    if (tipo === 'Entidad') {
-        resaltarMunicipiosPorEntidad();
-    }
-    
-    // Actualizar siempre los planteles visibles
-    estiloSelect();
-}
-
-// Función para resaltar municipios por entidad federativa
-function resaltarMunicipiosPorEntidad() {
-    var entidadSeleccionada = document.getElementById("Entidad").value;
-    
-    // Eliminar resaltados anteriores
-    if (municipiosResaltadosEntidad) {
-        map.removeLayer(municipiosResaltadosEntidad);
-    }
-    
-    // Si se selecciona "Todos", no resaltar nada
-    if (entidadSeleccionada === "Todos") {
-        return;
-    }
-    
-    // Crear capa de municipios resaltados
-    municipiosResaltadosEntidad = L.geoJSON(nvomun, {
-        pane: 'municipiosResaltados',
-        style: function(feature) {
-            if (feature.properties.Entidad === entidadSeleccionada) {
-                return {
-                    fillColor: '#a57f2c',
-                    weight: 1.5,
-                    opacity: 1,
-                    color: '#7e664a',
-                    fillOpacity: 0.7
-                };
-            } else {
-                return {
-                    fillColor: '#e6d194',
-                    weight: 0.8,
-                    opacity: 0.4,
-                    color: '#6F7271',
-                    dashArray: '0',
-                    fillOpacity: 0.6
-                };
+    <!-- Script principal -->
+    <script>
+        // Configuración
+        const config = {
+            zoomNacional: {
+                center: [23.8173, -101.9665],
+                zoom: 5.5
+            },
+            maxBounds: [
+                [-0.3538, -141.4463], // suroeste
+                [53.8564, -52.8319]   // noreste
+            ],
+            // Acercamiento verificados para cada estado
+            estadosBboxes: {
+                "Aguascalientes": [[21.4534, -102.8625], [22.4697, -101.9234]],
+                "Baja California": [[28.0000, -117.5000], [32.7188, -112.5000]],
+                "Baja California Sur": [[22.8644, -112.5000], [28.0000, -109.0000]],
+                "Campeche": [[17.4500, -92.5000], [21.1887, -89.0075]],
+                "Chiapas": [[14.5000, -94.5000], [18.0000, -90.0000]],
+                "Chihuahua": [[25.5000, -109.5000], [31.5000, -103.0000]],
+                "Ciudad de México": [[19.2051, -99.2172], [19.4854, -99.0278]],
+                "Coahuila de Zaragoza": [[24.9309, -103.8191], [29.5000, -99.5000]],
+                "Colima": [[18.6836, -104.7016], [19.5000, -103.5000]],
+                "Durango": [[22.3744, -106.9199], [26.8508, -102.5424]],
+                "Guanajuato": [[19.9879, -102.0272], [21.8690, -99.7852]],
+                "Guerrero": [[16.0000, -102.0000], [19.0000, -97.5000]],
+                "Hidalgo": [[19.5000, -99.5000], [21.5000, -97.5000]],
+                "Jalisco": [[18.5000, -105.5000], [22.5000, -101.5000]],
+                "México": [[18.0000, -100.5000], [20.5000, -98.5000]],
+                "Michoacán de Ocampo": [[17.5000, -103.5000], [20.5000, -100.0000]],
+                "Morelos": [[18.0000, -99.5000], [19.5000, -98.5000]],
+                "Nayarit": [[20.5000, -105.5000], [23.0000, -103.5000]],
+                "Nuevo León": [[23.5000, -101.0000], [27.5000, -98.5000]],
+                "Oaxaca": [[15.5000, -98.5000], [18.5000, -93.5000]],
+                "Puebla": [[17.5000, -99.0000], [21.0583, -96.9185]],
+                "Querétaro": [[19.9838, -100.5261], [21.7031, -99.0928]],
+                "Quintana Roo": [[17.9247, -89.2722], [21.6134, -86.6493]],
+                "San Luis Potosí": [[21.0000, -102.5000], [24.5000, -98.5000]],
+                "Sinaloa": [[22.1823, -108.8329], [26.9376, -105.6067]],
+                "Sonora": [[26.0000, -115.0000], [32.5000, -108.5000]],
+                "Tabasco": [[17.0000, -94.0000], [19.0000, -90.5000]],
+                "Tamaulipas": [[22.0000, -99.5000], [27.5000, -96.5000]],
+                "Tlaxcala": [[19.0351, -98.5616], [19.7284, -97.5418]],
+                "Veracruz de Ignacio de la Llave": [[17.2691, -98.2507], [22.3614, -93.5670]],
+                "Yucatán": [[19.5129, -90.3824], [21.5563, -87.4755]],
+                "Zacatecas": [[21.0000, -104.0000], [25.0000, -100.5000]]
+            },
+            // Información de subsistemas
+            infoSubsistemas: {
+                "DGETAyCM": "Dirección General de Educación Tecnológica Agropecuaria y Ciencias del Mar (DGETAyCM) | Matrícula escolarizada a nivel nacional: 210,100 estudiantes | Número de planteles escolarizados a nivel nacional: 404",
+                "DGETI": "Dirección General de Educación Tecnológica Industrial y de Servicios (DGETI) | Matrícula escolarizada a nivel nacional: 630,185 estudiantes | Número de planteles escolarizados a nivel nacional: 456",
+                "DGB": "Dirección General de Bachillerato (DGB) | Matrícula escolarizada a nivel nacional: 31,029 estudiantes | Número de planteles escolarizados a nivel nacional: 42",
+                "BTED": "Bachillerato Tecnológico de Educación y Promoción Deportiva (BTED) | Matrícula escolarizada a nivel nacional: 1,326 estudiantes | Número de planteles escolarizados a nivel nacional: 7",
+                "COLBACH (CDMX-EdoMéx)": "Colegio de Bachilleres (COLBACH - CDMX-EdoMéx)| Matrícula escolarizada a nivel nacional: 89,751 estudiantes | Número de planteles escolarizados a nivel nacional: 20",
+                "COBACH": "Colegio de Bachilleres (COBACH) | Matrícula escolarizada a nivel nacional: 692,754 estudiantes | Número de planteles escolarizados a nivel nacional: 1,192",
+                "CETI": "Centro de Enseñanza Técnica Industrial (CETI)| Matrícula escolarizada a nivel nacional: 4,409 estudiantes | Número de planteles escolarizados a nivel nacional: 3",
+                "CECyTE": "Colegio de Estudios Cientificos y Tecnológicos (CECyTE) | Matrícula escolarizada a nivel nacional: 393,804 estudiantes | Número de planteles escolarizados a nivel nacional: 678",
+                "CONALEP (CDMX-OAX)": "Colegio Nacional de Educación Profesional Técnica (CONALEP - CDMX-Oax) | Matrícula escolarizada a nivel nacional: 45,227 estudiantes | Número de planteles escolarizados a nivel nacional: 33",
+                "CONALEP (Estados)": "Colegio Nacional de Educación Profesional Técnica (CONALEP - Estados) | Matrícula escolarizada a nivel nacional: 279,147 estudiantes | Número de planteles escolarizados a nivel nacional: 280",
+                "EMSaD": "Educación Media Superior a Distancia (EMSaD) | Matrícula escolarizada a nivel nacional: 140,835 estudiantes | Número de planteles escolarizados a nivel nacional: 1,227",
+                "TBC": "Telebachillerato Comunitario (TBC) | Matrícula escolarizada a nivel nacional: 145,500 estudiantes | Número de planteles escolarizados a nivel nacional: 3,289",
+                "BIC": "Bachillerato Intercultural Bilingüe (BIC) | Matrícula escolarizada a nivel nacional: 1,810 estudiantes | Número de planteles escolarizados a nivel nacional: 14",
+                "Otros programas estatales": "Planteles de otras dependencias estatales | Matrícula escolarizada a nivel nacional: 804 estudiantes | Número de planteles escolarizados a nivel nacional: 4",
+                "INBAL": "Instituto Nacional de Bellas Artes y Literatura (INBAL) | Matrícula escolarizada a nivel nacional: 3,399 estudiantes | Número de planteles escolarizados a nivel nacional: 16",
+                "IPN": "Instituto Politécnico Nacional (IPN) | Matrícula escolarizada a nivel nacional: 72,752 estudiantes | Número de planteles escolarizados a nivel nacional: 21",
+                "Otras Secretarías": "Planteles de otras subsecretarías | Matrícula escolarizada a nivel nacional: 844 estudiantes | Número de planteles escolarizados a nivel nacional: 5",
+                "Bachillerato Estatal": "Bachilleratos Estatales | Matrícula escolarizada a nivel nacional: 649,291 estudiantes | Número de planteles escolarizados a nivel nacional: 2,002",
+                "IEMS": "Instituto de Educación Media Superior (IEMS) | Matrícula escolarizada a nivel nacional: 32,061 estudiantes | Número de planteles escolarizados a nivel nacional: 27",
+                "Bachillerato SECTEI": "Bachillerato de la Secretaría de Educación, Ciencia, Tecnología e Innovación CDMX | Matrícula escolarizada a nivel nacional: 384 estudiantes | Número de planteles escolarizados a nivel nacional: 1",
+                "Escuela Nacional para Ciegos": "Escuela Nacional para Ciegos | Matrícula escolarizada a nivel nacional: 49 estudiantes | Número de planteles escolarizados a nivel nacional: 1",
+                "IEBAS": "Instituto Estatal de Bellas Artes (IEBAS) | Matrícula escolarizada a nivel nacional: 1,870 estudiantes | Número de planteles escolarizados a nivel nacional: 29",
+                "CBDC": "Centro de Bachillerato de Desarrollo Comunitario (CBDC) | Matrícula escolarizada a nivel nacional: 5,459 estudiantes | Número de planteles escolarizados a nivel nacional: 48",
+                "Telebachillerato": "Telebachillerato | Matrícula escolarizada a nivel nacional: 171,224 estudiantes | Número de planteles escolarizados a nivel nacional: 2,031",
+                "Bachillerato de Universidades Públicas Autónomas": "Bachillerato de Universidades Públicas Autónomas | Matrícula escolarizada a nivel nacional: 697,282 estudiantes | Número de planteles escolarizados a nivel nacional: 596",
+                "Todos": "Educación Media Superior en la modalidad escolarizada de sostenimiento público del ciclo escolar 2024-2025 | Matrícula escolarizada a nivel nacional: 4,301,296 estudiantes | Número de planteles a nivel nacional: 12,426"
             }
-        },
-        onEachFeature: popup
-    });
+        };
+
+        // Variables globales
+        let map;
+        let mun;
+        let plantelesLayer;
+        let plantelesCarrerasLayer;
+        let municipiosResaltadosEntidad = null;
+        let searchControl;
+
+        // Función para generar contenido base de popup
+        function generarPopupBase(feature) {
+            return `
+                <div style="text-align:center">
+                    <h4>${feature.properties.Subsistema}<br>${feature.properties.CCT}</h4>
+                </div>
+                <hr>
+                <table>
+                    <tr><td style="text-align:left"><b>Nombre: </b>${feature.properties.Nombre}</td></tr>
+                    <tr><td style="text-align:left"><b>Tipo: </b>${feature.properties.Fuente}</td></tr>
+                    <tr><td style="text-align:left"><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                    <tr><td style="text-align:left"><b>Municipio: </b>${feature.properties.Municipio}</td></tr>
+                </table>
+                <hr>`;
+        }
+
+        // Función optimizada para hacer zoom a una entidad
+        function zoomAEntidad(entidadSeleccionada) {
+            if (entidadSeleccionada === "Todos") {
+                map.flyTo(config.zoomNacional.center, config.zoomNacional.zoom, {
+                    duration: 0.5
+                });
+                return;
+            }
+            
+            const bounds = config.estadosBboxes[entidadSeleccionada];
+            
+            if (bounds) {
+                const leafletBounds = new L.LatLngBounds(
+                    new L.LatLng(bounds[0][0], bounds[0][1]),
+                    new L.LatLng(bounds[1][0], bounds[1][1])
+                );
+                
+                map.flyToBounds(leafletBounds, {
+                    padding: [50, 50],
+                    duration: 0.5,
+                    maxZoom: 10
+                });
+            }
+        }
+
+        // Función para mostrar información del subsistema
+function mostrarInfoSubsistema() {
+    const subsistema = document.getElementById("Subsistema").value;
+    const info = config.infoSubsistemas[subsistema];
     
-    // Añadir capa al mapa
-    municipiosResaltadosEntidad.addTo(map);
+    if (info) {
+        // Modificación aquí: Mostrar título adecuado para "Todos"
+        document.getElementById('overlayTitle').textContent = 
+            subsistema === "Todos" ? "Educación Media Superior" : subsistema;
+        document.getElementById('overlayContent').textContent = info;
+        
+        document.getElementById('overlayBackdrop').style.display = 'block';
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
 }
 
-function popup(feature, layer) {
-if (feature.properties && feature.properties.NOMGEO) {
-layer.bindPopup("<div style=text-align:center><h2>"+feature.properties.NOMGEO+"</h2></div><hr><table><tr><td><b>Entidad: </b>" +feature.properties.Entidad+"</td></tr><tr><td><b>Grado de marginación: </b>"+feature.properties.GM_2020+"</td></tr><tr><td><b>Población total: </b>"+feature.properties.PobTot25+"</td></tr><tr><td><b>Población 15 a 19: </b>"+feature.properties.Pob_15_19+"</td></tr><tr><td><b>Porcentaje 15 a 19: </b>"+feature.properties.Porc_15_19+"</td></tr><tr><td><b>15 a 17 con secundaria y continuó en EMS: </b>"+feature.properties.Con_EMS_sigue+"</td></tr><tr><td><b>15 a 17 con secundaria y no continuó en EMS: </b>"+feature.properties.Con_EMS_NoSigue+"</td></tr><tr><td><b>Porcentaje 15 a 17 con secundaria y no continuó en EMS: </b>"+feature.properties.Porc_NoSigue+"</td></tr></table>",
-{minWidth: 150, maxWidth: 200});
-}}
+        // Función para cerrar el overlay
+        function closeInfoOverlay() {
+            document.getElementById('overlayBackdrop').style.display = 'none';
+            document.getElementById('infoOverlay').style.display = 'none';
+            document.getElementById('Subsistema').focus();
+        }
 
-    //Control de capas
-var baseLayers = {
-"Mapa en grises": grises,
-"Mapa satelital": Esri_WorldImagery
-};
-L.control.layers(baseLayers, false,{collapsed:false}).addTo(map);
-
-    //Capa planteles
-var planteles = L.geoJSON(Planteles, {
-pointToLayer: function (feature, latlng) {
-return L.circleMarker(latlng);
-},
-pane: 'overlayPane',
-style:estilo_planteles,
-onEachFeature: popup_planteles
-});
-map.addLayer(planteles);
-planteles.bindTooltip(function (layer) {
-    return layer.feature.properties.Subsistema;
- })
-
-function popup_planteles (feature, layer) {
-layer.bindPopup("<div style=text-align:center><h4>"+feature.properties.Subsistema+"<br>"+feature.properties.CCT+"</div><hr><table><tr><td style=text-align:left><b>Nombre: </b>"+feature.properties.Nombre+"</td></tr><tr><td style=text-align:left><b>Tipo: </b>"+feature.properties.Fuente+"</td></tr><tr><td style=text-align:left><b>Entidad: </b>"+feature.properties.Entidad+"</td></tr><tr><td style=text-align:left><b>Municipio: </b>"+feature.properties.Municipio+"</table></td></tr><hr><table><tr><td style=text-align:left><b>Matrícula total: </b>"+feature.properties.MatTot+"</td></tr><tr><td style=text-align:left><b>Total nuevos ingresos: </b>"+feature.properties.NvoIngTot+"</td></tr><tr><td style=text-align:left><b>Egresos total 23-24: </b>"+feature.properties.EgrTot+"</td></tr><tr><td style=text-align:left><b>Alumnado con alguna discapacidad: </b>"+feature.properties.PCDtot+"</td></tr><tr><td style=text-align:left><b>Alumnado hablante de lengua indígena: </b>"+feature.properties.HLItot+"</td></tr><tr><td style=text-align:left><b>Total de docentes: </b>"+feature.properties.DocTot+"</td></tr></table>",
-{minWidth: 150, maxWidth: 200}); 
-};
-function colorPuntos(d) {
-return d == "DGETAyCM" ? '#2b83ba' :
-d == "DGETI" ? '#3b8eb7' :
-d == "DGB" ? '#98cfa7' :
-d == "BTED" ? '#b3e0a6' :
-d == "COLBACH (CDMX-EdoMéx)" ? '#c7e8ad' :
-d == "COBACH" ? '#bde4aa' :
-d == "CETI" ? '#e6f5b7' :
-d == "CECyTE" ? '#fdbf75' :
-d == "CONALEP (CDMX-OAX)" ? '#d1ecb0' :
-d == "CONALEP (Estados)" ? '#dbf1b4' :
-d == "EMSaD" ? '#fedd97' :
-d == "TBC" ? '#fff0ae' :
-d == "BIC" ? '#fed38c' :
-d == "Otros programas estatales" ? '#e03d2d' :
-d == "INBAL" ? '#fffab9' :
-d == "IPN" ? '#f0f9ba' :
-d == "Otras Secretarías" ? '#e54f35' :
-d == "Bachillerato Estatal" ? '#e9613d' :
-d == "IEMS" ? '#fca95f' :
-d == "Bachillerato SECTEI" ? '#f79757' :
-d == "Escuela Nacional para Ciegos" ? '#f3854e' :
-d == "IEBAS" ? '#fdb56a' :
-d == "CBDC" ? '#fec980' :
-d == "Telebachillerato" ? '#fee6a3' :
-d == "Bachillerato de Universidades Públicas Autónomas" ? '#ee7346' :
-d == "Bachillerato General" ? '#9b2247' :
-d == "Bachillerato Tecnológico" ? '#1e5b4f' :
-'#000000';
-};
-function estilo_planteles (feature) {
-return{
-radius: 6,
-fillColor: colorPuntos(feature.properties.Fuente),
-color: "#FFFFFF", //"#98989A"
-weight: .5,
-opacity : 1,
-fillOpacity : 0.8
-};
-};
-
-    //Selector de subsistemas y entidades
-function estiloSelect() {
-    var subsistemaSeleccionado = document.getElementById("Subsistema").value;
-    var entidadSeleccionada = document.getElementById("Entidad").value;
+        // Función para filtrar planteles según selección
+        function filtrarPlanteles() {
+    const subsistemaSeleccionado = document.getElementById("Subsistema").value;
+    const entidadSeleccionada = document.getElementById("Entidad").value;
     
-    // Primero eliminamos todos los planteles existentes
-    planteles.clearLayers();
-    
-    // Filtramos los planteles según las selecciones
-    var plantelesFiltrados = Planteles.features.filter(function(feature) {
-        var cumpleSubsistema = (subsistemaSeleccionado === "Todos" || feature.properties.Subsistema === subsistemaSeleccionado);
-        var cumpleEntidad = (entidadSeleccionada === "Todos" || feature.properties.Entidad === entidadSeleccionada);
+    const plantelesFiltrados = Planteles.features.filter(function(feature) {
+        const cumpleSubsistema = (subsistemaSeleccionado === "Todos" || feature.properties.Subsistema === subsistemaSeleccionado);
+        const cumpleEntidad = (entidadSeleccionada === "Todos" || feature.properties.Entidad === entidadSeleccionada);
         return cumpleSubsistema && cumpleEntidad;
     });
     
-    // Creamos una nueva capa GeoJSON con los planteles filtrados
-    var capaFiltrada = L.geoJSON(plantelesFiltrados, {
-        pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng);
-        },
-        style: estilo_planteles,
-        onEachFeature: popup_planteles
+    const plantelesCarrerasFiltrados = Planteles_carreras.features.filter(function(feature) {
+        const cumpleSubsistema = (subsistemaSeleccionado === "Todos" || feature.properties.Subsistema === subsistemaSeleccionado);
+        const cumpleEntidad = (entidadSeleccionada === "Todos" || feature.properties.Entidad === entidadSeleccionada);
+        return cumpleSubsistema && cumpleEntidad;
     });
     
-    // Añadimos la capa filtrada al grupo de planteles
-    planteles.addLayer(capaFiltrada);
+    plantelesLayer.clearLayers();
+    plantelesCarrerasLayer.clearLayers();
     
-    // Actualizamos el buscador para que funcione con los planteles visibles
-    searchControl.setLayer(planteles);
+    plantelesLayer.addData(plantelesFiltrados);
+    plantelesCarrerasLayer.addData(plantelesCarrerasFiltrados);
+    
+    searchControl.setLayer(L.layerGroup([plantelesLayer, plantelesCarrerasLayer]));
+    
+    // Asegurarse de mostrar la estadística de "Todos" cuando corresponde
+    if (subsistemaSeleccionado === "Todos" && entidadSeleccionada === "Todos") {
+        mostrarInfoSubsistema();
+    }
 }
 
-    //Ventana emergente con texto
- function mostrarTexto() {
-      var seleccion = document.getElementById("Subsistema").value;
-      switch (seleccion) {
-                case "DGETAyCM":
-                    alert("Dirección General de Educación Tecnológica Agropecuaria y Ciencias del Mar (DGETAyCM) | Matrícula escolarizada a nivel nacional: 210,100 estudiantes | Número de planteles escolarizados a nivel nacional: 404");
-                    break;
-                case "DGETI":
-                    alert("Dirección General de Educación Tecnológica Industrial y de Servicios (DGETI) | Matrícula escolarizada a nivel nacional: 630,185 estudiantes | Número de planteles escolarizados a nivel nacional: 456");
-                    break;
-               case "DGB":
-                    alert("Dirección General de Bachillerato (DGB) | Matrícula escolarizada a nivel nacional: 31,029 estudiantes | Número de planteles escolarizados a nivel nacional: 42");
-                    break;
-                case "BTED":
-                    alert("Bachillerato Tecnológico de Educación y Promoción Deportiva (BTED) | Matrícula escolarizada a nivel nacional: 1,326 estudiantes | Número de planteles escolarizados a nivel nacional: 7");
-                    break;
-                case "COLBACH (CDMX-EdoMéx)":
-                    alert("Colegio de Bachilleres (COLBACH - CDMX-EdoMéx)| Matrícula escolarizada a nivel nacional: 89,751 estudiantes | Número de planteles escolarizados a nivel nacional: 20");
-                    break;
-                case "COBACH":
-                    alert("Colegio de Bachilleres (COBACH) | Matrícula escolarizada a nivel nacional: 692,754 estudiantes | Número de planteles escolarizados a nivel nacional: 1,192");
-                    break;
-                case "CETI":
-                    alert("Centro de Enseñanza Técnica Industrial (CETI)| Matrícula escolarizada a nivel nacional: 4,409 estudiantes | Número de planteles escolarizados a nivel nacional: 3");
-                    break;
-                case "CECyTE":
-                    alert("Colegio de Estudios Cientificos y Tecnológicos (CECyTE) | Matrícula escolarizada a nivel nacional: 393,804 estudiantes | Número de planteles escolarizados a nivel nacional: 678");
-                    break;
-                case "CONALEP (CDMX-OAX)":
-                    alert("Colegio Nacional de Educación Profesional Técnica (CONALEP - CDMX-Oax) | Matrícula escolarizada a nivel nacional: 45,227 estudiantes | Número de planteles escolarizados a nivel nacional: 33");
-                    break;
-                case "CONALEP (Estados)":
-                    alert("Colegio Nacional de Educación Profesional Técnica (CONALEP - Estados) | Matrícula escolarizada a nivel nacional: 279,147 estudiantes | Número de planteles escolarizados a nivel nacional: 280");
-                    break;
-                case "EMSaD":
-                    alert("Educación Media Superior a Distancia (EMSaD) | Matrícula escolarizada a nivel nacional: 140,835 estudiantes | Número de planteles escolarizados a nivel nacional: 1,227");
-                    break;
-                case "TBC":
-                    alert("Telebachillerato Comunitario (TBC) | Matrícula escolarizada a nivel nacional: 145,500 estudiantes | Número de planteles escolarizados a nivel nacional: 3,289");
-                    break;
-                case "BIC":
-                    alert("Bachillerato Intercultural Bilingüe (BIC) | Matrícula escolarizada a nivel nacional: 1,810 estudiantes | Número de planteles escolarizados a nivel nacional: 14");
-                    break;
-                case "Otros programas estatales":
-                    alert("Planteles de otras dependencias estatales | Matrícula escolarizada a nivel nacional: 804 estudiantes | Número de planteles escolarizados a nivel nacional: 4");
-                    break;
-                case "INBAL":
-                    alert("Instituto Nacional de Bellas Artes y Literatura (INBAL) | Matrícula escolarizada a nivel nacional: 3,399 estudiantes | Número de planteles escolarizados a nivel nacional: 16");
-                    break;
-                case "IPN":
-                    alert("Instituto Politécnico Nacional (IPN) | Matrícula escolarizada a nivel nacional: 72,752 estudiantes | Número de planteles escolarizados a nivel nacional: 21");
-                    break;
-                case "Otras Secretarías":
-                    alert("Planteles de otras subsecretarías | Matrícula escolarizada a nivel nacional: 844 estudiantes | Número de planteles escolarizados a nivel nacional: 5");
-                    break;
-                case "Bachillerato Estatal":
-                    alert("Bachilleratos Estatales | Matrícula escolarizada a nivel nacional: 649,291 estudiantes | Número de planteles escolarizados a nivel nacional: 2,002");
-                    break;
-                case "IEMS":
-                    alert("Instituto de Educación Media Superior (IEMS) | Matrícula escolarizada a nivel nacional: 32,061 estudiantes | Número de planteles escolarizados a nivel nacional: 27");
-                    break;
-                case "Bachillerato SECTEI":
-                    alert("Bachillerato de la Secretaría de Educación, Ciencia, Tecnología e Innovación CDMX | Matrícula escolarizada a nivel nacional: 384 estudiantes | Número de planteles escolarizados a nivel nacional: 1");
-                    break;
-                case "Escuela Nacional para Ciegos":
-                    alert("Escuela Nacional para Ciegos | Matrícula escolarizada a nivel nacional: 49 estudiantes | Número de planteles escolarizados a nivel nacional: 1");
-                    break;
-                case "IEBAS":
-                    alert("Instituto Estatal de Bellas Artes (IEBAS) | Matrícula escolarizada a nivel nacional: 1,870 estudiantes | Número de planteles escolarizados a nivel nacional: 29");
-                    break;
-                case "CBDC":
-                    alert("Centro de Bachillerato de Desarrollo Comunitario (CBDC) | Matrícula escolarizada a nivel nacional: 5,459 estudiantes | Número de planteles escolarizados a nivel nacional: 48");
-                    break;
-                case "Telebachillerato":
-                    alert("Telebachillerato | Matrícula escolarizada a nivel nacional: 171,224 estudiantes | Número de planteles escolarizados a nivel nacional: 2,031");
-                    break;
-                case "Bachillerato de Universidades Públicas Autónomas":
-                    alert("Bachillerato de Universidades Públicas Autónomas | Matrícula escolarizada a nivel nacional: 697,280 estudiantes | Número de planteles escolarizados a nivel nacional: 596");
-                    break;
-                case "Todos":
-                    alert("Educación Media Superior en la modalidad escolarizada de sostenimiento público del ciclo escolar 2024-2025 | Matrícula escolarizada a nivel nacional: 4,301,294 estudiantes | Número de planteles a nivel nacional: 12,426");
-                    break;
-                default:
-                    alert("Opción no válida");
+        // Función para resaltar municipios por entidad
+        function resaltarMunicipiosPorEntidad() {
+            const entidadSeleccionada = document.getElementById("Entidad").value;
+            
+            if (municipiosResaltadosEntidad) {
+                map.removeLayer(municipiosResaltadosEntidad);
             }
-             }
+            
+            if (entidadSeleccionada === "Todos") {
+                return;
+            }
+            
+            municipiosResaltadosEntidad = L.geoJSON(nvomun, {
+                pane: 'municipiosResaltados',
+                style: function(feature) {
+                    return {
+                        fillColor: feature.properties.Entidad === entidadSeleccionada ? '#a57f2c' : '#e6d194',
+                        weight: feature.properties.Entidad === entidadSeleccionada ? 1.5 : 0.8,
+                        opacity: feature.properties.Entidad === entidadSeleccionada ? 1 : 0.4,
+                        color: feature.properties.Entidad === entidadSeleccionada ? '#7e664a' : '#6F7271',
+                        dashArray: '0',
+                        fillOpacity: feature.properties.Entidad === entidadSeleccionada ? 0.7 : 0.6
+                    };
+                },
+                onEachFeature: popupMunicipio
+            }).addTo(map);
+        }
 
-    //Buscador de CCT
-var searchControl = new L.Control.Search({
-       layer: planteles,
-       propertyName: 'CCT',
-       circleLocation: true,
-       collapsed: true,
-       zoom: 9,
-       hideMarkerOnCollapse: true,
-       textPlaceholder: 'Búsqueda por CCT',
-});searchControl.on('search_locationfound', function(e) {
-        e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
-    })
-    .on('search_collapsed', function(e) {
-        planteles.eachLayer(function(layer) { //restauramos el color del elemento
-            planteles.resetStyle(layer);
-        }); 
-    });
-        map.addControl(searchControl);
+        // Función para verificar selección activa
+        function haySeleccionActiva() {
+            const subsistema = document.getElementById("Subsistema").value;
+            const entidad = document.getElementById("Entidad").value;
+            return subsistema !== "Todos" || entidad !== "Todos";
+        }
 
-//Leyenda
-function getColor(value) {
-return value === 'valor1' ? '#9b2247' :
-value === 'valor2' ? '#1e5b4f' :
-'gray';
+        // Función para actualizar el botón de limpiar
+        function actualizarBotonLimpiar() {
+            const limpiarBtn = document.getElementById("limpiarBtn");
+            limpiarBtn.style.display = haySeleccionActiva() ? "inline-block" : "none";
+        }
+
+        // Función para limpiar todas las selecciones
+        function limpiarSeleccion() {
+    document.getElementById("Subsistema").value = "Todos";
+    document.getElementById("Entidad").value = "Todos";
+    document.getElementById("limpiarBtn").style.display = "none";
+    filtrarPlanteles();
+    resaltarMunicipiosPorEntidad();
+    zoomAEntidad("Todos");
+    mostrarInfoSubsistema(); // Mostrar la info de "Todos"
 }
-var legend = L.control({position: 'bottomright'});
 
-legend.onAdd = function (map) {
-var div = L.DomUtil.create('div', 'info legend');
-div.innerHTML += '<h3>Tipo de bachillerato</h3>';
+        // Función para popup de municipios
+        function popupMunicipio(feature, layer) {
+            if (feature.properties && feature.properties.NOMGEO) {
+                layer.bindPopup(
+                    `<div style="text-align:center">
+                        <h2>${feature.properties.NOMGEO}</h2>
+                    </div>
+                    <hr>
+                    <table>
+                        <tr><td><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                        <tr><td><b>Grado de marginación: </b>${feature.properties.GM_2020}</td></tr>
+                        <tr><td><b>Población total: </b>${feature.properties.PobTot25}</td></tr>
+                        <tr><td><b>Población 15 a 19: </b>${feature.properties.Pob_15_19}</td></tr>
+                        <tr><td><b>Porcentaje 15 a 19: </b>${feature.properties.Porc_15_19}</td></tr>
+                        <tr><td><b>15 a 17 con secundaria y continuó en EMS: </b>${feature.properties.Con_EMS_sigue}</td></tr>
+                        <tr><td><b>15 a 17 con secundaria y no continuó en EMS: </b>${feature.properties.Con_EMS_NoSigue}</td></tr>
+                        <tr><td><b>Porcentaje 15 a 17 con secundaria y no continuó en EMS: </b>${feature.properties.Porc_NoSigue}</td></tr>
+                    </table>`,
+                    {minWidth: 150, maxWidth: 200}
+                );
+            }
+        }
 
-    // leyenda con colores y etiquetas
-  div.innerHTML += '<i style="background:' + getColor('valor1') + '"></i>Bachillerato General<br>';
-  div.innerHTML += '<i style="background:' + getColor('valor2') + '"></i>Bachillerato Tecnológico<br>';
-return div;
-};
+        // Estilo para planteles
+        function estiloPlanteles(feature) {
+            return {
+                radius: 6,
+                fillColor: colorPuntos(feature.properties.Fuente),
+                color: "#FFFFFF",
+                weight: 0.5,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+        }
 
-legend.addTo(map);
+        // Función para color de puntos
+        function colorPuntos(d) {
+            const colores = {
+                "DGETAyCM": '#2b83ba',
+                "DGETI": '#3b8eb7',
+                "DGB": '#98cfa7',
+                "BTED": '#b3e0a6',
+                "COLBACH (CDMX-EdoMéx)": '#c7e8ad',
+                "COBACH": '#bde4aa',
+                "CETI": '#e6f5b7',
+                "CECyTE": '#fdbf75',
+                "CONALEP (CDMX-OAX)": '#d1ecb0',
+                "CONALEP (Estados)": '#dbf1b4',
+                "EMSaD": '#fedd97',
+                "TBC": '#fff0ae',
+                "BIC": '#fed38c',
+                "Otros programas estatales": '#e03d2d',
+                "INBAL": '#fffab9',
+                "IPN": '#f0f9ba',
+                "Otras Secretarías": '#e54f35',
+                "Bachillerato Estatal": '#e9613d',
+                "IEMS": '#fca95f',
+                "Bachillerato SECTEI": '#f79757',
+                "Escuela Nacional para Ciegos": '#f3854e',
+                "IEBAS": '#fdb56a',
+                "CBDC": '#fec980',
+                "Telebachillerato": '#fee6a3',
+                "Bachillerato de Universidades Públicas Autónomas": '#ee7346',
+                "Bachillerato General": '#9b2247',
+                "Bachillerato Tecnológico": '#1e5b4f'
+            };
+            return colores[d] || '#000000';
+        }
 
-planteles.bindTooltip(function (layer) {
-    return layer.feature.properties.Subsistema;
- });
+        // Popup para planteles sin oferta educativa
+        function popupPlanteles(feature, layer) {
+            const baseContent = generarPopupBase(feature);
+            const content = baseContent + `
+                <table>
+                    <tr><td style="text-align:left"><b>Matrícula: </b>${feature.properties.MatTot}</td></tr>
+                    <tr><td style="text-align:left"><b>Nuevos ingresos: </b>${feature.properties.NvoIngTot}</td></tr>
+                    <tr><td style="text-align:left"><b>Egresos 23-24: </b>${feature.properties.EgrTot}</td></tr>
+                    <tr><td style="text-align:left"><b>Alumnado con alguna discapacidad: </b>${feature.properties.PCDtot}</td></tr>
+                    <tr><td style="text-align:left"><b>Alumnado hablante de lengua indígena: </b>${feature.properties.HLItot}</td></tr>
+                    <tr><td style="text-align:left"><b>Personal docente: </b>${feature.properties.DocTot}</td></tr>
+                </table>`;
+            
+            layer.bindPopup(content, {minWidth: 150, maxWidth: 200});
+        }
 
-    //Ubicación
-var lc = L.control.locate({ position: "topright", flyTo: true, strings: { title: "Su localización",  popup: "Su ubicación aproximada es a {distance}m de este punto." }, locateOptions: { enableHighAccuracy: true} })
+        // Popup para planteles con oferta educativa
+        function popupPlantelesCarreras(feature, layer) {
+            const baseContent = generarPopupBase(feature);
+            const ofertaContent = feature.properties.Oferta_edu ? 
+                `<tr><td style="text-align:left"><b>Oferta educativa: </b>${feature.properties.Oferta_edu}</td></tr>` : '';
+            
+            const content = baseContent + `
+                <table>
+                    <tr><td style="text-align:left"><b>Matrícula: </b>${feature.properties.MatTot}</td></tr>
+                    <tr><td style="text-align:left"><b>Nuevos ingresos: </b>${feature.properties.NvoIngTot}</td></tr>
+                    <tr><td style="text-align:left"><b>Egresos 23-24: </b>${feature.properties.EgrTot}</td></tr>
+                    <tr><td style="text-align:left"><b>Alumnado con alguna discapacidad: </b>${feature.properties.PCDtot}</td></tr>
+                    <tr><td style="text-align:left"><b>Alumnado hablante de lengua indígena: </b>${feature.properties.HLItot}</td></tr>
+                    <tr><td style="text-align:left"><b>Personal docente: </b>${feature.properties.DocTot}</td></tr>
+                    ${ofertaContent}
+                </table>`;
+            
+            layer.bindPopup(content, {minWidth: 150, maxWidth: 200});
+        }
 
-L.control.locate().addTo(map);
+        function inicializarMapa() {
+            map = L.map('map', {
+            center: config.zoomNacional.center,
+            zoom: config.zoomNacional.zoom,
+            zoomSnap: 0.25,       // Ajusta el zoom a múltiplos de 0.25
+            zoomDelta: 0.25,       // Incremento de zoom para teclado/controles
+            wheelPxPerZoomLevel: 60, // Sensibilidad de la rueda del mouse
+            maxBounds: config.maxBounds,
+            zoomControl: false,    // Desactiva el control por defecto
+            inertia: true,
+            inertiaDeceleration: 3000
+            });
 
+            L.control.zoom({
+            zoomInTitle: 'Acercar',
+            zoomOutTitle: 'Alejar',
+            zoomInText: '+',  // Opcional: texto del botón
+            zoomOutText: '-', // Opcional: texto del botón
+            zoomDelta: 0.25   // Esto es lo clave para el incremento de 0.25
+            }).addTo(map);
 
-</script>
-<footer>
-    <div style="text-align: center;">
-        <div class="img" style="margin-bottom: 15px;">
-            <img src="SEP_25.png" 
-                 style="display: block; margin: 0 auto;" 
-                 width="250"
-                 height="110">
+            const grises = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                minZoom: 5, 
+                maxZoom: 16,
+                attribution: 'Fuente: DGPPyEE-SEP'
+            }).addTo(map);
+
+            const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                minZoom: 5, 
+                maxZoom: 18,
+                attribution: 'Fuente: DGPPyEE-SEP'
+            });
+
+            const baseLayers = {
+                "Mapa en grises": grises,
+                "Mapa satelital": Esri_WorldImagery
+            };
+            L.control.layers(baseLayers, null, {collapsed: false}).addTo(map);
+
+            const win = L.control.window(map, {
+                title: '¿Cómo navegar el mapa interactivo?', 
+                content: 'El mapa interactivo muestra los planteles públicos de Educación Media Superior por subsistema y/o servicio educativo del ciclo escolar 2024-2025 con información estadística, también brinda información contextual por municipio. Se puede realizar una selección a través del subsistema y/o de entidad federativa, así como una búsqueda por Clave de Centro de Trabajo (CCT). Al seleccionar por entidad federativa solo se muestra los subsistemas presentes en la misma.', 
+                position: 'top'
+            }).show();
+
+            L.control.resetView({
+                position: "topleft",
+                title: "Restaurar vista",
+                latlng: L.latLng(config.zoomNacional.center),
+                zoom: config.zoomNacional.zoom,
+            }).addTo(map);
+
+            map.createPane('municipiosResaltados');
+            map.getPane('municipiosResaltados').style.zIndex = 350;
+        }
+
+        function inicializarCapas() {
+            try {
+                mun = L.geoJSON(nvomun, {
+                    style: function() {
+                        return {
+                            fillColor: '#e6d194',
+                            weight: 0.8,
+                            opacity: 0.4,
+                            color: '#6F7271',
+                            dashArray: '0',
+                            fillOpacity: 0.6
+                        };
+                    },
+                    pane: 'tilePane', 
+                    onEachFeature: popupMunicipio
+                }).addTo(map);
+
+                plantelesLayer = L.geoJSON(Planteles, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng);
+                    },
+                    pane: 'overlayPane',
+                    style: estiloPlanteles,
+                    onEachFeature: popupPlanteles
+                }).bindTooltip(function (layer) {
+                    return layer.feature.properties.Subsistema;
+                });
+
+                plantelesCarrerasLayer = L.geoJSON(Planteles_carreras, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng);
+                    },
+                    pane: 'overlayPane',
+                    style: estiloPlanteles,
+                    onEachFeature: popupPlantelesCarreras
+                }).bindTooltip(function (layer) {
+                    return layer.feature.properties.Subsistema;
+                });
+
+                map.addLayer(plantelesLayer);
+                map.addLayer(plantelesCarrerasLayer);
+            } catch (error) {
+                console.error("Error al cargar las capas:", error);
+                document.getElementById('errorMessage').textContent = "Error al cargar los datos del mapa. Por favor recargue la página.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+
+        function inicializarControles() {
+            searchControl = new L.Control.Search({
+                layer: L.layerGroup([plantelesLayer, plantelesCarrerasLayer]),
+                propertyName: 'CCT',
+                circleLocation: true,
+                collapsed: true,
+                zoom: 13,
+                hideMarkerOnCollapse: true,
+                textPlaceholder: 'Búsqueda por CCT',
+            });
+            
+            searchControl.on('search_locationfound', function(e) {
+                e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+            }).on('search_collapsed', function() {
+                plantelesLayer.resetStyle();
+                plantelesCarrerasLayer.resetStyle();
+            });
+            
+            map.addControl(searchControl);
+
+            const legend = L.control({position: 'bottomright'});
+            
+            legend.onAdd = function () {
+                const div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML = '<h3>Tipo de bachillerato</h3>' +
+                               '<i style="background:#9b2247"></i>Bachillerato General<br>' +
+                               '<i style="background:#1e5b4f"></i>Bachillerato Tecnológico<br>';
+                return div;
+            };
+            
+            legend.addTo(map);
+
+            const lc = L.control.locate({
+                position: "topleft",
+                flyTo: true,
+                strings: {
+                    title: "Su localización",
+                    popup: "Su ubicación aproximada es a {distance}m de este punto."
+                },
+                locateOptions: {
+                    enableHighAccuracy: true,
+                    maxZoom: 14
+                }
+            }).addTo(map);
+        }
+
+        // Inicialización al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                inicializarMapa();
+                inicializarCapas();
+                inicializarControles();
+                
+                // Configurar event listeners
+                document.getElementById('Subsistema').addEventListener('change', function() {
+                    mostrarInfoSubsistema();
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
+                document.getElementById('Entidad').addEventListener('change', function() {
+                    resaltarMunicipiosPorEntidad();
+                    zoomAEntidad(document.getElementById("Entidad").value);
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
+                document.getElementById('limpiarBtn').addEventListener('click', limpiarSeleccion);
+                document.getElementById('closeOverlayBtn').addEventListener('click', closeInfoOverlay);
+                document.getElementById('overlayBackdrop').addEventListener('click', closeInfoOverlay);
+                
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error("Error al inicializar:", error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('errorMessage').textContent = "Error al cargar el mapa. Por favor recargue la página.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+
+        // Deshabilitar clic derecho
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+
+    <!-- Capas GeoJSON -->
+    <script src="nvomun.js"></script>
+    <script src="Planteles.js"></script>
+    <script src="Planteles_carreras.js"></script>
+
+    <footer>
+        <div style="text-align: center;">
+            <div class="img" style="margin-bottom: 15px;">
+                <img src="SEP_25.png" 
+                     style="display: block; margin: 0 auto;" 
+                     width="200"
+                     height="88"
+                     alt="Logo de la Secretaría de Educación Pública"
+                     loading="lazy">
+            </div>
+            <div class="footer">
+                <p style="color: #691C32; font-size:0.7rem; font-family: Noto Sans; text-align:center">
+                    <b>Subsecretaría de Educación Media Superior | Área de Estadística</b>
+                </p>
+            </div>
         </div>
-        <div class="footer">
-            <p style="color: #691C32; font-size:.7vw; font-family: Noto Sans; text-align:center">
-                <b>Subsecretaría de Educación Media Superior | Coordinación Sectorial de Planeación y Administración | Área de Estadística | Junio 2025</b>
-            </p>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
