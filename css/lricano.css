@@ -580,6 +580,7 @@
     text-align: center;
     font-size: 16px;
     padding: 5px;
+    flex-direction: column; 
 }
 
 .card-mi-escuela img {
@@ -587,3 +588,17 @@
     width: 50px;
 }
 
+.card-mi-escuela:hover{
+    background-color: #235B4E;
+    color: #ffffff;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .card-mi-escuela {
+      margin: 20px auto 0;
+      max-width: 400px;
+   
+    }
+}    
