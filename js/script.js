@@ -268,3 +268,21 @@ document.addEventListener("DOMContentLoaded", function () {
   ajustarAlturaTarjetas();
   window.addEventListener("resize", ajustarAlturaTarjetas);
 });
+
+function scrollCarruselBachilleratoTecnologico(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-bachillerato-tecnologico');
+    const cardWidth = carrusel.querySelector('.imgCarrusel-bachillerato').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollCarruselBachilleratoGral(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-bachillerato-gral');
+    const cardWidth = carrusel.querySelector('.imgCarrusel-bachillerato').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
