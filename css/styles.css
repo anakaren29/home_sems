@@ -190,6 +190,37 @@ h2{
 }
 
 
+.imagen-carrusel{
+  width: 40%; 
+  border-radius: 10px;
+  order: 1;
+}
+.divisor-carrusel{
+  width: 2px;
+  min-height: 249px;
+  background-color: var(--bg-separator);
+  order: 2;
+}
+.carrusel-description{
+  width: 100%;
+  order: 3;
+}
+.fecha{
+  order:4
+}
+.titulo-noticia{
+  order: 5;
+}
+.descripcion{
+  order: 6;
+}
+
+.buton-leer-mas{
+  display: flex; 
+  justify-content: flex-end;
+  order: 7;
+}
+
 /* a tu alcance*/
 
  .container-cards-3{
@@ -1687,3 +1718,73 @@ h2{
 
 
 /* termina seccion quienes somos carrusel de documentos */
+
+/* media query */
+@media only screen and (max-width: 700px) {
+  .card-info{
+    width: 213px;
+    height: 250px;
+  }
+
+  .d-flex-col{
+    gap: 20px;
+  }
+  .btn-description{
+    margin: 0 auto;
+    margin-top: 0;
+  }
+  .iconos {
+    padding: 0;
+ }
+ .card-saludable{
+  margin-left: 25%;
+ }
+ .card-red-de-apoyo{
+  width: 100%;
+  padding: 16px;
+  max-width: 100%;
+ }
+ .voz-movil {
+    padding: 40px 0;
+}
+.mapa{
+  margin: 0 auto;
+}
+.info-item {
+    align-items: center;
+}
+.parrafo-direccion{
+  text-align: center;
+}
+.img-escuela {
+    height: 78px;
+}
+.card-noticia {
+  width: 100%;
+  max-width: 100%;
+}
+.container-description {
+    flex-direction: column;
+    gap: 17px;
+}
+.divisor-carrusel {
+    width: 132px;
+    min-height: 2px;
+}
+.card-noticia .fecha , .titulo-noticia, .descripcion{
+    text-align: center;
+}
+.buton-leer-mas{
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.imagen-carrusel{
+  order: 1;
+}
+.divisor-carrusel{
+  order: 2;
+}
+
+
+}
