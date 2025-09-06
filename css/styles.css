@@ -1722,10 +1722,18 @@ h2{
 /* media query */
 @media only screen and (max-width: 700px) {
   .card-info{
-    width: 213px;
+    width: auto;
     height: 250px;
   }
-
+  .img-box {
+    height: 63px;
+}
+.img-bachiller{
+  width: 120px!important;
+}
+.card-info-margin {
+    margin-left: 9px;
+}
   .d-flex-col{
     gap: 20px;
   }
@@ -1738,6 +1746,7 @@ h2{
  }
  .card-saludable{
   margin-left: 25%;
+  width:47%;;
  }
  .card-red-de-apoyo{
   width: 100%;
