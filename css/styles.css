@@ -1490,7 +1490,6 @@ h2{
 
     .card-info-span {
       border-radius: 0 0 12px 12px;
-      background-color: var(--bg-primary);
       color: #FFFFFF;
       cursor: pointer;
       width: 100%;
@@ -1721,9 +1720,13 @@ h2{
 
 /* media query */
 @media only screen and (max-width: 700px) {
+  .col-xs-6 {
+    padding-left: 13px;
+    padding-right: 9px;
+  }
   .card-info{
     width: auto;
-    height: 255px;
+    height: 213px;
   }
   .img-box {
     height: 53px;
@@ -1750,18 +1753,14 @@ h2{
 }
 .img-escuela > img{
   margin-top: 77px;
-  margin-left: 0;
+  margin-left: 12px;
 }
 
 .card-info-escuela{
   width: auto;
-  height: 216px;
+  height: 200px;
 }
-.card-saludable{
-  width: 145px;
-  margin-left: 92px;
-    margin-top: 22px;
-}
+
  .card-red-de-apoyo{
   width: 100%;
   padding: 16px;
