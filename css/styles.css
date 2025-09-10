@@ -1731,6 +1731,9 @@ h2{
   .img-box {
     height: 53px;
 }
+.card-cosfac{
+  font-size: 16px;
+}
 .img-bachiller{
   width: 120px!important;
 }
@@ -1754,6 +1757,12 @@ h2{
 .img-escuela > img{
   margin-top: 77px;
   margin-left: 12px;
+}
+
+.card-carrusel{
+  flex: 0 0 100%;   
+    max-width: 100%;  
+    margin: 10px 0; 
 }
 
 .card-info-escuela{
