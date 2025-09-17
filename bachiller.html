@@ -55,12 +55,12 @@
             </nav>
         </header>
         <main class="page">
-                <div class="degradado" style="margin-top: 80px">
+                <div class="degradado" style="margin-top: 60px">
                     <div class="carousel-wrapper-bachiller ">
-                        <button class="carousel-btn left" onclick="scrollCarrusel(-1)">
+                        <button class="carousel-btn left" onclick="scrollCarruselBachiller(-1)">
                             &#10094;
                         </button>
-                        <div class="carrusel-scroll-bachiller horizontal" id="carrusel-horizontal" style="margin-top: 30px;">
+                        <div class="carrusel-scroll-bachiller horizontal" id="carrusel-horizontal-bachiller" style="margin-top: 30px;">
                             <!--1ra sección -->
                             <div class="card-bachiller">
                                 <div class="col-sm-6">
@@ -72,7 +72,7 @@
                                         <p style="color: #235B4E; font-size: 18px;"><strong>Número Más Reciente</strong></p>
                                         <div style="border-top: 2px solid #A48138; width: 270px; margin-left: 20px;"></div>
                                         <p style="color: #691C32; font-size: 14px;"><strong>Edición Septiembre 2025</strong></p>
-                                        <p style="font-size: 14px; padding-top: 5px;">Titulo del Número</p>
+                                        <!--p style="font-size: 14px; padding-top: 5px;">Titulo del Número</p-->
                                         <div style="text-align: center; padding-bottom: 20px; margin-left: 10px;">
                                             <div class="col-sm-6" style="text-align: start;">
                                                 <button type="button" class="btn botonB2">Descargar PDF
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6" style="text-align: center;">
-                                    <img class="img-carrusel" src="assets/bachiller/bachiller1.png" />
+                                    <img class="img-carrusel" src="assets/bachiller/bachiller2.png" />
                                 </div>
                             </div>
                             <!--2da sección-->
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-btn right" onclick="scrollCarrusel(1)">
+                        <button class="carousel-btn right" onclick="scrollCarruselBachiller(1)">
                             &#10095;
                         </button>
                     </div>
@@ -263,7 +263,7 @@
                             <div class="col-sm-4">
                                 <div class="card-consulta">
                                     <img class="img-normal" src="assets/bachiller/vinagrilloMascotaBeige.png" alt="Faro de papel" />
-                                    <!--img class="img-hover" src="assets/bachiller/faro2.png" alt="Faro de papel2" /-->
+                                    <!--img class="img-hover" src="./assets/bachiller/faro2.png" alt="Faro de papel2" /-->
                                     <h4>Vinagrillo</h4><br/>
                                     <p>El vinagrillo es un arácnido de zonas calientes y húmedas, que vive debajo de las piedras. 
                                         Y es también nuestro suplemento literario, que presenta cada mes textos de todo tipo, hallados en sus excursiones.
@@ -282,7 +282,7 @@
                             para acompañar tu labor docente y enriquecer tu práctica educativa.</strong>
                         </p>
                         <div class="carousel-wrapper" style="background-color: #98989A12; border-radius: 25px; padding-bottom: 15px;">
-                            <button class="carousel-btn left" onclick="scrollCarrusel(-1)">&#10094;</button>
+                            <button class="carousel-btn left" onclick="scrollCarruselBachillerNNA(-1)">&#10094;</button>
                             <div class="carrusel-scroll horizontal" id="carrusel-horizontal">
                                 <div class="card-carrusel">
                                     <img class="img-carrusel2" src="assets/bachiller/numero_titulo1.jpg" />
@@ -340,7 +340,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <button class="carousel-btn right" onclick="scrollCarrusel(1)">&#10095;</button>
+                            <button class="carousel-btn right" onclick="scrollCarruselBachillerNNA(1)">&#10095;</button>
                         </div>
                     </div><br/><br/><br/><br/>
                 </div>
@@ -348,6 +348,6 @@
         <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
         <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="/js/script.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>

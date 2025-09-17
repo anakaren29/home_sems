@@ -53,66 +53,131 @@
             </nav>
         </header>
         <main class="page">
-            <div class="degradado-top" style="margin-top: 80px">
+            <div class="degradado-top" style="margin-top: 60px">
                 <h2>Introducción al Número</h2><br/>
             </div>
             <div class="container">
-                <div class="col-sm-6" style="text-align: center;">
-                    <img class="img-bachiller-n" src="assets/bachiller/bachiller1.png" 
-                        alt="libroBachiller1"/>
-                </div>
-                <div class="col-sm-6">
-                    <h3 style="color: #9F2241;">Epigrafe</h3><br/>
-                    <p>Precisamente porque el mundo es infeliz, esta generación<br/> 
-                        cree que debemos de crear en él un poco de felicidad;<br/> 
-                        precisamente porque el mundo es  injusto, debemos <br/>trabajar 
-                        por la justicia; precisamente porque es, en última <br/>instancia, 
-                        absurdo, debemos darle sentido.  
-                    </p>
-                    <p style="text-align: end; padding-right: 60px;"><strong>Albert Camus</strong></p>
+                <div class="carousel-wrapper-bachiller">
+                    
+                    <button class="carousel-btn left" onclick="scrollCarruselBachillerNumeros(-1)">
+                        &#10094;
+                    </button>
+                    <div class="carrusel-scroll-bachiller horizontal" id="carrusel-horizontal-bachiller-n" style="margin-top: 30px;">
+                    <div class="card-bachiller-n">
+                        <div class="col-sm-6" style="text-align: center;">
+                            <img class="img-bachiller-n" src="assets/bachiller/bachiller2.png" 
+                                alt="libroBachiller1"/>
+                        </div>
+                        <div class="col-sm-6" style="padding-top: 50px;">
+                            <h3 style="color: #9F2241;">Epigrafe</h3><br/>
+                            <p style="font-size: 16px;">Precisamente porque el mundo es infeliz, esta generación<br/> 
+                                cree que debemos de crear en él un poco de felicidad;<br/> 
+                                precisamente porque el mundo es  injusto, debemos <br/>trabajar 
+                                por la justicia; precisamente porque es, en última <br/>instancia, 
+                                absurdo, debemos darle sentido. Albert Camus
+                            </p>
+                            <p style="text-align: start; font-family: Patria;"><strong>Albert Camus</strong></p>
+                        </div><br/><br/><br/><br/><br/>
+                    </div>
+                    <div class="card-bachiller-n">
+                        <div class="col-sm-6" style="text-align: center;">
+                            <img class="img-bachiller-n" src="assets/bachiller/img31.png" 
+                                alt="libroBachiller1" style="width: 179px; height: 226px;"/>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3 style="color: #9F2241;">Agradecimientos</h3><br/>
+                            <p style="font-size: 16px;">Precisamente porque el mundo es infeliz, esta generación<br/> 
+                                cree que debemos de crear en él un poco de felicidad;<br/> 
+                                precisamente porque el mundo es  injusto, debemos <br/>trabajar 
+                                por la justicia; precisamente porque es, en última <br/>instancia, 
+                                absurdo, debemos darle sentido. Albert Camus
+                            </p>
+                        </div><br/><br/><br/><br/><br/>
+                    </div>
+                    <div class="card-bachiller-n">
+                        <div class="col-sm-6" style="text-align: center; align-content: center; padding-top: 100px;">
+                            <h3 style="color: #9F2241;">Direcctorio</h3>
+                        </div>
+                        <div class="col-sm-6" style="text-align: start;">
+                            <p style="font-size: 14px; line-height: 100%;">
+                                    Claudia Sheinbaum Pardo<br/>
+                                    Presidenta de México<br/><br/>
+                        
+                                    Mario Delgado Carrillo<br/>
+                                    Secretario de Educación<br/><br/>
+                        
+                                    Pública Tania Rodríguez Mora<br/>
+                                    Subsecretaria de Educación Media Superior<br/><br/>
+                        
+                                    Pável Granados<br/>
+                                    Director<br/><br/>
+                        
+                                    Luis Flores<br/>
+                                    Editor<br/><br/>
+                        
+                                    Tomás Sebastián<br/>
+                                    Relaciones Públicas<br/><br/>
+                        
+                                    Jorge Arturo Mercado Celis<br/>
+                                    Diseño editorial/diseño grápafico.<br/><br/>
+                        
+                                    Tania Aylin Muciño Resendiz<br/>
+                                    Diseño UX/UI
+                                </p>
+                        </div>
+                    </div>
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollCarruselBachillerNumeros(1)">
+                        &#10095;
+                    </button><br/>
+                    <ol class="carousel-indicators-bachiller">
+                        <li data-slide-to="0" class="active"></li>
+                        <li data-slide-to="1"></li>
+                        <li data-slide-to="2"></li>
+                    </ol>
                 </div>
             </div><br/><br/>
             <div class="container">
                 <h2>Indice</h2>
+                <hr class="hr-dorado"><br/>
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <a href="./paraQuePreguntar.html" style="text-decoration-line: none;" ><!--target="_blank"-->
-                                <img src="assets/bachiller/indice1.png" alt="¿Para qué preguntar?" />
+                            <a href="./nuevaPublicacionNuevaRetorica.html" style="text-decoration-line: none;" >
+                                <img src="assets/bachiller/Vinagrillo_Vectores_Ginda.png" alt="indice12" />
                                 <p class="indice">01</p>
-                                <p class="text-aula">Aula Abierta</p>
-                                <h5>¿Para qué preguntar?</h5>
+                                <p class="text-aula">Editorial</p>
+                                <p class="texto-indice">Nueva publicación, <br/>nueva retórica</p>
                             </a>
-                            <br />
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <a href="./cuandoLaCasaSeVuelveCamion.html" style="text-decoration-line: none;" target="_blank">
-                                <img src="assets/bachiller/indice2.png" alt="indice2" />
+                            <a href="./paraQuePreguntar.html" style="text-decoration-line: none;" ><!--target="_blank"-->
+                                <img src="assets/bachiller/img32.png" alt="¿Para qué preguntar?" />
                                 <p class="indice">02</p>
                                 <p class="text-aula">Aula Abierta</p>
-                                <h5>Cuando la casa se vuelve camión</h5>
+                                <p class="texto-indice">¿Para qué preguntar?</p><br/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card-indice">
+                            <a href="./cuandoLaCasaSeVuelveCamion.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/indice2.png" alt="indice2" />
+                                <p class="indice">03</p>
+                                <p class="text-aula">Aula Abierta</p>
+                                <p class="texto-indice">Cuando la casa se vuelve camión</p>
                             </a>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
                             <a href="./paraLeerLiberalesyConservadores.html" style="text-decoration-line: none;">
-                                <img src="assets/bachiller/indice3.png" alt="indice3" />
-                                <p class="indice">03</p>
-                                <p class="text-aula">Aula Abierta</p>
-                                <h5>Para leer liberales y conservadores</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card-indice">
-                            <a href="./unPaseoPorCuernavaca.html" style="text-decoration-line: none;">
-                                <img src="assets/bachiller/indice4.png" alt="indice4" />
+                                <img src="assets/bachiller/img33.png" alt="indice3" />
                                 <p class="indice">04</p>
                                 <p class="text-aula">Aula Abierta</p>
-                                <h5>Un paseo por Cuernavaca</h5>
+                                <p class="texto-indice">Para leer liberales y conservadores</p>
                             </a>
                         </div>
                     </div>
@@ -121,34 +186,42 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <img src="assets/bachiller/indice5.png" alt="indice5" />
-                            <p class="indice">05</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>Dos poetas jovenes de Morelos</h5>
+                            <a href="./unPaseoPorCuernavaca.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/indice4.png" alt="indice4" />
+                                <p class="indice">05</p>
+                                <p class="text-aula">Viaje literario por México: Morelos</p>
+                                <p class="texto-indice">Un paseo por Cuernavaca</p><br/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <img src="assets/bachiller/indice6.png" alt="indice6" />
-                            <p class="indice">06</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>Micción lectura</h5><br/>
+                            <a href="./dosPoetasJovenesDeMorelos.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/indice5.png" alt="indice5" />
+                                <p class="indice">06</p>
+                                <p class="text-aula">Viaje literario por México: Morelos</p>
+                                <p class="texto-indice">Dos poetas jovenes de Morelos</p>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <img src="assets/bachiller/indice7.png" alt="indice7" />
-                            <p class="indice">07</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>No te va a pasar nada si tocas una pinche toalla</h5>
+                            <a href="./miccionLectura.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/indice6.png" alt="indice6" />
+                                <p class="indice">07</p>
+                                <p class="text-aula">Escaparate: La voz de la comunidad</p>
+                                <p class="texto-indice">Micción lectura</p><br/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <img src="assets/bachiller/indice4.png" alt="indice8" />
-                            <p class="indice">04</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>Para recuperar a Magdalena Mondragón</h5>
+                            <a href="./noTeVaAPasarNada.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/img34.png" alt="indice7" />
+                                <p class="indice">08</p>
+                                <p class="text-aula">Escaparate: La voz de la comunidad</p>
+                                <p class="texto-indice" style="font-size: 14px;">No te va a pasar nada si tocas una pinche toalla</p>
+                            </a>
                         </div>
                     </div>
                 </div><br/>
@@ -156,37 +229,88 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <img src="assets/bachiller/indice9.png" alt="indice9" />
-                            <p class="indice">09</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>¿Qué es la Inteligencia Artificial?</h5>
+                            <a href="./carlosHumbertoValencia.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/img36.png" alt="indice8" />
+                                <p class="indice">09</p>
+                                <p class="text-aula">De par en par, la ventana...</p>
+                                <p class="texto-indice" style="font-size: 13px;">Carlos Humberto Valencia: recuperamos a un pintor desaparecido en el 68</p>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <img src="assets/bachiller/indice2.png" alt="indice10" />
-                            <p class="indice">10</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>Literatura y cine nacional</h5><br/>
+                            <a href="./queEsLaIA.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/img35.png" alt="indice9" />
+                                <p class="indice">10</p>
+                                <p class="text-aula">¿Qué leer?</p>
+                                <p class="texto-indice">¿Qué es la Inteligencia Artificial?</p>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
-                            <img src="assets/bachiller/indice3.png" alt="indice11" />
-                            <p class="indice">11</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>Jugar en la Educación Media Superior</h5>
+                            <a href="./juegosSinFronteras.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/indice2.png" alt="indice10" />
+                                <p class="indice">11</p>
+                                <p class="text-aula">¿Qué leer?</p>
+                                <p class="texto-indice">Juegos sin fronteras</p><br/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card-indice">
+                            <a href="./vincentVanGogh.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/indice3.png" alt="indice11" />
+                                <p class="indice">12</p>
+                                <p class="text-aula">Columnas</p>
+                                <p class="texto-indice">Vincent van Gogh: El delirio y el fuego</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--4to boque de tarjetas-->
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card-indice">
+                            <a href="./jugarEnLaEMS.html" style="text-decoration-line: none;">
+                                <img src="assets/bachiller/indice12.png" alt="indice12" />
+                                <p class="indice">13</p>
+                                <p class="text-aula">Columnas</p>
+                                <p class="texto-indice">Jugar en la educación en la Media Superior</p>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="card-indice">
                             <img src="assets/bachiller/indice12.png" alt="indice12" />
-                            <p class="indice">12</p>
-                            <p class="text-aula">Aula Abierta</p>
-                            <h5>Mi tía Peque</h5><br/>
+                            <p class="indice">14</p>
+                            <p class="text-aula">Cinedebate (VIDEO)</p>
+                            <p class="texto-indice">Mi tía Peque</p><br/>
                         </div>
                     </div>
-                </div><br/>
+                    <div class="col-sm-3">
+                        <div class="card-indice">
+                            <img src="assets/bachiller/indice12.png" alt="indice12" />
+                            <p class="indice">15</p>
+                            <p class="text-aula">El Autor del Mes</p>
+                            <p class="texto-indice">Pendiente</p><br/>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card-indice">
+                            <img src="assets/bachiller/indice12.png" alt="indice12" />
+                            <p class="indice">16</p>
+                            <p class="text-aula">Faro de papel</p>
+                            <p class="texto-indice">Pendiente</p><br/>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <div style="text-align: center;">
+                    <button type="button" class="btn botonB2">Descargar PDF
+                        <img src="assets/iconos-quienes-somos/descargar_verde.png" style="margin-top: 5px;" />
+                    </button>
+                </div>
             </div>
             <div class="degradado-bottom">
                 <br/><br/><br/><br/><br/>
@@ -195,6 +319,6 @@
         <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
         <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="/js/script.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
