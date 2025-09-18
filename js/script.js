@@ -286,3 +286,56 @@ function scrollCarruselBachilleratoTecnologico(direction) {
       behavior: 'smooth'
     });
   }
+
+  function scrollCarruselBachiller(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-bachiller');
+    const cardWidth = carrusel.querySelector('.card-bachiller').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollCarruselBachillerNNA(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal');
+    const cardWidth = carrusel.querySelector('.card-carrusel').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollCarruselBachillerNumeros(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-bachiller-n');
+    const cardWidth = carrusel.querySelector('.card-bachiller-n').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+    setTimeout(() => {
+        const scrollLeft = carrusel.scrollLeft;
+        const currentIndex = Math.round(scrollLeft / cardWidth);
+
+        const indicators = document.querySelectorAll('.carousel-indicators-bachiller li');
+        indicators.forEach((li, index) => {
+            li.classList.toggle('active', index === currentIndex);
+        });
+    }, 400);
+  }
+
+  document.querySelectorAll('.carousel-indicators-bachiller li').forEach((li, index) => {
+    li.addEventListener('click', () => {
+        const carrusel = document.getElementById('carrusel-horizontal-bachiller-n');
+        const cardWidth = carrusel.querySelector('.card-bachiller-n').offsetWidth + 20;
+
+        carrusel.scrollTo({
+            left: index * cardWidth,
+            behavior: 'smooth'
+        });
+
+        const indicators = document.querySelectorAll('.carousel-indicators-bachiller li');
+        indicators.forEach((el, i) => {
+            el.classList.toggle('active', i === index);
+        });
+    });
+});
