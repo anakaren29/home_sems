@@ -196,6 +196,11 @@
         margin-bottom: 14px;
     }
 
+    .icon-container {
+        width: auto!important;
+        height: 80px;
+    }
+
 }
 
 .container-description-slider {
@@ -287,3 +292,4 @@
 .tab-content-left {
     text-align: left;
 }
+
