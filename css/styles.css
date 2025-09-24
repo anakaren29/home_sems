@@ -974,7 +974,7 @@ h2{
     color: #fff;
     text-decoration: none;
     box-shadow: #4a0d27 0.15em 0.15em 0 0;
-    translate: 0.15em 0.15em;
+    
 }
 .calendar{
   display: flex;
@@ -1882,4 +1882,93 @@ h2{
 /* CULTURA DE PAZ */
 .container-declaratoria{
   background-color: #EFE9F7;
+}
+.informacion-declaratoria{
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  margin:40px 0;
+}
+.texto{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.portada > img{
+  max-width: 182px;
+  height: 254px;
+  border-radius: 20px;
+  box-shadow: 12px 10px 4px rgba(0, 0, 0, 0.25);
+}
+.boton-descarga{
+  margin: 0;
+}
+.contenedor-materiales{
+  display: flex;
+  justify-content: center;
+}
+.infografia{
+  max-width: 242px;
+  height: 314px;
+  border-radius: 7px;
+  box-shadow: -18px 10px 4px rgba(0, 0, 0, 0.25);
+}
+.contenedor-lista{
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+.dot {
+  display: inline-block;
+  width: 12px;       
+  height: 12px;
+  background-color: #7b6f9e; 
+  border-radius: 50%;  
+}
+.img-escuela-libre{
+  max-width: 274px;
+  height: 294px;
+}
+.card-digital{
+  max-width: 286px; 
+  min-height: 332px; 
+  padding: 15px;
+  flex: 0 0 80%;
+}
+
+.card-digital {
+  scroll-snap-align: center;
+  flex: 0 0 auto; 
+}
+
+.carousel-dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+  align-items: center;
+}
+.carousel-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all .18s ease;
+  outline: none;
+}
+.carousel-dots button:hover { transform: scale(1.15); }
+
+/* dot activo (ajusta color a tu amarillo) */
+.carousel-dots button.active {
+  background: #ffd600; /* amarillo similar al ejemplo */
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 0 0 6px rgba(255,214,0,0.12);
 }
