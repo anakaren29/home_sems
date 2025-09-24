@@ -1942,33 +1942,7 @@ h2{
   flex: 0 0 auto; 
 }
 
-.carousel-dots {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 12px;
+.botones{
   display: flex;
-  gap: 8px;
-  z-index: 10;
-  align-items: center;
-}
-.carousel-dots button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  padding: 0;
-  background: rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: all .18s ease;
-  outline: none;
-}
-.carousel-dots button:hover { transform: scale(1.15); }
-
-/* dot activo (ajusta color a tu amarillo) */
-.carousel-dots button.active {
-  background: #ffd600; /* amarillo similar al ejemplo */
-  width: 14px;
-  height: 14px;
-  box-shadow: 0 0 0 6px rgba(255,214,0,0.12);
+  gap: 10px;
 }
