@@ -1821,3 +1821,65 @@ h2{
 
 
 }
+
+/* te extrañamos en el salón */
+.objetivos{
+  display: flex;
+  align-items: center;
+  padding: 35px 0;
+}
+.objetivos2{
+  display: flex;
+  align-items: center;
+  padding: 35px 0;
+  justify-content: flex-end;
+}
+.contenedor-objetivo{
+  background-color: var(--bg-primary);
+  color: #ffffff;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: right;
+}
+.texto{
+  max-width: 550px;
+}
+.video{
+  width: 600px;
+  border-radius: 12px;
+}
+.segundo-contenedor{
+  background-color: var(--bg-primary);
+  color: #ffffff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 20px;
+  display: flex;
+}
+
+.card-campana{
+  max-width: 268px;
+  height: 232px;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.campana-1{
+ border-left: 24px solid var(--text-secondary);
+}
+
+.campana-2{
+  border-left: 24px solid #A48138;
+}
+.encabezado{
+  display: flex;
+  gap: 10px;
+}
+
+
+/* CULTURA DE PAZ */
+.container-declaratoria{
+  background-color: #EFE9F7;
+}
