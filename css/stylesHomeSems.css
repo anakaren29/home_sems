@@ -258,3 +258,32 @@
 .modal-backdrop {
     z-index: 1040 !important;
 }
+
+
+
+
+/******Marco curricular*******/
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2pxpx;
+    cursor: pointer;
+    width: 78%;
+}
+
+.button1 {
+    background-color: #a2884c;
+}
+
+.button2 {
+    background-color: #8d3a52;
+}
+
+.tab-content-left {
+    text-align: left;
+}
