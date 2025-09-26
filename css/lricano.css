@@ -165,7 +165,7 @@
 }
 
 .img-carrusel {
-    width: 63%;
+    width: 78%;
     border-radius: 25px;
     box-shadow: 12px 12px 8px rgba(39, 39, 39, 0.5);
 }
@@ -436,7 +436,7 @@
     padding-bottom: 10px; 
     margin-bottom: 10px;
     color: #ffffff;
-    text-align: center;
+    text-align: center !important;
 }
 
 .contenedor4 {
@@ -506,13 +506,13 @@
     text-align: center;
 }
 
-.titulo-bar1 {
+/*.titulo-bar1 {
     background-color: #BC955C21; 
     border-radius:0px 25px 25px 0px;
     color: #691C32; 
     padding-left: 10px;
     text-align: center;
-}
+}*/
 
 .primera-letra {
     font-size: 40px;
@@ -544,12 +544,11 @@
       background-color: #1d3b36;
       color: white;
       max-width: 1200px;
-      margin: 0 auto 40px auto; 
+      margin-left: -190px ; 
       padding: 10px 25px;
       border-radius: 0px 25px 25px 0px;
       display: inline-block;
-      /*margin-bottom: 20px;*/
-      margin-left: -190px;
+      margin-bottom: 40px;
 }
 
 .titulo-pc {
@@ -820,38 +819,34 @@
     transform: rotateY(180deg);
 }
 
-/* Contenedor exterior de la tarjeta */
 .flip-card {
   background-color: transparent;
-  width: 260px; /* Ajusta el ancho según tu diseño */
-  height: 553px; /* Ajusta la altura según tu diseño */
-  perspective: 1000px; /* Esto da un efecto 3D al voltear */
-  margin: 0 auto; /* Para centrar la tarjeta si es necesario */
+  width: 260px; 
+  height: 553px; 
+  perspective: 1000px; 
+  margin: 0 auto; 
 }
 
-/* El "motor" del efecto flip, que se voltea */
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.6s; /* La duración de la animación */
-  transform-style: preserve-3d; /* Permite que los hijos de este elemento se posicionen en 3D */
+  transition: transform 0.6s; 
+  transform-style: preserve-3d; 
 }
 
-/* La tarjeta voltea cuando el mouse está sobre el contenedor principal */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Posición de las caras frontal y trasera */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Esto esconde la cara cuando está "volteada" */
-  -webkit-backface-visibility: hidden; /* Para compatibilidad con navegadores */
-  border-radius: 25px; /* Puedes usar el mismo estilo que tu card-indice original */
+  backface-visibility: hidden; 
+  -webkit-backface-visibility: hidden; 
+  border-radius: 25px; 
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
@@ -865,7 +860,6 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-/* Estilo de la cara frontal */
 .flip-card-front {
   background-color: #F6CECE1F;
     border-radius: 25px;
@@ -876,9 +870,8 @@
     box-shadow: 1px 4px 3px rgba(0,0,0,0.5);
 }
 
-/* Estilo de la cara trasera */
 .flip-card-back {
-    transform: rotateY(180deg); /* La cara trasera está volteada por defecto */
+    transform: rotateY(180deg); 
     background: #611232;
     border-radius: 25px;
     padding: 20px;
@@ -889,7 +882,7 @@
 }
 
 .flip-card-back2 {
-    transform: rotateY(180deg); /* La cara trasera está volteada por defecto */
+    transform: rotateY(180deg); 
     background: #10312B;
     border-radius: 25px;
     padding: 20px;
@@ -911,3 +904,27 @@
     text-align: center;
 }
 
+.card-info a svg {
+  color: #235B4E;
+  transition: color 0.3s ease; 
+}
+
+.card-info a:hover svg {
+  color: #ffffff;
+}
+
+.btn-sub {
+    background-color: #9F2241;
+    border-radius: 25px;
+    color: #ffffff;
+}
+
+.titulo-bar-mm {
+      background-color: #1d3b36;
+      color: white;
+      margin-left: -190px ; 
+      padding: 10px 25px;
+      border-radius: 0px 25px 25px 0px;
+      display: inline-block;
+      margin-bottom: 40px;
+}
