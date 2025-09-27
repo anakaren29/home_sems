@@ -165,7 +165,7 @@
 }
 
 .img-carrusel {
-    width: 63%;
+    width: 69%;
     border-radius: 25px;
     box-shadow: 12px 12px 8px rgba(39, 39, 39, 0.5);
 }
@@ -436,7 +436,7 @@
     padding-bottom: 10px; 
     margin-bottom: 10px;
     color: #ffffff;
-    text-align: center;
+    text-align: center !important;
 }
 
 .contenedor4 {
@@ -490,7 +490,31 @@
       width: 750px;
 }
 
+.titulo-bar2cl {
+      background-color: #611232;
+      padding: 10px 25px;
+      border-radius: 0px 25px 25px 0px;
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-left: -190px;
+      width: 780px;
+}
+
+.titulo-bar2cl p {
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 220px;
+}
+
 .titulo-bar2 p {
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 220px;
+}
+
+.titulo-bar2cl p {
     color: #fff;
     font-weight: bold;
     font-size: 18px;
@@ -506,13 +530,13 @@
     text-align: center;
 }
 
-.titulo-bar1 {
+/*.titulo-bar1 {
     background-color: #BC955C21; 
     border-radius:0px 25px 25px 0px;
     color: #691C32; 
     padding-left: 10px;
     text-align: center;
-}
+}*/
 
 .primera-letra {
     font-size: 40px;
@@ -544,12 +568,22 @@
       background-color: #1d3b36;
       color: white;
       max-width: 1200px;
-      margin: 0 auto 40px auto; 
+      margin-left: -190px ; 
       padding: 10px 25px;
       border-radius: 0px 25px 25px 0px;
       display: inline-block;
-      /*margin-bottom: 20px;*/
-      margin-left: -190px;
+      margin-bottom: 40px;
+}
+
+.titulo-bar3dj {
+      background-color: #1d3b36;
+      color: white;
+      max-width: 1200px;
+      margin-left: -190px ; 
+      padding: 10px 25px;
+      border-radius: 0px 25px 25px 0px;
+      display: inline-block;
+      margin-bottom: 40px;
 }
 
 .titulo-pc {
@@ -677,6 +711,17 @@
 }
 
 .titulo-bar4 {
+      background-color: #235B4E;
+      color: white;
+      width: 700px;
+      margin: 0 auto 40px auto; 
+      padding: 10px 25px;
+      border-radius: 0px 25px 25px 0px;
+      display: inline-block;
+      margin-left: -190px;
+}
+
+.titulo-bar4dj {
       background-color: #235B4E;
       color: white;
       width: 700px;
@@ -820,38 +865,34 @@
     transform: rotateY(180deg);
 }
 
-/* Contenedor exterior de la tarjeta */
 .flip-card {
   background-color: transparent;
-  width: 260px; /* Ajusta el ancho según tu diseño */
-  height: 553px; /* Ajusta la altura según tu diseño */
-  perspective: 1000px; /* Esto da un efecto 3D al voltear */
-  margin: 0 auto; /* Para centrar la tarjeta si es necesario */
+  width: 260px; 
+  height: 553px; 
+  perspective: 1000px; 
+  margin: 0 auto; 
 }
 
-/* El "motor" del efecto flip, que se voltea */
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.6s; /* La duración de la animación */
-  transform-style: preserve-3d; /* Permite que los hijos de este elemento se posicionen en 3D */
+  transition: transform 0.6s; 
+  transform-style: preserve-3d; 
 }
 
-/* La tarjeta voltea cuando el mouse está sobre el contenedor principal */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Posición de las caras frontal y trasera */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Esto esconde la cara cuando está "volteada" */
-  -webkit-backface-visibility: hidden; /* Para compatibilidad con navegadores */
-  border-radius: 25px; /* Puedes usar el mismo estilo que tu card-indice original */
+  backface-visibility: hidden; 
+  -webkit-backface-visibility: hidden; 
+  border-radius: 25px; 
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
@@ -865,7 +906,6 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-/* Estilo de la cara frontal */
 .flip-card-front {
   background-color: #F6CECE1F;
     border-radius: 25px;
@@ -876,9 +916,8 @@
     box-shadow: 1px 4px 3px rgba(0,0,0,0.5);
 }
 
-/* Estilo de la cara trasera */
 .flip-card-back {
-    transform: rotateY(180deg); /* La cara trasera está volteada por defecto */
+    transform: rotateY(180deg); 
     background: #611232;
     border-radius: 25px;
     padding: 20px;
@@ -889,7 +928,7 @@
 }
 
 .flip-card-back2 {
-    transform: rotateY(180deg); /* La cara trasera está volteada por defecto */
+    transform: rotateY(180deg); 
     background: #10312B;
     border-radius: 25px;
     padding: 20px;
@@ -911,3 +950,104 @@
     text-align: center;
 }
 
+.card-info a svg {
+  color: #235B4E;
+  transition: color 0.3s ease; 
+}
+
+.card-info a:hover svg {
+  color: #ffffff;
+}
+
+.btn-sub {
+    background-color: #9F2241;
+    border-radius: 25px;
+    color: #ffffff;
+    border-color: #9F2241;
+}
+
+.btn-sub:hover {
+    background-color: #ffffff;
+    border-radius: 25px;
+    color: #9F2241;
+    border: 1px solid #9F2241;
+}
+
+.titulo-bar-mm {
+      background-color: #1d3b36;
+      color: white;
+      margin-left: -190px ; 
+      padding: 10px 25px;
+      border-radius: 0px 25px 25px 0px;
+      display: inline-block;
+      margin-bottom: 40px;
+}
+
+@media (max-width: 2560px) {
+    .titulo-bar {
+        position: relative;
+        left: calc(-1 * ((100vw - 1200px) / 2));
+        width: 75vw;
+        border-radius: 0 25px 25px 0; 
+    }
+    .titulo-bar2 {
+      position: relative;
+        left: calc(-1 * ((100vw - 1200px) / 2));
+        width: 60vw;
+        border-radius: 0 25px 25px 0;   
+    }
+    .titulo-bar3 {
+        position: relative;
+        left: calc(-1 * ((100vw - 1200px) / 2));
+        width: 80vw;
+        border-radius: 0 25px 25px 0; 
+    }
+    .titulo-bar4 {
+        position: relative;
+        left: calc(-1 * ((100vw - 1200px) / 2));
+        width: 70vw;
+        border-radius: 0 25px 25px 0; 
+    }
+} 
+
+@media (min-width: 1921px) and  (max-width: 2560px) {
+    .seccion-pregunta {
+        max-width: 1450px;
+    }
+    .seccion-np{
+        max-width: 1450px;
+    }
+    .seccion-ml {
+        max-width: 1450px;
+    }
+    .seccion-2pj{
+        max-width: 1450px;
+    }
+
+}
+
+.boton-tp {
+    background: #235B4E30;
+    width: 220px;
+    height: 90px;
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
+    align-content: center;
+}
+
+.boton-tp p {
+    color: #10312B;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.boton-tp a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+}
