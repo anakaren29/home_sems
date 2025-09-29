@@ -42,7 +42,6 @@
     box-sizing: border-box;
     padding: 0 10px;
     margin: 0;
-    box-sizing: border-box;
     padding-left: 40px;
 }
 
@@ -168,7 +167,6 @@
     width: 69%;
     border-radius: 25px;
     box-shadow: 12px 12px 8px rgba(39, 39, 39, 0.5);
-    object-fit: contain;
 }
 
 .card-carrusel {
@@ -1026,12 +1024,12 @@
     }
 }
 
-/*@media (min-width: 3400px) and (max-width:3480px) {
+@media (min-width: 2500px) and (max-width:3480px) {
     .img-carrusel {
-        width: auto;
-        max-width: 100%;
+        width: 44% !important;
+        max-width: none ;
     }
-}*/
+}
 
 .boton-tp {
     background: #235B4E30;
