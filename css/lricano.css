@@ -168,6 +168,7 @@
     width: 69%;
     border-radius: 25px;
     box-shadow: 12px 12px 8px rgba(39, 39, 39, 0.5);
+    object-fit: contain;
 }
 
 .card-carrusel {
@@ -1010,7 +1011,7 @@
     }
 } 
 
-@media (min-width: 1921px) and  (max-width: 2560px) {
+@media (min-width: 1921px) and (max-width: 2560px) {
     .seccion-pregunta {
         max-width: 1450px;
     }
@@ -1023,8 +1024,14 @@
     .seccion-2pj{
         max-width: 1450px;
     }
-
 }
+
+/*@media (min-width: 3400px) and (max-width:3480px) {
+    .img-carrusel {
+        width: auto;
+        max-width: 100%;
+    }
+}*/
 
 .boton-tp {
     background: #235B4E30;
