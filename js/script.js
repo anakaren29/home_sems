@@ -347,3 +347,43 @@ function scrollCarruselBachilleratoTecnologico(direction) {
         });
     });
 });
+
+
+
+function initDotsCarruselDigital() {
+  const carrusel = document.getElementById('carrusel-horizontal-digitales');
+  const dotsContainer = document.getElementById('carousel-dots-digitales');
+  const cards = carrusel.querySelectorAll('.card-digital');
+
+  // Limpiar dots previos si los hubiera
+  dotsContainer.innerHTML = '';
+
+  // Crear un dot por cada card
+  cards.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active'); // primer dot activo
+
+    dot.addEventListener('click', () => {
+      const cardWidth = cards[0].offsetWidth + 20;
+      carrusel.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+      });
+    });
+
+    dotsContainer.appendChild(dot);
+  });
+
+  // Escuchar el scroll para actualizar dots activos
+  carrusel.addEventListener('scroll', () => {
+    const cardWidth = cards[0].offsetWidth + 20;
+    const index = Math.round(carrusel.scrollLeft / cardWidth);
+
+    dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initDotsCarruselDigital);
