@@ -387,3 +387,12 @@ function initDotsCarruselDigital() {
 }
 
 document.addEventListener('DOMContentLoaded', initDotsCarruselDigital);
+
+function scrollCarrusel(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal');
+    const cardWidth = carrusel.querySelector('.card-img').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
