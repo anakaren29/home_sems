@@ -1823,6 +1823,118 @@ h2{
 }
 
 /* te extrañamos en el salón */
+.primer-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.imagen{
+  width: 300px;
+  height: 167px;
+  margin: 0 auto;
+}
+.botones-campana{
+  text-align: center;
+}
+.boton-ir-campana2{
+  background-color: #611232;
+}
+.titulo{
+  color: var(--bg-primary);
+  text-align: center;
+}
+.card-abandono{
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  width: 196px;
+  height: 144px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 8px rgba(0,0,0,0.15);
+  margin: 0 auto;
+}
+.card-abandono strong{
+  color: var(--text-secondary);
+  font-size: 25px;
+}
+.container-compromiso{
+  background-color: #9F2241;
+  color: #FFFFFF;
+  border-radius: 20px;
+  width: 100%;
+  height: 259px;
+  display: flex;
+  flex-direction: column;
+}
+.container-objetivos{
+  width: 268px;
+  height: 238px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: 1px solid #9F2241;
+  padding: 5px;
+  gap: 10px;
+  margin: 0 auto;
+}
+.container-objetivos img{
+  width: 67px;
+  height: 66px;
+}
+.container-periodicidad{
+  width: 200px;
+  height: 190px;
+   display: flex;
+   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 8px 9px rgba(0,0,0,0.15);
+  border-radius: 20px;
+  margin: 0 auto;
+  gap: 5px;
+}
+.container-periodicidad strong{
+  color: var(--text-secondary);
+  font-size: 25px;
+}
+.container-periodicidad img{
+  width: 41px;
+  height: 41px;
+}
+ .container-span{
+  background-color: #235B4E26;
+  color: var(--text-secondary);
+  border-radius: 25px;
+  padding: 3px;
+  font-size: 11px;
+  width: 142px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.container-span p{
+  margin: 0 auto;
+}
+
+
+.contenedor-datos{
+  display: flex;
+  justify-content: center;
+}
+.datos{
+ text-align: center;
+ margin-right: 20px;
+}
+.datos strong{
+  color: var(--text-secondary);
+}
+
 .objetivos{
   display: flex;
   align-items: center;
@@ -1877,6 +1989,9 @@ h2{
   display: flex;
   gap: 10px;
 }
+
+
+
 
 
 /* CULTURA DE PAZ */
