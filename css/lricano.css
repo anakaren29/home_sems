@@ -6,6 +6,7 @@
 
     --text-primary: #691C32;
     --text-secondary: #235B4E;
+    --color-boton: #9F2241;
 }
 
 .degradado {
@@ -1285,3 +1286,61 @@ color: var(--text-secondary);
 .card-img {
     border-radius: 25px;
 }
+
+.container-objetivos strong {
+  color: var(--color-boton);
+}
+
+.container-objetivos p {
+  color: var(--color-boton);
+}
+
+.container-span2{
+  background-color: #A4813838;
+  color: var(--bg-separator);
+  border-radius: 25px;
+  padding: 3px;
+  font-size: 11px;
+  width: 142px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.container-span2 p{
+  margin: 0 auto;
+}
+
+.campana-2 a svg {
+  color: #A48138;
+  transition: color 0.3s ease; 
+}
+
+.campana-2 a:hover svg {
+  color: #ffffff;
+}
+
+
+.card-campana-span:hover{
+  background-color: var(--text-secondary);
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.card-campana-span2:hover{
+  background-color: var(--bg-separator);
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.card-documentos {
+    margin: 0 auto;
+}
+
+.card-info-span,
+.card-campana-span,
+.card-campana-span2 {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 8px; /* Ajusta el espacio desde el borde derecho */
+}
+
