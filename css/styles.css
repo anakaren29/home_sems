@@ -1880,7 +1880,8 @@ h2{
 
 
 /* CULTURA DE PAZ */
-.carousel-dots{
+
+.carousel-dots {
   position: absolute;
   bottom: 22px;
   left: 50%;
@@ -1891,9 +1892,21 @@ h2{
   list-style: none;
   text-align: center;
   gap: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 3px;
+}
+
+.carousel-dots .dot {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+  background-color: #333;
 }
 .container-declaratoria{
   background-color: #EFE9F7;
@@ -1998,7 +2011,15 @@ h2{
   padding: 35px 0;
 }
 
+.img-box-guia{
+  height: 108px;
+}
 
+.img-guia{
+  border-radius: 18px;
+      margin-left: 8px;
+    margin-top: 30px;
+}
 
 @media only screen and (max-width: 767px) {
   .titulo{
@@ -2050,4 +2071,16 @@ h2{
   .contenedor-2{
     flex-direction: column;
   }
+  .carousel-wrapper{
+    max-width: 376px;
+    padding: 0;
+  }
+  .carousel-btn.left, .carousel-btn.right{
+    display: none;
+}
+.carousel-dots{
+  width: 83%;
+  left: 39%;
+}
+
 }
