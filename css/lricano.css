@@ -1199,3 +1199,89 @@
     gap: 10px;
     height: 100%;
 }
+
+.card-acciones {
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    height: 370px;
+}
+
+.card-acciones h4 {
+    color: var(--text-primary);
+}
+
+.icono {
+    width: 40px;
+    height: 40px;
+}
+
+.subtitulo-ac {
+    font-size: 15px;
+}
+
+.acciones-textos {
+    background-color: #F6CECE;
+    border-radius: 25px;
+    width: 80%;
+    margin: 3px auto;
+    padding: 3px 5px;
+}
+
+.acciones-textos p {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.descripcion-encabezado1{
+    color: var(--bg-separator);
+}
+
+.descripcion-encabezado2{
+color: var(--text-secondary);
+}
+
+.campaña1 {
+    background-color: #A4813838;
+    border-radius: 25px;
+}
+
+.campaña2 {
+    background-color: #235B4E26;
+    border-radius: 25px;
+}
+
+.card-campana a svg {
+  color: #235B4E;
+  transition: color 0.3s ease; 
+}
+
+.card-campana a:hover svg {
+  color: #ffffff;
+}
+
+.card-abandono2{
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  width: 196px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 8px rgba(0,0,0,0.15);
+  margin: 0 auto;
+}
+.card-abandono2 strong{
+  color: var(--text-secondary);
+  font-size: 25px;
+}
+
+.card-abandono2 p {
+    font-size: 12px;
+}
+
+.card-img {
+    border-radius: 25px;
+}
