@@ -1431,3 +1431,33 @@ color: var(--text-secondary);
 .botonB6:hover .icon-blanco1 {
     display: none;
 }
+
+.textos-dpp {
+    color: #98989A;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.card-entrevista {
+    border-radius: 25px;
+    background: #10312B;
+    color: #ffffff; 
+    text-align: justify;
+    padding: 20px;
+    font-size: 16px;
+    width: 340px;
+    height: 110px;
+}
+
+.boton-entv {
+    background: #10312B;
+    border-radius: 25px;
+    color: #ffffff;
+    display: inline-block;
+    text-decoration-line: none;   
+}
+
+.boton-entv:hover {
+    color: #ffffff;
+    text-decoration-line: none;   
+}
