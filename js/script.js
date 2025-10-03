@@ -396,3 +396,26 @@ function scrollCarrusel(direction) {
       behavior: 'smooth'
     });
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.card-bachiller');
+    const indicators = document.querySelectorAll('.carousel-indicators-bachiller-home li');
+
+    function activateCard(index) {
+      cards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+
+      indicators.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    indicators.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        activateCard(index);
+      });
+    });
+
+    activateCard(0);
+  });

@@ -1461,3 +1461,209 @@ color: var(--text-secondary);
     color: #ffffff;
     text-decoration-line: none;   
 }
+
+/* CARRUSEL BACHILLER HOME */
+.carousel-indicators-bachiller-home {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.carousel-indicators-bachiller-home li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #D9D9D9;
+    background-color: #611232;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-indicators-bachiller-home li.active {
+    background-color: #FFFFFF;
+    border-color: #611232;
+}
+
+.carousel-indicators-bachiller-home {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /*Cambia el orden de la imagen y card*/
+    .card-bachiller .col-sm-5:nth-of-type(3) {
+        display: none;
+    }
+    .card-bachiller .col-sm-5:nth-of-type(2) > p::after {
+        content: "";
+        display: block;
+        background-image: url('../assets/bachiller/bachiller2.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 220px;
+        height: 300px;
+        margin: 20px auto;
+        border-radius: 25px;
+        overflow: hidden;
+        text-align: center;
+    }
+    .card-bachiller {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-bachiller .col-sm-5:nth-of-type(2) {
+        width: 100% !important;
+        text-align: center;
+        position: relative;
+    }
+    .card {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /*Cambia el orden de los botones*/
+    .card > div[style*="padding-bottom"] {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card .col-sm-6 {
+        width: 100% !important;
+        margin-bottom: 10px;
+        text-align: center !important;
+        display: flex;
+        justify-content: center;
+    }
+    .card .col-sm-6:first-of-type {
+        order: 2;
+    }
+    .card .col-sm-6:last-of-type {
+        order: 1;
+    }
+    .botonB1,
+    .botonB5 {
+        width: 220px;
+        max-width: 90%;
+    }
+    .botonB5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 8px; 
+        padding: 10px 15px;
+    }
+    .botonB5 a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 8px;
+        width: 100%;
+        height: 100%;
+    }
+    .botonB5 img {
+        margin: 0; 
+    }
+    .botonB1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 15px;
+        text-align: center;
+    }
+    .botonB1 span {
+        margin: 0;
+    }
+    .card .botonB1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 15px;
+        width: 100%;
+        text-align: center;
+    }
+    .card .col-sm-6:last-of-type > a {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* indicadores de carrusel*/
+    .carousel-indicators-bachiller-home {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 20px auto;
+        gap: 10px;
+    }
+    .carousel-indicators-bachiller-home li {
+        width: 12px;
+        height: 12px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .carousel-indicators-bachiller-home li.active {
+        background-color: #611232;
+    }
+    .card-bachiller {
+        display: none;
+    }
+    .card-bachiller.active {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+    }
+    /*alineación de card consulta*/
+    .row > .row {
+    display: contents;
+  }
+    .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .inner-row {
+    display: contents !important;
+  }
+
+  .inner-row .col-sm-2 {
+    display: none;
+  }
+
+  /* Hacemos que las columnas ocupen 50% en móvil */
+  .row .col-sm-4 {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  /* Ajustamos la tarjeta */
+  .card-consulta {
+    width: 180px;
+    height: 170px;
+    margin: 10 auto;
+    padding-top: 10px;
+  }
+
+  .card-consulta h4 {
+    font-size: 14px;
+  }
+  .card-consulta p {
+    display: none;
+  }
+  
+  .registro {
+    margin-top: auto;
+  }
+}
