@@ -1531,19 +1531,19 @@ color: var(--text-secondary);
         flex-direction: column;
         align-items: center;
     }
-    .card .col-sm-6 {
+    .card .col-sm-4 {
         width: 100% !important;
         margin-bottom: 10px;
         text-align: center !important;
         display: flex;
         justify-content: center;
     }
-    .card .col-sm-6:first-of-type {
+    /*.card .col-sm-6:first-of-type {
         order: 2;
     }
-    .card .col-sm-6:last-of-type {
+    .card .col-sm-4:last-of-type {
         order: 1;
-    }
+    }*/
     .botonB1,
     .botonB5 {
         width: 220px;
@@ -1589,7 +1589,7 @@ color: var(--text-secondary);
         width: 100%;
         text-align: center;
     }
-    .card .col-sm-6:last-of-type > a {
+    .card .col-sm-4:last-of-type > a {
         display: flex;
         justify-content: center;
         width: 100%;
