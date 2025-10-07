@@ -88,9 +88,9 @@
     <main style="margin-top: 60px; margin-bottom: 60px">
         <div class="container">
           <div class="row primer-container">
-            <h2>Te extrañamos en el salón <br/>2025-2 </h2><br/>
-            <h2>Material de apoyo</h2>
-            <br/>
+            <h2>Te extrañamos en el salón <br/>2025-2 </h2>
+            <!--h2>Material de apoyo</h2>
+            <br/-->
             <p style="text-align: center;">
                 La campaña Te extrañamos en el salón 2025-2 da seguimiento y continuidad al esfuerzo realizado durante la campaña 2025-1 realizada en febrero. Entre las medidas y acciones que se realizan para evitar el abandono e impulsar el retorno, se encuentran la extensión de fechas de inscripción y reinscripción, así como atención a las causas, bajo el entendido de que en el fenómeno de abandono pueden intervenir más de una causa y estas no necesariamente son independientes.
                 <br/><br/>
@@ -145,42 +145,126 @@
           </div><br/>
             <div class="row">
                 <h2>Galería</h2>
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="col-md-4">
-                        <div class="card-img">
-                            <img src="assets/te-extranamos/galeria1.png"
-                                style="width: 236px; height: 159px; border-radius: 25px;" />
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-img">
-                            <img src="assets/te-extranamos/galeria2.png" style="width: 236px; height: 159px;border-radius: 25px;" />
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-img">
-                            <img src="assets/te-extranamos/galeria3.png" style="width: 236px; height: 159px;border-radius: 25px;" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2"></div>
-                <!--div class="carousel-wrapper">
+                <div style="border-top: 2px solid #A48138; width: 80%; margin: 0 auto;"></div><br/>
+                <div class="carousel-wrapper">
                             <button class="carousel-btn left" onclick="scrollCarrusel(-1)">
                         &#10094;
                         </button>
-                        <div class="carrusel-scroll horizontal" id="carrusel-horizontal"-->
-                <!--/div>
+                        <div class="carrusel-scroll horizontal" id="carrusel-horizontal">
+                          <div class="card-img-g" style="cursor: pointer;">
+                            <img src="assets/te-extranamos/Te_extrañamos_Poster_1.jpeg" style="width: 179px; height: 221px;" onclick="openModal()"/>
+                          </div>
+                          <div class="card-img-g">
+                            <img src="assets/te-extranamos/Te_extrañamos_Poster_2.jpeg" style="width: 179px; height: 221px;"/>
+                          </div>
+                          <div class="card-img-g">
+                            <img src="assets/te-extranamos/galeria1.png" style="width: 236px; height: 159px; border-radius: 25px;" />
+                          </div>
+                          <div class="card-img-g">
+                            <img src="assets/te-extranamos/galeria2.png" style="width: 236px; height: 159px;border-radius: 25px;" />
+                          </div>
+                          <div class="card-img-g">
+                            <img src="assets/te-extranamos/galeria3.png" style="width: 236px; height: 159px;border-radius: 25px;" />
+                        </div>
+                        </div>
                         <button class="carousel-btn right" onclick="scrollCarrusel(1)">
                         &#10095;
                         </button>
-                        </div-->
+                </div>
             </div>
+            <div class="row">
+              <h2>Videoteca</h2>
+              <div style="border-top: 2px solid #A48138; width: 80%; margin: 0 auto;"></div><br/>
+              <div class="carousel-wrapper">
+                <button class="carousel-btn left" onclick="scrollCarruselVideos(-1)">&#10094;</button>
+                <div class="carrusel-scroll horizontal" id="carrusel-horizontal-videos">
+                  <div class="card-img">
+                    <video width="220px" height="148px" style="border-radius: 20px;" controls autoplay muted>
+                      <source src="assets/te-extranamos/TE EXTRAÑAMOS MICH 2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="card-img">
+                    <video width="220px" height="148px" style="border-radius: 20px;" controls autoplay muted>
+                      <source src="assets/te-extranamos/TE EXTRAÑAMOS MICH 1.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="card-img">
+                    <video width="220px" height="148px" style="border-radius: 20px;" controls autoplay muted>
+                      <source src="assets/te-extranamos/TE EXTRAÑAMOS LA PRESA.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="card-img">
+                    <video width="220px" height="148px" style="border-radius: 20px;" controls autoplay muted>
+                      <source src="assets/te-extranamos/TE EXTRAÑAMOS CBTA 2 2025 09 25.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="card-img">
+                    <video width="220px" height="148px" style="border-radius: 20px;" controls autoplay muted>
+                      <source src="assets/te-extranamos/TE EXTRAÑAMOS CBTA 1 2025 09 26.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                <button class="carousel-btn right" onclick="scrollCarruselVideos(1)">&#10095;</button>
+              </div>
+            </div>
+        </div>
+
+
+        <!--Modal Galeria -->
+        <div id="modalTeExtranamos" class="modal">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="carousel-wrapper">
+              <button class="carousel-btn left" onclick="scrollCarruselModal(-1)" style="color: #ffffff;">
+                &#10094;
+              </button>
+              <div class="carrusel-scroll horizontal" id="carrusel-horizontal-teExtrañamos-modal">
+                <div class="card-img-te" style="text-align: center;">
+                  <img id="myImage" src="assets/te-extranamos/Te_extrañamos_Poster_1.jpeg"
+                    style="width: 410px; height: 509px; " />
+                      <p><strong>Te extrañamos en el salón 2025-2</strong></p>
+                      <a href="assets/te-extranamos/Te_extrañamos_Poster_1.jpeg" download="Te_extrañamos_Poster_1.jpeg" 
+                      style="margin-left: 700px; text-decoration-line: none; color: #ffffff;" target="_blank">
+                        <i class="fas fa-download"></i></a>
+                </div>
+                <div class="card-img-te">
+                  <img src="assets/te-extranamos/Te_extrañamos_Poster_2.jpeg" 
+                    style="width: 410px; height: 509px;" />
+                  <p><strong>Te extrañamos en el salón 2025-2</strong></p>
+                  <a href="assets/te-extranamos/Te_extrañamos_Poster_2.jpeg" download="Te_extrañamos_Poster_2.jpeg" 
+                  style="margin-left: 700px; text-decoration-line: none; color: #ffffff;" target="_blank">
+                    <i class="fas fa-download"></i></a>
+                </div>
+                <div class="card-img-te">
+                  <img src="assets/te-extranamos/galeria1.png" />
+                  <p><strong>Te extrañamos en el salón 2025-2</strong></p>
+                  <a href="assets/te-extranamos/galeria1.png" download target="_blank"
+                  style="margin-left: 700px; text-decoration-line: none; color: #ffffff;">
+                    <i class="fas fa-download"></i></a>
+                </div>
+                <div class="card-img-te">
+                  <img src="assets/te-extranamos/galeria2.png" />
+                  <p><strong>Te extrañamos en el salón 2025-2</strong></p>
+                  <a href="assets/te-extranamos/galeria2.png" download target="_blank"
+                  style="margin-left: 700px; text-decoration-line: none; color: #ffffff;">
+                    <i class="fas fa-download"></i></a>
+                </div>
+                <div class="card-img-te">
+                  <img src="assets/te-extranamos/galeria3.png" />
+                  <p><strong>Te extrañamos en el salón 2025-2</strong></p>
+                  <a href="assets/te-extranamos/galeria3.png" download target="_blank"
+                  style="margin-left: 700px; text-decoration-line: none; color: #ffffff;">
+                    <i class="fas fa-download"></i></a>
+                </div>
+              </div>
+              <button class="carousel-btn right" onclick="scrollCarruselModal(1)" style="color: #ffffff;">
+                &#10095;
+              </button>
+            </div>
+          </div>
         </div>
         <br>
         <br>
         <br>
-
     </main>
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>

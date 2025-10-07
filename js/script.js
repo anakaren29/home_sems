@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', initDotsCarruselDigital);
 
 function scrollCarrusel(direction) {
   const carrusel = document.getElementById('carrusel-horizontal');
-    const cardWidth = carrusel.querySelector('.card-img').offsetWidth + 20;
+    const cardWidth = carrusel.querySelector('.card-img-g').offsetWidth + 20;
     carrusel.scrollBy({
       left: direction * cardWidth,
       behavior: 'smooth'
@@ -419,3 +419,34 @@ function scrollCarrusel(direction) {
 
     activateCard(0);
   });
+
+function scrollCarruselVideos(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-videos');
+    const cardWidth = carrusel.querySelector('.card-img').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollCarruselModal(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-teExtrañamos-modal');
+    const cardWidth = carrusel.querySelector('.card-img-te').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function openModal() {
+    document.getElementById("modalTeExtranamos").style.display = "block";
+  }
+  function closeModal() {
+    document.getElementById("modalTeExtranamos").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalTeExtranamos");
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
