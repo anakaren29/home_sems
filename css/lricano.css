@@ -1316,18 +1316,21 @@ color: var(--text-secondary);
 }
 
 .campana-2 a:hover svg {
-  color: #ffffff;
+  color: #A48138;
 }
 
+.campana-1 a:hover svg {
+    color: var(--text-secondary);
+}
 
 .card-campana-span:hover{
-  background-color: var(--text-secondary);
+  background-color: #FFFFFF;
   cursor: pointer;
   color: #ffffff;
 }
 
 .card-campana-span2:hover{
-  background-color: var(--bg-separator);
+  background-color: #FFFFFF;
   cursor: pointer;
   color: #ffffff;
 }
@@ -1341,7 +1344,7 @@ color: var(--text-secondary);
 .card-campana-span2 {
   display: flex;
   justify-content: flex-end;
-  padding-right: 8px; /* Ajusta el espacio desde el borde derecho */
+  padding-right: 8px; 
 }
 
 .botonB5 {
