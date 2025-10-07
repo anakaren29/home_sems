@@ -1667,6 +1667,11 @@ color: var(--text-secondary);
   .registro {
     margin-top: auto;
   }
+
+  .card-img-g img {
+    max-width: 279px !important;
+    height: auto;
+  }
 }
 
 .card-img-te {
