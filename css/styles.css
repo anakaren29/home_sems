@@ -2235,7 +2235,8 @@ h2{
   color: #fff;
 }
 .imgCarrusel-red{
-  max-height: 50vh;
+  flex: 0 0 100%;
+  max-height: 58vh;
   border-radius: 6px;
   margin: 0 auto;
 }
