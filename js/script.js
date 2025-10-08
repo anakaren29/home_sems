@@ -121,6 +121,15 @@ function scrollCarruselCompartimiento1(direction) {
       behavior: 'smooth'
     });
   }
+
+  function scrollCarruselRed(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-red');
+    const cardWidth = carrusel.querySelector('.imgCarrusel-red').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
   
   document.querySelectorAll('.carrusel-scroll').forEach(carrusel => {
     let isDown = false;

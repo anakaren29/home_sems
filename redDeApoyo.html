@@ -222,7 +222,7 @@
                 <div class="row">
                     <!-- Tarjeta 1 -->
                     <div class="col-sm-4">
-                        <div class="edu-card">
+                        <div class="edu-card" style="max-width: 369px;">
                             <div class="edu-card__logo">
                                 <img src="assets/icons/sidec.png" alt="sidec" />
                             </div>
@@ -233,11 +233,20 @@
                                 <h4 class="edu-card__title">Secretaría Anticorrupción y Buen Gobierno</h4>
                                 <p class="edu-card__subtitle">Sistemas de Denuncias Ciudadanas</p>
             
-                                <a href="https://sidec.buengobierno.gob.mx/" target="_blank">
+                                <div style="display: flex; gap: 5px;">
+                                    <a href="https://sidec.buengobierno.gob.mx/" target="_blank">
                                     <span class="btn btn-primary btn-xs edu-card__btn">
                                     Ir <span class="glyphicon glyphicon-chevron-right"></span>
                                 </span>
                                 </a> 
+
+                                <a href="#miModal" data-toggle="modal">
+                                    <span class="btn btn-primary btn-xs edu-card__btn">
+                                    Ver materiales 
+                                </span>
+                                </a> 
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -679,6 +688,39 @@
 
             </section>
 
+            <!-- MODAL -->
+             <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="miModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content modal-visor">
+                    
+                      
+                      <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  
+                      <div class="carousel-wrapper" style="margin-top: 50px;">
+                        <button class="carousel-btn left" onclick="scrollCarruselRed(-1)">&#10094;</button>
+                        <div class="carrusel-scroll horizontal" id="carrusel-horizontal-red">
+                          <img src="assets/icons/SIDEC_info.jpg" alt="imgaen sidec"
+                              class="imgCarrusel-red">
+                        </div>
+                        <button class="carousel-btn right" onclick="scrollCarruselRed(1)">&#10095;</button>
+                    </div>
+                  
+                      
+                      <div class="modal-footer">
+                        <p class="modal-caption">SIDEC tu palabra cuenta</p>
+                        <a href="assets/icons/SIDEC_info.jpg">
+                            <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5571 8.11765H14.2857V1.35294C14.2857 0.608823 13.6429 0 12.8571 0H7.14286C6.35714 0 5.71429 0.608823 5.71429 1.35294V8.11765H3.44286C2.17143 8.11765 1.52857 9.57882 2.42857 10.4312L8.98571 16.6412C9.54286 17.1688 10.4429 17.1688 11 16.6412L17.5571 10.4312C18.4571 9.57882 17.8286 8.11765 16.5571 8.11765ZM0 21.6471C0 22.3912 0.642857 23 1.42857 23H18.5714C19.3571 23 20 22.3912 20 21.6471C20 20.9029 19.3571 20.2941 18.5714 20.2941H1.42857C0.642857 20.2941 0 20.9029 0 21.6471Z" fill="white"/>
+                        </svg>
+                        </a>
+                      </div>
+                  
+                    </div>
+                </div>
+              </div>
+              <!--termina MODAL-->
 
         </div>
     </main>
@@ -686,7 +728,7 @@
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/script.js"></script>
-
+    
 </body>
 
 </html>
