@@ -335,6 +335,7 @@
         <div class="container">
           <h2>Vida académica</h2>
           <div class="row">
+            
             <div class="col-md-3 col-xs-6">
               <div class="card-info">
                 <div class="img-box" >
@@ -723,7 +724,7 @@
           </div>
           <div class="row iconos seccion-contadores">
             <div class="col-md-1"></div>
-            <div class="col-xs-6 col-md-2 ">
+            <div class="col-xs-4 col-md-2 ">
               <div class="info-icono">
                 <img
                   class="img-icono"
@@ -734,7 +735,7 @@
                 <p>Total de<br />Hombres</p>
               </div>
             </div>
-            <div class="col-xs-6 col-md-2 ">
+            <div class="col-xs-4 col-md-2 ">
               <div class="info-icono">
                 <img
                   class="img-icono"
@@ -748,7 +749,7 @@
                 </p>
               </div>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-4 col-md-2">
               <div class="info-icono">
                 <img
                   class="img-icono"
@@ -909,7 +910,7 @@
           <h2>Mi escuela me cuida</h2>
           <div class="row centrado">
             <div class="col-xs-6 col-md-4">
-              <div class="card-info card-info-escuela">
+              <div class="card-info card-info-escuela" style="align-items: center;">
                 <div class="img-box img-escuela">
                   <img
                   src="assets/mi-escuela-me-cuida/cultura.PNG"
@@ -925,7 +926,7 @@
               </div>
             </div>
             <div class="col-xs-6 col-md-4">
-              <div class="card-info card-info-escuela">
+              <div class="card-info card-info-escuela" style="align-items: center;">
                 <div class="img-box img-escuela">
                   <img
                   src="assets/mi-escuela-me-cuida/Fentanilo.PNG"
@@ -941,7 +942,7 @@
               </div>
             </div>
             <div class="col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-0">
-              <div class="card-info card-info-escuela card-saludable">
+              <div class="card-info card-info-escuela card-saludable" style="align-items: center;">
                 <div class="img-box img-escuela">
                   <img
                   src="assets/mi-escuela-me-cuida/saludable.PNG"
@@ -1039,7 +1040,7 @@
           </div>
        </div>
       
-       <!-- MODAL -->
+       <!-- MODAL 
        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -1058,28 +1059,9 @@
             </div>
           </div>
         </div>
-              <!--termina MODAL-->
+              termina MODAL-->
 
-        <!-- MODAL -->
-        <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="bannerModalLabel">...</h4>
-              </div>
-              <div class="modal-body">
-                <img class="img-responsive" id="modalImage" src="assets/carousel/modal/Cartel_Aviso_Bachillerato_Nacional.png">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--termina MODAL-->
+    
         
     </main>
 
@@ -1089,20 +1071,9 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
-    <script>
-      $gmx(document).ready(function() {
-        // Asegura que todos los plugins y scripts se han cargado
-        $('#myModal').modal('show');
-      });
+   
 
-        // Mostrar
-        document.body.classList.add('modal-open'); // opcional
-        modal.classList.add('in');
-        modal.style.display = 'block';
-
-    </script> 
-
-      <!-- Script para abrir el modal -->
+      <!-- Script para abrir el modal 
       <script>
       $(document).ready(function () {
         $('.open-modal').click(function (e) {
@@ -1130,7 +1101,7 @@
           document.querySelectorAll('.modal-backdrop').forEach(function (b) { b.remove(); });
         }
       });
-      </script>
+      </script> -->
 
   </body>
 </html>
