@@ -185,7 +185,7 @@ function scrollCarruselCompartimiento1(direction) {
     });
   });
 
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
   const intervalTime = 3000; 
   const carrusel = document.getElementById('carrusel-horizontal');
   const cards = carrusel.querySelectorAll('.card-noticia');
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   setInterval(autoScrollCarrusel, intervalTime);
-});
+}); 
 
 
   // SCRIPT FILTRO BOLETINES
