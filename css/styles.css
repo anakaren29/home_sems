@@ -2247,3 +2247,7 @@ h2{
 .modal-footer{
   justify-content: space-evenly;
 }
+.flechas {
+        color: black;
+        font-weight: bold;
+    }
