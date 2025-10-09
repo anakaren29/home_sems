@@ -1,5 +1,4 @@
 
-
 function animarContadoresEn(seccion) {
   const counters = seccion.querySelectorAll('.contador');
 
