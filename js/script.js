@@ -312,6 +312,24 @@ function scrollCarruselBachilleratoTecnologico(direction) {
       behavior: 'smooth'
     });
   }
+  function verificaYReiniciaCarruselBachiller() {
+  const carrusel = document.getElementById('carrusel-horizontal-bachiller');
+  const maxScrollLeft = carrusel.scrollWidth - carrusel.clientWidth;
+  if (carrusel.scrollLeft >= maxScrollLeft) {
+    carrusel.scrollTo({
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+}
+  function carruselAutomaticoBachiller() {
+    const direccion = 1;
+    setInterval(function() {
+      scrollCarruselBachiller(direccion);
+      verificaYReiniciaCarruselBachiller();
+    }, 3000);
+  }
+  document.addEventListener('DOMContentLoaded', carruselAutomaticoBachiller);
 
   function scrollCarruselBachillerNNA(direction) {
   const carrusel = document.getElementById('carrusel-horizontal');
@@ -396,8 +414,8 @@ function initDotsCarruselDigital() {
 }
 
 document.addEventListener('DOMContentLoaded', initDotsCarruselDigital);
-
-function scrollCarrusel(direction) {
+//Galería te extrañamos en el salón campaña 2
+function scrollCarruselGaleria(direction) {
   const carrusel = document.getElementById('carrusel-horizontal');
     const cardWidth = carrusel.querySelector('.card-img-g').offsetWidth + 20;
     carrusel.scrollBy({
@@ -428,7 +446,7 @@ function scrollCarrusel(direction) {
 
     activateCard(0);
   });
-
+//Videoteca te extrañamos en el salón campaña 2
 function scrollCarruselVideos(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-videos');
     const cardWidth = carrusel.querySelector('.card-img').offsetWidth + 20;
@@ -437,7 +455,7 @@ function scrollCarruselVideos(direction) {
       behavior: 'smooth'
     });
   }
-
+//modal galería - te extrañamos en el salón campaña 2 
   function scrollCarruselModal(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-teExtrañamos-modal');
     const cardWidth = carrusel.querySelector('.card-img-te').offsetWidth + 20;
@@ -447,8 +465,21 @@ function scrollCarruselVideos(direction) {
     });
   }
 
-  function openModal() {
-    document.getElementById("modalTeExtranamos").style.display = "block";
+  function openModal(index) {
+    //console.log("Abriendo modal en índice:", index);
+    const modal = document.getElementById("modalTeExtranamos");
+    const carrusel = document.getElementById('carrusel-horizontal-teExtrañamos-modal');
+    modal.style.display = "block";
+    setTimeout(() => {
+      const card = carrusel.querySelector('.card-img-te');
+      if (card) {
+        const cardWidth = card.offsetWidth + 20;
+        carrusel.scrollTo({
+          left: index * cardWidth,
+          behavior: 'smooth'
+        });
+      }
+    }, 200);
   }
   function closeModal() {
     document.getElementById("modalTeExtranamos").style.display = "none";
@@ -458,4 +489,13 @@ function scrollCarruselVideos(direction) {
     if (event.target === modal) {
       closeModal();
     }
+  }
+  //Galería te extrañamos en el salón campaña 1
+  function scrollCarrusel(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal');
+    const cardWidth = carrusel.querySelector('.card-img').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
   }

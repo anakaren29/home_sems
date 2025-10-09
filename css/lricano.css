@@ -1871,3 +1871,12 @@ color: var(--text-secondary);
        width: 270px; 
        margin-left: 20px;
     }
+
+    .left, .right{
+        color: black;
+        font-weight: bold;
+    }
+
+    .card-img-g {
+        cursor: pointer;
+    }
