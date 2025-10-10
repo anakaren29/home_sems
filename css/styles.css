@@ -1515,6 +1515,10 @@ h2{
 
  /*Responsive Quienes somos sección Directorio*/
  @media (max-width: 576px) {
+  
+  picture > img{
+  height: 70vh;
+}
   .card-directorio {
     flex-direction: column;
     align-items: center;
