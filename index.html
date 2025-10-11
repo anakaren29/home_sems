@@ -1196,17 +1196,11 @@
       <!-- Script para abrir el modal -->
       <script>
   $(document).ready(function () {
-    // Cuando se da clic en un link con clase .open-modal
+    
     $('.open-modal').click(function (e) {
       e.preventDefault();
-
-      // Obtiene la ruta de imagen del atributo data-img
       var imgSrc = $(this).data('img');
-
-      // Asigna la imagen dentro del modal
       $('#modalImage').attr('src', imgSrc);
-
-      // Abre el modal con Bootstrap
       $('#bannerModal').modal('show');
     });
   });
