@@ -1515,7 +1515,9 @@ h2{
 
  /*Responsive Quienes somos sección Directorio*/
  @media (max-width: 576px) {
-  
+  .img-marco{
+    height: 73px;
+  }
   picture > img{
   height: 70vh;
 }
