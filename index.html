@@ -262,7 +262,7 @@
             </div>
 
             <div class="col-md-4 col-xs-6">
-              <a href="" target="_blank" class="a-card">
+              <a href="#" class="open-modal a-card" data-img="assets/carousel/Felicitacion_Jesús_Antonio3.jpg">
                 <div class="card-info">
                 <div class="img-box">
                    <img
@@ -271,7 +271,7 @@
                   />
                 </div>
                
-                <p class="card-info-margin">Notas <br> Informativas</p>
+                <p class="card-info-margin">Avisos</p>
                 
                   <div class="card-info-span" >
                     <span class="hover-text">Ver más</span>
@@ -1160,26 +1160,26 @@
           </div>
        </div>
       
-       <!-- MODAL 
-       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Comunicado Institucional</h4>
-              </div>
-              <div class="modal-body">
-               <img class="img-responsive" src="assets/carousel/modal/Comunicado23sep.png">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-              termina MODAL-->
+       <!-- MODAL --> 
+       <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Felicitación Jesús Antonio Sánez Jusaino</h4>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modalImage" class="img-responsive" src="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+              <!--termina MODAL-->
 
     
         
@@ -1193,35 +1193,24 @@
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
    
 
-      <!-- Script para abrir el modal 
+      <!-- Script para abrir el modal -->
       <script>
-      $(document).ready(function () {
-        $('.open-modal').click(function (e) {
-          e.preventDefault();
-          var imgSrc = $(this).data('img');
-          $('#modalImage').attr('src', imgSrc);
-          $('#bannerModal').modal('show');
-        });
+  $(document).ready(function () {
+    // Cuando se da clic en un link con clase .open-modal
+    $('.open-modal').click(function (e) {
+      e.preventDefault();
 
-        // Cerrar con ESC
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') hideModal();
-        });
+      // Obtiene la ruta de imagen del atributo data-img
+      var imgSrc = $(this).data('img');
 
-        // Cerrar al click fuera del .modal-content
-        modal.addEventListener('click', function (e) {
-          if (e.target === modal) hideModal();
-        });
+      // Asigna la imagen dentro del modal
+      $('#modalImage').attr('src', imgSrc);
 
-        function hideModal() {
-          modal.classList.remove('in');
-          modal.style.display = 'none';
-          document.body.classList.remove('modal-open');
-          // elimina backdrops huérfanos si los creaste manualmente
-          document.querySelectorAll('.modal-backdrop').forEach(function (b) { b.remove(); });
-        }
-      });
-      </script> -->
+      // Abre el modal con Bootstrap
+      $('#bannerModal').modal('show');
+    });
+  });
+</script>
 
 </script>
 
