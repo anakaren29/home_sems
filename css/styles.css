@@ -20,16 +20,7 @@ h2{
 }
 
 /* CARRUSEL BANNERS SEMS */
-.carousel-inner {
-  height: 61vh;
-  overflow: hidden;
-}
 
-.carousel-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 .carousel-indicators li {
     border: 1px solid transparent;
@@ -1272,6 +1263,18 @@ h2{
 
 /* Responsive logos mas chicos en mobil */
 @media (max-width: 576px) {
+.carousel-inner {
+  height: 61vh;
+  overflow: hidden;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
   .imgCarrusel-bachillerato {
     height: 44px;
   }
