@@ -83,6 +83,7 @@
           <li data-target="#myCarousel" data-slide-to="7"></li>
           <li data-target="#myCarousel" data-slide-to="8"></li>
           <li data-target="#myCarousel" data-slide-to="9"></li>
+          <li data-target="#myCarousel" data-slide-to="9"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -107,7 +108,20 @@
               </a>
             </div>
 
-          <!-- Slide 2 -->
+            <!-- Slide 2 -->
+          <div class="item " >
+            <a href="https://youtube.com/live/Q0VI11tbbvI" >
+              <picture>
+                <source media="(max-width: 499px)" srcset="assets/carousel/mobil/b3.jpeg" />
+                <source media="(min-width: 500px)" srcset="assets/carousel/b2.jpeg" />
+                <img src="assets/carousel/b2.jpeg" alt="Foro revisión"
+                  style="width:100%;" />
+              </picture>
+            </a>
+          </div>
+
+
+          <!-- Slide 3 -->
           <div class="item " >
             <a href="/bachiller.html" >
               <picture>
@@ -262,7 +276,7 @@
             </div>
 
             <div class="col-md-4 col-xs-6">
-              <a href="#" class="open-modal a-card" data-img="assets/carousel/Felicitacion_Jesús_Antonio3.jpg">
+              <a href="#" class="open-modal a-card" data-img="assets/carousel/Felicitacion_Jesús_Antonio3.jpg, assets/carousel/mobil/B3.jpeg">
                 <div class="card-info">
                 <div class="img-box">
                    <img
@@ -1160,7 +1174,7 @@
           </div>
        </div>
       
-       <!-- MODAL --> 
+       <!-- MODAL 
        <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -1178,8 +1192,40 @@
       </div>
     </div>
   </div>
-</div>
-              <!--termina MODAL-->
+          </div>
+          termina MODAL-->
+
+        <div id="bannerModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content" style="position: relative;">
+          
+            <button type="button" class="close" data-dismiss="modal" 
+                    aria-label="Cerrar"
+                    style="position: absolute; top: 10px; right: 15px; z-index: 1000; font-size: 30px; color: #fff; opacity: 0.9;">
+              &times;
+            </button>
+          
+            <div class="modal-body" style="padding: 0;">
+              <div id="modalCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner"></div>
+              
+                <a class="left carousel-control" href="#modalCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#modalCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          
+            <div class="modal-footer text-center" style="background:#f8f8f8;">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     
         
@@ -1193,22 +1239,46 @@
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
    
 
-      <!-- Script para abrir el modal -->
+      <!-- Script para abrir el modal 
       <script>
-  $(document).ready(function () {
-    
-    $('.open-modal').click(function (e) {
-      e.preventDefault();
-      var imgSrc = $(this).data('img');
-      $('#modalImage').attr('src', imgSrc);
-      $('#bannerModal').modal('show');
-    });
-  });
-</script>
+        $(document).ready(function () {
 
-</script>
-
-
+          $('.open-modal').click(function (e) {
+            e.preventDefault();
+            var imgSrc = $(this).data('img');
+            $('#modalImage').attr('src', imgSrc);
+            $('#bannerModal').modal('show');
+          });
+        });
+      </script>
+      -->
+      <script>
+      $(document).ready(function () {
+        $('.open-modal').click(function (e) {
+          e.preventDefault();
+        
+          var imgs = $(this).data('img').split(',');
+          var html = '';
+        
+          imgs.forEach(function (src, index) {
+            html +=
+              '<div class="item' + (index === 0 ? ' active' : '') + '">' +
+              '<img src="' + src.trim() + '" class="img-responsive center-block">' +
+              '</div>';
+          });
+        
+          $('#modalCarousel .carousel-inner').html(html);
+          $('#bannerModal').modal('show');
+          $('#modalCarousel').carousel(0);
+        });
+      
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            $('#bannerModal').modal('hide');
+          }
+        });
+      });
+      </script>
   </body>
 </html>
 

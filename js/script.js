@@ -454,6 +454,9 @@ function scrollCarruselVideos(direction) {
       behavior: 'smooth'
     });
   }
+
+
+
 //modal galería - te extrañamos en el salón campaña 2 
   function scrollCarruselModal(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-teExtrañamos-modal');
