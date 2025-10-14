@@ -1264,7 +1264,7 @@ h2{
 /* Responsive logos mas chicos en mobil */
 @media (max-width: 576px) {
 .carousel-inner {
-  height: 58vh;
+  height: 60vh;
   overflow: hidden;
 }
 
