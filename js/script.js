@@ -422,29 +422,47 @@ function scrollCarruselGaleria(direction) {
       behavior: 'smooth'
     });
   }
-
+/*AVANCE AUTOMATICO CARRUSEL BACHILLER EN MOVIL */
   document.addEventListener('DOMContentLoaded', function () {
-    const cards = document.querySelectorAll('.card-bachiller');
-    const indicators = document.querySelectorAll('.carousel-indicators-bachiller-home li');
+  const cards = document.querySelectorAll('.card-bachiller');
+  const indicators = document.querySelectorAll('.carousel-indicators-bachiller-home li');
+  let currentIndex = 0;
+  let intervalId;
 
-    function activateCard(index) {
-      cards.forEach((card, i) => {
-        card.classList.toggle('active', i === index);
-      });
-
-      indicators.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-    }
-
-    indicators.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        activateCard(index);
-      });
+  function activateCard(index) {
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === index);
     });
 
-    activateCard(0);
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+
+    currentIndex = index;
+  }
+
+  function startAutoSlide() {
+    intervalId = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % cards.length;
+      activateCard(nextIndex);
+    }, 5000); 
+  }
+
+  function resetAutoSlide() {
+    clearInterval(intervalId);
+    startAutoSlide();
+  }
+
+  indicators.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      activateCard(index);
+      resetAutoSlide(); 
+    });
   });
+
+  activateCard(0);  
+  startAutoSlide(); 
+});
 //Videoteca te extrañamos en el salón campaña 2
 function scrollCarruselVideos(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-videos');
@@ -496,6 +514,42 @@ function scrollCarruselVideos(direction) {
   function scrollCarrusel(direction) {
   const carrusel = document.getElementById('carrusel-horizontal');
     const cardWidth = carrusel.querySelector('.card-img').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function openModalCurriculum(index) {
+    //console.log("Abriendo modal en índice:", index);
+    const modal = document.getElementById("modalCurriculum");
+    const carrusel = document.getElementById('carrusel-horizontal-curriculum');
+    modal.style.display = "block";
+    setTimeout(() => {
+      const card = carrusel.querySelector('.card-curriculum');
+      if (card) {
+        const cardWidth = card.offsetWidth + 20;
+        carrusel.scrollTo({
+          left: index * cardWidth,
+          behavior: 'smooth'
+        });
+      }
+    }, 200);
+  }
+  function closeModalCurriculum() {
+    document.getElementById("modalCurriculum").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalCurriculum");
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+
+  //modal galería - te extrañamos en el salón campaña 2 
+  function scrollCarruselModalCurriculum(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-curriculum');
+    const cardWidth = carrusel.querySelector('.card-curriculum').offsetWidth + 20;
     carrusel.scrollBy({
       left: direction * cardWidth,
       behavior: 'smooth'

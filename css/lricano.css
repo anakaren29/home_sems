@@ -1880,3 +1880,327 @@ color: var(--text-secondary);
     .card-img-g {
         cursor: pointer;
     }
+
+    .boton1_mc {
+        width: 345px;
+        height: 114px;
+        background-color: white;
+        border-radius: 25px;
+        text-align: center;
+        border: 1px solid #235B4E;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .boton1_mc:hover {
+        background-color: #235B4E;
+        text-decoration: none;
+        color: white;
+    }
+
+    .boton1_mc:hover .svg_boton {
+       color: white !important; 
+       text-decoration: none;
+    }
+
+     .svg_boton {
+        color: #235B4E !important;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .boton1_mc:hover p{
+        color: white;
+    }
+
+    .boton1_mc p{
+        color: #595959;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .tarjeta_mc {
+        width: 254px;
+        height: 198px;
+        background-color: white;
+        border-radius: 25px;
+        border-top: 5px solid #235B4E; 
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+        text-decoration: none;
+        border-bottom: 1px solid #235B4E;
+        border-left: 1px solid #235B4E;
+        border-right: 1px solid #235B4E;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .tarjeta_mc:hover {
+        text-decoration: none;
+    }
+
+    .tarjeta_mc p {
+        color: #595959;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .icon_tarjeta_mc {
+        width: 87px;
+        height: 75px;
+        margin-bottom: 10px;
+    }
+
+    .flecha_mc {
+        width: 28px; 
+        height: 28px; 
+        text-align: end !important;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .tarjeta_mc2 {
+        width: 255px;
+        height: 176px;
+        background-color: white;
+        border-radius: 25px;
+        border-top: 5px solid #235B4E; 
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+        text-decoration: none;
+        border-bottom: 1px solid #235B4E;
+        border-left: 1px solid #235B4E;
+        border-right: 1px solid #235B4E;
+        position: relative;
+    }
+
+    .tarjeta_mc2:hover {
+        text-decoration: none;
+    }
+
+    .tarjeta_mc2 p {
+        color: #595959;
+        font-size: 19px;
+        font-weight: bold;
+    }
+
+    .tarjeta_doc_mc {
+        width: 271px;
+        height: 255px;
+        background-color: #235B4E;
+        border-radius: 25px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 20px 15px;
+        text-decoration: none;
+        text-align: start;
+    }
+
+    .tarjeta_doc_mc:hover {
+        text-decoration: none;
+    }
+
+    .tarjeta_doc_mc p {
+        color: white;
+    }
+
+    .icon_tarj_verde {
+        width: 66px;
+        height: 80px;
+    }
+
+    .tarjeta_mc3 {
+        width: 284px;
+        height: 263px;
+        background-color: white;
+        border-radius: 25px;
+        border-top: 10px solid #235B4E; 
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+        text-decoration: none;
+        border-bottom: 2px solid #235B4E;
+        border-left: 1px solid #235B4E;
+        border-right: 1px solid #235B4E;
+        position: relative;
+    }
+
+    .tarjeta_mc3_verde {
+        width: 284px;
+        height: 263px;
+        background-color: #235B4E;
+        border-radius: 25px; 
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .tarjeta_mc3_verde p {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .tarjeta_mc3:hover {
+        text-decoration: none;
+    }
+
+    .tarjeta_mc3 p {
+        color: #595959;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .flip-tarjeta-mc {
+        background-color: transparent;
+        width: 284px;
+        height: 263px;
+        perspective: 1000px; /* Necesario para el efecto 3D */
+    }
+
+    .flip-tarjeta-mc-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-tarjeta-mc:hover .flip-tarjeta-mc-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-tarjeta-mc-front,
+    .flip-tarjeta-mc-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 25px;
+    }
+
+    .flip-tarjeta-mc-back {
+        transform: rotateY(180deg);
+        background-color: #235B4E;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        position: relative;
+        padding-bottom: 50px;
+    }
+
+    .svg_flip {
+        color: white !important;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .ver-mas {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .ver-mas p {
+        display: none;
+    }
+
+    .ver-mas:hover  {
+        background-color: white;
+    }
+    .ver-mas:hover p {
+        display: inline;
+    }
+
+    .ver-mas:hover .svg_flip {
+        color: #235B4E !important;
+    }
+
+    .modal-content-mc {
+      margin: 80px auto;
+      width: 100%;
+      max-width: 1000px;
+      background-color: #FCF8F9;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .card-curriculum {
+        max-width: 900px;
+        height: 410px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    .titulo-modal-mc{
+        font-size: 28px;
+        font-weight: bold;
+        color: #691C32;
+    }
+
+    .subtitulo-modal-mc {
+        color: #595959;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .datos-modal-mc{
+        background-color: #9F2241;
+        width: 481px;
+        height: 54px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        
+    }
+
+   
