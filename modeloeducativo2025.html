@@ -219,7 +219,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <div class="col-md-4"><!--href="https://youtu.be/balQLFu_TDk" target="_blank"-->
+                    <div class="col-md-4">
                         <a class="tarjeta_mc"  onclick="openModalCurriculum(0)">
                             <img class="icon_tarjeta_mc" src="assets/modeloeducativo2025/pensamientoM.png" />
                             <p> Pensamiento Matemático</p>
@@ -343,7 +343,8 @@
                 <div class="col-md-10">
                     <div class="col-md-2"></div>
                     <div class="col-md-4">
-                        <a class="tarjeta_doc_mc">
+                        <a class="tarjeta_doc_mc" href="https://dof.gob.mx/nota_detalle.php?codigo=5765757&amp;fecha=15/08/2025#gsc.tab=0"
+                    target="_blank" class="link-text">
                             <img class="icon_tarj_verde" src="assets/modeloeducativo2025/doc.png"  />
                             <p>ACUERDO número 21/08/25 por el que se establece y regula el 
                                 Marco Curricular Común de la Educación Media Superior.</p>
@@ -351,7 +352,8 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tarjeta_doc_mc">
+                        <a class="tarjeta_doc_mc" href="https://dof.gob.mx/nota_detalle.php?codigo=5765758&amp;fecha=15/08/2025#gsc.tab=0"
+                    target="_blank" class="link-text">
                             <img class="icon_tarj_verde" src="assets/modeloeducativo2025/doc.png"  />
                             <p>ACUERDO número 22/08/25 por el que se establece y regula el 
                                 Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana (SINBANEM).</p>
@@ -449,11 +451,11 @@
         </div>
 
         <!--Modal curriculum  -->
-        <div id="modalCurriculum" class="modal">
+        <div id="modalCurriculum" class="modal-mc">
           <div class="modal-content-mc">
-            <span class="close-btn" onclick="closeModalCurriculum()">&times;</span>
+            <span class="close-btn" onclick="closeModalCurriculum()" style="color: black !important;">&times;</span>
             <div class="carousel-wrapper">
-              <button class="carousel-btn left" onclick="scrollCarruselModalCurriculum(-1)" style="color: #ffffff;">
+              <button class="carousel-btn left" onclick="scrollCarruselModalCurriculum(-1)" style="color: black;">
                 &#10094;
               </button>
               <div class="carrusel-scroll horizontal" id="carrusel-horizontal-curriculum">
@@ -463,19 +465,19 @@
                     <p class="subtitulo-modal-mc">Pensamiento Matemático</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px"
-                                src="https://www.youtube.com/embed/balQLFu_TDk?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/balQLFu_TDk?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; "
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                        </div>
+                        </div><br/>
                         <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_PENSAMIENTO MATEMATICO_BN.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
-                        </a><br/>
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver programa</p>
+                        </a>
                         <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA PENS. MATEMATICO.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver infografía</p>
                         </a>
                 </div>
 
@@ -484,20 +486,20 @@
                     <p class="subtitulo-modal-mc">Pensamiento Filosófico y Humanidades</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px"
-                                src="https://www.youtube.com/embed/SGm2pyRU-Jo?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/SGm2pyRU-Jo?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; "
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                        </div>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_PENSAMIENTO FILOSOFICO_BN.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
                         </div><br/>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA FILOSOFIA Y HUM.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
-                        </div>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_PENSAMIENTO FILOSOFICO_BN.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver programa</p>
+                        </a>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA FILOSOFIA Y HUM.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                            <p>Ver infografía</p>
+                        </a>
                 </div>
 
                 <div class="card-curriculum">
@@ -505,20 +507,20 @@
                     <p class="subtitulo-modal-mc">Inglés</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px"
-                                src="https://www.youtube.com/embed/B9M-P3MQENY?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/B9M-P3MQENY?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; "
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                    </div>
-                    <div class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_INGLES_BN.pdf" target="_blank">
-                        <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
-                        </div><br/>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA INGLES.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
-                        </div>
+                    </div><br/>
+                    <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_INGLES_BN.pdf" target="_blank">
+                        <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                            <p>Ver programa</p>
+                    </a>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA INGLES.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver infografía</p>
+                        </a>
                 </div>
 
                 <div class="card-curriculum">
@@ -526,20 +528,20 @@
                     <p class="subtitulo-modal-mc">Cultura Digital</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px" 
-                                src="https://www.youtube.com/embed/aeoayCy4b3E?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/aeoayCy4b3E?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture;"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                    </div>
-                    <div class="datos-modal-mc" href="assets/modeloeducativo2025/2025_ MCC_CULTURA DIGITAL_BN.pdf" target="_blank">
-                        <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
-                        </div><br/>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA CULTURA DIGITAL.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
-                        </div>
+                    </div><br/>
+                    <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_ MCC_CULTURA DIGITAL_BN.pdf" target="_blank">
+                        <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver programa</p>
+                    </a>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA CULTURA DIGITAL.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver infografía</p>
+                        </a>
                 </div>
 
                 <div class="card-curriculum">
@@ -547,20 +549,20 @@
                     <p class="subtitulo-modal-mc">Lenguaje y comunicación</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px" 
-                                src="https://www.youtube.com/embed/07nu3IB4m6E?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/07nu3IB4m6E?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; "
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                    </div>
-                    <div class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_LENGUA Y COMUNICACION_BN.pdf" target="_blank">
-                        <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
-                        </div><br/>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA LENGUA Y COMUN.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
-                        </div>
+                    </div><br/>
+                    <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_LENGUA Y COMUNICACION_BN.pdf" target="_blank">
+                        <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver programa</p>
+                    </a>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA LENGUA Y COMUN.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver infografía</p>
+                        </a>
                 </div>
 
                 <div class="card-curriculum">
@@ -568,20 +570,20 @@
                     <p class="subtitulo-modal-mc">Ciencias Naturales</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px" 
-                                src="https://www.youtube.com/embed/JFBJReEV558?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/JFBJReEV558?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; "
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                    </div>
-                    <div class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_CIENCIAS NATURALES_BN.pdf" target="_blank">
-                        <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
-                        </div><br/>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA CNEyT.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
-                        </div>
+                    </div><br/>
+                    <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_CIENCIAS NATURALES_BN.pdf" target="_blank">
+                        <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver programa</p>
+                    </a>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA CNEyT.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver infografía</p>
+                        </a>
                 </div>
 
                 <div class="card-curriculum">
@@ -589,20 +591,20 @@
                     <p class="subtitulo-modal-mc">Ciencias Sociales</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px" 
-                                src="https://www.youtube.com/embed/QR1MKj4upFs?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/QR1MKj4upFs?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; "
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                    </div>
-                    <div class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_CIENCIAS SOCIALES_BN.pdf" target="_blank">
-                        <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
-                        </div><br/>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA C. SOCIALES.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
-                        </div>
+                    </div><br/>
+                    <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_CIENCIAS SOCIALES_BN.pdf" target="_blank">
+                        <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                            <p>Ver programa</p>
+                    </a>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA C. SOCIALES.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver infografía</p>
+                        </a>
                 </div>   
                 
                 <div class="card-curriculum">
@@ -610,24 +612,24 @@
                     <p class="subtitulo-modal-mc">Conciencia Histórica</p>
                         <div class="video">
                             <iframe width="70%" height="300px" style="border-radius: 20px" 
-                                src="https://www.youtube.com/embed/mQvsu2IJxNk?autoplay=1&mute=1" title="YouTube video player"
+                                src="" data-src="https://www.youtube.com/embed/mQvsu2IJxNk?mute=1" title="YouTube video player"
                                 frameborder="0"
-                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture;"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
-                    </div>
-                    <div class="datos-modal-mc" href="assets/modeloeducativo2025/2025_ MCC_CONCIENCIA HISTORICA_BN.pdf" target="_blank">
-                        <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver programa
-                        </div><br/>
-                        <div class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA CON. HISTORICA.pdf" target="_blank">
-                            <img src="assets/modeloeducativo2025/r48.png" style="width: 40px; height: 34px;" />
-                            Ver infografía
-                        </div>
+                    </div><br/>
+                    <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_ MCC_CONCIENCIA HISTORICA_BN.pdf" target="_blank">
+                        <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png"  />
+                            <p>Ver programa</p>
+                    </a>
+                        <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA CON. HISTORICA.pdf" target="_blank">
+                            <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                            <p>Ver infografía</p>
+                        </a>
                 </div> 
                 
               </div>
-              <button class="carousel-btn right" onclick="scrollCarruselModalCurriculum(1)" style="color: #ffffff;">
+              <button class="carousel-btn right" onclick="scrollCarruselModalCurriculum(1)" style="color: black;">
                 &#10095;
               </button>
             </div>
