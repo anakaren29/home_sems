@@ -462,6 +462,7 @@
 
 .card-date {
     padding: 28px 18px;
+    min-height: 200px;
 }
 
 .icon-lg {
@@ -489,6 +490,7 @@
     color: #9a9a9a;
     font-weight: 600;
     letter-spacing: .5px;
+    font-size: 12px;
 }
 
 
@@ -591,4 +593,20 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.fcd-mapa{
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .12);
+    max-height: 120px;
+}
+
+.entry-info{
+    font-family: Noto Sans;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    color: #235B4E;
+    padding-bottom: 30px!important;
+
 }
