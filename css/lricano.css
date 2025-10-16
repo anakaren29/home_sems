@@ -1993,6 +1993,7 @@ color: var(--text-secondary);
         position: relative;
         text-decoration-line: none;
         text-decoration-color: white;
+        cursor: pointer;
     }
 
     .tarjeta_mc2:hover {
@@ -2261,4 +2262,16 @@ color: var(--text-secondary);
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+.card-curriculum-am {
+        max-width: 900px;
+        height: 410px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        flex: 0 0 100%;
+    }
    

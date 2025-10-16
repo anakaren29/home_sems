@@ -621,3 +621,104 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function openModalCurriculumAm(index) {
+  const modal = document.getElementById("modalCurriculumAm");
+  const carrusel = document.getElementById("carrusel-horizontal-curriculum-am");
+  const cards = carrusel.querySelectorAll('.card-curriculum-am');
+
+  // Detener todos los videos
+  cards.forEach(card => {
+    const iframe = card.querySelector("iframe");
+    if (iframe) {
+      iframe.src = "";
+    }
+  });
+
+  // Reproducir solo el iframe de la tarjeta seleccionada
+  const targetCard = cards[index];
+  const iframe = targetCard.querySelector("iframe");
+  if (iframe) {
+    const baseSrc = iframe.getAttribute("data-src");
+    let cleanSrc = baseSrc.replace(/(\?|&)autoplay=1/, "").replace(/(\?|&)mute=1/, "");
+    const separator = cleanSrc.includes('?') ? '&' : '?';
+    iframe.src = cleanSrc + separator + 'autoplay=1&mute=1';
+  }
+
+  // Mostrar el modal
+  modal.classList.add("active");
+
+  // Hacer scroll hacia la tarjeta correspondiente
+  setTimeout(() => {
+    const cardWidth = cards[0].offsetWidth + 20;
+    carrusel.scrollTo({
+      left: index * cardWidth,
+      behavior: "smooth"
+    });
+  }, 200);
+}
+
+function closeModalCurriculumAm() {
+  const modal = document.getElementById("modalCurriculumAm");
+  const iframes = modal.querySelectorAll("iframe");
+
+  // Pausar todos los videos
+  iframes.forEach(iframe => {
+    iframe.src = "";
+  });
+
+  modal.classList.remove("active");
+}
+
+// Cierre del modal si se hace clic fuera del contenido
+window.onclick = function(event) {
+  const modal = document.getElementById("modalCurriculumAm");
+  if (event.target === modal) {
+    closeModalCurriculumAm();
+  }
+};
+
+// Carrusel manual por flechas
+function scrollCarruselModalCurriculumAm(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-curriculum-am');
+  const cardWidth = carrusel.querySelector('.card-curriculum-am').offsetWidth + 20;
+  carrusel.scrollBy({
+    left: direction * cardWidth,
+    behavior: 'smooth'
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Verifica que IntersectionObserver exista (por compatibilidad)
+  if (!("IntersectionObserver" in window)) {
+    console.warn("IntersectionObserver no es compatible con este navegador.");
+    return;
+  }
+
+  const carrusel = document.getElementById('carrusel-horizontal-curriculum-am');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const iframe = entry.target.querySelector("iframe");
+      const baseSrc = iframe?.getAttribute("data-src");
+
+      if (!iframe || !baseSrc) return;
+
+      if (entry.isIntersecting) {
+        if (!iframe.src.includes("autoplay=1")) {
+          iframe.src = baseSrc + "&autoplay=1";
+        }
+      } else {
+        iframe.src = ""; // Detiene el video si ya no está visible
+      }
+    });
+  }, {
+    root: carrusel,
+    threshold: 0.9 // Se reproduce solo si el card está casi completamente visible
+  });
+
+  // Observar cada tarjeta del carrusel
+  document.querySelectorAll('.card-curriculum-am').forEach(card => {
+    observer.observe(card);
+  });
+});
+

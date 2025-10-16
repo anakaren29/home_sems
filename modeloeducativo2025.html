@@ -311,14 +311,14 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
                     <div class="col-md-2"></div>
-                    <div class="col-md-4">
-                        <a class="tarjeta_mc2" href="https://youtu.be/e7gXUTbGZI4" target="_blank">
+                    <div class="col-md-4"><!--href="https://youtu.be/e7gXUTbGZI4" target="_blank"-->
+                        <a class="tarjeta_mc2"  onclick="openModalCurriculumAm(0)">
                             <img class="icon_tarjeta_mc" src="assets/modeloeducativo2025/PAEC.png"  />
                             <p>Programa Aula Escuela, y Comunidad (PAEC)</p>
                         </a>
                     </div>
-                    <div class="col-md-4">
-                        <a class="tarjeta_mc2" href="https://youtu.be/T6qkcORA3-w" target="_blank">
+                    <div class="col-md-4"><!-- href="https://youtu.be/T6qkcORA3-w" target="_blank"-->
+                        <a class="tarjeta_mc2" onclick="openModalCurriculumAm(1)">
                             <img class="icon_tarjeta_mc" src="assets/modeloeducativo2025/formacionSocioemociomal.png" />
                             <p>Formación Socioemocional</p>
                         </a>
@@ -449,10 +449,10 @@
                 <div class="col-md-3">
                     <div class="flip-tarjeta-mc">
                         <div class="flip-tarjeta-mc-inner">
-                            <div class="flip-tarjeta-mc-front tarjeta_mc3">
+                            <a class="flip-tarjeta-mc-front tarjeta_mc3" href="https://vidasaludable.gob.mx/" target="_blank">
                                 <img src="assets/modeloeducativo2025/viveSaludable.png" style="width: 183px; height: 160px;" />
-                            </div>
-                            <div class="flip-tarjeta-mc-back tarjeta_mc3_verde">
+                            </a>
+                            <a class="flip-tarjeta-mc-back tarjeta_mc3_verde" href="https://vidasaludable.gob.mx/" target="_blank">
                                 <p>Recursos didácticos</p>
                                 <!--div class="ver-mas"-->
                                     <!--p>Ver más</p-->
@@ -462,7 +462,7 @@
                                             d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z" />
                                     </svg>
                                 <!--/div-->
-                            </div>
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -710,6 +710,69 @@
               </button>
             </div>
           </div>
+        </div>
+
+        <!--Modal curriculum ampliado-->
+        <div id="modalCurriculumAm" class="modal-mc">
+            <div class="modal-content-mc">
+                <span class="close-btn" onclick="closeModalCurriculumAm()" style="color: black !important;">&times;</span>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn left" onclick="scrollCarruselModalCurriculumAm(-1)" style="color: black;">
+                        &#10094;
+                    </button>
+                    <div class="carrusel-scroll horizontal" id="carrusel-horizontal-curriculum-am">
+                        <!--Tarjeta 1-->
+                        <div class="card-curriculum-am">
+                            <p class="titulo-modal-mc">Currículum Ampliado</p>
+                            <p class="subtitulo-modal-mc">Programa Aula Escuela, y Comunidad (PAEC)</p>
+                            <div class="video">
+                                <iframe width="70%" height="300px" style="border-radius: 20px" src=""
+                                    data-src="https://www.youtube.com/embed/e7gXUTbGZI4?mute=1" title="YouTube video player"
+                                    frameborder="0"
+                                    allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture;"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                </iframe>
+                            </div><br />
+                            <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_MCC_PAEC_BN.pdf"
+                                target="_blank">
+                                <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                                <p>Ver programa</p>
+                            </a>
+                            <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA PAEC.pdf"
+                                target="_blank">
+                                <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                                <p>Ver infografía</p>
+                            </a>
+                        </div>
+                        <!--Tarjeta 2-->
+                        <div class="card-curriculum-am">
+                            <p class="titulo-modal-mc">Currículum Ampliado</p>
+                            <p class="subtitulo-modal-mc">Formación Socioemocional</p>
+                            <div class="video">
+                                <iframe width="70%" height="300px" style="border-radius: 20px" src=""
+                                    data-src="https://www.youtube.com/embed/T6qkcORA3-w?mute=1" title="YouTube video player"
+                                    frameborder="0"
+                                    allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture;"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                </iframe>
+                            </div><br />
+                            <a class="datos-modal-mc" href="assets/modeloeducativo2025/2025_ MCC_FORMACIONSOCIOEMOCIONAL_BN.pdf"
+                                target="_blank">
+                                <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                                <p>Ver programa</p>
+                            </a>
+                            <a class="datos-modal-mc" href="assets/modeloeducativo2025/INFOGRAFIA FORMACION SOCIOEMOCIONAL.pdf"
+                                target="_blank">
+                                <img class="icon_modal_mc" src="assets/modeloeducativo2025/r48.png" />
+                                <p>Ver infografía</p>
+                            </a>
+                        </div>
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollCarruselModalCurriculumAm(1)" style="color: black;">
+                        &#10095;
+                    </button>
+                </div>
+            </div>
         </div>
     </main>
 
