@@ -2271,3 +2271,25 @@ h2{
         color: black;
         font-weight: bold;
     }
+
+    .boton-fcd {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #9F2241; 
+      color: #9F2241 !important;             
+      border-radius: 25px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      background-color: white;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+      gap: 5px;
+      text-decoration-color: white !important;
+    }
+
+    .boton-fcd p {
+      padding-top: 8px;
+      text-decoration-line: none;
+      text-decoration-color: white !important;
+    }
