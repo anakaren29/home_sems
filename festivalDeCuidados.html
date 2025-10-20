@@ -110,7 +110,7 @@
         </div>
       </nav>
     </header>
-    <main class="page" style="margin-top: 70px; margin-bottom: 60px">
+    <main class="page" style="margin-top: 70px; overflow-x: hidden;">
     <div class="container">
         <h2>El Festival de Cuidados (FDC)</h2><br />
         
@@ -142,10 +142,10 @@
 
                                 <!-- ***************** BOTÓN DESCARGA BOLETÍN *******************-->
 
-                                <!--a class="boton-fcd" href="assets/fcd/Boletin Festival de Cuidados 2025 UNAM (2).pdf" download target="_blank">
+                                <a class="boton-fcd" href="assets/fcd/Boletin Festival de Cuidados 2025 UNAM.pdf" download target="_blank">
                                   <p>Descargar boletín</p>
                                   <img src="assets/fcd/10.png" style="width: 21px; height: 22px;"/> 
-                                </a-->
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
 
 <!--******************* Instancias aliadas imagenes ***********************-->
 
-<!--div style="background: #9F224108; padding-top: 30px; padding-bottom: 30px;">
+<div style="background: #9F224108; padding-top: 30px; padding-bottom: 30px;">
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
@@ -182,7 +182,7 @@
     </div>
     <div class="col-md-1"></div>
   </div>
-</div-->
+</div>
 
 <div class="container">
         <section id="ejes-tematicos" class="bg-section">
@@ -243,7 +243,7 @@
 
 <!-- *************** COLOR DEL CONTENEDOR ******************-->
 
-<!--div style="background: #9F224108; padding-top: 20px; padding-bottom: 40px;"-->
+<div style="background: #9F224108; padding-top: 20px; padding-bottom: 40px;">
   <div class="container">
         <div class="row">
             <div class="col-xs-12 text-center">
@@ -274,7 +274,7 @@
           <div class="col-md-2"></div>
         </div>
         </div>
-<!--/div-->
+</div>
 
 <div class="container">
         <div class="row">
@@ -325,7 +325,7 @@
                 <!-- Botón de descarga -->
                 <div class="row">
                  
-                        <a class="boton-rojo boton-rojo-fcd boton-descarga botones-a " target="_blank" href="assets/fcd/FDC-programa.pdf">
+                        <a class="boton-rojo boton-rojo-fcd boton-descarga botones-a hover-descarga" target="_blank" href="assets/fcd/FDC-programa.pdf">
                             Descargar <br />
                             programa <br>completo
                             <span style="
@@ -339,26 +339,45 @@
                         </a>
                 </div>
         </section>
+      </div>
 
-
+<div style="background: #9F224108; padding-top: 20px; padding-bottom: 40px;">
 
         <div class="row" style="padding-top:40px">
             <div class="col-xs-12 text-center">
                 <h2 class="title-ejes">Materiales para difusión <br> y consulta</h2>
             </div>
-        </div>
-
-        <section>
-            <div class="col-md-12">
-                <img src="assets/fcd/festival-cuidados.jpg" alt="Festival de Cuidados"
-                    class="img-responsive img-rounded intro-img right-block img-fdc-center">
+            <div class="carousel-wrapper">
+              <button class="carousel-btn left" onclick="scrollCarruselFdc(-1)" style="color: black;">
+                    &#10094;
+                  </button>
+                  <div class="carrusel-scroll horizontal" id="carrusel-horizontal-fdc">
+                    <div class="card-fcd">
+                      <img src="assets/fcd/festival-cuidados.jpg" alt="Festival de Cuidados"
+                    class="img-rounded intro-img right-block img-fdc-center">
+                    </div>
+                    <div class="card-fcd">
+                      <img src="assets/fcd/Festival de los cuidado_Carrusel_02.png" alt="Festival de Cuidados"
+                    class="img-rounded intro-img right-block img-fdc-center">
+                    </div>
+                    <div class="card-fcd">
+                      <img src="assets/fcd/Festival de los cuidado_Carrusel_03.png" alt="Festival de Cuidados"
+                    class="img-rounded intro-img right-block img-fdc-center">
+                    </div>
+                    <div class="card-fcd">
+                      <img src="assets/fcd/Festival de los cuidado_Carrusel_04.png" alt="Festival de Cuidados"
+                    class="img-rounded intro-img right-block img-fdc-center">
+                    </div>
+                  </div>
+                  <button class="carousel-btn right" onclick="scrollCarruselFdc(1)" style="color: black;">
+                    &#10095;
+                  </button>
             </div>
-
             <div class="col-md-12" style="margin-top: 30px;">
 
             
-                <a class="boton-rojo boton-rojo-fcd boton-descarga botones-a " target="_blank"
-                    href="assets/fcd/festival-cuidados.jpg" download>
+                <a class="boton-rojo boton-rojo-fcd boton-descarga botones-a hover-descarga" target="_blank"
+                    href="assets/fcd/Festival de los cuidado_materiales.zip" download>
                     Descargar <br />
                     materiales 
                     <span style="
@@ -370,17 +389,12 @@
                                     font-size: 20px;" class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
                 </a>
             </div>
-
-        </section>
-
-
-        
+        </div>
       </div>
-     
     </main>
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

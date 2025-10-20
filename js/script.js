@@ -722,3 +722,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+function scrollCarruselFdc(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-fdc');
+    const cardWidth = carrusel.querySelector('.card-fdc').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }

@@ -2293,3 +2293,15 @@ h2{
       text-decoration-line: none;
       text-decoration-color: white !important;
     }
+
+    .hover-descarga:hover {
+      color: #9f2241;
+      text-decoration: none;
+      background-color: white;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.5);    
+      
+    }
+
+    .hover-descarga:hover .glyphicon {
+      border: 3px solid #9f2241 !important;
+    }
