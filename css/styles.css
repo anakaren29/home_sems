@@ -1263,7 +1263,7 @@ h2{
 
 /* Responsive logos mas chicos en mobil */
 @media (max-width: 576px) {
-.carousel-inner {
+/* .carousel-inner {
   height: 60vh;
   overflow: hidden;
 }
@@ -1273,7 +1273,7 @@ h2{
   height: 100%;
   object-fit: cover;
 }
-
+ */
 
   .imgCarrusel-bachillerato {
     height: 44px;
