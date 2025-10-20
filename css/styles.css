@@ -2305,3 +2305,16 @@ h2{
     .hover-descarga:hover .glyphicon {
       border: 3px solid #9f2241 !important;
     }
+
+    /*Ajusten en movil para carrusel ferial de cuidados*/
+    @media (max-width: 768px) {
+      .card-fcd {
+        width: 66.6666% !important;
+        box-sizing: border-box;
+        flex: 0 0 auto;
+      }
+
+      .carousel-btn {
+        display: block !important;
+      }
+    }
