@@ -127,6 +127,7 @@
     height: 310px;
     flex: 0 0 auto;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .card-consulta img {
@@ -2339,6 +2340,8 @@ color: var(--text-secondary);
 }
 
 .card-bachiller-esc h3 {
+    padding-top: 0;
+    margin-top: 0;
     color: #691C32;
 }
 
@@ -2355,6 +2358,7 @@ color: var(--text-secondary);
     align-items: center;
     font-weight: bold;
     padding-top: 10px;
+    margin-bottom: 10px;
 }
 
    
