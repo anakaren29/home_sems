@@ -731,3 +731,12 @@ function scrollCarruselFdc(direction) {
       behavior: 'smooth'
     });
   }
+
+function scrollCarruselBachillerConsulta(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-bachiller-consulta');
+    const cardWidth = carrusel.querySelector('.card-consulta').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
