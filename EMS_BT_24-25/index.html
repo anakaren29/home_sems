@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EMS BT 24-25</title>
+    <meta name="description" content="Mapa interactivo de planteles públicos de Educación Media Superior en México para el ciclo escolar 2024-2025">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="escudo_mexico.ico" type="image/x-icon">
+    
+    <!-- Preconexión para recursos externos -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.maptiler.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Precarga de hojas de estilo críticas -->
+    <link rel="preload" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"></noscript>
+    
+    <!-- Hojas de estilo con carga diferida -->
+    <link rel="stylesheet" href="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="Control.MiniMap.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="leaflet-search-master/src/leaflet-search.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="L.Control.Window.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --color-primario: #691C32;
+            --color-secundario: #8a2442;
+            --color-fondo: #ffffff;
+            --color-texto: #333;
+            --color-borde: #ddd;
+            --sombra: 0 0 15px rgba(0,0,0,0.2);
+        }
+        
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+        
+        html, body, #map {
+            height: 91%;
+            width: 100%;
+        }
+        
+        #panel {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-left: 15px;
+            background-color: var(--color-fondo);
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 8px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .info {
+            padding: 6px 8px;
+            background: rgba(255,255,255,0.9);
+            box-shadow: var(--sombra);
+            border-radius: 5px;
+        }
+        
+        .info h2 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+        
+        .legend {
+            line-height: 18px;
+            color: #555;
+        }
+        
+        .legend i {
+            width: 14px;
+            height: 14px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+            border-radius: 50%;
+            border: 1px solid #fff;
+        }
+        
+        .titulo {
+            margin: 1px 0;
+            padding: 0;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .img {
+            margin-left: 10px;
+            margin-bottom: -28px;
+        }
+        
+        .footer {
+            margin-top: 5px;
+        }
+        
+        select {
+            padding: 5px;
+            border: 1px solid var(--color-primario);
+            border-radius: 4px;
+            font-family: 'Noto Sans', sans-serif;
+            min-width: 200px;
+        }
+        
+        button {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover, button:focus {
+            background-color: var(--color-secundario);
+            outline: none;
+        }
+        
+        .info-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 10000;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow: auto;
+            display: none;
+        }
+        
+        .overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--color-borde);
+            padding-bottom: 10px;
+        }
+        
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-primario);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primario);
+            padding: 0 5px;
+        }
+        
+        .overlay-content {
+            line-height: 1.6;
+        }
+        
+        .overlay-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            display: none;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table td {
+            padding: 3px 5px;
+            vertical-align: top;
+        }
+        
+        @media (max-width: 768px) {
+            #panel {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 5px;
+                gap: 8px;
+            }
+            
+            .titulo p {
+                font-size: 1rem !important;
+            }
+            
+            select, button {
+                width: 95%;
+                font-size: 0.9rem;
+            }
+            
+            #map {
+                height: 85%;
+            }
+            
+            .info-overlay {
+                max-width: 95%;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .titulo p {
+                font-size: 0.9rem !important;
+            }
+            
+            #panel {
+                padding: 5px 0;
+            }
+        }
+        
+        [tabindex]:focus {
+            outline: 2px solid var(--color-primario);
+            outline-offset: 2px;
+        }
+        
+        @media (prefers-reduced-motion: no-preference) {
+            .info-overlay, .overlay-backdrop {
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+        }
+        
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        .error-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: #ffebee;
+            color: #c62828;
+            z-index: 10000;
+            text-align: center;
+            display: none;
+        }
+
+        .leaflet-marker-icon:focus, 
+        .leaflet-marker-icon:active, 
+        .leaflet-marker-icon:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Estilo para el icono record-circle de PODEBIS con fondo blanco */
+        .podebis-record-circle {
+            color: #a57f2c; /* Color específico solicitado */
+            font-size: 20px; /* Tamaño más pequeño */
+            background-color: white; /* Fondo blanco para el interior del círculo */
+            border-radius: 50%; /* Hacer el fondo circular */
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.7)); /* Sombra blanca */
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto de parpadeo para PODEBIS */
+        .blinking {
+            animation: blink 4s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Estilos para la simbología mejorada */
+        .legend h3 {
+            margin: 0 0 8px 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .legend-symbol {
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .legend-bachillerato {
+            background: #9b2247;
+            border: 1px solid #FFFFFF;
+        }
+
+        .legend-podebis {
+            background: #FFFFFF;
+            border: 2px solid #a57f2c;
+        }
+
+        .legend-podebis-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background-color: #a57f2c;
+            border-radius: 50%;
+            border: 1px solid #a57f2c;
+        }
+        
+        /* Leyenda para el icono record-circle */
+        .legend-record-circle {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        
+        .legend-record-circle-icon {
+            margin-right: 8px;
+            color: #a57f2c;
+            font-size: 16px;
+            background-color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Indicador de carga -->
+    <div id="loading">Cargando planteles...</div>
+    
+    <!-- Mensaje de error -->
+    <div class="error-message" id="errorMessage"></div>
+    
+    <div class="titulo">
+        <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
+            <b>Oferta académica en planteles públicos de Bachillerato Tecnológico</b>
+        </p>
+        <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">
+            Ciclo escolar 2024-2025
+        </p>
+    </div>
+
+    <!-- Panel de control -->
+    <div id="panel" aria-live="polite" aria-atomic="true">
+        <label for="Entidad" id="entidad-label" style="color: #691C32; font-size:0.9rem; font-family: noto sans;">
+            <b>Selección&nbsp;</b>
+        </label>
+        <select id="Entidad">
+            <option value="Todos" selected>Entidades federativas</option>
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Ciudad de México">Ciudad de México</option>
+            <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="México">México</option>
+            <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
+
+        <select id="Carrera">
+            <option value="Todos" selected>Todas las carreras</option>
+            <!-- Las opciones se llenarán dinámicamente -->
+        </select>
+
+        <select id="Sector">
+            <option value="Todos" selected>Todos los sectores</option>
+            <!-- Las opciones se llenarán dinámicamente -->
+        </select>
+
+        <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
+    </div>
+
+    <!-- Mapa -->
+    <div id="map"></div>
+    
+    <!-- Superposición de información -->
+    <div class="overlay-backdrop" id="overlayBackdrop"></div>
+    <div class="info-overlay" id="infoOverlay">
+        <div class="overlay-header">
+            <div class="overlay-title" id="overlayTitle"></div>
+            <button class="close-btn" id="closeOverlayBtn">×</button>
+        </div>
+        <div class="overlay-content" id="overlayContent"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-leaflet/latest/leaflet-mapbox-gl.js"></script>
+    <script src="Control.MiniMap.js"></script>
+    <script src="leaflet-search-master/src/leaflet-search.js"></script>
+    <script src="L.Control.Window.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+    
+    <!-- Script principal -->
+    <script>
+        // Configuración
+        const config = {
+            zoomNacional: {
+                center: [23.8173, -101.9665],
+                zoom: 5.5
+            },
+            maxBounds: [
+                [-0.3538, -141.4463], // suroeste
+                [53.8564, -52.8319]   // noreste
+            ],
+            // Acercamiento verificado para cada entidad
+            estadosBboxes: {
+                "Aguascalientes": [[21.4534, -102.8625], [22.4697, -101.9234]],
+                "Baja California": [[28.0000, -117.5000], [32.7188, -112.5000]],
+                "Baja California Sur": [[22.8644, -112.5000], [28.0000, -109.0000]],
+                "Campeche": [[17.4500, -92.5000], [21.1887, -89.0075]],
+                "Chiapas": [[14.5000, -94.5000], [18.0000, -90.0000]],
+                "Chihuahua": [[25.5000, -109.5000], [31.5000, -103.0000]],
+                "Ciudad de México": [[19.2051, -99.2172], [19.4854, -99.0278]],
+                "Coahuila de Zaragoza": [[24.9309, -103.8191], [29.5000, -99.5000]],
+                "Colima": [[18.6836, -104.7016], [19.5000, -103.5000]],
+                "Durango": [[22.3744, -106.9199], [26.8508, -102.5424]],
+                "Guanajuato": [[19.9879, -102.0272], [21.8690, -99.7852]],
+                "Guerrero": [[16.0000, -102.0000], [19.0000, -97.5000]],
+                "Hidalgo": [[19.5000, -99.5000], [21.5000, -97.5000]],
+                "Jalisco": [[18.5000, -105.5000], [22.5000, -101.5000]],
+                "México": [[18.0000, -100.5000], [20.5000, -98.5000]],
+                "Michoacán de Ocampo": [[17.5000, -103.5000], [20.5000, -100.0000]],
+                "Morelos": [[18.0000, -99.5000], [19.5000, -98.5000]],
+                "Nayarit": [[20.5000, -105.5000], [23.0000, -103.5000]],
+                "Nuevo León": [[23.5000, -101.0000], [27.5000, -98.5000]],
+                "Oaxaca": [[15.5000, -98.5000], [18.5000, -93.5000]],
+                "Puebla": [[17.5000, -99.0000], [21.0583, -96.9185]],
+                "Querétaro": [[19.9838, -100.5261], [21.7031, -99.0928]],
+                "Quintana Roo": [[17.9247, -89.2722], [21.6134, -86.6493]],
+                "San Luis Potosí": [[21.0000, -102.5000], [24.5000, -98.5000]],
+                "Sinaloa": [[22.1823, -108.8329], [26.9376, -105.6067]],
+                "Sonora": [[26.0000, -115.0000], [32.5000, -108.5000]],
+                "Tabasco": [[17.0000, -94.0000], [19.0000, -90.5000]],
+                "Tamaulipas": [[22.0000, -99.5000], [27.5000, -96.5000]],
+                "Tlaxcala": [[19.0351, -98.5616], [19.7284, -97.5418]],
+                "Veracruz de Ignacio de la Llave": [[17.2691, -98.2507], [22.3614, -93.5670]],
+                "Yucatán": [[19.5129, -90.3824], [21.5563, -87.4755]],
+                "Zacatecas": [[21.0000, -104.0000], [25.0000, -100.5000]]
+            }
+        };
+
+        // Variables globales
+        let map;
+        let mun;
+        let plantelesLayer;
+        let podebisLayer;
+        let municipiosResaltadosEntidad = null;
+        let searchControl;
+        let carrerasUnicas = new Set();
+        let sectoresUnicos = new Set();
+        let blinkingInterval;
+
+        // Orden personalizado para sectores
+        const ordenSectores = [
+            "Aeroespacial",
+            "Agroindustria",
+            "Automotriz y electromovilidad",
+            "Bienes de consumo",
+            "Economía circular",
+            "Electrónica y semiconductores",
+            "Energía",
+            "Energías limpias",
+            "Farmacéutica y dispositivos médicos",
+            "Industria del plástico",
+            "Industrias metálicas básicas",
+            "Logística",
+            "Metalmecánica",
+            "Química y petroquímica",
+            "Textil y calzado",
+            "Industria del entretenimiento",
+            "Industrial",
+            "Salud y cuidados",
+            "Turismo",
+            "TIC"
+        ];
+
+        // Función para formatear números con separador de miles
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Función para generar contenido base de popup
+        function generarPopupBase(feature) {
+            return `
+                <div style="text-align:center">
+                    <h4>${feature.properties.CCT}</h4>
+                    <h3>${feature.properties.Subsistema}</h3>
+                </div>
+                <hr>
+                <table>
+                    <tr><td style="text-align:left"><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                    <tr><td style="text-align:left"><b>Municipio: </b>${feature.properties.Municipio}</td></tr>
+                    <tr><td style="text-align:left"><b>Nombre: </b>${feature.properties.Nombre}</td></tr>
+                    <tr><td style="text-align:left"><b>Carrera: </b>${feature.properties.Carrera}</td></tr>
+                    <tr><td style="text-align:left"><b>Tipo de sector: </b>${feature.properties.Tipo_sec}</td></tr>
+                    <tr><td style="text-align:left"><b>Nombre del sector: </b>${feature.properties.Sector}</td></tr>
+                    <tr><td style="text-align:left"><b>Matrícula de la carrera: </b>${feature.properties.Mat_carr}</td></tr>
+                    <tr><td style="text-align:left"><b>Matrícula total del plantel: </b>${feature.properties.Matr_total}</td></tr>
+                </table>
+                <hr>`;
+        }
+
+        // Función optimizada para hacer zoom a una entidad
+        function zoomAEntidad(entidadSeleccionada) {
+            if (entidadSeleccionada === "Todos") {
+                map.flyTo(config.zoomNacional.center, config.zoomNacional.zoom, {
+                    duration: 0.5
+                });
+                return;
+            }
+            
+            const bounds = config.estadosBboxes[entidadSeleccionada];
+            
+            if (bounds) {
+                const leafletBounds = new L.LatLngBounds(
+                    new L.LatLng(bounds[0][0], bounds[0][1]),
+                    new L.LatLng(bounds[1][0], bounds[1][1])
+                );
+                
+                map.flyToBounds(leafletBounds, {
+                    padding: [50, 50],
+                    duration: 0.5,
+                    maxZoom: 10
+                });
+            }
+        }
+
+        // Función para cerrar el overlay
+        function closeInfoOverlay() {
+            document.getElementById('overlayBackdrop').style.display = 'none';
+            document.getElementById('infoOverlay').style.display = 'none';
+            document.getElementById('Entidad').focus();
+        }
+
+        // Función para filtrar planteles según selección
+        function filtrarPlanteles() {
+            const entidadSeleccionada = document.getElementById("Entidad").value;
+            const carreraSeleccionada = document.getElementById("Carrera").value;
+            const sectorSeleccionado = document.getElementById("Sector").value;
+            
+            const plantelesFiltrados = Planteles_carreras.features.filter(function(feature) {
+                const cumpleEntidad = (entidadSeleccionada === "Todos" || feature.properties.Entidad === entidadSeleccionada);
+                const cumpleCarrera = (carreraSeleccionada === "Todos" || feature.properties.Carrera === carreraSeleccionada);
+                const cumpleSector = (sectorSeleccionado === "Todos" || feature.properties.Sector === sectorSeleccionado);
+                return cumpleEntidad && cumpleCarrera && cumpleSector;
+            });
+            
+            plantelesLayer.clearLayers();
+            
+            if (plantelesFiltrados.length > 0) {
+                plantelesLayer.addData(plantelesFiltrados);
+            }
+            
+            // Asegurar que PODEBIS esté siempre encima
+            if (podebisLayer) {
+                map.removeLayer(podebisLayer);
+                map.addLayer(podebisLayer);
+            }
+            
+            searchControl.setLayer(plantelesLayer);
+            
+            // Actualizar el botón de limpiar
+            actualizarBotonLimpiar();
+        }
+
+        // Función para resaltar municipios por entidad
+        function resaltarMunicipiosPorEntidad() {
+            const entidadSeleccionada = document.getElementById("Entidad").value;
+            
+            if (municipiosResaltadosEntidad) {
+                map.removeLayer(municipiosResaltadosEntidad);
+            }
+            
+            if (entidadSeleccionada === "Todos") {
+                return;
+            }
+            
+            municipiosResaltadosEntidad = L.geoJSON(nvomun, {
+                pane: 'municipiosResaltados',
+                style: function(feature) {
+                    return {
+                        fillColor: feature.properties.Entidad === entidadSeleccionada ? '#98989a' : '#D3D3D3',
+                        weight: feature.properties.Entidad === entidadSeleccionada ? 1.5 : 0.8,
+                        opacity: feature.properties.Entidad === entidadSeleccionada ? 1 : 0.4,
+                        color: feature.properties.Entidad === entidadSeleccionada ? '#5e5e5e' : '#6F7271',
+                        dashArray: '0',
+                        fillOpacity: feature.properties.Entidad === entidadSeleccionada ? 0.7 : 0.6
+                    };
+                },
+                onEachFeature: popupMunicipio
+            }).addTo(map);
+        }
+
+        // Función para verificar selección activa
+        function haySeleccionActiva() {
+            const entidad = document.getElementById("Entidad").value;
+            const carrera = document.getElementById("Carrera").value;
+            const sector = document.getElementById("Sector").value;
+            return entidad !== "Todos" || carrera !== "Todos" || sector !== "Todos";
+        }
+
+        // Función para actualizar el botón de limpiar
+        function actualizarBotonLimpiar() {
+            const limpiarBtn = document.getElementById("limpiarBtn");
+            limpiarBtn.style.display = haySeleccionActiva() ? "inline-block" : "none";
+        }
+
+        // Función para limpiar todas las selecciones
+        function limpiarSeleccion() {
+            document.getElementById("Entidad").value = "Todos";
+            document.getElementById("Carrera").value = "Todos";
+            document.getElementById("Sector").value = "Todos";
+            
+            // Actualizar selectores para mostrar todas las opciones
+            actualizarSelectoresCompletamente();
+            
+            // Aplicar filtros
+            filtrarPlanteles();
+            resaltarMunicipiosPorEntidad();
+            zoomAEntidad("Todos");
+            
+            document.getElementById("limpiarBtn").style.display = "none";
+        }
+
+        // Función para obtener datos filtrados según selecciones actuales
+        function obtenerDatosFiltrados() {
+            return Planteles_carreras.features;
+        }
+
+        // Función para ordenar sectores según el orden personalizado
+        function ordenarSectoresPersonalizado(sectoresArray) {
+            return sectoresArray.sort((a, b) => {
+                const indexA = ordenSectores.indexOf(a);
+                const indexB = ordenSectores.indexOf(b);
+                
+                // Si ambos están en el orden personalizado, usar ese orden
+                if (indexA !== -1 && indexB !== -1) {
+                    return indexA - indexB;
+                }
+                // Si solo A está en el orden personalizado, A va primero
+                if (indexA !== -1) {
+                    return -1;
+                }
+                // Si solo B está en el orden personalizado, B va primero
+                if (indexB !== -1) {
+                    return 1;
+                }
+                // Si ninguno está en el orden personalizado, orden alfabético
+                return a.localeCompare(b);
+            });
+        }
+
+        // Función para actualizar los selectores de manera interoperante
+        function actualizarSelectoresCompletamente() {
+            const datosCompletos = obtenerDatosFiltrados();
+            const entidadActual = document.getElementById("Entidad").value;
+            const carreraActual = document.getElementById("Carrera").value;
+            const sectorActual = document.getElementById("Sector").value;
+            
+            // Obtener todas las combinaciones posibles
+            const entidadesDisponibles = new Set();
+            const carrerasDisponibles = new Set();
+            const sectoresDisponibles = new Set();
+            
+            // Primer filtrado: obtener todos los valores disponibles sin filtros
+            datosCompletos.forEach(function(feature) {
+                if (feature.properties.Entidad && feature.properties.Entidad !== "") {
+                    entidadesDisponibles.add(feature.properties.Entidad);
+                }
+                if (feature.properties.Carrera && feature.properties.Carrera !== "") {
+                    carrerasDisponibles.add(feature.properties.Carrera);
+                }
+                if (feature.properties.Sector && feature.properties.Sector !== "") {
+                    sectoresDisponibles.add(feature.properties.Sector);
+                }
+            });
+            
+            // Segundo filtrado: aplicar filtros cruzados entre los tres selectores
+            const entidadesFiltradas = new Set();
+            const carrerasFiltradas = new Set();
+            const sectoresFiltrados = new Set();
+            
+            datosCompletos.forEach(function(feature) {
+                let cumpleFiltros = true;
+                
+                // Verificar si cumple con las selecciones actuales
+                if (entidadActual !== "Todos" && feature.properties.Entidad !== entidadActual) {
+                    cumpleFiltros = false;
+                }
+                if (carreraActual !== "Todos" && feature.properties.Carrera !== carreraActual) {
+                    cumpleFiltros = false;
+                }
+                if (sectorActual !== "Todos" && feature.properties.Sector !== sectorActual) {
+                    cumpleFiltros = false;
+                }
+                
+                if (cumpleFiltros) {
+                    // Para entidades: mostrar todas las que tienen la combinación carrera-sector seleccionado
+                    if (carreraActual !== "Todos" || sectorActual !== "Todos") {
+                        if (feature.properties.Entidad && feature.properties.Entidad !== "") {
+                            entidadesFiltradas.add(feature.properties.Entidad);
+                        }
+                    }
+                    
+                    // Para carreras: mostrar todas las que tienen la combinación entidad-sector seleccionado
+                    if (entidadActual !== "Todos" || sectorActual !== "Todos") {
+                        if (feature.properties.Carrera && feature.properties.Carrera !== "") {
+                            carrerasFiltradas.add(feature.properties.Carrera);
+                        }
+                    }
+                    
+                    // Para sectores: mostrar todos los que tienen la combinación entidad-carrera seleccionada
+                    if (entidadActual !== "Todos" || carreraActual !== "Todos") {
+                        if (feature.properties.Sector && feature.properties.Sector !== "") {
+                            sectoresFiltrados.add(feature.properties.Sector);
+                        }
+                    }
+                }
+            });
+            
+            // Actualizar selector de entidades
+            const entidadSelect = document.getElementById("Entidad");
+            const opcionesEntidadOriginales = Array.from(entidadSelect.options);
+            
+            // Habilitar/deshabilitar opciones de entidad basado en las combinaciones disponibles
+            opcionesEntidadOriginales.forEach(function(option) {
+                if (option.value === "Todos") {
+                    option.disabled = false;
+                } else {
+                    // Deshabilitar entidades que no tienen la combinación carrera-sector seleccionada
+                    if (carreraActual !== "Todos" || sectorActual !== "Todos") {
+                        option.disabled = !entidadesFiltradas.has(option.value);
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+            });
+            
+            // Si la entidad actual está deshabilitada, resetear a "Todos"
+            if (entidadActual !== "Todos") {
+                const opcionActual = Array.from(entidadSelect.options).find(opt => opt.value === entidadActual);
+                if (opcionActual && opcionActual.disabled) {
+                    entidadSelect.value = "Todos";
+                }
+            }
+            
+            // Actualizar selector de carreras
+            const carreraSelect = document.getElementById("Carrera");
+            carreraSelect.innerHTML = '<option value="Todos">Todas las carreras</option>';
+            
+            const carrerasParaMostrar = (entidadActual !== "Todos" || sectorActual !== "Todos") ? 
+                (carrerasFiltradas.size > 0 ? Array.from(carrerasFiltradas) : Array.from(carrerasDisponibles)) : 
+                Array.from(carrerasDisponibles);
+                
+            carrerasParaMostrar.sort().forEach(function(carrera) {
+                const option = document.createElement("option");
+                option.value = carrera;
+                option.textContent = carrera;
+                carreraSelect.appendChild(option);
+            });
+            
+            // Si la carrera actual no está disponible, resetear a "Todos"
+            if (carreraActual !== "Todos" && !carrerasParaMostrar.includes(carreraActual)) {
+                carreraSelect.value = "Todos";
+            } else {
+                carreraSelect.value = carreraActual;
+            }
+            
+            // Actualizar selector de sectores
+            const sectorSelect = document.getElementById("Sector");
+            sectorSelect.innerHTML = '<option value="Todos">Todos los sectores</option>';
+            
+            const sectoresParaMostrar = (entidadActual !== "Todos" || carreraActual !== "Todos") ? 
+                (sectoresFiltrados.size > 0 ? Array.from(sectoresFiltrados) : Array.from(sectoresDisponibles)) : 
+                Array.from(sectoresDisponibles);
+            
+            // Aplicar orden personalizado a los sectores
+            const sectoresOrdenados = ordenarSectoresPersonalizado(sectoresParaMostrar);
+                
+            sectoresOrdenados.forEach(function(sector) {
+                const option = document.createElement("option");
+                option.value = sector;
+                option.textContent = sector;
+                sectorSelect.appendChild(option);
+            });
+            
+            // Si el sector actual no está disponible, resetear a "Todos"
+            if (sectorActual !== "Todos" && !sectoresOrdenados.includes(sectorActual)) {
+                sectorSelect.value = "Todos";
+            } else {
+                sectorSelect.value = sectorActual;
+            }
+        }
+
+        // Función para inicializar los selectores al cargar
+        function inicializarSelectores() {
+            // Llenar selectores con todas las opciones disponibles
+            const carrerasUnicas = new Set();
+            const sectoresUnicos = new Set();
+            
+            Planteles_carreras.features.forEach(function(feature) {
+                if (feature.properties.Carrera && feature.properties.Carrera !== "") {
+                    carrerasUnicas.add(feature.properties.Carrera);
+                }
+                if (feature.properties.Sector && feature.properties.Sector !== "") {
+                    sectoresUnicos.add(feature.properties.Sector);
+                }
+            });
+            
+            const carreraSelect = document.getElementById("Carrera");
+            const sectorSelect = document.getElementById("Sector");
+            
+            // Ordenar y llenar carreras
+            Array.from(carrerasUnicas).sort().forEach(function(carrera) {
+                const option = document.createElement("option");
+                option.value = carrera;
+                option.textContent = carrera;
+                carreraSelect.appendChild(option);
+            });
+            
+            // Ordenar y llenar sectores con orden personalizado
+            const sectoresOrdenados = ordenarSectoresPersonalizado(Array.from(sectoresUnicos));
+            sectoresOrdenados.forEach(function(sector) {
+                const option = document.createElement("option");
+                option.value = sector;
+                option.textContent = sector;
+                sectorSelect.appendChild(option);
+            });
+        }
+
+        // Función para popup de municipios
+        function popupMunicipio(feature, layer) {
+            if (feature.properties && feature.properties.NOMGEO) {
+                // Formatear los números con separador de miles
+                const conEMSsigue = formatNumber(feature.properties.Con_EMS_sigue);
+                const conEMSNoSigue = formatNumber(feature.properties.Con_EMS_NoSigue);
+                const pobTot25 = formatNumber(feature.properties.PobTot25);
+                const pob1519 = formatNumber(feature.properties.Pob_15_19);
+                
+                layer.bindPopup(
+                    `<div style="text-align:center">
+                        <h2>${feature.properties.NOMGEO}</h2>
+                    </div>
+                    <hr>
+                    <table>
+                        <tr><td><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                        <tr><td><b>Grado de marginación: </b>${feature.properties.GM_2020}</td></tr>
+                        <tr><td><b>Población total: </b>${pobTot25}</td></tr>
+                        <tr><td><b>Población 15 a 19: </b>${pob1519}</td></tr>
+                        <tr><td><b>Porcentaje 15 a 19: </b>${feature.properties.Porc_15_19}</td></tr>
+                    </table>`,
+                    {minWidth: 150, maxWidth: 200}
+                );
+            }
+        }
+
+        // Estilo para planteles
+        function estiloPlanteles(feature) {
+            return {
+                radius: 6,
+                fillColor: colorPuntos(feature.properties.Subsistema),
+                color: "#FFFFFF",
+                weight: 0.5,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+        }
+
+        // Función para crear marcadores PODEBIS con icono record-circle
+        function createPodebisMarker(feature, latlng) {
+            // Crear el icono record-circle de Bootstrap
+            const recordCircleIcon = L.divIcon({
+                className: 'podebis-record-circle blinking',
+                html: '<i class="bi bi-record-circle"></i>',
+                iconSize: [20, 20], // Tamaño más pequeño
+                iconAnchor: [10, 10],
+                popupAnchor: [0, -10]
+            });
+            
+            return L.marker(latlng, { icon: recordCircleIcon });
+        }
+
+        // Función para manejar eventos de mouse en puntos PODEBIS
+        function onEachPodebisFeature(feature, layer) {
+            // Tooltip con la propiedad descriptio
+            layer.bindTooltip(feature.properties.descriptio, {
+                permanent: false,
+                direction: 'top',
+                className: 'podebis-tooltip'
+            });
+
+            // Eventos para el efecto de resaltado
+            layer.on('mouseover', function() {
+                // Cambiar estilo para resaltar - hacer el icono más grande
+                const iconElement = layer.getElement();
+                if (iconElement) {
+                    iconElement.style.fontSize = '24px';
+                    iconElement.style.filter = 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))'; // Sombra blanca
+                }
+            });
+
+            layer.on('mouseout', function() {
+                // Restaurar estilo original
+                const iconElement = layer.getElement();
+                if (iconElement) {
+                    iconElement.style.fontSize = '20px';
+                    iconElement.style.filter = 'drop-shadow(0 0 2px rgba(255, 255, 255, 0.7))'; // Sombra blanca
+                }
+            });
+
+            // Popup para PODEBIS
+            if (feature.properties) {
+                let popupContent = `<div style="text-align:center"><h3>${feature.properties.descriptio || 'Polo de Desarrollo'}</h3></div>`;
+                
+                if (feature.properties.entidad) {
+                    popupContent += `<p><b>Entidad:</b> ${feature.properties.entidad}</p>`;
+                }
+                
+                if (feature.properties.municipio) {
+                    popupContent += `<p><b>Municipio:</b> ${feature.properties.municipio}</p>`;
+                }
+                
+                if (feature.properties.descripcion) {
+                    popupContent += `<p><b>Descripción:</b> ${feature.properties.descripcion}</p>`;
+                }
+            }
+        }
+
+        // Función para color de puntos
+        function colorPuntos(d) {
+            const colores = {
+                "DGETAyCM": '#9b2247',
+                "DGETI": '#9b2247',
+                "BTED": '#9b2247',
+                "CETI": '#9b2247',
+                "CECyTE": '#9b2247',
+                "CONALEP (CDMX-OAX)": '#9b2247',
+                "CONALEP (Estados)": '#9b2247',
+            };
+            return colores[d] || '#000000';
+        }
+
+        // Popup para planteles con oferta educativa
+        function popupPlanteles(feature, layer) {
+            const baseContent = generarPopupBase(feature);
+            
+            const content = baseContent + `
+                <table>
+                    <tr><td style="text-align:left"><b>Oferta educativa adicional: </b>${feature.properties.Otros || 'No disponible'}</td></tr>
+                </table>`;
+            
+            layer.bindPopup(content, {minWidth: 250, maxWidth: 300});
+        }
+
+        function inicializarMapa() {
+            map = L.map('map', {
+                center: config.zoomNacional.center,
+                zoom: config.zoomNacional.zoom,
+                zoomSnap: 0.25,
+                zoomDelta: 0.25,
+                wheelPxPerZoomLevel: 60,
+                maxBounds: config.maxBounds,
+                zoomControl: false,
+                inertia: true,
+                inertiaDeceleration: 3000
+            });
+
+            L.control.zoom({
+                zoomInTitle: 'Acercar',
+                zoomOutTitle: 'Alejar',
+                zoomInText: '+',
+                zoomOutText: '-',
+                zoomDelta: 0.25
+            }).addTo(map);
+
+            // Crear paneles personalizados
+            map.createPane('municipiosResaltados');
+            map.getPane('municipiosResaltados').style.zIndex = 350;
+            
+            // Panel específico para PODEBIS con mayor z-index
+            map.createPane('podebisPane');
+            map.getPane('podebisPane').style.zIndex = 450; // Mayor que overlayPane (400)
+
+            const grises = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                minZoom: 5, 
+                maxZoom: 16,
+                attribution: 'Fuente: DGPPyEE-SEP, ciclo escolar 24-25'
+            }).addTo(map);
+
+            const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                minZoom: 5, 
+                maxZoom: 18,
+                attribution: 'Fuente: DGPPyEE-SEP'
+            });
+
+            const baseLayers = {
+                "Mapa en grises": grises,
+                "Mapa satelital": Esri_WorldImagery
+            };
+            L.control.layers(baseLayers, null, {collapsed: false}).addTo(map);
+
+            const win = L.control.window(map, {
+                title: '¿Cómo navegar el mapa interactivo?', 
+                content: 'El mapa permite explorar la oferta académica de los planteles públicos de Bachillerato Tecnológico para el ciclo 2024-2025, así como la ubicación de los Polos de Desarrollo para el Bienestar (PODEBIS), en el marco del Plan México. Además, es posible identificar el sector estratégico, secundario o transversal al que pertenece cada carrera técnica. <br>Para navegar es posible:<br>-Filtrar los resultados por entidad federativa, carrera o sector.<br>-Buscar directamente por Clave de Centro de Trabajo (CCT) del plantel.<br>-Activar la ubicación en tiempo real para encontrar opciones cercanas.', 
+                position: 'top'
+            }).show();
+
+            L.control.resetView({
+                position: "topleft",
+                title: "Restaurar vista",
+                latlng: L.latLng(config.zoomNacional.center),
+                zoom: config.zoomNacional.zoom,
+            }).addTo(map);
+        }
+
+        function inicializarCapas() {
+            try {
+                mun = L.geoJSON(nvomun, {
+                    style: function() {
+                        return {
+                            fillColor: '#D3D3D3',
+                            weight: 0.8,
+                            opacity: 0.4,
+                            color: '#6F7271',
+                            dashArray: '0',
+                            fillOpacity: 0.6
+                        };
+                    },
+                    pane: 'tilePane', 
+                    onEachFeature: popupMunicipio
+                }).addTo(map);
+
+                plantelesLayer = L.geoJSON(Planteles_carreras, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng);
+                    },
+                    pane: 'overlayPane',
+                    style: estiloPlanteles,
+                    onEachFeature: popupPlanteles
+                }).bindTooltip(function (layer) {
+                    return layer.feature.properties.Subsistema;
+                });
+
+                // Capa PODEBIS con panel personalizado
+                podebisLayer = L.geoJSON(PODEBIS, {
+                    pointToLayer: function (feature, latlng) {
+                        return createPodebisMarker(feature, latlng);
+                    },
+                    pane: 'podebisPane',
+                    onEachFeature: onEachPodebisFeature
+                });
+
+                // Añadir capas en el orden correcto
+                map.addLayer(plantelesLayer);
+                map.addLayer(podebisLayer);
+                
+            } catch (error) {
+                console.error("Error al cargar las capas:", error);
+                document.getElementById('errorMessage').textContent = "Error al cargar los datos del mapa. Por favor recargue la página.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+
+        function inicializarControles() {
+            searchControl = new L.Control.Search({
+                layer: plantelesLayer,
+                propertyName: 'CCT',
+                circleLocation: true,
+                collapsed: true,
+                zoom: 13,
+                hideMarkerOnCollapse: true,
+                textPlaceholder: 'Búsqueda por CCT',
+            });
+            
+            searchControl.on('search_locationfound', function(e) {
+                e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+            }).on('search_collapsed', function() {
+                plantelesLayer.resetStyle();
+            });
+            
+            map.addControl(searchControl);
+
+            // SIMBOLOGÍA ACTUALIZADA CON ICONO RECORD-CIRCLE
+            const legend = L.control({position: 'bottomright'});
+            
+            legend.onAdd = function () {
+                const div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML = '<h3>Simbología</h3>' +
+                               '<div class="legend-item">' +
+                               '<div class="legend-symbol legend-bachillerato"></div>' +
+                               '<span>Bachillerato Tecnológico</span>' +
+                               '</div>' +
+                               '<div class="legend-record-circle">' +
+                               '<div class="legend-record-circle-icon"><i class="bi bi-record-circle"></i></div>' +
+                               '<span>Polo de Desarrollo</span>' +
+                               '</div>';
+                return div;
+            };
+            
+            legend.addTo(map);
+
+            const lc = L.control.locate({
+                position: "topleft",
+                flyTo: true,
+                strings: {
+                    title: "Su localización",
+                    popup: "Su ubicación aproximada es a {distance}m de este punto."
+                },
+                locateOptions: {
+                    enableHighAccuracy: true,
+                    maxZoom: 14
+                }
+            }).addTo(map);
+        }
+
+        // Inicialización al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                inicializarMapa();
+                inicializarCapas();
+                inicializarControles();
+                
+                // Inicializar selectores
+                inicializarSelectores();
+                
+                // Configurar event listeners
+                document.getElementById('Entidad').addEventListener('change', function() {
+                    resaltarMunicipiosPorEntidad();
+                    zoomAEntidad(document.getElementById("Entidad").value);
+                    actualizarSelectoresCompletamente();
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
+                document.getElementById('Carrera').addEventListener('change', function() {
+                    actualizarSelectoresCompletamente();
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
+                document.getElementById('Sector').addEventListener('change', function() {
+                    actualizarSelectoresCompletamente();
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
+                document.getElementById('limpiarBtn').addEventListener('click', limpiarSeleccion);
+                document.getElementById('closeOverlayBtn').addEventListener('click', closeInfoOverlay);
+                document.getElementById('overlayBackdrop').addEventListener('click', closeInfoOverlay);
+                
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error("Error al inicializar:", error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('errorMessage').textContent = "Error al cargar el mapa. Por favor recargue la página.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+
+        // Deshabilitar clic derecho
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+
+    <!-- Capas JS -->
+    <script src="nvomun.js"></script>
+    <script src="Planteles_carreras.js"></script>
+    <script src="PODEBIS.js"></script>
+
+    <footer>
+        <div style="text-align: center;">
+            <div class="img" style="margin-bottom: 15px;">
+                <img src="SEP_25.png" 
+                     style="display: block; margin: 0 auto;" 
+                     width="200"
+                     height="88"
+                     alt="Logo de la Secretaría de Educación Pública"
+                     loading="lazy">
+            </div>
+            <div class="footer">
+                <p style="color: #691C32; font-size:0.7rem; font-family: Noto Sans; text-align:center">
+                    <b>Subsecretaría de Educación Media Superior | Área de Estadística</b>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
