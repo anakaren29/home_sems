@@ -1523,7 +1523,8 @@ color: var(--text-secondary);
     .card-bachiller .col-sm-5:nth-of-type(2) > p::after {
         content: "";
         display: block;
-        background-image: url('../assets/bachiller/bachiller3.png');
+        background-image: url('../assets/bachiller/bachiller2.png');
+        /*background-image: url('../assets/bachiller/bachiller3.png');*/
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -1853,6 +1854,10 @@ color: var(--text-secondary);
     height: 24px !important;
     font-size: 13px !important;
     margin-top: 0 !important;
+}
+
+.tamano {
+    width: 198px !important;
 }
 
 }
@@ -2359,6 +2364,10 @@ color: var(--text-secondary);
     font-weight: bold;
     padding-top: 10px;
     margin-bottom: 10px;
+}
+
+.tamano {
+ width: 132px;
 }
 
    
