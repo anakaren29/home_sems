@@ -2370,4 +2370,34 @@ color: var(--text-secondary);
  width: 132px;
 }
 
-   
+.img-1-lvd {
+    width: 243px;
+    height: 309px;
+    border-radius: 25px;
+}
+
+.video-lvd {
+    width: 315px;
+    height: 362px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-img-lvd img {
+    width: 236px;
+    height: 236px;
+    border-radius: 25px;
+}
+
+.card-img-modal-lvd {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+

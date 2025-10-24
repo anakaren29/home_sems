@@ -740,3 +740,48 @@ function scrollCarruselBachillerConsulta(direction) {
       behavior: 'smooth'
     });
   }
+
+  function scrollCarruselLVD(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal');
+    const cardWidth = carrusel.querySelector('.card-img-lvd').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  //modal galería - te extrañamos en el salón campaña 2 
+  function scrollCarruselModalLVD(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-lvd-modal');
+    const cardWidth = carrusel.querySelector('.card-img-modal-lvd').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function openModalLVD(index) {
+    console.log("Abriendo modal en índice:", index);
+    const modal = document.getElementById("modalLasViolenciasDigitales");
+    const carrusel = document.getElementById('carrusel-horizontal-lvd-modal');
+    modal.style.display = "block";
+    setTimeout(() => {
+      const card = carrusel.querySelector('.card-img-modal-lvd');
+      if (card) {
+        const cardWidth = card.offsetWidth + 20;
+        carrusel.scrollTo({
+          left: index * cardWidth,
+          behavior: 'smooth'
+        });
+      }
+    }, 200);
+  }
+  function closeModalLVD() {
+    document.getElementById("modalLasViolenciasDigitales").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalLasViolenciasDigitales");
+    if (event.target === modal) {
+      closeModalLVD();
+    }
+  }
