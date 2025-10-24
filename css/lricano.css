@@ -1860,6 +1860,18 @@ color: var(--text-secondary);
     width: 198px !important;
 }
 
+#carrusel-horizontal .card-img-lvd {
+    width: 66.6666% !important;
+        box-sizing: border-box;
+        flex: 0 0 auto;
+  }
+
+  #carrusel-horizontal .card-img-lvd img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
 }
 
 .vinagrillo-1 {
@@ -2388,6 +2400,7 @@ color: var(--text-secondary);
     width: 236px;
     height: 236px;
     border-radius: 25px;
+    cursor: pointer;
 }
 
 .card-img-modal-lvd {
