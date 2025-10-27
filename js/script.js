@@ -785,3 +785,12 @@ function scrollCarruselBachillerConsulta(direction) {
       closeModalLVD();
     }
   }
+
+  function scrollCarruselRed2(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-red-2');
+    const cardWidth = carrusel.querySelector('.pdf-red').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
