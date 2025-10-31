@@ -1174,7 +1174,7 @@
     }
 } 
 
-@media (min-width: 1921px) and (max-width: 2560px) {
+@media (min-width: 1920px) and (max-width: 2560px) {
     .seccion-pregunta {
         max-width: 1450px;
     }
