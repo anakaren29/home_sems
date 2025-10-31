@@ -1296,6 +1296,91 @@
       </script>
       -->
       <script>
+
+
+  function topBoletines() {
+    //console.log("boletines");
+    const folio = "1";
+
+    $.ajax({
+      url: 'https://educacionmediasuperior.sep.gob.mx/adminSEMS/filtro-boletin.php',
+      type: 'POST',
+      data: {
+        datoBusqueda: "folio",
+        tipo: "top",
+        datoComplemento: folio,
+        orden: "ASC"
+      },
+      success: function (response) {
+        const successBoletin = JSON.parse(response);
+        // console.log(successBoletin.items);
+        //console.log(successBoletin.status);
+
+        if (successBoletin && successBoletin.items.length > 0) {
+          // Limpiar contenedor antes de dibujar
+          $("#carrusel-horizontal").html("");
+
+          successBoletin.items.forEach(item => {
+
+            // formatear fecha
+            // formatear fecha
+            const [year, month, day] = item.cFecha.split("-");
+            const fecha = new Date(year, month - 1, day); // <-- este Date es local
+
+            const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+            const fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
+
+            // construir la tarjeta
+            let card = `
+                    <div class="card-noticia card-carrusel">
+                      <div class="container-description">
+                        <div class="imagen-carrusel">
+                          <img
+                            style="width: 100%; border-radius: 10px"
+                            src="${item.cFoto}"
+                            alt="boltin1"
+                            class="img-responsive"
+                          />
+                        </div>
+                        <div class="divisor-carrusel"></div>
+                        <div class="carrusel-description">
+                          <p class="fecha">${fechaFormateada}</p>
+                          <h4 class="titulo-noticia">
+                          ${item.cTitulo}
+                          </h4>
+                          <p class="descripcion">
+                            ${item.cDescripcion}
+                          </p>
+                          <div class="buton-leer-mas">
+                            <a href="/boletin.html?folio=${item.nId}" target="_blank" class="carrusel-a">
+                              <button type="button" class="btn boton">
+                              Leer<span
+                                class="glyphicon glyphicon-chevron-right"
+                              ></span>
+                            </a>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+
+
+            $("#carrusel-horizontal").append(card);
+          });
+
+        } else {
+          $("#carrusel-horizontal").html("<p>No se encontraron boletines.</p>");
+        }
+      },
+      error: function (xhr, status, error) {
+        $('#carrusel-horizontal').html('Error al cargar boletín: ' + error);
+      }
+    });
+  }
+
+  topBoletines();
+
       $(document).ready(function () {
         $('.open-modal').click(function (e) {
           e.preventDefault();
