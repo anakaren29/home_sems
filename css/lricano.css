@@ -453,9 +453,8 @@
 
 .encabezado {
     background-color: #9F2241; 
-    padding-top: 2px; 
+    padding-top: 15px; 
     padding-bottom: 10px; 
-    margin-bottom: 10px;
     color: #ffffff;
     text-align: center !important;
 }
@@ -2458,4 +2457,33 @@ color: var(--text-secondary);
   width: 100%;
 }
 
+
+.tooltip-container {
+  position: relative; 
+  display: inline-block; 
+  cursor: help; 
+}
+
+.tooltip-text {
+  visibility: hidden; 
+  width: 120px; 
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1; 
+  bottom: 150%; 
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible; 
+  opacity: 1; 
+}
 
