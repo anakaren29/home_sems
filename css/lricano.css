@@ -453,9 +453,8 @@
 
 .encabezado {
     background-color: #9F2241; 
-    padding-top: 2px; 
+    padding-top: 15px; 
     padding-bottom: 10px; 
-    margin-bottom: 10px;
     color: #ffffff;
     text-align: center !important;
 }
@@ -730,6 +729,11 @@
         margin: 0 !important;
         padding: 2px !important;
         align-items: center;
+    }
+
+    .tbar4 {
+        max-width: 100% !important;
+        left: 0 !important;
     }
 
     .titulo-bar4 p {
@@ -1174,7 +1178,7 @@
     }
 } 
 
-@media (min-width: 1921px) and (max-width: 2560px) {
+@media (min-width: 1920px) and (max-width: 2560px) {
     .seccion-pregunta {
         max-width: 1450px;
     }
@@ -1524,7 +1528,7 @@ color: var(--text-secondary);
         content: "";
         display: block;
         background-image: url('../assets/bachiller/bachiller2.png');
-        /*background-image: url('../assets/bachiller/bachiller3.png');*/
+        /*background-image: url('../assets/bachiller/PORTADA BACHILLER 02.jpg');*/
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -1883,6 +1887,10 @@ color: var(--text-secondary);
     width: 100% !important;
     height: auto !important;
     object-fit: cover;
+  }
+
+  html, body{
+    overflow-x: hidden !important;
   }
 
 }
@@ -2458,4 +2466,33 @@ color: var(--text-secondary);
   width: 100%;
 }
 
+
+.tooltip-container {
+  position: relative; 
+  display: inline-block; 
+  cursor: help; 
+}
+
+.tooltip-text {
+  visibility: hidden; 
+  width: 120px; 
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1; 
+  bottom: 150%; 
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible; 
+  opacity: 1; 
+}
 
