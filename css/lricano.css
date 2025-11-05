@@ -731,6 +731,11 @@
         align-items: center;
     }
 
+    .tbar4 {
+        max-width: 100% !important;
+        left: 0 !important;
+    }
+
     .titulo-bar4 p {
         text-align: center;
         padding: 0 !important;
@@ -1882,6 +1887,10 @@ color: var(--text-secondary);
     width: 100% !important;
     height: auto !important;
     object-fit: cover;
+  }
+
+  html, body{
+    overflow-x: hidden !important;
   }
 
 }
