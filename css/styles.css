@@ -2325,3 +2325,6 @@ h2{
     }
 
     
+  .card-img-virtual{
+    border-radius: 20px;
+  }

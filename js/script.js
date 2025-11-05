@@ -422,6 +422,17 @@ function scrollCarruselGaleria(direction) {
       behavior: 'smooth'
     });
   }
+
+function scrollCarruselGaleriaVirtual(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal');
+    const cardWidth = carrusel.querySelector('card-img-virtual').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+
 /*AVANCE AUTOMATICO CARRUSEL BACHILLER EN MOVIL */
   document.addEventListener('DOMContentLoaded', function () {
   const cards = document.querySelectorAll('.card-bachiller');
@@ -473,7 +484,40 @@ function scrollCarruselVideos(direction) {
     });
   }
 
+//modal-fdc-virtual
+function scrollCarruselModalVirtual(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-fdcVirtual');
+    const cardWidth = carrusel.querySelector('.card-img-fcd').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
 
+  function openModal(index =0) {
+    const modal = document.getElementById("modalVirtual");
+    const carrusel = document.getElementById('carrusel-horizontal-fdcVirtual');
+    modal.style.display = "block";
+    setTimeout(() => {
+      const card = carrusel.querySelector('.card-img-fcd');
+      if (card) {
+        const cardWidth = card.offsetWidth + 20;
+        carrusel.scrollTo({
+          left: index * cardWidth,
+          behavior: 'smooth'
+        });
+      }
+    }, 200);
+  }
+  function closeModal() {
+    document.getElementById("modalVirtual").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalVirtual");
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
 
 //modal galería - te extrañamos en el salón campaña 2 
   function scrollCarruselModal(direction) {
