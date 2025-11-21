@@ -2328,3 +2328,11 @@ h2{
   .card-img-virtual{
     border-radius: 20px;
   }
+
+  .videos-dialogos{
+    display: flex;
+    justify-content: center;
+  }
+  .video-round{
+    border-radius: 20px;
+  }

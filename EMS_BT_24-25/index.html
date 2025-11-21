@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>EMS BT 24-25</title>
+    <title>Bachillerato Nacional 24-25</title>
     <meta name="description" content="Mapa interactivo de planteles públicos de Educación Media Superior en México para el ciclo escolar 2024-2025">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="escudo_mexico.ico" type="image/x-icon">
@@ -279,9 +279,9 @@
             box-shadow: none !important;
         }
 
-        /* Estilo para el icono record-circle de PODEBIS con fondo blanco */
+        /* Estilo para el icono de PODEBIS con fondo blanco */
         .podebis-record-circle {
-            color: #a57f2c; /* Color específico solicitado */
+            color: #a57f2c; /* Color dorado */
             font-size: 20px; /* Tamaño más pequeño */
             background-color: white; /* Fondo blanco para el interior del círculo */
             border-radius: 50%; /* Hacer el fondo circular */
@@ -298,6 +298,28 @@
         .blinking {
             animation: blink 4s infinite;
         }
+
+        .legend-podebis-svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #a57f2c;
+    position: relative;
+}
+
+.legend-podebis-svg::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background: #a57f2c;
+    border-radius: 50%;
+}
 
         @keyframes blink {
             0% { opacity: 0.3; }
@@ -328,14 +350,19 @@
             position: relative;
         }
 
-        .legend-bachillerato {
+        .legend-bachillerato-tecnologico {
             background: #9b2247;
+            border: 1px solid #FFFFFF;
+        }
+
+        .legend-bachillerato-general {
+            background: #1e5b4f;
             border: 1px solid #FFFFFF;
         }
 
         .legend-podebis {
             background: #FFFFFF;
-            border: 2px solid #a57f2c;
+            border: 1px solid #a57f2c;
         }
 
         .legend-podebis-dot {
@@ -350,7 +377,7 @@
             border: 1px solid #a57f2c;
         }
         
-        /* Leyenda para el icono record-circle */
+        /* Leyenda para el icono PODEBIS */
         .legend-record-circle {
             display: flex;
             align-items: center;
@@ -383,7 +410,7 @@
     
     <div class="titulo">
         <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
-            <b>Oferta académica en planteles públicos de Bachillerato Tecnológico</b>
+            <b>Oferta académica en planteles públicos del Bachillerato Nacional</b>
         </p>
         <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">
             Ciclo escolar 2024-2025
@@ -432,7 +459,7 @@
         </select>
 
         <select id="Carrera">
-            <option value="Todos" selected>Todas las carreras</option>
+            <option value="Todos" selected>Todas las carreras/formaciones laborales</option>
             <!-- Las opciones se llenarán dinámicamente -->
         </select>
 
@@ -529,7 +556,7 @@
         let sectoresUnicos = new Set();
         let blinkingInterval;
 
-        // Orden personalizado para sectores
+        // Orden personalizado para sectores - CORREGIDO
         const ordenSectores = [
             "Aeroespacial",
             "Agroindustria",
@@ -570,10 +597,10 @@
                     <tr><td style="text-align:left"><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
                     <tr><td style="text-align:left"><b>Municipio: </b>${feature.properties.Municipio}</td></tr>
                     <tr><td style="text-align:left"><b>Nombre: </b>${feature.properties.Nombre}</td></tr>
-                    <tr><td style="text-align:left"><b>Carrera: </b>${feature.properties.Carrera}</td></tr>
+                    <tr><td style="text-align:left"><b>Carrera/Formación laboral: </b>${feature.properties.Carrera}</td></tr>
                     <tr><td style="text-align:left"><b>Tipo de sector: </b>${feature.properties.Tipo_sec}</td></tr>
                     <tr><td style="text-align:left"><b>Nombre del sector: </b>${feature.properties.Sector}</td></tr>
-                    <tr><td style="text-align:left"><b>Matrícula de la carrera: </b>${feature.properties.Mat_carr}</td></tr>
+                    <tr><td style="text-align:left"><b>Matrícula de la carrera/formación laboral: </b>${feature.properties.Mat_carr}</td></tr>
                     <tr><td style="text-align:left"><b>Matrícula total del plantel: </b>${feature.properties.Matr_total}</td></tr>
                 </table>
                 <hr>`;
@@ -706,9 +733,12 @@
             return Planteles_carreras.features;
         }
 
-        // Función para ordenar sectores según el orden personalizado
+        // Función para ordenar sectores según el orden personalizado - MEJORADA
         function ordenarSectoresPersonalizado(sectoresArray) {
-            return sectoresArray.sort((a, b) => {
+            // Primero, normalizar los nombres para eliminar duplicados por diferencias de formato
+            const sectoresNormalizados = [...new Set(sectoresArray.map(s => s.trim()))];
+            
+            return sectoresNormalizados.sort((a, b) => {
                 const indexA = ordenSectores.indexOf(a);
                 const indexB = ordenSectores.indexOf(b);
                 
@@ -750,7 +780,7 @@
                     carrerasDisponibles.add(feature.properties.Carrera);
                 }
                 if (feature.properties.Sector && feature.properties.Sector !== "") {
-                    sectoresDisponibles.add(feature.properties.Sector);
+                    sectoresDisponibles.add(feature.properties.Sector.trim()); // Normalizar espacios
                 }
             });
             
@@ -769,7 +799,7 @@
                 if (carreraActual !== "Todos" && feature.properties.Carrera !== carreraActual) {
                     cumpleFiltros = false;
                 }
-                if (sectorActual !== "Todos" && feature.properties.Sector !== sectorActual) {
+                if (sectorActual !== "Todos" && feature.properties.Sector.trim() !== sectorActual) {
                     cumpleFiltros = false;
                 }
                 
@@ -791,7 +821,7 @@
                     // Para sectores: mostrar todos los que tienen la combinación entidad-carrera seleccionada
                     if (entidadActual !== "Todos" || carreraActual !== "Todos") {
                         if (feature.properties.Sector && feature.properties.Sector !== "") {
-                            sectoresFiltrados.add(feature.properties.Sector);
+                            sectoresFiltrados.add(feature.properties.Sector.trim()); // Normalizar espacios
                         }
                     }
                 }
@@ -853,7 +883,7 @@
                 (sectoresFiltrados.size > 0 ? Array.from(sectoresFiltrados) : Array.from(sectoresDisponibles)) : 
                 Array.from(sectoresDisponibles);
             
-            // Aplicar orden personalizado a los sectores
+            // Aplicar orden personalizado a los sectores - CORREGIDO
             const sectoresOrdenados = ordenarSectoresPersonalizado(sectoresParaMostrar);
                 
             sectoresOrdenados.forEach(function(sector) {
@@ -871,7 +901,7 @@
             }
         }
 
-        // Función para inicializar los selectores al cargar
+        // Función para inicializar los selectores al cargar - CORREGIDA
         function inicializarSelectores() {
             // Llenar selectores con todas las opciones disponibles
             const carrerasUnicas = new Set();
@@ -882,7 +912,8 @@
                     carrerasUnicas.add(feature.properties.Carrera);
                 }
                 if (feature.properties.Sector && feature.properties.Sector !== "") {
-                    sectoresUnicos.add(feature.properties.Sector);
+                    // Normalizar el nombre del sector eliminando espacios extra
+                    sectoresUnicos.add(feature.properties.Sector.trim());
                 }
             });
             
@@ -897,7 +928,7 @@
                 carreraSelect.appendChild(option);
             });
             
-            // Ordenar y llenar sectores con orden personalizado
+            // Ordenar y llenar sectores con orden personalizado - CORREGIDO
             const sectoresOrdenados = ordenarSectoresPersonalizado(Array.from(sectoresUnicos));
             sectoresOrdenados.forEach(function(sector) {
                 const option = document.createElement("option");
@@ -1015,6 +1046,10 @@
                 "CECyTE": '#9b2247',
                 "CONALEP (CDMX-OAX)": '#9b2247',
                 "CONALEP (Estados)": '#9b2247',
+                "DGB": '#1e5b4f', 
+                "EMSaD": '#1e5b4f', 
+                "COBACH": '#1e5b4f',
+                "COLBACH (CDMX-EdoMéx)": '#1e5b4f',
             };
             return colores[d] || '#000000';
         }
@@ -1025,7 +1060,7 @@
             
             const content = baseContent + `
                 <table>
-                    <tr><td style="text-align:left"><b>Oferta educativa adicional: </b>${feature.properties.Otros || 'No disponible'}</td></tr>
+                    <tr><td style="text-align:left"><b>Oferta educativa adicional (matrícula): </b>${feature.properties.Otros || 'No disponible'}</td></tr>
                 </table>`;
             
             layer.bindPopup(content, {minWidth: 250, maxWidth: 300});
@@ -1080,7 +1115,7 @@
 
             const win = L.control.window(map, {
                 title: '¿Cómo navegar el mapa interactivo?', 
-                content: 'El mapa permite explorar la oferta académica de los planteles públicos de Bachillerato Tecnológico para el ciclo 2024-2025, así como la ubicación de los Polos de Desarrollo para el Bienestar (PODEBIS), en el marco del Plan México. Además, es posible identificar el sector estratégico, secundario o transversal al que pertenece cada carrera técnica. <br>Para navegar es posible:<br>-Filtrar los resultados por entidad federativa, carrera o sector.<br>-Buscar directamente por Clave de Centro de Trabajo (CCT) del plantel.<br>-Activar la ubicación en tiempo real para encontrar opciones cercanas.', 
+                content: 'El mapa permite explorar la oferta académica de los planteles públicos del Bachillerato Nacional para el ciclo 2024-2025, así como la ubicación de los Polos de Desarrollo para el Bienestar (PODEBIS), en el marco del Plan México. Además, se puede identificar el sector estratégico, secundario o transversal al que pertenece cada carrera técnica o formación laboral. <br>Para navegar es posible:<br>-Filtrar los resultados por entidad federativa, carrera/formación laboral o sector.<br>-Buscar directamente por Clave de Centro de Trabajo (CCT) del plantel.<br>-Activar la ubicación en tiempo real para encontrar opciones cercanas.', 
                 position: 'top'
             }).show();
 
@@ -1159,20 +1194,24 @@
             
             map.addControl(searchControl);
 
-            // SIMBOLOGÍA ACTUALIZADA CON ICONO RECORD-CIRCLE
+            // SIMBOLOGÍA ACTUALIZADA CON BACHILLERATO GENERAL EN VERDE
             const legend = L.control({position: 'bottomright'});
             
             legend.onAdd = function () {
                 const div = L.DomUtil.create('div', 'info legend');
                 div.innerHTML = '<h3>Simbología</h3>' +
-                               '<div class="legend-item">' +
-                               '<div class="legend-symbol legend-bachillerato"></div>' +
-                               '<span>Bachillerato Tecnológico</span>' +
-                               '</div>' +
-                               '<div class="legend-record-circle">' +
-                               '<div class="legend-record-circle-icon"><i class="bi bi-record-circle"></i></div>' +
-                               '<span>Polo de Desarrollo</span>' +
-                               '</div>';
+               '<div class="legend-item">' +
+               '<div class="legend-symbol legend-bachillerato-tecnologico"></div>' +
+               '<span>Bachillerato Tecnológico</span>' +
+               '</div>' +
+               '<div class="legend-item">' +
+               '<div class="legend-symbol legend-bachillerato-general"></div>' +
+               '<span>Bachillerato General</span>' +
+               '</div>' +
+               '<div class="legend-item">' +
+               '<div class="legend-symbol legend-podebis-svg"></div>' +
+               '<span>Polo de Desarrollo</span>' +
+               '</div>';
                 return div;
             };
             
