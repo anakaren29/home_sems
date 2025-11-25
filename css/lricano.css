@@ -1904,28 +1904,6 @@ color: var(--text-secondary);
     max-width: 100px !important;
   }
 
-  .cont-text {
-    width: 50% !important;
-  }
-
-  .cont-materiales {
-    flex-direction: column !important;
-    gap: 3px !important;
-  }
-
-  .datos-modal-da{
-    width: 80% !important;
-  }
-
-  .stickers-modal {
-    width: 80px !important;
-    height: 80px !important;
-  }
-
-  .titulo-modal-mc {
-    font-size: 18px !important;
-  }
-
   .card-16da-inactivo{
     width: 136px !important;
     height: 181px !important;
@@ -1940,6 +1918,73 @@ color: var(--text-secondary);
 
   .btn-da-inactivo {
     width: 118px !important;
+  }
+
+  .modal-content-mc {
+    width: 303px !important;
+  }
+
+  .titulo-modal-mc {
+    font-size: 18px !important;
+    text-align: start !important;
+  }
+
+  .cont-text {
+    width: 279px !important;
+    padding: 5px;
+  }
+
+  .text-16da {
+    font-size: 13px !important;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .text-dscg {
+    font-size: 13px !important;
+    padding-left: 5px;
+  }
+
+  .cont-materiales {
+    gap: 3px !important;
+  }
+
+  .stickers-modal {
+    width: 100px !important;
+    height: 108px !important;
+  }
+
+  .datos-modal-da {
+    width: 240px !important;
+    gap: 5px !important;
+  }
+
+  .datos-modal-da p {
+    font-size: 13px !important;
+  }
+
+  .icon_modal_mc {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cartel-modal {
+    width: 100px !important;
+    height: 108px !important;
+  }
+
+  .infog-16da {
+    font-size: 12px !important;
+    text-align: start;
+    line-height: 0.9;
+  }
+
+  .datos-modal-mc {
+    width: 240px !important;
+  }
+
+  .card-curriculum-am iframe {
+    height: 120px !important;
   }
 
 }
@@ -2793,7 +2838,7 @@ color: var(--text-secondary);
     width: 507px;
 }
 
-.datos-modal-da{
+.datos-modal-da {
         background-color: #FB8E33;
         width: 508px;
         height: 42px;
@@ -2952,4 +2997,8 @@ color: var(--text-secondary);
 
 .card-16da-inactivo .stickers i {
  color: #5B5B60;
+}
+
+.infog-16da {
+ font-size: 13px;
 }
