@@ -1926,6 +1926,22 @@ color: var(--text-secondary);
     font-size: 18px !important;
   }
 
+  .card-16da-inactivo{
+    width: 136px !important;
+    height: 181px !important;
+    margin-left: 25px;
+  }
+
+  .card-16da {
+    width: 136px !important;
+    height: 181px !important;
+    margin-left: 25px;
+  }
+
+  .btn-da-inactivo {
+    width: 118px !important;
+  }
+
 }
 
 .vinagrillo-1 {
@@ -2759,6 +2775,11 @@ color: var(--text-secondary);
     color: white;
     text-decoration: none;
     background-color: #FB8E33;
+    margin: 0 auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 .text-16da {
@@ -2847,7 +2868,11 @@ color: var(--text-secondary);
     color: white;
     text-decoration: none;
     background-color: #D9D9D9;
-    
+    margin: 0 auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 .card-16da-inactivo:hover {
