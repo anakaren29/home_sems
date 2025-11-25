@@ -924,9 +924,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function scrollCarruselIAl(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-IAl');
-    const cardWidth = carrusel.querySelector('.img-IAl').offsetWidth + 20;
+  const cardWidth = carrusel.querySelector('.img-IAl').offsetWidth + 20;
+  // Regresa cada vez que llega al final
+  const maxScroll = carrusel.scrollWidth - carrusel.clientWidth;
+
+  if (carrusel.scrollLeft + cardWidth >= maxScroll) {
+    
+    carrusel.scrollTo({
+      left: 0,
+      behavior: 'smooth'
+    });
+  } else {
+    
     carrusel.scrollBy({
       left: direction * cardWidth,
       behavior: 'smooth'
     });
   }
+}
+setInterval(() => {
+  scrollCarruselIAl(1); 
+}, 2000);
+
