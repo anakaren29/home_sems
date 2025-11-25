@@ -2322,8 +2322,16 @@ h2{
       .carousel-btn {
         display: block !important;
       }
-    }
 
+      .card-enc-movil{
+        width: 370px !important;
+        height: 220px !important;
+      }
+    }
+  
+  .card-enc-movil {
+    width: 506px; height: 244px;
+  }
     
   .card-img-virtual{
     border-radius: 20px;
