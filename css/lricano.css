@@ -2716,8 +2716,15 @@ color: var(--text-secondary);
     font-weight: bold;
 }
 
-.tipo1-da {
+.titulo-tp-da {
     padding-top: 10px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    display: none;
+}
+
+.tipo1-da {
     font-size: 13px;
     color: white;
     font-weight: bold;
@@ -2738,7 +2745,8 @@ color: var(--text-secondary);
 }
 
 .card-16da:hover .tipo1-da,
-.card-16da:hover .tipo2-da {
+.card-16da:hover .tipo2-da,
+.card-16da:hover .titulo-tp-da {
     display: block;
 }
 
@@ -2884,6 +2892,10 @@ color: var(--text-secondary);
 .stickers-modal {
     width: 177px;
     height: 171px;
+}
+
+.cartel-modal {
+    height: 190px;
 }
 
 .stickers {
