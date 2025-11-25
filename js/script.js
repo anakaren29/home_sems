@@ -838,3 +838,95 @@ function scrollCarruselBachillerConsulta(direction) {
       behavior: 'smooth'
     });
   }
+
+  function openModal16diasAct(index) {
+  const modal = document.getElementById("modal16diasAct");
+  const carrusel = document.getElementById("carrusel-horizontal-16diasAct");
+  const cards = carrusel.querySelectorAll('.card-16-da');
+
+  // Mostrar el modal
+  modal.classList.add("active");
+
+  // Hacer scroll hacia la tarjeta correspondiente
+  setTimeout(() => {
+    const cardWidth = cards[0].offsetWidth + 20;
+    carrusel.scrollTo({
+      left: index * cardWidth,
+      behavior: "smooth"
+    });
+  }, 200);
+}
+
+function closeModal16diasAct() {
+  const modal = document.getElementById("modal16diasAct");
+  const iframes = modal.querySelectorAll("iframe");
+
+  // Pausar todos los videos
+  iframes.forEach(iframe => {
+    iframe.src = "";
+  });
+
+  modal.classList.remove("active");
+}
+
+// Cierre del modal si se hace clic fuera del contenido
+window.onclick = function(event) {
+  const modal = document.getElementById("modal16diasAct");
+  if (event.target === modal) {
+    closeModal16diasAct();
+  }
+};
+
+// Carrusel manual por flechas
+function scrollCarruselModal16diasAct(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-16diasAct');
+  const cardWidth = carrusel.querySelector('.card-16-da').offsetWidth + 20;
+  carrusel.scrollBy({
+    left: direction * cardWidth,
+    behavior: 'smooth'
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Verifica que IntersectionObserver exista (por compatibilidad)
+  if (!("IntersectionObserver" in window)) {
+    console.warn("IntersectionObserver no es compatible con este navegador.");
+    return;
+  }
+
+  const carrusel = document.getElementById('carrusel-horizontal-16diasAct');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const iframe = entry.target.querySelector("iframe");
+      const baseSrc = iframe?.getAttribute("data-src");
+
+      if (!iframe || !baseSrc) return;
+
+      if (entry.isIntersecting) {
+        if (!iframe.src.includes("autoplay=1")) {
+          iframe.src = baseSrc + "&autoplay=1";
+        }
+      } else {
+        iframe.src = ""; // Detiene el video si ya no está visible
+      }
+    });
+  }, {
+    root: carrusel,
+    threshold: 0.9 // Se reproduce solo si el card está casi completamente visible
+  });
+
+  // Observar cada tarjeta del carrusel
+  document.querySelectorAll('.card-16-da').forEach(card => {
+    observer.observe(card);
+  });
+});
+
+function scrollCarruselIAl(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-IAl');
+    const cardWidth = carrusel.querySelector('.img-IAl').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
