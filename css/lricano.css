@@ -1191,6 +1191,9 @@
     .seccion-2pj{
         max-width: 1450px;
     }
+    #carrusel-IAl {
+        max-width: 1734px !important;
+    }
 }
 
 @media (min-width: 2500px) and (max-width:3480px) {
@@ -1960,7 +1963,8 @@ color: var(--text-secondary);
   }
 
   .datos-modal-da p {
-    font-size: 13px !important;
+    font-size: 12px !important;
+    text-align: start;
   }
 
   .icon_modal_mc {
@@ -1985,6 +1989,10 @@ color: var(--text-secondary);
 
   .card-curriculum-am iframe {
     height: 120px !important;
+  }
+
+  .elim-padding {
+    padding-right: 3px !important;
   }
 
 }

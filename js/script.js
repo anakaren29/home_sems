@@ -925,24 +925,26 @@ document.addEventListener("DOMContentLoaded", () => {
 function scrollCarruselIAl(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-IAl');
   const cardWidth = carrusel.querySelector('.img-IAl').offsetWidth + 20;
-  // Regresa cada vez que llega al final
-  const maxScroll = carrusel.scrollWidth - carrusel.clientWidth;
 
-  if (carrusel.scrollLeft + cardWidth >= maxScroll) {
-    
+  const totalSteps = Math.floor(carrusel.scrollWidth / cardWidth);
+  const maxStepScroll = (totalSteps - Math.floor(carrusel.clientWidth / cardWidth)) * cardWidth;
+
+  // Regresa solo cuando la última imagen ya se vio completa
+  if (carrusel.scrollLeft >= maxStepScroll) {
     carrusel.scrollTo({
       left: 0,
       behavior: 'smooth'
     });
   } else {
-    
     carrusel.scrollBy({
       left: direction * cardWidth,
-      behavior: 'smooth'
+      behavior: 'smooth',
+      inline: 'start'
     });
   }
 }
 setInterval(() => {
-  scrollCarruselIAl(1); 
-}, 2000);
+  scrollCarruselIAl(1);
+}, 6000);
+
 
