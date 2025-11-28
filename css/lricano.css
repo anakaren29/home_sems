@@ -3010,3 +3010,9 @@ color: var(--text-secondary);
 .infog-16da {
  font-size: 13px;
 }
+
+.img-g-16dda {
+    width: 236px;
+    height: 159px;
+    border-radius: 25px;
+}

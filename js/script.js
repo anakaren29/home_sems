@@ -947,4 +947,11 @@ setInterval(() => {
   scrollCarruselIAl(1);
 }, 6000);
 
-
+function scrollCarruselGaleria16dda(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-galeria-16dda');
+    const cardWidth = carrusel.querySelector('.img-g-16dda').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
