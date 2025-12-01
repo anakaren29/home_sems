@@ -1995,6 +1995,34 @@ color: var(--text-secondary);
     padding-right: 3px !important;
   }
 
+  .galeria-16dda {
+    width: 350px !important;
+    height: 250px !important;
+  }
+
+  .galeria-16dda-2 {
+    width: 320px !important;
+    height: 320px !important;
+  }
+
+  .galeria-16dda-3 {
+    width: 260px !important;
+    height: 320px !important;
+  }
+
+  .datos-modal-galeria{
+    align-items: start !important;
+  }
+
+  .datos-modal-galeria a {
+    margin-left: 10px !important;
+    font-size: 12px !important;
+  }
+
+  .datos-modal-galeria p {
+    font-size: 13px !important;
+  }
+
 }
 
 .vinagrillo-1 {
@@ -3015,4 +3043,47 @@ color: var(--text-secondary);
     width: 236px;
     height: 159px;
     border-radius: 25px;
+    cursor: pointer;
+}
+
+.card-galeria-16dda {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  text-align: center;
+}
+
+.galeria-16dda {
+    border-radius: 25px;
+    width: 660px;
+    height: 430px;
+}
+
+.galeria-16dda-2 {
+    border-radius: 25px;
+    width: 430px;
+    height: 430px;
+}
+
+.galeria-16dda-3 {
+    border-radius: 25px;
+    width: 330px;
+    height: 430px;
+}
+
+.datos-modal-galeria {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.datos-modal-galeria a {
+    text-decoration-line: none; 
+    color: #ffffff;
+    margin-left: 50px;
 }

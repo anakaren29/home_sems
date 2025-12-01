@@ -317,21 +317,21 @@
                 <div class="carousel-wrapper">
                     <button class="carousel-btn left" onclick="scrollCarruselGaleria16dda(-1)">&#10094;</button>
                     <div class="carrusel-scroll horizontal" id="carrusel-horizontal-galeria-16dda">
-                        <img src="assets/16-dias-de-activismo/galeria/16 dias en SEP (2).jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/16 dias en SEP (3).jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/16 dias en SEP.jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/dgb 2.jpg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/dgb 3.jpg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/dgb1.jpg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura (1).jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 2.jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 3.jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 4.jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 5.jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/mosaico paz (1).jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/mosaico paz (2).jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/mosaico paz (3).jpeg" class="img-g-16dda" />
-                        <img src="assets/16-dias-de-activismo/galeria/25n.jpeg" class="img-g-16dda" />
+                        <img src="assets/16-dias-de-activismo/galeria/16 dias en SEP (2).jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(0)" />
+                        <img src="assets/16-dias-de-activismo/galeria/16 dias en SEP (3).jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(1)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/16 dias en SEP.jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(2)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/dgb 2.jpg" class="img-g-16dda" onclick="openModalGaleria16dda(3)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/dgb 3.jpg" class="img-g-16dda" onclick="openModalGaleria16dda(4)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/dgb1.jpg" class="img-g-16dda" onclick="openModalGaleria16dda(5)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura (1).jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(6)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 2.jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(7)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 3.jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(8)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 4.jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(9)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/maraton lectura 5.jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(10)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/mosaico paz (1).jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(11)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/mosaico paz (2).jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(12)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/mosaico paz (3).jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(13)"/>
+                        <img src="assets/16-dias-de-activismo/galeria/25n.jpeg" class="img-g-16dda" onclick="openModalGaleria16dda(14)"/>
                     </div>
                     <button class="carousel-btn right" onclick="scrollCarruselGaleria16dda(1)">&#10095;</button>
                 </div>
@@ -582,6 +582,173 @@
                             </div-->
                         </div>
                         <button class="carousel-btn right" onclick="scrollCarruselModal16diasAct(1)" style="color: black;">
+                            &#10095;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--MODAL GALERIA -->
+            <div id="modalGaleria16dda" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModalGaleria16dda()">&times;</span>
+                    <div class="carousel-wrapper">
+                        <button class="carousel-btn left" onclick="scrollCarruselModalGaleria16dda(-1)" style="color: #ffffff;">
+                            &#10094;
+                        </button>
+                        <div class="carrusel-scroll horizontal" id="carrusel-horizontal-galeria-16dda-modal">
+                            <!--CARD 1-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/16 dias en SEP (2).jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/16 dias en SEP (2).jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 2-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/16 dias en SEP (3).jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/16 dias en SEP (3).jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 3-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/16 dias en SEP.jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/16 dias en SEP.jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 4-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda-2" src="assets/16-dias-de-activismo/galeria/dgb 2.jpg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/dgb 2.jpg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 5-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda-2" src="assets/16-dias-de-activismo/galeria/dgb 3.jpg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/dgb 3.jpg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 6-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda-2" src="assets/16-dias-de-activismo/galeria/dgb1.jpg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/dgb1.jpg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 7-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/maraton lectura (1).jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/maraton lectura (1).jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 8-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/maraton lectura 2.jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/maraton lectura 2.jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 9-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda-3" src="assets/16-dias-de-activismo/galeria/maraton lectura 3.jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/maraton lectura 3.jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 10-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda-3" src="assets/16-dias-de-activismo/galeria/maraton lectura 4.jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/maraton lectura 4.jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 11-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/maraton lectura 5.jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/maraton lectura 5.jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 12-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/mosaico paz (1).jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/mosaico paz (1).jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 13-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda" src="assets/16-dias-de-activismo/galeria/mosaico paz (2).jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/mosaico paz (2).jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 14-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda-3" src="assets/16-dias-de-activismo/galeria/mosaico paz (3).jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/mosaico paz (3).jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--CARD 15-->
+                            <div class="card-galeria-16dda">
+                                <img class="galeria-16dda-3" src="assets/16-dias-de-activismo/galeria/25n.jpeg" />
+                                <div class="datos-modal-galeria">
+                                    <p><strong>En Red y en Voz Alta: 16 días de activismo</strong></p>
+                                    <a href="assets/16-dias-de-activismo/galeria/25n.jpeg" download>
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn right" onclick="scrollCarruselModalGaleria16dda(1)" style="color: #ffffff;">
                             &#10095;
                         </button>
                     </div>
