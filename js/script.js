@@ -955,3 +955,39 @@ function scrollCarruselGaleria16dda(direction) {
       behavior: 'smooth'
     });
   }
+
+  //Galeria 16 dias de activismo 
+  function scrollCarruselModalGaleria16dda(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal-galeria-16dda-modal');
+    const cardWidth = carrusel.querySelector('.card-galeria-16dda').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function openModalGaleria16dda(index) {
+    //console.log("Abriendo modal en índice:", index);
+    const modal = document.getElementById("modalGaleria16dda");
+    const carrusel = document.getElementById('carrusel-horizontal-galeria-16dda-modal');
+    modal.style.display = "block";
+    setTimeout(() => {
+      const card = carrusel.querySelector('.card-galeria-16dda');
+      if (card) {
+        const cardWidth = card.offsetWidth + 20;
+        carrusel.scrollTo({
+          left: index * cardWidth,
+          behavior: 'smooth'
+        });
+      }
+    }, 200);
+  }
+  function closeModalGaleria16dda() {
+    document.getElementById("modalGaleria16dda").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalGaleria16dda");
+    if (event.target === modal) {
+      closeModalGaleria16dda();
+    }
+  }
