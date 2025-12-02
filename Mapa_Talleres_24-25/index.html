@@ -1321,12 +1321,11 @@
             
             const content = baseContent + `
                 <table>
+                    <tr><td style="text-align:left"><b>Rango de tasa de matrícula: </b>${feature.properties.Rango_Tasa_Mat}</td></tr>
                     <tr><td style="text-align:left"><b>Oferta educativa adicional (matrícula): </b>${feature.properties.Otros || 'No disponible'}</td></tr>
                     <tr><td style="text-align:left"><b>Ámbito: </b>${feature.properties.Ámbito}</td></tr>
                     <tr><td style="text-align:left"><b>Marginación municipal: </b>${feature.properties.Marg_mun}</td></tr>
                     <tr><td style="text-align:left"><b>Rango de crecimiento 15-17: </b>${feature.properties.Rango_15_17}</td></tr>
-                    <tr><td style="text-align:left"><b>Rango de tasa de matrícula: </b>${feature.properties.Rango_Tasa_Mat}</td></tr>
-                    <tr><td style="text-align:left"><b>Tasa de crecimiento matrícula: </b>${feature.properties.Tasa_cr_mat}</td></tr>
                     <tr><td style="text-align:left"><b>Planes de justicia: </b>${normalizarValorFiltro(feature.properties["Planes de justicia"])}</td></tr>
                     <tr><td style="text-align:left"><b>Plan Balsas: </b>${normalizarValorFiltro(feature.properties["Plan Balsas"])}</td></tr>
                     <tr><td style="text-align:left"><b>PODEBIS: </b>${feature.properties.PODEBIS}</td></tr>
