@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Talleres multicriterio</title>
+    <meta name="description" content="Mapa interactivo de planteles públicos de Educación Media Superior en México para el ciclo escolar 2024-2025">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="escudo_mexico.ico" type="image/x-icon">
+    
+    <!-- Preconexión para recursos externos -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.maptiler.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Precarga de hojas de estilo críticas -->
+    <link rel="preload" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"></noscript>
+    
+    <!-- Hojas de estilo con carga diferida -->
+    <link rel="stylesheet" href="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="Control.MiniMap.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="leaflet-search-master/src/leaflet-search.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="L.Control.Window.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- SheetJS para exportación a Excel -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+    <style>
+        :root {
+            --color-primario: #691C32;
+            --color-secundario: #8a2442;
+            --color-fondo: #ffffff;
+            --color-texto: #333;
+            --color-borde: #ddd;
+            --sombra: 0 0 15px rgba(0,0,0,0.2);
+            --ancho-panel: 320px;
+        }
+        
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: var(--color-fondo);
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            flex-shrink: 0;
+        }
+        
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        #panel-lateral {
+            width: var(--ancho-panel);
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-right: 1px solid var(--color-borde);
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 500;
+            flex-shrink: 0;
+        }
+        
+        #map-container {
+            flex: 1;
+            position: relative;
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .titulo {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .filtro-grupo {
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--color-borde);
+            padding-bottom: 10px;
+        }
+        
+        .filtro-grupo:last-child {
+            border-bottom: none;
+        }
+        
+        .filtro-grupo label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-primario);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Estilos para selectores múltiples */
+        .selector-multiple {
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid var(--color-borde);
+            border-radius: 4px;
+            background-color: white;
+            padding: 5px;
+        }
+        
+        .selector-alto {
+            max-height: 200px;
+        }
+        
+        .opcion-filtro {
+            display: flex;
+            align-items: center;
+            padding: 5px 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .opcion-filtro:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .opcion-filtro input {
+            margin-right: 8px;
+        }
+        
+        .opcion-filtro label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        #limpiarBtn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        #limpiarBtn:hover {
+            background-color: var(--color-secundario);
+        }
+
+        /* Botón de exportación */
+        #exportarBtn {
+            width: 100%;
+            padding: 10px;
+            background-color: #1e5b4f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        #exportarBtn:hover {
+            background-color: #2d7a6c;
+        }
+        
+        #exportarBtn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .info {
+            padding: 6px 8px;
+            background: rgba(255,255,255,0.9);
+            box-shadow: var(--sombra);
+            border-radius: 5px;
+        }
+        
+        .info h2 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+        
+        .legend {
+            line-height: 18px;
+            color: #555;
+        }
+        
+        .legend i {
+            width: 14px;
+            height: 14px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+            border-radius: 50%;
+            border: 1px solid #fff;
+        }
+        
+        .img {
+            margin-left: 10px;
+            margin-bottom: -28px;
+        }
+        
+        .footer {
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        
+        button {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover, button:focus {
+            background-color: var(--color-secundario);
+            outline: none;
+        }
+        
+        .info-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 10000;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow: auto;
+            display: none;
+        }
+        
+        .overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--color-borde);
+            padding-bottom: 10px;
+        }
+        
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-primario);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-primario);
+            padding: 0 5px;
+        }
+        
+        .overlay-content {
+            line-height: 1.6;
+        }
+        
+        .overlay-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            display: none;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table td {
+            padding: 3px 5px;
+            vertical-align: top;
+        }
+        
+        /* Estilo para el icono de PODEBIS con fondo blanco */
+        .podebis-record-circle {
+            color: #a57f2c; /* Color dorado */
+            font-size: 20px; /* Tamaño más pequeño */
+            background-color: white; /* Fondo blanco para el interior del círculo */
+            border-radius: 50%; /* Hacer el fondo circular */
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.7)); /* Sombra blanca */
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto de parpadeo para PODEBIS */
+        .blinking {
+            animation: blink 4s infinite;
+        }
+
+        .legend-podebis-svg {
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #a57f2c;
+            position: relative;
+        }
+
+        .legend-podebis-svg::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: #a57f2c;
+            border-radius: 50%;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Estilos para la simbología mejorada */
+        .legend h3 {
+            margin: 0 0 8px 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .legend-symbol {
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .legend-bachillerato-tecnologico {
+            background: #9b2247;
+            border: 1px solid #FFFFFF;
+        }
+
+        .legend-bachillerato-general {
+            background: #1e5b4f;
+            border: 1px solid #FFFFFF;
+        }
+
+        .legend-podebis {
+            background: #FFFFFF;
+            border: 1px solid #a57f2c;
+        }
+
+        .legend-podebis-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background-color: #a57f2c;
+            border-radius: 50%;
+            border: 1px solid #a57f2c;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            #panel-lateral {
+                width: 100%;
+                max-height: 200px;
+                border-right: none;
+                border-bottom: 1px solid var(--color-borde);
+            }
+            
+            #map-container {
+                height: calc(100vh - 300px);
+            }
+            
+            .titulo p {
+                font-size: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .titulo p {
+                font-size: 0.9rem !important;
+            }
+            
+            #panel-lateral {
+                padding: 10px;
+            }
+            
+            .filtro-grupo {
+                margin-bottom: 15px;
+            }
+        }
+        
+        [tabindex]:focus {
+            outline: 2px solid var(--color-primario);
+            outline-offset: 2px;
+        }
+        
+        @media (prefers-reduced-motion: no-preference) {
+            .info-overlay, .overlay-backdrop {
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+        }
+        
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        .error-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: #ffebee;
+            color: #c62828;
+            z-index: 10000;
+            text-align: center;
+            display: none;
+        }
+
+        .leaflet-marker-icon:focus, 
+        .leaflet-marker-icon:active, 
+        .leaflet-marker-icon:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Indicador de carga -->
+    <div id="loading">Cargando planteles...</div>
+    
+    <!-- Mensaje de error -->
+    <div class="error-message" id="errorMessage"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="titulo">
+            <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
+                <b>Bachillerato Nacional</b>
+            </p>
+            <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">
+                Selección multicriterio, ciclo escolar 2024-2025
+            </p>
+        </div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Panel lateral de filtros -->
+        <div id="panel-lateral" aria-live="polite" aria-atomic="true">
+            <div class="filtro-grupo">
+                <label for="filtro-entidad">
+                    Entidad federativa
+                </label>
+                <div class="selector-multiple" id="filtro-entidad">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-subsistema">
+                    Subsistema
+                </label>
+                <div class="selector-multiple" id="filtro-subsistema">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-carrera">
+                    Carrera/formación laboral
+                </label>
+                <div class="selector-multiple selector-alto" id="filtro-carrera">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-sector">
+                    Sector estratégico
+                </label>
+                <div class="selector-multiple" id="filtro-sector">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-rango-carrera">
+                    Matrícula de carrera
+                </label>
+                <div class="selector-multiple" id="filtro-rango-carrera">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-rango-total">
+                    Matrícula del plantel total
+                </label>
+                <div class="selector-multiple" id="filtro-rango-total">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- NUEVO FILTRO: Rango de tasa de matrícula -->
+            <div class="filtro-grupo">
+                <label for="filtro-rango-tasa-mat">
+                    Tasa de crecimiento matricular
+                </label>
+                <div class="selector-multiple" id="filtro-rango-tasa-mat">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-ambito">
+                    Ámbito
+                </label>
+                <div class="selector-multiple" id="filtro-ambito">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-marginacion">
+                    Grado de marginación municipal
+                </label>
+                <div class="selector-multiple" id="filtro-marginacion">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-crecimiento">
+                    Crecimiento 15-17 a 2030
+                </label>
+                <div class="selector-multiple" id="filtro-crecimiento">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-planes-justicia">
+                    Planes de justicia
+                </label>
+                <div class="selector-multiple" id="filtro-planes-justicia">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-plan-balsas">
+                    Plan Balsas
+                </label>
+                <div class="selector-multiple" id="filtro-plan-balsas">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-podebis">
+                    Cercanía a PODEBIS
+                </label>
+                <div class="selector-multiple selector-alto" id="filtro-podebis">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-aula-computo">
+                    Aula de cómputo
+                </label>
+                <div class="selector-multiple" id="filtro-aula-computo">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-talleres-existentes">
+                    Talleres existentes
+                </label>
+                <div class="selector-multiple" id="filtro-talleres-existentes">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-talleres-uso">
+                    Talleres en uso
+                </label>
+                <div class="selector-multiple" id="filtro-talleres-uso">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-laboratorios-existentes">
+                    Laboratorios existentes
+                </label>
+                <div class="selector-multiple" id="filtro-laboratorios-existentes">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-laboratorios-uso">
+                    Laboratorios en uso
+                </label>
+                <div class="selector-multiple" id="filtro-laboratorios-uso">
+                    <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
+            <button id="exportarBtn" style="display: none;">
+                <i class="bi bi-download"></i>
+                Exportar a Excel
+            </button>
+        </div>
+
+        <!-- Contenedor del mapa -->
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+    
+    <!-- Superposición de información -->
+    <div class="overlay-backdrop" id="overlayBackdrop"></div>
+    <div class="info-overlay" id="infoOverlay">
+        <div class="overlay-header">
+            <div class="overlay-title" id="overlayTitle"></div>
+            <button class="close-btn" id="closeOverlayBtn">×</button>
+        </div>
+        <div class="overlay-content" id="overlayContent"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div style="text-align: center;">
+            <div class="img" style="margin-bottom: 15px;">
+                <img src="SEP_25.png" 
+                     style="display: block; margin: 0 auto;" 
+                     width="200"
+                     height="88"
+                     alt="Logo de la Secretaría de Educación Pública"
+                     loading="lazy">
+            </div>
+            <div class="footer">
+                <p style="color: #691C32; font-size:0.7rem; font-family: Noto Sans; text-align:center">
+                    <b>Subsecretaría de Educación Media Superior | Área de Estadística</b>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+    <script src="https://cdn.maptiler.com/mapbox-gl-leaflet/latest/leaflet-mapbox-gl.js"></script>
+    <script src="Control.MiniMap.js"></script>
+    <script src="leaflet-search-master/src/leaflet-search.js"></script>
+    <script src="L.Control.Window.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+    
+    <!-- Script principal -->
+    <script>
+        // Configuración
+        const config = {
+            zoomNacional: {
+                center: [23.8173, -101.9665],
+                zoom: 5.5
+            },
+            maxBounds: [
+                [-0.3538, -141.4463],
+                [53.8564, -52.8319]
+            ]
+        };
+
+        // Variables globales
+        let map;
+        let mun;
+        let plantelesLayer;
+        let podebisLayer;
+        let municipiosResaltadosEntidad = null;
+        let plantelesFiltradosActuales = [];
+        let ordenColumnasOriginal = []; // Para mantener el orden original de las columnas
+
+        // Variables para almacenar las selecciones de filtros
+        let filtrosSeleccionados = {
+            entidad: [],
+            subsistema: [],
+            carrera: [],
+            sector: [],
+            rangoCarrera: [],
+            rangoTotal: [],
+            rangoTasaMat: [], // NUEVO FILTRO
+            ambito: [],
+            marginacion: [],
+            crecimiento: [],
+            planesJusticia: [],
+            planBalsas: [],
+            podebis: [],
+            aulaComputo: [],
+            talleresExistentes: [],
+            talleresUso: [],
+            laboratoriosExistentes: [],
+            laboratoriosUso: []
+        };
+
+        // Valores predefinidos para los filtros específicos
+        const valoresPredefinidos = {
+            ambito: ["Rural", "Urbano"],
+            marginacion: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
+            rangoCarrera: [
+                "0 - 44",
+                "45 - 76", 
+                "77 - 114",
+                "115 - 158",
+                "159 - 212",
+                "213 - 277",
+                "278- 354",
+                "355 - 468",
+                "469 - 681",
+                "682 - 1,146"
+            ],
+            rangoTotal: [
+                "4 - 320",
+                "321 - 615",
+                "616 - 941",
+                "942 - 1,284",
+                "1,285 - 1,649",
+                "1,650 - 2,089",
+                "2,090 - 2,628",
+                "2,629 - 3,382",
+                "3,383 - 5,353",
+                "5,354 - 8,053"
+            ],
+            rangoTasaMat: [ // NUEVOS VALORES PARA RANGO DE TASA DE MATRÍCULA
+                "-246.07% a -100.03%",
+                "-100.02% a -10.01%",
+                "-10.00% a 25.00%",
+                "25.01% a 164.00%",
+                "164.01% a 240.00%",
+                "240.01% a 320.00%",
+                "320.01% a 400.00%",
+                "400.01% a 580.00%",
+                "580.01% a 1000.00%",
+                "+1000%",
+                "Sin dato"
+            ],
+            crecimiento: ["-25.30% a -10.70%", "-10.69% a -5.80%", "-5.79% a -1.70%", "-1.69% a 3.90%", "3.91% a 19.01%", "Sin dato"],
+            planesJusticia: ["Si", "No"],
+            planBalsas: ["Si", "No"],
+            podebis: ["15 min","30 min","45 min","60 min","No aplica"],
+            aulaComputo: ["Si", "No"],
+            talleresExistentes: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"],
+            talleresUso: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"],
+            laboratoriosExistentes: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"],
+            laboratoriosUso: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"]
+        };
+
+        // Función para formatear números con separador de miles
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Función para normalizar valores de filtros
+        function normalizarValorFiltro(valor) {
+            if (valor === true || valor === "true" || valor === "Sí" || valor === "Si" || valor === 1 || valor === "1") {
+                return "Si";
+            } else if (valor === false || valor === "false" || valor === "No" || valor === 0 || valor === "0") {
+                return "No";
+            }
+            return valor;
+        }
+
+        // Función auxiliar para comprobar rangos numéricos
+        function cumpleRango(valor, rango) {
+            // Convertir valor a número
+            const numValor = Number(valor);
+            
+            // Si el rango es "0"
+            if (rango === "0") {
+                return numValor === 0;
+            }
+            
+            // Si el rango es "Más de 25"
+            if (rango === "Más de 25") {
+                return numValor > 25;
+            }
+            
+            // Si el rango es un rango como "1 - 5"
+            if (rango.includes("-")) {
+                const partes = rango.split("-").map(part => part.trim());
+                const inicio = Number(partes[0]);
+                const fin = Number(partes[1]);
+                
+                return numValor >= inicio && numValor <= fin;
+            }
+            
+            return false;
+        }
+
+        // Función para generar contenido base de popup
+        function generarPopupBase(feature) {
+            return `
+                <div style="text-align:center">
+                    <h4>${feature.properties.CCT}</h4>
+                    <h3>${feature.properties.Subsistema}</h3>
+                </div>
+                <hr>
+                <table>
+                    <tr><td style="text-align:left"><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                    <tr><td style="text-align:left"><b>Municipio: </b>${feature.properties.Municipio}</td></tr>
+                    <tr><td style="text-align:left"><b>Nombre: </b>${feature.properties.Nombre}</td></tr>
+                    <tr><td style="text-align:left"><b>Carrera/Formación laboral: </b>${feature.properties.Carrera}</td></tr>
+                    <tr><td style="text-align:left"><b>Tipo de sector: </b>${feature.properties.Tipo_sec}</td></tr>
+                    <tr><td style="text-align:left"><b>Nombre del sector: </b>${feature.properties.Sector}</td></tr>
+                    <tr><td style="text-align:left"><b>Matrícula de la carrera/formación laboral: </b>${feature.properties.Mat_carr}</td></tr>
+                    <tr><td style="text-align:left"><b>Matrícula total del plantel: </b>${feature.properties.Matr_total}</td></tr>
+                </table>
+                <hr>`;
+        }
+
+        // Función para cerrar el overlay
+        function closeInfoOverlay() {
+            document.getElementById('overlayBackdrop').style.display = 'none';
+            document.getElementById('infoOverlay').style.display = 'none';
+            document.getElementById('Entidad').focus();
+        }
+
+        // Función para filtrar planteles según selección múltiple
+        function filtrarPlanteles() {
+            // Verificar que los datos estén cargados
+            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) {
+                console.error("Los datos de planteles no están disponibles");
+                return;
+            }
+
+            plantelesFiltradosActuales = window.Planteles_carreras2.features.filter(function(feature) {
+                // Verificar cada filtro
+                const cumpleEntidad = filtrosSeleccionados.entidad.length === 0 || 
+                    filtrosSeleccionados.entidad.includes(feature.properties.Entidad);
+                
+                const cumpleSubsistema = filtrosSeleccionados.subsistema.length === 0 || 
+                    filtrosSeleccionados.subsistema.includes(feature.properties.Subsistema);
+                
+                const cumpleCarrera = filtrosSeleccionados.carrera.length === 0 || 
+                    filtrosSeleccionados.carrera.includes(feature.properties.Carrera);
+                
+                const cumpleSector = filtrosSeleccionados.sector.length === 0 || 
+                    filtrosSeleccionados.sector.includes(feature.properties.Sector);
+                
+                const cumpleRangoCarrera = filtrosSeleccionados.rangoCarrera.length === 0 || 
+                    filtrosSeleccionados.rangoCarrera.includes(feature.properties.Rango_Carrera);
+                
+                const cumpleRangoTotal = filtrosSeleccionados.rangoTotal.length === 0 || 
+                    filtrosSeleccionados.rangoTotal.includes(feature.properties.Rango_Total);
+                
+                // NUEVO FILTRO: Rango de tasa de matrícula
+                const cumpleRangoTasaMat = filtrosSeleccionados.rangoTasaMat.length === 0 || 
+                    filtrosSeleccionados.rangoTasaMat.includes(feature.properties.Rango_Tasa_Mat);
+                
+                const cumpleAmbito = filtrosSeleccionados.ambito.length === 0 || 
+                    filtrosSeleccionados.ambito.includes(feature.properties.Ámbito);
+                
+                const cumpleMarginacion = filtrosSeleccionados.marginacion.length === 0 || 
+                    filtrosSeleccionados.marginacion.includes(feature.properties.Marg_mun);
+                
+                const cumpleCrecimiento = filtrosSeleccionados.crecimiento.length === 0 || 
+                    filtrosSeleccionados.crecimiento.includes(feature.properties.Rango_15_17);
+                
+                // FILTRO CORREGIDO PARA PLANES DE JUSTICIA
+                const cumplePlanesJusticia = filtrosSeleccionados.planesJusticia.length === 0 || 
+                    filtrosSeleccionados.planesJusticia.includes(normalizarValorFiltro(feature.properties["Planes de justicia"]));
+                
+                // FILTRO CORREGIDO PARA PLAN BALSAS
+                const cumplePlanBalsas = filtrosSeleccionados.planBalsas.length === 0 || 
+                    filtrosSeleccionados.planBalsas.includes(normalizarValorFiltro(feature.properties["Plan Balsas"]));
+                
+                const cumplePodebis = filtrosSeleccionados.podebis.length === 0 || 
+                    filtrosSeleccionados.podebis.includes(feature.properties.PODEBIS);
+                
+                const cumpleAulaComputo = filtrosSeleccionados.aulaComputo.length === 0 || 
+                    filtrosSeleccionados.aulaComputo.includes(normalizarValorFiltro(feature.properties["Aula_cómputo"]));
+                
+                // FILTROS CORREGIDOS PARA TALLERES Y LABORATORIOS
+                const cumpleTalleresExistentes = filtrosSeleccionados.talleresExistentes.length === 0 || 
+                    filtrosSeleccionados.talleresExistentes.some(rango => {
+                        return cumpleRango(feature.properties.T_Existentes, rango);
+                    });
+                
+                const cumpleTalleresUso = filtrosSeleccionados.talleresUso.length === 0 || 
+                    filtrosSeleccionados.talleresUso.some(rango => {
+                        return cumpleRango(feature.properties.T_uso, rango);
+                    });
+                
+                const cumpleLaboratoriosExistentes = filtrosSeleccionados.laboratoriosExistentes.length === 0 || 
+                    filtrosSeleccionados.laboratoriosExistentes.some(rango => {
+                        return cumpleRango(feature.properties.L_Existentes, rango);
+                    });
+                
+                const cumpleLaboratoriosUso = filtrosSeleccionados.laboratoriosUso.length === 0 || 
+                    filtrosSeleccionados.laboratoriosUso.some(rango => {
+                        return cumpleRango(feature.properties.L_uso, rango);
+                    });
+                
+                return cumpleEntidad && cumpleSubsistema && cumpleCarrera && cumpleSector && 
+                       cumpleRangoCarrera && cumpleRangoTotal && cumpleRangoTasaMat && cumpleAmbito && 
+                       cumpleMarginacion && cumpleCrecimiento && cumplePlanesJusticia && 
+                       cumplePlanBalsas && cumplePodebis && cumpleAulaComputo && 
+                       cumpleTalleresExistentes && cumpleTalleresUso && 
+                       cumpleLaboratoriosExistentes && cumpleLaboratoriosUso;
+            });
+            
+            plantelesLayer.clearLayers();
+            
+            if (plantelesFiltradosActuales.length > 0) {
+                plantelesLayer.addData(plantelesFiltradosActuales);
+            }
+            
+            // Asegurar que PODEBIS esté siempre encima
+            if (podebisLayer) {
+                map.removeLayer(podebisLayer);
+                map.addLayer(podebisLayer);
+            }
+            
+            // Actualizar el botón de limpiar y exportar
+            actualizarBotones();
+        }
+
+        // Función para recopilar todas las propiedades disponibles y mantener el orden original
+        function recopilarTodasLasPropiedades() {
+            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) return;
+            
+            ordenColumnasOriginal = [];
+            const propiedadesSet = new Set();
+            
+            // Usar el primer feature para determinar el orden original
+            if (window.Planteles_carreras2.features.length > 0) {
+                const primerFeature = window.Planteles_carreras2.features[0];
+                ordenColumnasOriginal = Object.keys(primerFeature.properties);
+                
+                // Asegurarnos de que todas las propiedades estén incluidas
+                window.Planteles_carreras2.features.forEach(feature => {
+                    Object.keys(feature.properties).forEach(propiedad => {
+                        propiedadesSet.add(propiedad);
+                    });
+                });
+                
+                // Mantener el orden original pero agregar propiedades que puedan faltar
+                const propiedadesCompletas = [...ordenColumnasOriginal];
+                propiedadesSet.forEach(propiedad => {
+                    if (!propiedadesCompletas.includes(propiedad)) {
+                        propiedadesCompletas.push(propiedad);
+                    }
+                });
+                
+                ordenColumnasOriginal = propiedadesCompletas;
+            }
+            
+            console.log("Orden original de columnas:", ordenColumnasOriginal);
+        }
+
+        // Función para resaltar municipios por entidad
+        function resaltarMunicipiosPorEntidad() {
+            if (municipiosResaltadosEntidad) {
+                map.removeLayer(municipiosResaltadosEntidad);
+            }
+            
+            if (filtrosSeleccionados.entidad.length === 0) {
+                return;
+            }
+            
+            municipiosResaltadosEntidad = L.geoJSON(nvomun, {
+                pane: 'municipiosResaltados',
+                style: function(feature) {
+                    return {
+                        fillColor: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? '#98989a' : '#D3D3D3',
+                        weight: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? 1.5 : 0.8,
+                        opacity: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? 1 : 0.4,
+                        color: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? '#5e5e5e' : '#6F7271',
+                        dashArray: '0',
+                        fillOpacity: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? 0.7 : 0.6
+                    };
+                },
+                onEachFeature: popupMunicipio
+            }).addTo(map);
+        }
+
+        // Función para verificar selección activa
+        function haySeleccionActiva() {
+            return Object.values(filtrosSeleccionados).some(filtro => filtro.length > 0);
+        }
+
+        // Función para actualizar los botones
+        function actualizarBotones() {
+            const limpiarBtn = document.getElementById("limpiarBtn");
+            const exportarBtn = document.getElementById("exportarBtn");
+            const haySeleccion = haySeleccionActiva();
+            const hayPlantelesFiltrados = plantelesFiltradosActuales.length > 0;
+            
+            limpiarBtn.style.display = haySeleccion ? "inline-block" : "none";
+            exportarBtn.style.display = hayPlantelesFiltrados ? "inline-block" : "none";
+            exportarBtn.disabled = !hayPlantelesFiltrados;
+        }
+
+        // Función para limpiar todas las selecciones
+        function limpiarSeleccion() {
+            // Limpiar todas las selecciones
+            Object.keys(filtrosSeleccionados).forEach(key => {
+                filtrosSeleccionados[key] = [];
+            });
+            
+            // Actualizar todos los selectores
+            actualizarTodosLosSelectores();
+            
+            // Aplicar filtros
+            filtrarPlanteles();
+            resaltarMunicipiosPorEntidad();
+            
+            actualizarBotones();
+        }
+
+        // Función para crear un selector múltiple
+        function crearSelectorMultiple(contenedorId, opciones, propiedad) {
+            const contenedor = document.getElementById(contenedorId);
+            contenedor.innerHTML = '';
+            
+            opciones.forEach(opcion => {
+                const div = document.createElement('div');
+                div.className = 'opcion-filtro';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `${contenedorId}-${opcion.replace(/\s+/g, '-')}`;
+                checkbox.value = opcion;
+                checkbox.checked = filtrosSeleccionados[propiedad].includes(opcion);
+                checkbox.addEventListener('change', function() {
+                    actualizarFiltroSeleccionado(propiedad, opcion, this.checked);
+                });
+                
+                const label = document.createElement('label');
+                label.htmlFor = checkbox.id;
+                label.textContent = opcion;
+                
+                div.appendChild(checkbox);
+                div.appendChild(label);
+                contenedor.appendChild(div);
+            });
+        }
+
+        // Función para actualizar un filtro seleccionado
+        function actualizarFiltroSeleccionado(propiedad, valor, seleccionado) {
+            if (seleccionado) {
+                if (!filtrosSeleccionados[propiedad].includes(valor)) {
+                    filtrosSeleccionados[propiedad].push(valor);
+                }
+            } else {
+                const index = filtrosSeleccionados[propiedad].indexOf(valor);
+                if (index > -1) {
+                    filtrosSeleccionados[propiedad].splice(index, 1);
+                }
+            }
+            
+            // Aplicar filtros
+            filtrarPlanteles();
+            
+            // Si es entidad, aplicar solo resaltado (sin zoom)
+            if (propiedad === 'entidad') {
+                resaltarMunicipiosPorEntidad();
+            }
+            
+            actualizarBotones();
+        }
+
+        // Función para inicializar todos los selectores
+        function inicializarSelectoresMultiples() {
+            // Verificar que los datos estén cargados
+            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) {
+                console.error("Los datos de planteles no están disponibles para inicializar selectores");
+                return;
+            }
+
+            // Obtener todos los valores únicos para cada filtro
+            const entidades = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Entidad).filter(Boolean))].sort();
+            const subsistemas = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Subsistema).filter(Boolean))].sort();
+            const carreras = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Carrera).filter(Boolean))].sort();
+            const sectores = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Sector).filter(Boolean))].sort();
+            
+            // Usar valores predefinidos para los filtros específicos
+            const rangoCarrera = valoresPredefinidos.rangoCarrera;
+            const rangoTotal = valoresPredefinidos.rangoTotal;
+            const rangoTasaMat = valoresPredefinidos.rangoTasaMat; // NUEVO FILTRO
+            const ambitos = valoresPredefinidos.ambito;
+            const marginaciones = valoresPredefinidos.marginacion;
+            const crecimiento = valoresPredefinidos.crecimiento;
+            const planesJusticia = valoresPredefinidos.planesJusticia;
+            const planBalsas = valoresPredefinidos.planBalsas;
+            const podebis = valoresPredefinidos.podebis;
+            const aulaComputo = valoresPredefinidos.aulaComputo;
+            const talleresExistentes = valoresPredefinidos.talleresExistentes;
+            const talleresUso = valoresPredefinidos.talleresUso;
+            const laboratoriosExistentes = valoresPredefinidos.laboratoriosExistentes;
+            const laboratoriosUso = valoresPredefinidos.laboratoriosUso;
+            
+            // Crear los selectores múltiples (sin botones adicionales)
+            crearSelectorMultiple('filtro-entidad', entidades, 'entidad');
+            crearSelectorMultiple('filtro-subsistema', subsistemas, 'subsistema');
+            crearSelectorMultiple('filtro-carrera', carreras, 'carrera');
+            crearSelectorMultiple('filtro-sector', sectores, 'sector');
+            crearSelectorMultiple('filtro-rango-carrera', rangoCarrera, 'rangoCarrera');
+            crearSelectorMultiple('filtro-rango-total', rangoTotal, 'rangoTotal');
+            crearSelectorMultiple('filtro-rango-tasa-mat', rangoTasaMat, 'rangoTasaMat'); // NUEVO FILTRO
+            crearSelectorMultiple('filtro-ambito', ambitos, 'ambito');
+            crearSelectorMultiple('filtro-marginacion', marginaciones, 'marginacion');
+            crearSelectorMultiple('filtro-crecimiento', crecimiento, 'crecimiento');
+            crearSelectorMultiple('filtro-planes-justicia', planesJusticia, 'planesJusticia');
+            crearSelectorMultiple('filtro-plan-balsas', planBalsas, 'planBalsas');
+            crearSelectorMultiple('filtro-podebis', podebis, 'podebis');
+            crearSelectorMultiple('filtro-aula-computo', aulaComputo, 'aulaComputo');
+            crearSelectorMultiple('filtro-talleres-existentes', talleresExistentes, 'talleresExistentes');
+            crearSelectorMultiple('filtro-talleres-uso', talleresUso, 'talleresUso');
+            crearSelectorMultiple('filtro-laboratorios-existentes', laboratoriosExistentes, 'laboratoriosExistentes');
+            crearSelectorMultiple('filtro-laboratorios-uso', laboratoriosUso, 'laboratoriosUso');
+        }
+
+        // Función para actualizar todos los selectores
+        function actualizarTodosLosSelectores() {
+            inicializarSelectoresMultiples();
+        }
+
+        // Función para popup de municipios
+        function popupMunicipio(feature, layer) {
+            if (feature.properties && feature.properties.NOMGEO) {
+                // Formatear los números con separador de miles
+                const conEMSsigue = formatNumber(feature.properties.Con_EMS_sigue);
+                const conEMSNoSigue = formatNumber(feature.properties.Con_EMS_NoSigue);
+                const pobTot25 = formatNumber(feature.properties.PobTot25);
+                const pob1519 = formatNumber(feature.properties.Pob_15_19);
+                
+                layer.bindPopup(
+                    `<div style="text-align:center">
+                        <h2>${feature.properties.NOMGEO}</h2>
+                    </div>
+                    <hr>
+                    <table>
+                        <tr><td><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                        <tr><td><b>Grado de marginación: </b>${feature.properties.GM_2020}</td></tr>
+                        <tr><td><b>Población total: </b>${pobTot25}</td></tr>
+                        <tr><td><b>Población 15 a 19: </b>${pob1519}</td></tr>
+                        <tr><td><b>Porcentaje 15 a 19: </b>${feature.properties.Porc_15_19}</td></tr>
+                    </table>`,
+                    {minWidth: 150, maxWidth: 200}
+                );
+            }
+        }
+
+        // Estilo para planteles
+        function estiloPlanteles(feature) {
+            return {
+                radius: 6,
+                fillColor: colorPuntos(feature.properties.Subsistema),
+                color: "#FFFFFF",
+                weight: 0.5,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+        }
+
+        // Función para crear marcadores PODEBIS con icono record-circle
+        function createPodebisMarker(feature, latlng) {
+            // Crear el icono record-circle de Bootstrap
+            const recordCircleIcon = L.divIcon({
+                className: 'podebis-record-circle blinking',
+                html: '<i class="bi bi-record-circle"></i>',
+                iconSize: [20, 20],
+                iconAnchor: [10, 10],
+                popupAnchor: [0, -10]
+            });
+            
+            return L.marker(latlng, { icon: recordCircleIcon });
+        }
+
+        // MODIFICACIÓN: Función para manejar eventos de mouse en puntos PODEBIS - CON TOOLTIP PERO SIN POPUP AL CLIC
+        function onEachPodebisFeature(feature, layer) {
+            // Tooltip con la propiedad descriptio (solo hover)
+            layer.bindTooltip(feature.properties.descriptio, {
+                permanent: false,
+                direction: 'top',
+                className: 'podebis-tooltip'
+            });
+
+            // Eventos para el efecto de resaltado
+
+            layer.on('mouseover', function() {
+                const iconElement = layer.getElement();
+                if (iconElement) {
+                    iconElement.style.fontSize = '24px';
+                    iconElement.style.filter = 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))';
+                }
+            });
+
+            layer.on('mouseout', function() {
+                const iconElement = layer.getElement();
+                if (iconElement) {
+                    iconElement.style.fontSize = '20px';
+                    iconElement.style.filter = 'drop-shadow(0 0 2px rgba(255, 255, 255, 0.7))';
+                }
+            });
+
+            // ELIMINAR POPUP - no mostrar ventana al hacer clic
+            // Solo mantener el tooltip en hover, sin popup al clic
+            layer.off('click');
+            layer.unbindPopup();
+            
+            // Prevenir que el clic abra cualquier popup
+
+            layer.on('click', function(e) {
+                L.DomEvent.stopPropagation(e);
+                // No hacer nada al hacer clic
+            });
+        }
+
+        // Función para color de puntos
+        function colorPuntos(d) {
+            const colores = {
+                "DGETAyCM": '#9b2247',
+                "DGETI": '#9b2247',
+                "BTED": '#9b2247',
+                "CETI": '#9b2247',
+                "CECyTE": '#9b2247',
+                "CONALEP (CDMX-OAX)": '#9b2247',
+                "CONALEP (Estados)": '#9b2247',
+                "DGB": '#1e5b4f', 
+                "EMSaD": '#1e5b4f', 
+                "COBACH": '#1e5b4f',
+                "COLBACH (CDMX-EdoMéx)": '#1e5b4f',
+            };
+            return colores[d] || '#000000';
+        }
+
+        // Popup para planteles con oferta educativa
+        function popupPlanteles(feature, layer) {
+            const baseContent = generarPopupBase(feature);
+            
+            const content = baseContent + `
+                <table>
+                    <tr><td style="text-align:left"><b>Oferta educativa adicional (matrícula): </b>${feature.properties.Otros || 'No disponible'}</td></tr>
+                    <tr><td style="text-align:left"><b>Ámbito: </b>${feature.properties.Ámbito}</td></tr>
+                    <tr><td style="text-align:left"><b>Marginación municipal: </b>${feature.properties.Marg_mun}</td></tr>
+                    <tr><td style="text-align:left"><b>Rango de crecimiento 15-17: </b>${feature.properties.Rango_15_17}</td></tr>
+                    <tr><td style="text-align:left"><b>Rango de tasa de matrícula: </b>${feature.properties.Rango_Tasa_Mat}</td></tr>
+                    <tr><td style="text-align:left"><b>Tasa de crecimiento matrícula: </b>${feature.properties.Tasa_cr_mat}</td></tr>
+                    <tr><td style="text-align:left"><b>Planes de justicia: </b>${normalizarValorFiltro(feature.properties["Planes de justicia"])}</td></tr>
+                    <tr><td style="text-align:left"><b>Plan Balsas: </b>${normalizarValorFiltro(feature.properties["Plan Balsas"])}</td></tr>
+                    <tr><td style="text-align:left"><b>PODEBIS: </b>${feature.properties.PODEBIS}</td></tr>
+                    <tr><td style="text-align:left"><b>Aula de cómputo: </b>${normalizarValorFiltro(feature.properties["Aula_cómputo"])}</td></tr>
+                    <tr><td style="text-align:left"><b>Talleres existentes: </b>${feature.properties.T_Existentes}</td></tr>
+                    <tr><td style="text-align:left"><b>Talleres en uso: </b>${feature.properties.T_uso}</td></tr>
+                    <tr><td style="text-align:left"><b>Laboratorios existentes: </b>${feature.properties.L_Existentes}</td></tr>
+                    <tr><td style="text-align:left"><b>Laboratorios en uso: </b>${feature.properties.L_uso}</td></tr>
+                </table>`;
+            
+            layer.bindPopup(content, {minWidth: 250, maxWidth: 300});
+        }
+
+        // FUNCIONES PARA EXPORTAR A EXCEL - VERSIÓN MEJORADA
+        function exportarAExcel() {
+            if (plantelesFiltradosActuales.length === 0) {
+                alert('No hay planteles filtrados para exportar.');
+                return;
+            }
+
+            // Si no tenemos el orden original, lo recopilamos
+            if (ordenColumnasOriginal.length === 0) {
+                recopilarTodasLasPropiedades();
+            }
+
+            // Filtrar columnas para EXCLUIR Latitud y Longitud
+            const columnas = ordenColumnasOriginal.filter(columna => 
+                !['Latitud', 'Longitud'].includes(columna)
+            );
+
+            // Asegurar que las nuevas columnas estén incluidas
+            const columnasRequeridas = ['Rango_Tasa_Mat', 'Tasa_cr_mat'];
+            columnasRequeridas.forEach(columna => {
+                if (!columnas.includes(columna) && plantelesFiltradosActuales[0].properties[columna] !== undefined) {
+                    columnas.push(columna);
+                }
+            });
+
+            // Preparar los datos para Excel
+            const datosExcel = plantelesFiltradosActuales.map(feature => {
+                const propiedades = feature.properties;
+                const fila = {};
+                
+                columnas.forEach(columna => {
+                    let valor = propiedades[columna];
+                    
+                    // Manejar valores nulos o undefined
+                    if (valor === null || valor === undefined) {
+                        valor = '';
+                    }
+                    
+                    // Convertir valores booleanos a Si/No para mejor legibilidad
+                    if (columna === 'Planes de justicia' || columna === 'Plan Balsas' || columna === 'Aula_cómputo') {
+                        valor = normalizarValorFiltro(valor);
+                    }
+                    
+                    // Si es un número, mantenerlo como número
+                    if (typeof valor === 'number') {
+                        fila[columna] = valor;
+                    } else {
+                        fila[columna] = valor.toString();
+                    }
+                });
+                
+                return fila;
+            });
+
+            // Crear libro de trabajo de Excel
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.json_to_sheet(datosExcel);
+            
+            // Añadir la hoja al libro
+            XLSX.utils.book_append_sheet(wb, ws, "Planteles");
+            
+            // Generar nombre de archivo con fecha y hora
+            const fecha = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+            const nombreArchivo = `planteles_EMS_filtrados_24-25_${fecha}.xlsx`;
+            
+            // Descargar el archivo
+            XLSX.writeFile(wb, nombreArchivo);
+            
+            // Mostrar mensaje de éxito
+            alert(`Se exportaron ${plantelesFiltradosActuales.length} planteles al archivo ${nombreArchivo}\n\nColumnas exportadas: ${columnas.length}`);
+        }
+
+        function inicializarMapa() {
+            map = L.map('map', {
+                center: config.zoomNacional.center,
+                zoom: config.zoomNacional.zoom,
+                zoomSnap: 0.25,
+                zoomDelta: 0.25,
+                wheelPxPerZoomLevel: 60,
+                maxBounds: config.maxBounds,
+                zoomControl: false,
+                inertia: true,
+                inertiaDeceleration: 3000
+            });
+
+            L.control.zoom({
+                zoomInTitle: 'Acercar',
+                zoomOutTitle: 'Alejar',
+                zoomInText: '+',
+                zoomOutText: '-',
+                zoomDelta: 0.25
+            }).addTo(map);
+
+            // Crear paneles personalizados
+            map.createPane('municipiosResaltados');
+            map.getPane('municipiosResaltados').style.zIndex = 350;
+            
+            // Panel específico para PODEBIS con mayor z-index
+            map.createPane('podebisPane');
+            map.getPane('podebisPane').style.zIndex = 450;
+
+            const grises = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                minZoom: 5, 
+                maxZoom: 16,
+                attribution: 'Fuente: DGPPyEE-SEP, ciclo escolar 24-25'
+            }).addTo(map);
+
+            const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                minZoom: 5, 
+                maxZoom: 18,
+                attribution: 'Fuente: DGPPyEE-SEP'
+            });
+
+            const baseLayers = {
+                "Mapa en grises": grises,
+                "Mapa satelital": Esri_WorldImagery
+            };
+            L.control.layers(baseLayers, null, {collapsed: false}).addTo(map);
+
+            L.control.resetView({
+                position: "topleft",
+                title: "Restaurar vista",
+                latlng: L.latLng(config.zoomNacional.center),
+                zoom: config.zoomNacional.zoom,
+            }).addTo(map);
+        }
+
+        function inicializarCapas() {
+            try {
+                // Verificar que los datos estén cargados
+                if (!window.Planteles_carreras2) {
+                    throw new Error("Los datos de planteles no se cargaron correctamente");
+                }
+
+                // Recopilar todas las propiedades disponibles y su orden original
+                recopilarTodasLasPropiedades();
+
+                mun = L.geoJSON(nvomun, {
+                    style: function() {
+                        return {
+                            fillColor: '#D3D3D3',
+                            weight: 0.8,
+                            opacity: 0.4,
+                            color: '#6F7271',
+                            dashArray: '0',
+                            fillOpacity: 0.6
+                        };
+                    },
+                    pane: 'tilePane', 
+                    onEachFeature: popupMunicipio
+                }).addTo(map);
+
+                plantelesLayer = L.geoJSON(window.Planteles_carreras2, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng);
+                    },
+                    pane: 'overlayPane',
+                    style: estiloPlanteles,
+                    onEachFeature: popupPlanteles
+                }).bindTooltip(function (layer) {
+                    return layer.feature.properties.Subsistema;
+                });
+
+                // Capa PODEBIS con panel personalizado
+                if (window.PODEBIS) {
+                    podebisLayer = L.geoJSON(window.PODEBIS, {
+                        pointToLayer: function (feature, latlng) {
+                            return createPodebisMarker(feature, latlng);
+                        },
+                        pane: 'podebisPane',
+                        onEachFeature: onEachPodebisFeature
+                    });
+
+                    // Añadir capas en el orden correcto
+                    map.addLayer(plantelesLayer);
+                    map.addLayer(podebisLayer);
+                } else {
+                    map.addLayer(plantelesLayer);
+                    console.warn("La capa PODEBIS no está disponible");
+                }
+                
+            } catch (error) {
+                console.error("Error al cargar las capas:", error);
+                document.getElementById('errorMessage').textContent = "Error al cargar los datos del mapa. Por favor recargue la página.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+
+        function inicializarControles() {
+            // SIMBOLOGÍA
+            const legend = L.control({position: 'bottomright'});
+            
+            legend.onAdd = function () {
+                const div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML = '<h3>Simbología</h3>' +
+               '<div class="legend-item">' +
+               '<div class="legend-symbol legend-bachillerato-tecnologico"></div>' +
+               '<span>Bachillerato Tecnológico</span>' +
+               '</div>' +
+               '<div class="legend-item">' +
+               '<div class="legend-symbol legend-bachillerato-general"></div>' +
+               '<span>Bachillerato General</span>' +
+               '</div>' +
+               '<div class="legend-item">' +
+               '<div class="legend-symbol legend-podebis-svg"></div>' +
+               '<span>Polo de Desarrollo</span>' +
+               '</div>';
+                return div;
+            };
+            
+            legend.addTo(map);
+        }
+        
+        // Inicialización al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                inicializarMapa();
+                inicializarCapas();
+                inicializarControles();
+                
+                // Inicializar selectores múltiples después de verificar que los datos estén cargados
+                if (window.Planteles_carreras2 && window.Planteles_carreras2.features) {
+                    inicializarSelectoresMultiples();
+                    document.getElementById('loading').style.display = 'none';
+                } else {
+                    // Si los datos no están cargados, mostrar error después de un tiempo
+                    setTimeout(function() {
+                        if (!window.Planteles_carreras2) {
+                            document.getElementById('loading').style.display = 'none';
+                            document.getElementById('errorMessage').textContent = "Error al cargar los datos. Verifique que el archivo Planteles_carreras2.js exista y esté correctamente formateado.";
+                            document.getElementById('errorMessage').style.display = 'block';
+                        }
+                    }, 3000);
+                }
+                
+                // Event listeners para los botones
+                document.getElementById('limpiarBtn').addEventListener('click', limpiarSeleccion);
+                document.getElementById('exportarBtn').addEventListener('click', exportarAExcel);
+                document.getElementById('closeOverlayBtn').addEventListener('click', closeInfoOverlay);
+                document.getElementById('overlayBackdrop').addEventListener('click', closeInfoOverlay);
+                
+            } catch (error) {
+                console.error("Error al inicializar:", error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('errorMessage').textContent = "Error al cargar el mapa. Por favor recargue la página.";
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+
+        // Deshabilitar clic derecho
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+
+    <!-- Capas JS -->
+    <script src="nvomun.js"></script>
+    <script src="Planteles_carreras2.js"></script>
+    <script src="PODEBIS.js"></script>
+</body>
+</html>
