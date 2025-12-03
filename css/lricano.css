@@ -1962,7 +1962,16 @@ color: var(--text-secondary);
     gap: 5px !important;
   }
 
+  .datos-modal-da-1 {
+    width: 240px !important;
+    gap: 5px !important;
+  }
   .datos-modal-da p {
+    font-size: 12px !important;
+    text-align: start;
+  }
+
+  .datos-modal-da-1 p {
     font-size: 12px !important;
     text-align: start;
   }
@@ -3087,3 +3096,44 @@ color: var(--text-secondary);
     color: #ffffff;
     margin-left: 50px;
 }
+
+.cartel-modal-1 {
+    width: 100px;
+    height: 100px;
+}
+
+.datos-modal-da-1 {
+    background-color: #FB8E33;
+        width: 508px;
+        height: 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        color: white;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration-line: none;
+        text-decoration-color: #FB8E33;
+        margin-bottom: 10px;
+}
+
+.datos-modal-da-1 p {
+        padding-top: 10px;
+        text-decoration-line: none;
+        text-decoration-color: #FB8E33;
+    }
+
+.datos-modal-da-1:hover {
+        background-color: white;
+        color: #FB8E33;
+        border: 1px solid #FB8E33;
+        text-decoration: none;
+        text-decoration-color: white;
+    }
+
+.icon_modal_mc-1 {
+    width: 20px;
+    height: 20px;
+  }
