@@ -642,7 +642,15 @@
 }
 
 .lead-text {
-    margin-top: 40px;
+    margin-top: 20px;
+    font-family: Noto Sans;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+
 }
 
 /* Instancias aliadas */
@@ -776,6 +784,13 @@
 
     .lead-text {
         margin-top: 20px;
+        font-family: Noto Sans;
+        font-weight: 300;
+        font-style: Light;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
         text-align: center;
+
     }
 }
