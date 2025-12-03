@@ -610,3 +610,172 @@
     padding-bottom: 30px!important;
 
 }
+
+
+
+.estrategia-section {
+    padding: 40px 0 60px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.estrategia-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.estrategia-main-row {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.poster-estrategia {
+    max-width: 260px;
+}
+
+.vertical-separator {
+    width: 1px;
+    height: 160px;
+    background-color: #c58a9a;
+    /* tono rosado */
+    margin: 0 auto;
+}
+
+.lead-text {
+    margin-top: 40px;
+}
+
+/* Instancias aliadas */
+.aliadas-section {
+    background: #fdf3f6;
+    padding: 25px 0;
+}
+
+.aliadas-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.aliadas-label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.aliadas-logos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.aliadas-logos img {
+    max-height: 140px;
+    margin: 0 15px;
+}
+
+/* Controles pequeños para ambos sliders */
+.carousel-control.mini-control {
+    width: auto;
+    background: none;
+    color: #b13152;
+    text-shadow: none;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.carousel-control.mini-control .glyphicon {
+    font-size: 18px;
+}
+
+/* Materiales */
+.materiales-section {
+    padding: 40px 0 0;
+}
+
+.materiales-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.materiales-subtitle {
+    margin-bottom: 40px;
+    font-size: 13px;
+}
+
+.subsection-title {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.subsection-divider {
+    
+    height: 2px;
+    background-color: #c58a9a;
+    margin: 0 auto 30px;
+}
+
+/* Tarjetas */
+.material-card {
+    border: 1px solid #f1cbd6;
+    border-radius: 18px;
+    padding: 20px 15px 15px;
+    margin-bottom: 30px;
+    background: #fff;
+}
+
+.material-card img {
+    max-height: 160px;
+    margin: 0 auto 15px;
+}
+
+.btn-descargar {
+    border-radius: 20px;
+    padding: 6px 24px;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: #b13152;
+    border-color: #b13152;
+    color: #fff;
+}
+
+.btn-descargar:hover,
+.btn-descargar:focus {
+    background-color: #8c2540;
+    border-color: #8c2540;
+    color: #fff;
+}
+
+.m-t-30 {
+    margin-top: 30px;
+}
+
+.m-t-40 {
+    margin-top: 40px;
+}
+
+/* Ajustes responsive */
+@media (max-width: 767px) {
+    .aliadas-row {
+        display: block;
+        text-align: center;
+    }
+
+    .aliadas-label {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .lead-text {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
