@@ -339,6 +339,16 @@ function scrollCarruselBachilleratoTecnologico(direction) {
     });
   }
 
+  function scrollCarruselBachiller02(direction) {
+  const carrusel = document.getElementById('carrusel-horizontal');
+    const cardWidth = carrusel.querySelector('.card-videoteca').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
+
   function scrollCarruselBachillerNumeros(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-bachiller-n');
     const cardWidth = carrusel.querySelector('.card-bachiller-n').offsetWidth + 20;
