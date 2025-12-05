@@ -2344,3 +2344,25 @@ h2{
   .video-round{
     border-radius: 20px;
   }
+
+  .hr-bachiller02{
+    border: 1px solid #A48138;
+  }
+
+  .card-videoteca{
+    padding: auto;
+    flex: 0 0 100%;
+    border: 1px solid #A48138;
+    border-radius: 25px;
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .p-videoteca{
+    color: #691C32;
+    font-weight: bold;
+  }
+  
