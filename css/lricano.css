@@ -3137,3 +3137,15 @@ color: var(--text-secondary);
     width: 20px;
     height: 20px;
   }
+
+  .img-indomitas{
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+   .img-indomitas img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
