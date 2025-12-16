@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Talleres multicriterio</title>
+    <title>Talleres EMS</title>
     <meta name="description" content="Mapa interactivo de planteles públicos de Educación Media Superior en México para el ciclo escolar 2024-2025">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="escudo_mexico.ico" type="image/x-icon">
@@ -98,9 +98,9 @@
         }
         
         .filtro-grupo {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             border-bottom: 1px solid var(--color-borde);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
         
         .filtro-grupo:last-child {
@@ -109,32 +109,33 @@
         
         .filtro-grupo label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--color-primario);
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         /* Estilos para selectores múltiples */
         .selector-multiple {
-            max-height: 150px;
+            max-height: 100px;
             overflow-y: auto;
             border: 1px solid var(--color-borde);
             border-radius: 4px;
             background-color: white;
-            padding: 5px;
+            padding: 4px;
         }
         
         .selector-alto {
-            max-height: 200px;
+            max-height: 150px;
         }
         
         .opcion-filtro {
             display: flex;
             align-items: center;
-            padding: 5px 8px;
+            padding: 4px 6px;
             cursor: pointer;
             transition: background-color 0.2s;
+            font-size: 0.85rem;
         }
         
         .opcion-filtro:hover {
@@ -142,7 +143,8 @@
         }
         
         .opcion-filtro input {
-            margin-right: 8px;
+            margin-right: 6px;
+            transform: scale(0.9);
         }
         
         .opcion-filtro label {
@@ -150,20 +152,34 @@
             font-weight: normal;
             cursor: pointer;
             flex: 1;
+            font-size: 0.85rem;
+        }
+        
+        .opcion-filtro.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .opcion-filtro.disabled input {
+            cursor: not-allowed;
+        }
+        
+        .opcion-filtro.disabled label {
+            cursor: not-allowed;
         }
         
         #limpiarBtn {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             background-color: var(--color-primario);
             color: white;
             border: none;
             border-radius: 4px;
             font-family: 'Noto Sans', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         #limpiarBtn:hover {
@@ -173,20 +189,20 @@
         /* Botón de exportación */
         #exportarBtn {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             background-color: #1e5b4f;
             color: white;
             border: none;
             border-radius: 4px;
             font-family: 'Noto Sans', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 10px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         #exportarBtn:hover {
@@ -263,7 +279,7 @@
             z-index: 10000;
             max-width: 80%;
             max-height: 80vh;
-            overflow: auto;
+            overflow: hidden;
             display: none;
         }
         
@@ -293,6 +309,8 @@
         
         .overlay-content {
             line-height: 1.6;
+            overflow: hidden;
+            max-height: calc(80vh - 100px);
         }
         
         .overlay-backdrop {
@@ -367,7 +385,7 @@
         /* Estilos para la simbología mejorada */
         .legend h3 {
             margin: 0 0 8px 0;
-            font-size: 0.9rem;
+            font-size: 0.9rem,
             color: #333;
         }
 
@@ -397,6 +415,11 @@
             border: 1px solid #FFFFFF;
         }
 
+        .legend-tbc {
+            background: #2e8b57; /* Color verde para TBC */
+            border: 1px solid #FFFFFF;
+        }
+
         .legend-podebis {
             background: #FFFFFF;
             border: 1px solid #a57f2c;
@@ -414,6 +437,92 @@
             border: 1px solid #a57f2c;
         }
         
+        /* Estilos para popups más compactos y orgánicos */
+        .popup-content {
+            max-width: 260px;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .popup-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .popup-table td {
+            padding: 2px 3px;
+            vertical-align: top;
+            font-size: 0.8rem;
+            line-height: 1.3;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+        
+        .popup-table td:first-child {
+            width: 40%;
+            text-align: left;
+            font-weight: bold;
+            color: #691C32;
+            padding-right: 5px;
+            font-size: 0.8rem;
+            word-break: normal;
+            white-space: nowrap;
+        }
+        
+        .popup-table td:last-child {
+            width: 60%;
+            text-align: left;
+            font-size: 0.8rem;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+        
+        .popup-url {
+            display: inline-block;
+            max-width: 100%;
+            color: #691C32;
+            text-decoration: underline;
+            font-weight: normal;
+            font-size: 0.8rem;
+            word-break: break-all;
+        }
+        
+        .popup-url:hover {
+            color: #8a2442;
+            text-decoration: none;
+        }
+        
+        .popup-header {
+            text-align: center;
+            margin-bottom: 5px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .popup-header h3 {
+            margin: 0;
+            color: #691C32;
+            font-size: 0.9rem;
+            font-weight: bold;
+            line-height: 1.2;
+            word-break: normal;
+        }
+        
+        .popup-header h4 {
+            margin: 1px 0 0 0;
+            color: #333;
+            font-size: 0.85rem;
+            font-weight: normal;
+            line-height: 1.2;
+            word-break: normal;
+        }
+        
+        .popup-divider {
+            margin: 5px 0;
+            border: 0;
+            border-top: 1px solid #ddd;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .main-container {
@@ -422,17 +531,25 @@
             
             #panel-lateral {
                 width: 100%;
-                max-height: 200px;
+                max-height: 250px;
                 border-right: none;
                 border-bottom: 1px solid var(--color-borde);
             }
             
             #map-container {
-                height: calc(100vh - 300px);
+                height: calc(100vh - 350px);
             }
             
             .titulo p {
                 font-size: 1rem !important;
+            }
+            
+            .selector-multiple {
+                max-height: 100px;
+            }
+            
+            .selector-alto {
+                max-height: 120px;
             }
         }
         
@@ -442,11 +559,19 @@
             }
             
             #panel-lateral {
-                padding: 10px;
+                padding: 8px;
             }
             
             .filtro-grupo {
-                margin-bottom: 15px;
+                margin-bottom: 8px;
+            }
+            
+            .selector-multiple {
+                max-height: 80px;
+            }
+            
+            .selector-alto {
+                max-height: 100px;
             }
         }
         
@@ -510,8 +635,7 @@
             <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
                 <b>Bachillerato Nacional</b>
             </p>
-            <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">
-                Selección multicriterio, ciclo escolar 2024-2025
+            <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">Construcción, readecuación y equipamiento de laboratorios y talleres de las formaciones técnicas, tecnológicas y profesionales.
             </p>
         </div>
     </div>
@@ -520,12 +644,45 @@
     <div class="main-container">
         <!-- Panel lateral de filtros -->
         <div id="panel-lateral" aria-live="polite" aria-atomic="true">
+            <!-- NUEVO FILTRO DE CRITERIOS -->
+            <div class="filtro-grupo">
+                <label for="filtro-criterios">
+                    Criterios
+                </label>
+                <div class="selector-multiple" id="filtro-criterios">
+                    <div class="opcion-filtro">
+                        <input type="checkbox" id="criterio-propuesta1" value="Propuesta_1">
+                        <label for="criterio-propuesta1">Propuesta 1</label>
+                    </div>
+                    <div class="opcion-filtro">
+                        <input type="checkbox" id="criterio-propuesta2" value="Propuesta_2">
+                        <label for="criterio-propuesta2">Propuesta 2</label>
+                    </div>
+                </div>
+            </div>
+
             <div class="filtro-grupo">
                 <label for="filtro-entidad">
                     Entidad federativa
                 </label>
                 <div class="selector-multiple" id="filtro-entidad">
                     <!-- Las opciones se llenarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-planes">
+                    Planes
+                </label>
+                <div class="selector-multiple" id="filtro-planes">
+                    <div class="opcion-filtro">
+                        <input type="checkbox" id="plan-justicia" value="Justicia">
+                        <label for="plan-justicia">Planes de Justicia</label>
+                    </div>
+                    <div class="opcion-filtro">
+                        <input type="checkbox" id="plan-balsas" value="Balsas">
+                        <label for="plan-balsas">Plan Balsas</label>
+                    </div>
                 </div>
             </div>
 
@@ -552,133 +709,6 @@
                     Sector estratégico
                 </label>
                 <div class="selector-multiple" id="filtro-sector">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-rango-carrera">
-                    Matrícula de carrera
-                </label>
-                <div class="selector-multiple" id="filtro-rango-carrera">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-rango-total">
-                    Matrícula del plantel total
-                </label>
-                <div class="selector-multiple" id="filtro-rango-total">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <!-- NUEVO FILTRO: Rango de tasa de matrícula -->
-            <div class="filtro-grupo">
-                <label for="filtro-rango-tasa-mat">
-                    Tasa de crecimiento matricular
-                </label>
-                <div class="selector-multiple" id="filtro-rango-tasa-mat">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-ambito">
-                    Ámbito
-                </label>
-                <div class="selector-multiple" id="filtro-ambito">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-marginacion">
-                    Grado de marginación municipal
-                </label>
-                <div class="selector-multiple" id="filtro-marginacion">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-crecimiento">
-                    Crecimiento 15-17 a 2030
-                </label>
-                <div class="selector-multiple" id="filtro-crecimiento">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-planes-justicia">
-                    Planes de justicia
-                </label>
-                <div class="selector-multiple" id="filtro-planes-justicia">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-plan-balsas">
-                    Plan Balsas
-                </label>
-                <div class="selector-multiple" id="filtro-plan-balsas">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-podebis">
-                    Cercanía a PODEBIS
-                </label>
-                <div class="selector-multiple selector-alto" id="filtro-podebis">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-aula-computo">
-                    Aula de cómputo
-                </label>
-                <div class="selector-multiple" id="filtro-aula-computo">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-talleres-existentes">
-                    Talleres existentes
-                </label>
-                <div class="selector-multiple" id="filtro-talleres-existentes">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-talleres-uso">
-                    Talleres en uso
-                </label>
-                <div class="selector-multiple" id="filtro-talleres-uso">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-laboratorios-existentes">
-                    Laboratorios existentes
-                </label>
-                <div class="selector-multiple" id="filtro-laboratorios-existentes">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-laboratorios-uso">
-                    Laboratorios en uso
-                </label>
-                <div class="selector-multiple" id="filtro-laboratorios-uso">
                     <!-- Las opciones se llenarán dinámicamente -->
                 </div>
             </div>
@@ -712,8 +742,8 @@
             <div class="img" style="margin-bottom: 15px;">
                 <img src="SEP_25.png" 
                      style="display: block; margin: 0 auto;" 
-                     width="200"
-                     height="88"
+                     width="150"
+                     height="66"
                      alt="Logo de la Secretaría de Educación Pública"
                      loading="lazy">
             </div>
@@ -757,82 +787,32 @@
         let plantelesLayer;
         let podebisLayer;
         let municipiosResaltadosEntidad = null;
+        let municipiosResaltadosPlanes = null;
         let plantelesFiltradosActuales = [];
         let ordenColumnasOriginal = []; // Para mantener el orden original de las columnas
 
-        // Variables para almacenar las selecciones de filtros
+        // Variables para almacenar las selecciones de filtros (ahora incluye criterios)
         let filtrosSeleccionados = {
+            criterios: [],
             entidad: [],
+            planes: [],
             subsistema: [],
             carrera: [],
-            sector: [],
-            rangoCarrera: [],
-            rangoTotal: [],
-            rangoTasaMat: [], // NUEVO FILTRO
-            ambito: [],
-            marginacion: [],
-            crecimiento: [],
-            planesJusticia: [],
-            planBalsas: [],
-            podebis: [],
-            aulaComputo: [],
-            talleresExistentes: [],
-            talleresUso: [],
-            laboratoriosExistentes: [],
-            laboratoriosUso: []
+            sector: []
         };
 
-        // Valores predefinidos para los filtros específicos
-        const valoresPredefinidos = {
-            ambito: ["Rural", "Urbano"],
-            marginacion: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
-            rangoCarrera: [
-                "0 - 44",
-                "45 - 76", 
-                "77 - 114",
-                "115 - 158",
-                "159 - 212",
-                "213 - 277",
-                "278- 354",
-                "355 - 468",
-                "469 - 681",
-                "682 - 1,146"
-            ],
-            rangoTotal: [
-                "4 - 320",
-                "321 - 615",
-                "616 - 941",
-                "942 - 1,284",
-                "1,285 - 1,649",
-                "1,650 - 2,089",
-                "2,090 - 2,628",
-                "2,629 - 3,382",
-                "3,383 - 5,353",
-                "5,354 - 8,053"
-            ],
-            rangoTasaMat: [ // NUEVOS VALORES PARA RANGO DE TASA DE MATRÍCULA
-                "-246.07% a -100.03%",
-                "-100.02% a -10.01%",
-                "-10.00% a 25.00%",
-                "25.01% a 164.00%",
-                "164.01% a 240.00%",
-                "240.01% a 320.00%",
-                "320.01% a 400.00%",
-                "400.01% a 580.00%",
-                "580.01% a 1000.00%",
-                "+1000%",
-                "Sin dato"
-            ],
-            crecimiento: ["-25.30% a -10.70%", "-10.69% a -5.80%", "-5.79% a -1.70%", "-1.69% a 3.90%", "3.91% a 19.01%", "Sin dato"],
-            planesJusticia: ["Si", "No"],
-            planBalsas: ["Si", "No"],
-            podebis: ["15 min","30 min","45 min","60 min","No aplica"],
-            aulaComputo: ["Si", "No"],
-            talleresExistentes: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"],
-            talleresUso: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"],
-            laboratoriosExistentes: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"],
-            laboratoriosUso: ["0","1 - 5","6 - 10","11 - 15","16 - 20","21 - 25","Más de 25"]
+        // Variables para almacenar todas las opciones disponibles
+        let todasLasOpciones = {
+            criterios: ['Propuesta_1', 'Propuesta_2'],
+            entidad: [],
+            planes: ['Justicia', 'Balsas'],
+            subsistema: [],
+            carrera: [],
+            sector: []
         };
+
+        // Variable para almacenar el criterio seleccionado actualmente
+        let criterioActual = null;
 
         // Función para formatear números con separador de miles
         function formatNumber(num) {
@@ -849,62 +829,314 @@
             return valor;
         }
 
-        // Función auxiliar para comprobar rangos numéricos
-        function cumpleRango(valor, rango) {
-            // Convertir valor a número
-            const numValor = Number(valor);
-            
-            // Si el rango es "0"
-            if (rango === "0") {
-                return numValor === 0;
+        // Función para verificar si una cadena es una URL válida
+        function esURLValida(url) {
+            if (!url) return false;
+            try {
+                const urlObj = new URL(url);
+                return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+            } catch {
+                return false;
             }
-            
-            // Si el rango es "Más de 25"
-            if (rango === "Más de 25") {
-                return numValor > 25;
-            }
-            
-            // Si el rango es un rango como "1 - 5"
-            if (rango.includes("-")) {
-                const partes = rango.split("-").map(part => part.trim());
-                const inicio = Number(partes[0]);
-                const fin = Number(partes[1]);
-                
-                return numValor >= inicio && numValor <= fin;
-            }
-            
-            return false;
         }
 
-        // Función para generar contenido base de popup
-        function generarPopupBase(feature) {
+        // Función para generar contenido de popup para planteles (con el formato solicitado)
+        function generarPopupPlanteles(feature) {
+            // Procesar la guía mecánica para convertirla en hipervínculo si es una URL
+            let listaequipamientoHtml = feature.properties.lista_equipamiento || 'No disponible';
+            if (esURLValida(feature.properties.lista_equipamiento)) {
+                // Acortar URL para que quepa mejor
+                const url = feature.properties.lista_equipamiento;
+                const displayUrl = url.length > 35 ? url.substring(0, 35) + '...' : url;
+                listaequipamientoHtml = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="popup-url" title="${url}">${displayUrl}</a>`;
+            }
+            
+            // Determinar qué variables usar según el criterio seleccionado
+            let costoAproximado = 'No disponible';
+            let accionesPlantel = 'No disponible';
+            let costoAcciones = 'No disponible';
+            
+            if (criterioActual === 'Propuesta_1') {
+                costoAproximado = feature.properties.costo_1 || 'No disponible';
+                accionesPlantel = feature.properties.acciones_plantel_1 || 'No disponible';
+                costoAcciones = feature.properties.costo_total_1 || 'No disponible';
+            } else if (criterioActual === 'Propuesta_2') {
+                costoAproximado = feature.properties.costo_2 || 'No disponible';
+                accionesPlantel = feature.properties.acciones_plantel_2 || 'No disponible';
+                costoAcciones = feature.properties.costo_total_2 || 'No disponible';
+            }
+            
+            let popupContent = `
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <h3>${feature.properties.CCT}</h3>
+                        <h4>${feature.properties.Subsistema}</h4>
+                    </div>
+                    
+                    <table class="popup-table">
+                        <tr><td>Entidad federativa:</td><td>${feature.properties.Entidad}</td></tr>
+                        <tr><td>Municipio:</td><td>${feature.properties.Municipio}</td></tr>
+                        <tr><td>Nombre plantel:</td><td>${feature.properties.Nombre}</td></tr>
+                        <tr><td>Carrera/Formación:</td><td>${feature.properties.Carrera}</td></tr>
+                        <tr><td>Estatus:</td><td>${feature.properties.estatus}</td></tr>
+                        <tr><td>Sector:</td><td>${feature.properties.Sector}</td></tr>
+                        <tr><td>Matrícula carrera:</td><td>${formatNumber(feature.properties.Mat_carr)}</td></tr>
+                        <tr><td>Matrícula del plantel:</td><td>${formatNumber(feature.properties.Matr_plantel)}</td></tr>
+                        <tr><td>Oferta adicional:</td><td>${feature.properties.Otros || 'No disponible'}</td></tr>
+                    </table>
+                    
+                    <div class="popup-divider"></div>
+                    
+                    <table class="popup-table">
+                        <tr><td>Listado de equipamiento:</td><td>${listaequipamientoHtml}</td></tr>`;
+            
+            // Solo mostrar costos si hay un criterio seleccionado
+            if (criterioActual) {
+                popupContent += `
+                        <tr><td>Costo aproximado taller:</td><td>${costoAproximado}</td></tr>
+                        <tr><td>Acciones en plantel:</td><td>${accionesPlantel} acciones</td></tr>
+                        <tr><td>Costo acciones en plantel:</td><td>${costoAcciones}</td></tr>`;
+            }
+            
+            popupContent += `
+                    </table>
+                </div>`;
+            
+            return popupContent;
+        }
+
+        // Función para generar popup para municipios (con variable Plan agregada)
+        function generarPopupMunicipios(feature) {
+            // Formatear los números con separador de miles
+            const pobTot25 = formatNumber(feature.properties.PobTot25);
+            const pob1519 = formatNumber(feature.properties.Pob_15_19);
+            
             return `
-                <div style="text-align:center">
-                    <h4>${feature.properties.CCT}</h4>
-                    <h3>${feature.properties.Subsistema}</h3>
-                </div>
-                <hr>
-                <table>
-                    <tr><td style="text-align:left"><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
-                    <tr><td style="text-align:left"><b>Municipio: </b>${feature.properties.Municipio}</td></tr>
-                    <tr><td style="text-align:left"><b>Nombre: </b>${feature.properties.Nombre}</td></tr>
-                    <tr><td style="text-align:left"><b>Carrera/Formación laboral: </b>${feature.properties.Carrera}</td></tr>
-                    <tr><td style="text-align:left"><b>Tipo de sector: </b>${feature.properties.Tipo_sec}</td></tr>
-                    <tr><td style="text-align:left"><b>Nombre del sector: </b>${feature.properties.Sector}</td></tr>
-                    <tr><td style="text-align:left"><b>Matrícula de la carrera/formación laboral: </b>${feature.properties.Mat_carr}</td></tr>
-                    <tr><td style="text-align:left"><b>Matrícula total del plantel: </b>${feature.properties.Matr_total}</td></tr>
-                </table>
-                <hr>`;
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <h3>${feature.properties.NOMGEO}</h3>
+                        <h4>${feature.properties.Entidad}</h4>
+                    </div>
+                    
+                    <table class="popup-table">
+                        <tr><td>Grado marginación:</td><td>${feature.properties.GM_2020}</td></tr>
+                        <tr><td>Población total:</td><td>${pobTot25}</td></tr>
+                        <tr><td>Población 15-19:</td><td>${pob1519}</td></tr>
+                        <tr><td>Porcentaje 15-19:</td><td>${feature.properties.Porc_15_19}</td></tr>
+                    </table>
+                </div>`;
+        }
+
+        // Función para mostrar ventana emergente del criterio
+        function mostrarVentanaCriterio(criterio) {
+            let titulo = '';
+            let contenido = '';
+            
+            if (criterio === 'Propuesta_1') {
+                titulo = 'Propuesta 1';
+                contenido = 'COLBACH: 13 planteles atendidos | 19 acciones | $12,158,629.20 costo total | 6,498 estudiantes beneficiados.<br>CONALEP: 33 planteles atendidos | 33 acciones | sin dato costo total | 11,846 estudiantes beneficiados<br>DGB: 39 planteles atendidos | 39 acciones | $39,000,000.00 costo total | 24,236 estudiantes beneficiados<br>DGETAyCM: 384 planteles atendidos | 685 acciones | $12,117,535,738.00 costo total | 75,659 estudiantes beneficiados<br>DGETI: 367 planteles atendidos | 579 acciones | $3,265,094,152.00 costo total | 126,554 estudiantes beeficiados.';
+            } else if (criterio === 'Propuesta_2') {
+                titulo = 'Propuesta 2';
+                contenido = 'CONALEP: 33 planteles atendidos | 33 acciones | sin dato costo total | 11,846 estudiantes beneficiados<br>DGB: 39 planteles atendidos | 39 acciones | $39,000,000.00 costo total | 24,236 estudiantes beneficiados<br>DGETAyCM: 404 planteles beneficiados | 810 acciones | $11,286,637,024.00 costo total aproximado | 84,048 estudiantes beneficiados<br>DGETI: 472 planteles atendidos | 717 acciones | $3,682,650,923.00 costo total aproximado | 142,835 estudiantes benficiados<br>TBC: 1,090 planteles atendidos | 1,090 acciones | $1,090,000,000.00 costo total | 46,574 estudiantes beneficiados.';
+            }
+            
+            document.getElementById('overlayTitle').textContent = titulo;
+            document.getElementById('overlayContent').innerHTML = `<p>${contenido}</p>`;
+            document.getElementById('overlayBackdrop').style.display = 'block';
+            document.getElementById('infoOverlay').style.display = 'block';
         }
 
         // Función para cerrar el overlay
         function closeInfoOverlay() {
             document.getElementById('overlayBackdrop').style.display = 'none';
             document.getElementById('infoOverlay').style.display = 'none';
-            document.getElementById('Entidad').focus();
         }
 
-        // Función para filtrar planteles según selección múltiple
+        // Función para obtener opciones compatibles basadas en las selecciones actuales
+        function obtenerOpcionesCompatibles(tipoFiltro) {
+            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) {
+                return todasLasOpciones[tipoFiltro];
+            }
+
+            // Filtrar planteles con las selecciones actuales (excluyendo el filtro que estamos evaluando)
+            const plantelesFiltrados = window.Planteles_carreras2.features.filter(function(feature) {
+                // Verificar cada filtro excepto el que estamos evaluando
+                const cumpleCriterios = filtrosSeleccionados.criterios.length === 0 || tipoFiltro === 'criterios' || 
+                    (filtrosSeleccionados.criterios.includes('Propuesta_1') && normalizarValorFiltro(feature.properties.Propuesta_1) === "Si") ||
+                    (filtrosSeleccionados.criterios.includes('Propuesta_2') && normalizarValorFiltro(feature.properties.Propuesta_2) === "Si");
+                
+                const cumpleEntidad = filtrosSeleccionados.entidad.length === 0 || tipoFiltro === 'entidad' || 
+                    filtrosSeleccionados.entidad.includes(feature.properties.Entidad);
+                
+                // FILTRADO DE PLANES
+                let cumplePlanes = true;
+                if (filtrosSeleccionados.planes.length > 0 && tipoFiltro !== 'planes') {
+                    cumplePlanes = false;
+                    for (const plan of filtrosSeleccionados.planes) {
+                        if (plan === "Justicia" && normalizarValorFiltro(feature.properties.Justicia) === "Si") {
+                            cumplePlanes = true;
+                            break;
+                        }
+                        if (plan === "Balsas" && normalizarValorFiltro(feature.properties.Balsas) === "Si") {
+                            cumplePlanes = true;
+                            break;
+                        }
+                    }
+                }
+                
+                const cumpleSubsistema = filtrosSeleccionados.subsistema.length === 0 || tipoFiltro === 'subsistema' || 
+                    filtrosSeleccionados.subsistema.includes(feature.properties.Subsistema);
+                
+                const cumpleCarrera = filtrosSeleccionados.carrera.length === 0 || tipoFiltro === 'carrera' || 
+                    filtrosSeleccionados.carrera.includes(feature.properties.Carrera);
+                
+                const cumpleSector = filtrosSeleccionados.sector.length === 0 || tipoFiltro === 'sector' || 
+                    filtrosSeleccionados.sector.includes(feature.properties.Sector);
+                
+                return cumpleCriterios && cumpleEntidad && cumplePlanes && cumpleSubsistema && cumpleCarrera && cumpleSector;
+            });
+
+            // Obtener valores únicos para el tipo de filtro especificado
+            let opciones = [];
+            switch(tipoFiltro) {
+                case 'entidad':
+                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Entidad).filter(Boolean))].sort();
+                    break;
+                case 'subsistema':
+                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Subsistema).filter(Boolean))].sort();
+                    break;
+                case 'carrera':
+                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Carrera).filter(Boolean))].sort();
+                    break;
+                case 'sector':
+                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Sector).filter(Boolean))].sort();
+                    break;
+                case 'planes':
+                    opciones = ['Justicia', 'Balsas'];
+                    break;
+                case 'criterios':
+                    opciones = ['Propuesta_1', 'Propuesta_2'];
+                    break;
+            }
+
+            return opciones;
+        }
+
+        // Función para crear un selector múltiple con opciones compatibles
+        function crearSelectorMultiple(contenedorId, tipoFiltro) {
+            const contenedor = document.getElementById(contenedorId);
+            contenedor.innerHTML = '';
+            
+            // Obtener opciones compatibles
+            const opciones = obtenerOpcionesCompatibles(tipoFiltro);
+            
+            opciones.forEach(opcion => {
+                const div = document.createElement('div');
+                div.className = 'opcion-filtro';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `${contenedorId}-${opcion.replace(/\s+/g, '-')}`;
+                checkbox.value = opcion;
+                
+                // Para criterios, solo mostrar "Si" en las opciones
+                if (tipoFiltro === 'criterios') {
+                    checkbox.checked = filtrosSeleccionados[tipoFiltro].includes(opcion);
+                } else {
+                    checkbox.checked = filtrosSeleccionados[tipoFiltro].includes(opcion);
+                }
+                
+                checkbox.disabled = false; // Por defecto habilitado
+                
+                checkbox.addEventListener('change', function() {
+                    if (!this.disabled) {
+                        actualizarFiltroSeleccionado(tipoFiltro, opcion, this.checked);
+                    }
+                });
+                
+                const label = document.createElement('label');
+                label.htmlFor = checkbox.id;
+                
+                // Personalizar etiquetas para criterios
+                if (tipoFiltro === 'criterios') {
+                    if (opcion === 'Propuesta_1') {
+                        label.textContent = 'Propuesta 1';
+                    } else if (opcion === 'Propuesta_2') {
+                        label.textContent = 'Propuesta 2';
+                    }
+                } else {
+                    label.textContent = opcion;
+                }
+                
+                div.appendChild(checkbox);
+                div.appendChild(label);
+                contenedor.appendChild(div);
+            });
+            
+            // Deshabilitar opciones que no están en la lista de compatibles pero están seleccionadas
+            filtrosSeleccionados[tipoFiltro].forEach(opcionSeleccionada => {
+                if (!opciones.includes(opcionSeleccionada)) {
+                    // Crear un elemento deshabilitado para mostrar la opción seleccionada
+                    const div = document.createElement('div');
+                    div.className = 'opcion-filtro disabled';
+                    
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `${contenedorId}-${opcionSeleccionada.replace(/\s+/g, '-')}-disabled`;
+                    checkbox.value = opcionSeleccionada;
+                    checkbox.checked = true;
+                    checkbox.disabled = true;
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = checkbox.id;
+                    label.textContent = `${opcionSeleccionada} (no disponible con filtros actuales)`;
+                    label.style.fontStyle = 'italic';
+                    label.style.color = '#666';
+                    
+                    div.appendChild(checkbox);
+                    div.appendChild(label);
+                    contenedor.appendChild(div);
+                }
+            });
+        }
+
+        // Función para actualizar todos los selectores basados en las selecciones actuales
+        function actualizarTodosLosSelectores() {
+            crearSelectorMultiple('filtro-criterios', 'criterios');
+            crearSelectorMultiple('filtro-entidad', 'entidad');
+            crearSelectorMultiple('filtro-subsistema', 'subsistema');
+            crearSelectorMultiple('filtro-carrera', 'carrera');
+            crearSelectorMultiple('filtro-sector', 'sector');
+            
+            // Para planes, mantener siempre habilitados
+            const contenedorPlanes = document.getElementById('filtro-planes');
+            contenedorPlanes.innerHTML = '';
+            
+            ['Justicia', 'Balsas'].forEach(opcion => {
+                const div = document.createElement('div');
+                div.className = 'opcion-filtro';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `plan-${opcion.toLowerCase()}`;
+                checkbox.value = opcion;
+                checkbox.checked = filtrosSeleccionados.planes.includes(opcion);
+                checkbox.disabled = false;
+                checkbox.addEventListener('change', function() {
+                    actualizarFiltroSeleccionado('planes', opcion, this.checked);
+                });
+                
+                const label = document.createElement('label');
+                label.htmlFor = checkbox.id;
+                label.textContent = opcion === 'Justicia' ? 'Planes de Justicia' : 'Plan Balsas';
+                
+                div.appendChild(checkbox);
+                div.appendChild(label);
+                contenedorPlanes.appendChild(div);
+            });
+        }
+
+        // Función para filtrar planteles según selección múltiple (incluyendo criterios y planes)
         function filtrarPlanteles() {
             // Verificar que los datos estén cargados
             if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) {
@@ -913,9 +1145,31 @@
             }
 
             plantelesFiltradosActuales = window.Planteles_carreras2.features.filter(function(feature) {
-                // Verificar cada filtro
+                // Verificar cada filtro (incluyendo criterios y planes)
+                const cumpleCriterios = filtrosSeleccionados.criterios.length === 0 || 
+                    (filtrosSeleccionados.criterios.includes('Propuesta_1') && normalizarValorFiltro(feature.properties.Propuesta_1) === "Si") ||
+                    (filtrosSeleccionados.criterios.includes('Propuesta_2') && normalizarValorFiltro(feature.properties.Propuesta_2) === "Si");
+                
                 const cumpleEntidad = filtrosSeleccionados.entidad.length === 0 || 
                     filtrosSeleccionados.entidad.includes(feature.properties.Entidad);
+                
+                // FILTRADO DE PLANES - Solo mostrar planteles que cumplan con los planes seleccionados
+                let cumplePlanes = true;
+                if (filtrosSeleccionados.planes.length > 0) {
+                    cumplePlanes = false;
+                    
+                    // Verificar si el plantel cumple con al menos uno de los planes seleccionados
+                    for (const plan of filtrosSeleccionados.planes) {
+                        if (plan === "Justicia" && normalizarValorFiltro(feature.properties.Justicia) === "Si") {
+                            cumplePlanes = true;
+                            break;
+                        }
+                        if (plan === "Balsas" && normalizarValorFiltro(feature.properties.Balsas) === "Si") {
+                            cumplePlanes = true;
+                            break;
+                        }
+                    }
+                }
                 
                 const cumpleSubsistema = filtrosSeleccionados.subsistema.length === 0 || 
                     filtrosSeleccionados.subsistema.includes(feature.properties.Subsistema);
@@ -926,66 +1180,7 @@
                 const cumpleSector = filtrosSeleccionados.sector.length === 0 || 
                     filtrosSeleccionados.sector.includes(feature.properties.Sector);
                 
-                const cumpleRangoCarrera = filtrosSeleccionados.rangoCarrera.length === 0 || 
-                    filtrosSeleccionados.rangoCarrera.includes(feature.properties.Rango_Carrera);
-                
-                const cumpleRangoTotal = filtrosSeleccionados.rangoTotal.length === 0 || 
-                    filtrosSeleccionados.rangoTotal.includes(feature.properties.Rango_Total);
-                
-                // NUEVO FILTRO: Rango de tasa de matrícula
-                const cumpleRangoTasaMat = filtrosSeleccionados.rangoTasaMat.length === 0 || 
-                    filtrosSeleccionados.rangoTasaMat.includes(feature.properties.Rango_Tasa_Mat);
-                
-                const cumpleAmbito = filtrosSeleccionados.ambito.length === 0 || 
-                    filtrosSeleccionados.ambito.includes(feature.properties.Ámbito);
-                
-                const cumpleMarginacion = filtrosSeleccionados.marginacion.length === 0 || 
-                    filtrosSeleccionados.marginacion.includes(feature.properties.Marg_mun);
-                
-                const cumpleCrecimiento = filtrosSeleccionados.crecimiento.length === 0 || 
-                    filtrosSeleccionados.crecimiento.includes(feature.properties.Rango_15_17);
-                
-                // FILTRO CORREGIDO PARA PLANES DE JUSTICIA
-                const cumplePlanesJusticia = filtrosSeleccionados.planesJusticia.length === 0 || 
-                    filtrosSeleccionados.planesJusticia.includes(normalizarValorFiltro(feature.properties["Planes de justicia"]));
-                
-                // FILTRO CORREGIDO PARA PLAN BALSAS
-                const cumplePlanBalsas = filtrosSeleccionados.planBalsas.length === 0 || 
-                    filtrosSeleccionados.planBalsas.includes(normalizarValorFiltro(feature.properties["Plan Balsas"]));
-                
-                const cumplePodebis = filtrosSeleccionados.podebis.length === 0 || 
-                    filtrosSeleccionados.podebis.includes(feature.properties.PODEBIS);
-                
-                const cumpleAulaComputo = filtrosSeleccionados.aulaComputo.length === 0 || 
-                    filtrosSeleccionados.aulaComputo.includes(normalizarValorFiltro(feature.properties["Aula_cómputo"]));
-                
-                // FILTROS CORREGIDOS PARA TALLERES Y LABORATORIOS
-                const cumpleTalleresExistentes = filtrosSeleccionados.talleresExistentes.length === 0 || 
-                    filtrosSeleccionados.talleresExistentes.some(rango => {
-                        return cumpleRango(feature.properties.T_Existentes, rango);
-                    });
-                
-                const cumpleTalleresUso = filtrosSeleccionados.talleresUso.length === 0 || 
-                    filtrosSeleccionados.talleresUso.some(rango => {
-                        return cumpleRango(feature.properties.T_uso, rango);
-                    });
-                
-                const cumpleLaboratoriosExistentes = filtrosSeleccionados.laboratoriosExistentes.length === 0 || 
-                    filtrosSeleccionados.laboratoriosExistentes.some(rango => {
-                        return cumpleRango(feature.properties.L_Existentes, rango);
-                    });
-                
-                const cumpleLaboratoriosUso = filtrosSeleccionados.laboratoriosUso.length === 0 || 
-                    filtrosSeleccionados.laboratoriosUso.some(rango => {
-                        return cumpleRango(feature.properties.L_uso, rango);
-                    });
-                
-                return cumpleEntidad && cumpleSubsistema && cumpleCarrera && cumpleSector && 
-                       cumpleRangoCarrera && cumpleRangoTotal && cumpleRangoTasaMat && cumpleAmbito && 
-                       cumpleMarginacion && cumpleCrecimiento && cumplePlanesJusticia && 
-                       cumplePlanBalsas && cumplePodebis && cumpleAulaComputo && 
-                       cumpleTalleresExistentes && cumpleTalleresUso && 
-                       cumpleLaboratoriosExistentes && cumpleLaboratoriosUso;
+                return cumpleCriterios && cumpleEntidad && cumplePlanes && cumpleSubsistema && cumpleCarrera && cumpleSector;
             });
             
             plantelesLayer.clearLayers();
@@ -999,6 +1194,9 @@
                 map.removeLayer(podebisLayer);
                 map.addLayer(podebisLayer);
             }
+            
+            // Actualizar los selectores basados en los nuevos filtros
+            actualizarTodosLosSelectores();
             
             // Actualizar el botón de limpiar y exportar
             actualizarBotones();
@@ -1034,13 +1232,18 @@
                 ordenColumnasOriginal = propiedadesCompletas;
             }
             
-            console.log("Orden original de columnas:", ordenColumnasOriginal);
+            // Inicializar todas las opciones disponibles
+            todasLasOpciones.entidad = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Entidad).filter(Boolean))].sort();
+            todasLasOpciones.subsistema = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Subsistema).filter(Boolean))].sort();
+            todasLasOpciones.carrera = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Carrera).filter(Boolean))].sort();
+            todasLasOpciones.sector = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Sector).filter(Boolean))].sort();
         }
 
         // Función para resaltar municipios por entidad
         function resaltarMunicipiosPorEntidad() {
             if (municipiosResaltadosEntidad) {
                 map.removeLayer(municipiosResaltadosEntidad);
+                municipiosResaltadosEntidad = null;
             }
             
             if (filtrosSeleccionados.entidad.length === 0) {
@@ -1059,8 +1262,77 @@
                         fillOpacity: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? 0.7 : 0.6
                     };
                 },
-                onEachFeature: popupMunicipio
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(generarPopupMunicipios(feature), {minWidth: 180, maxWidth: 220});
+                }
             }).addTo(map);
+        }
+
+        // Función para resaltar municipios por planes - USANDO LAS VARIABLES EN nvomun
+        function resaltarMunicipiosPorPlanes() {
+            if (municipiosResaltadosPlanes) {
+                map.removeLayer(municipiosResaltadosPlanes);
+                municipiosResaltadosPlanes = null;
+            }
+            
+            if (filtrosSeleccionados.planes.length === 0) {
+                return;
+            }
+            
+            console.log("Filtros de planes seleccionados:", filtrosSeleccionados.planes);
+            
+            // FILTRAR SOLO LOS MUNICIPIOS QUE TIENEN "Si" EN LOS PLANES SELECCIONADOS
+            const municipiosFiltrados = {
+                type: "FeatureCollection",
+                features: nvomun.features.filter(feature => {
+                    // Verificar si este municipio tiene "Si" en alguno de los planes seleccionados
+                    let tienePlanSeleccionado = false;
+                    
+                    // Para cada plan seleccionado, verificar si el municipio tiene "Si"
+                    filtrosSeleccionados.planes.forEach(plan => {
+                        if (plan === "Justicia") {
+                            if (normalizarValorFiltro(feature.properties.Justicia) === "Si") {
+                                tienePlanSeleccionado = true;
+                            }
+                        }
+                        if (plan === "Balsas") {
+                            if (normalizarValorFiltro(feature.properties.Balsas) === "Si") {
+                                tienePlanSeleccionado = true;
+                            }
+                        }
+                    });
+                    
+                    return tienePlanSeleccionado;
+                })
+            };
+            
+            console.log("Municipios con planes 'Si':", municipiosFiltrados.features.length);
+            
+            if (municipiosFiltrados.features.length === 0) {
+                console.log("No hay municipios con los planes seleccionados activos");
+                return;
+            }
+            
+            // CREAR LA CAPA SOLO CON LOS MUNICIPIOS QUE TIENEN "Si" EN LOS PLANES
+            municipiosResaltadosPlanes = L.geoJSON(municipiosFiltrados, {
+                pane: 'municipiosResaltados',
+                style: function() {
+                    // MISMO COLOR QUE PARA ENTIDAD, PERO SOLO PARA LOS QUE TIENEN PLANES
+                    return {
+                        fillColor: '#e6d194',
+                        weight: 1.3,
+                        opacity: .08,
+                        color: '#806b4a',
+                        dashArray: '0',
+                        fillOpacity: 0.7
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(generarPopupMunicipios(feature), {minWidth: 180, maxWidth: 220});
+                }
+            }).addTo(map);
+            
+            console.log("Municipios resaltados:", municipiosFiltrados.features.length, "de", nvomun.features.length);
         }
 
         // Función para verificar selección activa
@@ -1082,10 +1354,13 @@
 
         // Función para limpiar todas las selecciones
         function limpiarSeleccion() {
-            // Limpiar todas las selecciones
+            // Limpiar todas las selecciones (incluyendo criterios y planes)
             Object.keys(filtrosSeleccionados).forEach(key => {
                 filtrosSeleccionados[key] = [];
             });
+            
+            // Limpiar criterio actual
+            criterioActual = null;
             
             // Actualizar todos los selectores
             actualizarTodosLosSelectores();
@@ -1093,57 +1368,61 @@
             // Aplicar filtros
             filtrarPlanteles();
             resaltarMunicipiosPorEntidad();
+            resaltarMunicipiosPorPlanes();
             
             actualizarBotones();
         }
 
-        // Función para crear un selector múltiple
-        function crearSelectorMultiple(contenedorId, opciones, propiedad) {
-            const contenedor = document.getElementById(contenedorId);
-            contenedor.innerHTML = '';
-            
-            opciones.forEach(opcion => {
-                const div = document.createElement('div');
-                div.className = 'opcion-filtro';
-                
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.id = `${contenedorId}-${opcion.replace(/\s+/g, '-')}`;
-                checkbox.value = opcion;
-                checkbox.checked = filtrosSeleccionados[propiedad].includes(opcion);
-                checkbox.addEventListener('change', function() {
-                    actualizarFiltroSeleccionado(propiedad, opcion, this.checked);
-                });
-                
-                const label = document.createElement('label');
-                label.htmlFor = checkbox.id;
-                label.textContent = opcion;
-                
-                div.appendChild(checkbox);
-                div.appendChild(label);
-                contenedor.appendChild(div);
-            });
-        }
-
         // Función para actualizar un filtro seleccionado
         function actualizarFiltroSeleccionado(propiedad, valor, seleccionado) {
-            if (seleccionado) {
-                if (!filtrosSeleccionados[propiedad].includes(valor)) {
-                    filtrosSeleccionados[propiedad].push(valor);
+            if (propiedad === 'criterios') {
+                // Solo permitir seleccionar un criterio a la vez
+                if (seleccionado) {
+                    // Si ya hay un criterio seleccionado, deseleccionarlo primero
+                    if (filtrosSeleccionados.criterios.length > 0) {
+                        const criterioAnterior = filtrosSeleccionados.criterios[0];
+                        filtrosSeleccionados.criterios = [];
+                        
+                        // Mostrar ventana emergente del nuevo criterio
+                        mostrarVentanaCriterio(valor);
+                    } else {
+                        // Primera selección de criterio
+                        mostrarVentanaCriterio(valor);
+                    }
+                    
+                    filtrosSeleccionados.criterios = [valor];
+                    criterioActual = valor;
+                } else {
+                    filtrosSeleccionados.criterios = [];
+                    criterioActual = null;
                 }
             } else {
-                const index = filtrosSeleccionados[propiedad].indexOf(valor);
-                if (index > -1) {
-                    filtrosSeleccionados[propiedad].splice(index, 1);
+                // Para otros filtros, comportamiento normal
+                if (seleccionado) {
+                    if (!filtrosSeleccionados[propiedad].includes(valor)) {
+                        filtrosSeleccionados[propiedad].push(valor);
+                    }
+                } else {
+                    const index = filtrosSeleccionados[propiedad].indexOf(valor);
+                    if (index > -1) {
+                        filtrosSeleccionados[propiedad].splice(index, 1);
+                    }
                 }
             }
+            
+            console.log("Filtros seleccionados:", filtrosSeleccionados);
+            console.log("Criterio actual:", criterioActual);
             
             // Aplicar filtros
             filtrarPlanteles();
             
-            // Si es entidad, aplicar solo resaltado (sin zoom)
+            // Aplicar resaltados según el tipo de filtro
             if (propiedad === 'entidad') {
                 resaltarMunicipiosPorEntidad();
+                resaltarMunicipiosPorPlanes(); // También actualizar planes si hay selección
+            } else if (propiedad === 'planes') {
+                resaltarMunicipiosPorPlanes();
+                resaltarMunicipiosPorEntidad(); // También actualizar entidad si hay selección
             }
             
             actualizarBotones();
@@ -1157,77 +1436,17 @@
                 return;
             }
 
-            // Obtener todos los valores únicos para cada filtro
-            const entidades = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Entidad).filter(Boolean))].sort();
-            const subsistemas = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Subsistema).filter(Boolean))].sort();
-            const carreras = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Carrera).filter(Boolean))].sort();
-            const sectores = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Sector).filter(Boolean))].sort();
+            // Inicializar todas las opciones disponibles
+            recopilarTodasLasPropiedades();
             
-            // Usar valores predefinidos para los filtros específicos
-            const rangoCarrera = valoresPredefinidos.rangoCarrera;
-            const rangoTotal = valoresPredefinidos.rangoTotal;
-            const rangoTasaMat = valoresPredefinidos.rangoTasaMat; // NUEVO FILTRO
-            const ambitos = valoresPredefinidos.ambito;
-            const marginaciones = valoresPredefinidos.marginacion;
-            const crecimiento = valoresPredefinidos.crecimiento;
-            const planesJusticia = valoresPredefinidos.planesJusticia;
-            const planBalsas = valoresPredefinidos.planBalsas;
-            const podebis = valoresPredefinidos.podebis;
-            const aulaComputo = valoresPredefinidos.aulaComputo;
-            const talleresExistentes = valoresPredefinidos.talleresExistentes;
-            const talleresUso = valoresPredefinidos.talleresUso;
-            const laboratoriosExistentes = valoresPredefinidos.laboratoriosExistentes;
-            const laboratoriosUso = valoresPredefinidos.laboratoriosUso;
-            
-            // Crear los selectores múltiples (sin botones adicionales)
-            crearSelectorMultiple('filtro-entidad', entidades, 'entidad');
-            crearSelectorMultiple('filtro-subsistema', subsistemas, 'subsistema');
-            crearSelectorMultiple('filtro-carrera', carreras, 'carrera');
-            crearSelectorMultiple('filtro-sector', sectores, 'sector');
-            crearSelectorMultiple('filtro-rango-carrera', rangoCarrera, 'rangoCarrera');
-            crearSelectorMultiple('filtro-rango-total', rangoTotal, 'rangoTotal');
-            crearSelectorMultiple('filtro-rango-tasa-mat', rangoTasaMat, 'rangoTasaMat'); // NUEVO FILTRO
-            crearSelectorMultiple('filtro-ambito', ambitos, 'ambito');
-            crearSelectorMultiple('filtro-marginacion', marginaciones, 'marginacion');
-            crearSelectorMultiple('filtro-crecimiento', crecimiento, 'crecimiento');
-            crearSelectorMultiple('filtro-planes-justicia', planesJusticia, 'planesJusticia');
-            crearSelectorMultiple('filtro-plan-balsas', planBalsas, 'planBalsas');
-            crearSelectorMultiple('filtro-podebis', podebis, 'podebis');
-            crearSelectorMultiple('filtro-aula-computo', aulaComputo, 'aulaComputo');
-            crearSelectorMultiple('filtro-talleres-existentes', talleresExistentes, 'talleresExistentes');
-            crearSelectorMultiple('filtro-talleres-uso', talleresUso, 'talleresUso');
-            crearSelectorMultiple('filtro-laboratorios-existentes', laboratoriosExistentes, 'laboratoriosExistentes');
-            crearSelectorMultiple('filtro-laboratorios-uso', laboratoriosUso, 'laboratoriosUso');
-        }
-
-        // Función para actualizar todos los selectores
-        function actualizarTodosLosSelectores() {
-            inicializarSelectoresMultiples();
+            // Crear los selectores múltiples iniciales
+            actualizarTodosLosSelectores();
         }
 
         // Función para popup de municipios
         function popupMunicipio(feature, layer) {
             if (feature.properties && feature.properties.NOMGEO) {
-                // Formatear los números con separador de miles
-                const conEMSsigue = formatNumber(feature.properties.Con_EMS_sigue);
-                const conEMSNoSigue = formatNumber(feature.properties.Con_EMS_NoSigue);
-                const pobTot25 = formatNumber(feature.properties.PobTot25);
-                const pob1519 = formatNumber(feature.properties.Pob_15_19);
-                
-                layer.bindPopup(
-                    `<div style="text-align:center">
-                        <h2>${feature.properties.NOMGEO}</h2>
-                    </div>
-                    <hr>
-                    <table>
-                        <tr><td><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
-                        <tr><td><b>Grado de marginación: </b>${feature.properties.GM_2020}</td></tr>
-                        <tr><td><b>Población total: </b>${pobTot25}</td></tr>
-                        <tr><td><b>Población 15 a 19: </b>${pob1519}</td></tr>
-                        <tr><td><b>Porcentaje 15 a 19: </b>${feature.properties.Porc_15_19}</td></tr>
-                    </table>`,
-                    {minWidth: 150, maxWidth: 200}
-                );
+                layer.bindPopup(generarPopupMunicipios(feature), {minWidth: 180, maxWidth: 220});
             }
         }
 
@@ -1257,7 +1476,7 @@
             return L.marker(latlng, { icon: recordCircleIcon });
         }
 
-        // MODIFICACIÓN: Función para manejar eventos de mouse en puntos PODEBIS - CON TOOLTIP PERO SIN POPUP AL CLIC
+        // Función para manejar eventos de mouse en puntos PODEBIS - CON TOOLTIP PERO SIN POPUP AL CLIC
         function onEachPodebisFeature(feature, layer) {
             // Tooltip con la propiedad descriptio (solo hover)
             layer.bindTooltip(feature.properties.descriptio, {
@@ -1267,7 +1486,6 @@
             });
 
             // Eventos para el efecto de resaltado
-
             layer.on('mouseover', function() {
                 const iconElement = layer.getElement();
                 if (iconElement) {
@@ -1290,7 +1508,6 @@
             layer.unbindPopup();
             
             // Prevenir que el clic abra cualquier popup
-
             layer.on('click', function(e) {
                 L.DomEvent.stopPropagation(e);
                 // No hacer nada al hacer clic
@@ -1302,41 +1519,22 @@
             const colores = {
                 "DGETAyCM": '#9b2247',
                 "DGETI": '#9b2247',
-                "BTED": '#9b2247',
-                "CETI": '#9b2247',
-                "CECyTE": '#9b2247',
-                "CONALEP (CDMX-OAX)": '#9b2247',
-                "CONALEP (Estados)": '#9b2247',
-                "DGB": '#1e5b4f', 
-                "EMSaD": '#1e5b4f', 
-                "COBACH": '#1e5b4f',
-                "COLBACH (CDMX-EdoMéx)": '#1e5b4f',
+                "CONALEP": '#9b2247',   
+                "DGB": '#1e5b4f',  
+                "COLBACH": '#1e5b4f',
+                "TBC": '#1e5b4f'
             };
             return colores[d] || '#000000';
         }
 
-        // Popup para planteles con oferta educativa
+        // Popup para planteles con oferta educativa - AJUSTADO PARA MEJORES SALTOS DE LÍNEA
         function popupPlanteles(feature, layer) {
-            const baseContent = generarPopupBase(feature);
-            
-            const content = baseContent + `
-                <table>
-                    <tr><td style="text-align:left"><b>Rango de tasa de matrícula: </b>${feature.properties.Rango_Tasa_Mat}</td></tr>
-                    <tr><td style="text-align:left"><b>Oferta educativa adicional (matrícula): </b>${feature.properties.Otros || 'No disponible'}</td></tr>
-                    <tr><td style="text-align:left"><b>Ámbito: </b>${feature.properties.Ámbito}</td></tr>
-                    <tr><td style="text-align:left"><b>Marginación municipal: </b>${feature.properties.Marg_mun}</td></tr>
-                    <tr><td style="text-align:left"><b>Rango de crecimiento 15-17: </b>${feature.properties.Rango_15_17}</td></tr>
-                    <tr><td style="text-align:left"><b>Planes de justicia: </b>${normalizarValorFiltro(feature.properties["Planes de justicia"])}</td></tr>
-                    <tr><td style="text-align:left"><b>Plan Balsas: </b>${normalizarValorFiltro(feature.properties["Plan Balsas"])}</td></tr>
-                    <tr><td style="text-align:left"><b>PODEBIS: </b>${feature.properties.PODEBIS}</td></tr>
-                    <tr><td style="text-align:left"><b>Aula de cómputo: </b>${normalizarValorFiltro(feature.properties["Aula_cómputo"])}</td></tr>
-                    <tr><td style="text-align:left"><b>Talleres existentes: </b>${feature.properties.T_Existentes}</td></tr>
-                    <tr><td style="text-align:left"><b>Talleres en uso: </b>${feature.properties.T_uso}</td></tr>
-                    <tr><td style="text-align:left"><b>Laboratorios existentes: </b>${feature.properties.L_Existentes}</td></tr>
-                    <tr><td style="text-align:left"><b>Laboratorios en uso: </b>${feature.properties.L_uso}</td></tr>
-                </table>`;
-            
-            layer.bindPopup(content, {minWidth: 250, maxWidth: 300});
+            const popupContent = generarPopupPlanteles(feature);
+            layer.bindPopup(popupContent, {
+                minWidth: 260,
+                maxWidth: 280,
+                className: 'custom-popup'
+            });
         }
 
         // FUNCIONES PARA EXPORTAR A EXCEL - VERSIÓN MEJORADA
@@ -1356,14 +1554,6 @@
                 !['Latitud', 'Longitud'].includes(columna)
             );
 
-            // Asegurar que las nuevas columnas estén incluidas
-            const columnasRequeridas = ['Rango_Tasa_Mat', 'Tasa_cr_mat'];
-            columnasRequeridas.forEach(columna => {
-                if (!columnas.includes(columna) && plantelesFiltradosActuales[0].properties[columna] !== undefined) {
-                    columnas.push(columna);
-                }
-            });
-
             // Preparar los datos para Excel
             const datosExcel = plantelesFiltradosActuales.map(feature => {
                 const propiedades = feature.properties;
@@ -1378,7 +1568,8 @@
                     }
                     
                     // Convertir valores booleanos a Si/No para mejor legibilidad
-                    if (columna === 'Planes de justicia' || columna === 'Plan Balsas' || columna === 'Aula_cómputo') {
+                    if (columna === 'Justicia' || columna === 'Balsas' || 
+                        columna === 'Propuesta_1' || columna === 'Propuesta_2') {
                         valor = normalizarValorFiltro(valor);
                     }
                     
@@ -1402,13 +1593,13 @@
             
             // Generar nombre de archivo con fecha y hora
             const fecha = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-            const nombreArchivo = `planteles_EMS_filtrados_24-25_${fecha}.xlsx`;
+            const nombreArchivo = `planteles_EMS_filtrados_25-26_${fecha}.xlsx`;
             
             // Descargar el archivo
             XLSX.writeFile(wb, nombreArchivo);
             
             // Mostrar mensaje de éxito
-            alert(`Se exportaron ${plantelesFiltradosActuales.length} planteles al archivo ${nombreArchivo}\n\nColumnas exportadas: ${columnas.length}`);
+            alert(`Se exportaron ${plantelesFiltradosActuales.length} planteles al archivo ${nombreArchivo}`);
         }
 
         function inicializarMapa() {
@@ -1440,23 +1631,12 @@
             map.createPane('podebisPane');
             map.getPane('podebisPane').style.zIndex = 450;
 
+            // SOLO mapa base en grises
             const grises = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
                 minZoom: 5, 
                 maxZoom: 16,
-                attribution: 'Fuente: DGPPyEE-SEP, ciclo escolar 24-25'
+                attribution: 'Fuente: DGPPyEE-SEP, ciclo escolar 25-26'
             }).addTo(map);
-
-            const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                minZoom: 5, 
-                maxZoom: 18,
-                attribution: 'Fuente: DGPPyEE-SEP'
-            });
-
-            const baseLayers = {
-                "Mapa en grises": grises,
-                "Mapa satelital": Esri_WorldImagery
-            };
-            L.control.layers(baseLayers, null, {collapsed: false}).addTo(map);
 
             L.control.resetView({
                 position: "topleft",
@@ -1476,6 +1656,7 @@
                 // Recopilar todas las propiedades disponibles y su orden original
                 recopilarTodasLasPropiedades();
 
+                // Capa base de municipios (gris claro) - NIVEL MÁS BAJO
                 mun = L.geoJSON(nvomun, {
                     style: function() {
                         return {
@@ -1491,6 +1672,7 @@
                     onEachFeature: popupMunicipio
                 }).addTo(map);
 
+                // Capa de planteles
                 plantelesLayer = L.geoJSON(window.Planteles_carreras2, {
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng);
@@ -1511,13 +1693,12 @@
                         pane: 'podebisPane',
                         onEachFeature: onEachPodebisFeature
                     });
-
-                    // Añadir capas en el orden correcto
-                    map.addLayer(plantelesLayer);
+                }
+                
+                // Añadir capas en el orden correcto (solo planteles y PODEBIS por defecto)
+                map.addLayer(plantelesLayer);
+                if (podebisLayer) {
                     map.addLayer(podebisLayer);
-                } else {
-                    map.addLayer(plantelesLayer);
-                    console.warn("La capa PODEBIS no está disponible");
                 }
                 
             } catch (error) {
@@ -1528,7 +1709,7 @@
         }
 
         function inicializarControles() {
-            // SIMBOLOGÍA
+            // SIMBOLOGÍA - ACTUALIZADA PARA INCLUIR CONALEP CON BACHILLERATO TECNOLÓGICO
             const legend = L.control({position: 'bottomright'});
             
             legend.onAdd = function () {
