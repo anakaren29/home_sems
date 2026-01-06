@@ -10,6 +10,18 @@
       href="https://framework-gb.cdn.gob.mx/assets/styles/main.css"
       rel="stylesheet"
     />
+    <style>
+      #confetti-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    </style>
     <link
       data-turbolinks-track="true"
       href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css"
@@ -69,6 +81,9 @@
         </div>
       </nav>
     </header>
+
+    <!--Confeti-->
+    <canvas id="confetti-canvas"></canvas>
 
     <main style="margin-top: 60px">
       <div style="background-color: #EBEBEB; height: 200px;">
@@ -212,5 +227,82 @@
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/script.js"></script>
+    
+    <script>
+      (function () {
+        var canvas = document.getElementById('confetti-canvas');
+        var ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        var confetti = [];
+        //colores instituionales
+        //var colors = ['#b13152', '#f1cbd6', '#ffffff', '#8c2540'];
+        //colores festivos
+        var colors = ['#ff1744', '#f50057', '#ff9100', '#ffea00', '#00e676', '#2979ff', '#651fff', '#ffffff'];
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        function ConfettiPiece() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height - canvas.height;
+          this.size = Math.random() * 8 + 4;
+          this.speed = Math.random() * 3 + 2;
+          this.angle = Math.random() * 360;
+          this.spin = Math.random() * 10 - 5;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.opacity = Math.random();
+        }
+
+        ConfettiPiece.prototype.update = function () {
+          this.y += this.speed;
+          this.angle += this.spin;
+          if (this.y > canvas.height) {
+            this.y = -10;
+          }
+        };
+
+        ConfettiPiece.prototype.draw = function () {
+          ctx.save();
+          ctx.globalAlpha = this.opacity;
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.angle * Math.PI / 180);
+          ctx.fillStyle = this.color;
+          ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+          ctx.restore();
+        };
+
+        function initConfetti(count) {
+          confetti = [];
+          for (var i = 0; i < count; i++) {
+            confetti.push(new ConfettiPiece());
+          }
+        }
+
+        function animateConfetti() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          confetti.forEach(function (piece) {
+            piece.update();
+            piece.draw();
+          });
+        }
+
+        initConfetti(60);
+
+        var animation = setInterval(animateConfetti, 16);
+
+        setTimeout(function () {
+          clearInterval(animation);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }, 10000);
+      })();
+    </script>
+
+
   </body>
 </html>
