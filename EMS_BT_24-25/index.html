@@ -114,6 +114,18 @@
             border-radius: 4px;
             font-family: 'Noto Sans', sans-serif;
             min-width: 200px;
+            background-color: white;
+        }
+        
+        select:disabled {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        select option:disabled {
+            color: #999;
+            background-color: #f5f5f5;
         }
         
         button {
@@ -717,7 +729,13 @@
             document.getElementById("Carrera").value = "Todos";
             document.getElementById("Sector").value = "Todos";
             
-            // Actualizar selectores para mostrar todas las opciones
+            // Habilitar todas las opciones de entidad
+            const entidadSelect = document.getElementById("Entidad");
+            Array.from(entidadSelect.options).forEach(option => {
+                option.disabled = false;
+            });
+            
+            // Llenar carreras y sectores con todas las opciones disponibles
             actualizarSelectoresCompletamente();
             
             // Aplicar filtros
@@ -728,117 +746,66 @@
             document.getElementById("limpiarBtn").style.display = "none";
         }
 
-        // Función para obtener datos filtrados según selecciones actuales
-        function obtenerDatosFiltrados() {
-            return Planteles_carreras.features;
-        }
-
-        // Función para ordenar sectores según el orden personalizado - MEJORADA
-        function ordenarSectoresPersonalizado(sectoresArray) {
-            // Primero, normalizar los nombres para eliminar duplicados por diferencias de formato
-            const sectoresNormalizados = [...new Set(sectoresArray.map(s => s.trim()))];
-            
-            return sectoresNormalizados.sort((a, b) => {
-                const indexA = ordenSectores.indexOf(a);
-                const indexB = ordenSectores.indexOf(b);
-                
-                // Si ambos están en el orden personalizado, usar ese orden
-                if (indexA !== -1 && indexB !== -1) {
-                    return indexA - indexB;
-                }
-                // Si solo A está en el orden personalizado, A va primero
-                if (indexA !== -1) {
-                    return -1;
-                }
-                // Si solo B está en el orden personalizado, B va primero
-                if (indexB !== -1) {
-                    return 1;
-                }
-                // Si ninguno está en el orden personalizado, orden alfabético
-                return a.localeCompare(b);
-            });
-        }
-
-        // Función para actualizar los selectores de manera interoperante
-        function actualizarSelectoresCompletamente() {
-            const datosCompletos = obtenerDatosFiltrados();
+        // Función para obtener combinaciones disponibles entre selectores
+        function obtenerCombinacionesDisponibles() {
             const entidadActual = document.getElementById("Entidad").value;
             const carreraActual = document.getElementById("Carrera").value;
             const sectorActual = document.getElementById("Sector").value;
             
-            // Obtener todas las combinaciones posibles
-            const entidadesDisponibles = new Set();
-            const carrerasDisponibles = new Set();
-            const sectoresDisponibles = new Set();
+            const combinaciones = {
+                entidades: new Set(),
+                carreras: new Set(),
+                sectores: new Set()
+            };
             
-            // Primer filtrado: obtener todos los valores disponibles sin filtros
-            datosCompletos.forEach(function(feature) {
-                if (feature.properties.Entidad && feature.properties.Entidad !== "") {
-                    entidadesDisponibles.add(feature.properties.Entidad);
+            Planteles_carreras.features.forEach(function(feature) {
+                const entidad = feature.properties.Entidad;
+                const carrera = feature.properties.Carrera;
+                const sector = feature.properties.Sector ? feature.properties.Sector.trim() : "";
+                
+                // Filtrar según las selecciones actuales
+                let cumple = true;
+                
+                if (entidadActual !== "Todos" && entidad !== entidadActual) {
+                    cumple = false;
                 }
-                if (feature.properties.Carrera && feature.properties.Carrera !== "") {
-                    carrerasDisponibles.add(feature.properties.Carrera);
+                if (carreraActual !== "Todos" && carrera !== carreraActual) {
+                    cumple = false;
                 }
-                if (feature.properties.Sector && feature.properties.Sector !== "") {
-                    sectoresDisponibles.add(feature.properties.Sector.trim()); // Normalizar espacios
+                if (sectorActual !== "Todos" && sector !== sectorActual) {
+                    cumple = false;
+                }
+                
+                if (cumple) {
+                    // Agregar todas las entidades que tienen la combinación actual
+                    if (entidad) combinaciones.entidades.add(entidad);
+                    // Agregar todas las carreras que tienen la combinación actual
+                    if (carrera) combinaciones.carreras.add(carrera);
+                    // Agregar todos los sectores que tienen la combinación actual
+                    if (sector) combinaciones.sectores.add(sector);
                 }
             });
             
-            // Segundo filtrado: aplicar filtros cruzados entre los tres selectores
-            const entidadesFiltradas = new Set();
-            const carrerasFiltradas = new Set();
-            const sectoresFiltrados = new Set();
+            return combinaciones;
+        }
+
+        // Función para actualizar los selectores de manera interoperante - CORREGIDA
+        function actualizarSelectoresCompletamente() {
+            const combinaciones = obtenerCombinacionesDisponibles();
             
-            datosCompletos.forEach(function(feature) {
-                let cumpleFiltros = true;
-                
-                // Verificar si cumple con las selecciones actuales
-                if (entidadActual !== "Todos" && feature.properties.Entidad !== entidadActual) {
-                    cumpleFiltros = false;
-                }
-                if (carreraActual !== "Todos" && feature.properties.Carrera !== carreraActual) {
-                    cumpleFiltros = false;
-                }
-                if (sectorActual !== "Todos" && feature.properties.Sector.trim() !== sectorActual) {
-                    cumpleFiltros = false;
-                }
-                
-                if (cumpleFiltros) {
-                    // Para entidades: mostrar todas las que tienen la combinación carrera-sector seleccionado
-                    if (carreraActual !== "Todos" || sectorActual !== "Todos") {
-                        if (feature.properties.Entidad && feature.properties.Entidad !== "") {
-                            entidadesFiltradas.add(feature.properties.Entidad);
-                        }
-                    }
-                    
-                    // Para carreras: mostrar todas las que tienen la combinación entidad-sector seleccionado
-                    if (entidadActual !== "Todos" || sectorActual !== "Todos") {
-                        if (feature.properties.Carrera && feature.properties.Carrera !== "") {
-                            carrerasFiltradas.add(feature.properties.Carrera);
-                        }
-                    }
-                    
-                    // Para sectores: mostrar todos los que tienen la combinación entidad-carrera seleccionada
-                    if (entidadActual !== "Todos" || carreraActual !== "Todos") {
-                        if (feature.properties.Sector && feature.properties.Sector !== "") {
-                            sectoresFiltrados.add(feature.properties.Sector.trim()); // Normalizar espacios
-                        }
-                    }
-                }
-            });
+            const entidadActual = document.getElementById("Entidad").value;
+            const carreraActual = document.getElementById("Carrera").value;
+            const sectorActual = document.getElementById("Sector").value;
             
-            // Actualizar selector de entidades
+            // 1. Actualizar selector de entidades
             const entidadSelect = document.getElementById("Entidad");
-            const opcionesEntidadOriginales = Array.from(entidadSelect.options);
-            
-            // Habilitar/deshabilitar opciones de entidad basado en las combinaciones disponibles
-            opcionesEntidadOriginales.forEach(function(option) {
+            Array.from(entidadSelect.options).forEach(option => {
                 if (option.value === "Todos") {
                     option.disabled = false;
                 } else {
                     // Deshabilitar entidades que no tienen la combinación carrera-sector seleccionada
                     if (carreraActual !== "Todos" || sectorActual !== "Todos") {
-                        option.disabled = !entidadesFiltradas.has(option.value);
+                        option.disabled = !combinaciones.entidades.has(option.value);
                     } else {
                         option.disabled = false;
                     }
@@ -853,15 +820,13 @@
                 }
             }
             
-            // Actualizar selector de carreras
+            // 2. Actualizar selector de carreras
             const carreraSelect = document.getElementById("Carrera");
-            carreraSelect.innerHTML = '<option value="Todos">Todas las carreras</option>';
+            carreraSelect.innerHTML = '<option value="Todos">Todas las carreras/formaciones laborales</option>';
             
-            const carrerasParaMostrar = (entidadActual !== "Todos" || sectorActual !== "Todos") ? 
-                (carrerasFiltradas.size > 0 ? Array.from(carrerasFiltradas) : Array.from(carrerasDisponibles)) : 
-                Array.from(carrerasDisponibles);
-                
-            carrerasParaMostrar.sort().forEach(function(carrera) {
+            // Obtener carreras disponibles según combinación actual
+            const carrerasDisponibles = Array.from(combinaciones.carreras);
+            carrerasDisponibles.sort().forEach(function(carrera) {
                 const option = document.createElement("option");
                 option.value = carrera;
                 option.textContent = carrera;
@@ -869,23 +834,30 @@
             });
             
             // Si la carrera actual no está disponible, resetear a "Todos"
-            if (carreraActual !== "Todos" && !carrerasParaMostrar.includes(carreraActual)) {
+            if (carreraActual !== "Todos" && !carrerasDisponibles.includes(carreraActual)) {
                 carreraSelect.value = "Todos";
             } else {
                 carreraSelect.value = carreraActual;
             }
             
-            // Actualizar selector de sectores
+            // 3. Actualizar selector de sectores
             const sectorSelect = document.getElementById("Sector");
             sectorSelect.innerHTML = '<option value="Todos">Todos los sectores</option>';
             
-            const sectoresParaMostrar = (entidadActual !== "Todos" || carreraActual !== "Todos") ? 
-                (sectoresFiltrados.size > 0 ? Array.from(sectoresFiltrados) : Array.from(sectoresDisponibles)) : 
-                Array.from(sectoresDisponibles);
+            // Obtener sectores disponibles según combinación actual
+            const sectoresDisponibles = Array.from(combinaciones.sectores);
             
-            // Aplicar orden personalizado a los sectores - CORREGIDO
-            const sectoresOrdenados = ordenarSectoresPersonalizado(sectoresParaMostrar);
+            // Ordenar sectores según orden personalizado
+            const sectoresOrdenados = sectoresDisponibles.sort((a, b) => {
+                const indexA = ordenSectores.indexOf(a);
+                const indexB = ordenSectores.indexOf(b);
                 
+                if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                if (indexA !== -1) return -1;
+                if (indexB !== -1) return 1;
+                return a.localeCompare(b);
+            });
+            
             sectoresOrdenados.forEach(function(sector) {
                 const option = document.createElement("option");
                 option.value = sector;
@@ -901,35 +873,39 @@
             }
         }
 
-        // Función para inicializar los selectores al cargar - CORREGIDA
+        // Función para inicializar los selectores al cargar
         function inicializarSelectores() {
-            // Llenar selectores con todas las opciones disponibles
-            const carrerasUnicas = new Set();
-            const sectoresUnicos = new Set();
+            // Obtener todas las carreras y sectores únicos
+            const carrerasSet = new Set();
+            const sectoresSet = new Set();
             
             Planteles_carreras.features.forEach(function(feature) {
-                if (feature.properties.Carrera && feature.properties.Carrera !== "") {
-                    carrerasUnicas.add(feature.properties.Carrera);
-                }
-                if (feature.properties.Sector && feature.properties.Sector !== "") {
-                    // Normalizar el nombre del sector eliminando espacios extra
-                    sectoresUnicos.add(feature.properties.Sector.trim());
-                }
+                if (feature.properties.Carrera) carrerasSet.add(feature.properties.Carrera);
+                if (feature.properties.Sector) sectoresSet.add(feature.properties.Sector.trim());
             });
             
+            // Llenar selector de carreras
             const carreraSelect = document.getElementById("Carrera");
-            const sectorSelect = document.getElementById("Sector");
-            
-            // Ordenar y llenar carreras
-            Array.from(carrerasUnicas).sort().forEach(function(carrera) {
+            const carrerasOrdenadas = Array.from(carrerasSet).sort();
+            carrerasOrdenadas.forEach(function(carrera) {
                 const option = document.createElement("option");
                 option.value = carrera;
                 option.textContent = carrera;
                 carreraSelect.appendChild(option);
             });
             
-            // Ordenar y llenar sectores con orden personalizado - CORREGIDO
-            const sectoresOrdenados = ordenarSectoresPersonalizado(Array.from(sectoresUnicos));
+            // Llenar selector de sectores
+            const sectorSelect = document.getElementById("Sector");
+            const sectoresOrdenados = Array.from(sectoresSet).sort((a, b) => {
+                const indexA = ordenSectores.indexOf(a);
+                const indexB = ordenSectores.indexOf(b);
+                
+                if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                if (indexA !== -1) return -1;
+                if (indexB !== -1) return 1;
+                return a.localeCompare(b);
+            });
+            
             sectoresOrdenados.forEach(function(sector) {
                 const option = document.createElement("option");
                 option.value = sector;
@@ -1284,7 +1260,7 @@
     <script src="Planteles_carreras.js"></script>
     <script src="PODEBIS.js"></script>
 
-    <footer>
+<footer>
         <div style="text-align: center;">
             <div class="img" style="margin-bottom: 15px;">
                 <img src="SEP_25.png" 
@@ -1301,5 +1277,6 @@
             </div>
         </div>
     </footer>
-</body>
+
+  </body>
 </html>
