@@ -2419,7 +2419,7 @@ h2{
 
 /* Altura del banner */
 .bn-banner-imgtag{
-  height: 400px;              /* desktop */
+  height: 550px;              /* desktop */
 }
 
 /* Imagen de fondo */
@@ -2460,7 +2460,7 @@ h2{
 /* Tablet */
 @media (max-width: 991px){
   .bn-banner-imgtag{
-    height: 220px;
+    height: 250px;
   }
 
   .bn-banner-title{
@@ -2535,8 +2535,8 @@ h2{
   position: absolute;
   left: -22px;              
   top: 24px;
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   border-radius: 28px;
   overflow: hidden;
   background: #eee;
