@@ -424,8 +424,8 @@
         const link = item["LINK PARA REDIRECCIÓN "]?.trim() || "#";
         const fechaRaw = item["FECHA PUBLICACIÓN ESCUELA"]?.trim() || "";
         const fecha = formatFecha(parseFecha(fechaRaw));
-        //const imgSrc = `assets/comunidad-estudiantil/not${numero}.png`;
-        const imgSrc = 'assets/comunidad-estudiantil/not1.png';
+        const imgSrc = `assets/comunidad-estudiantil/${numero}.png`;
+        //const imgSrc = 'assets/comunidad-estudiantil/not1.png';
 
         const col = document.createElement("div");
         col.className = "col-xs-12 col-sm-6";
