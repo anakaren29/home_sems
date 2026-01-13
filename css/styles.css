@@ -2433,13 +2433,13 @@ h2{
 }
 
 /* Overlay para legibilidad */
-.bn-banner-imgtag::before{
+/*.bn-banner-imgtag::before{
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.45);
   z-index: 1;
-}
+}*/
 
 /* Contenido del banner */
 .bn-banner-inner{
@@ -2471,7 +2471,7 @@ h2{
 /* Mobile */
 @media (max-width: 767px){
   .bn-banner-imgtag{
-    height: 180px;
+    height: 580px;
   }
 
   .bn-banner-title{
@@ -2520,15 +2520,19 @@ h2{
 .bn-card2{
   margin-bottom: 26px;
   position: relative;
+  height: 100%;
 }
 
 .bn-card2-inner{
-  position: relative;
+  /*position: relative;*/
   background: #fff;
   border-radius: 22px;
   box-shadow: 0 10px 22px rgba(0,0,0,0.10);
   padding: 22px 22px 22px 150px;
   overflow: visible; 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .bn-card2-thumb{
@@ -2551,7 +2555,9 @@ h2{
 }
 
 .bn-card2-body{
-  position: relative;
+  display: flex;
+    flex-direction: column;
+    flex: 1;
   z-index: 1;
 }
 
@@ -2581,6 +2587,17 @@ h2{
   color: #333;
   line-height: 1.5;
   margin-bottom: 14px;
+}
+
+/*.text-noticias {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}*/
+
+.btn-noticias-m {
+  margin-top: auto;
 }
 
 /* Botón píldora */
@@ -2616,22 +2633,7 @@ h2{
   line-height: 1;
 }
 
-@media (max-width: 767px){
-  .bn-card2-inner{
-    padding: 160px 16px 18px;
-  }
 
-  .bn-card2-thumb{
-    left: 16px;     /* ya no sale del card en mobile */
-    top: -22px;     /* flota hacia arriba */
-    width: 140px;
-    height: 140px;
-  }
-
-  .bn-card2-line{
-    width: 100%;
-  }
-}
 
 .bn-btn-more{
   background:#7b1f35;
@@ -2654,5 +2656,55 @@ h2{
 /* Mobile bachillerato */
 @media (max-width: 767px){
   .bn-banner-title{ font-size: 20px; }
-  .bn-card-thumb img{ height: 160px; }
+  /*.bn-card-thumb img{ height: 160px; }*/
+}
+
+
+@media (max-width: 767px) {
+
+  .bn-card2 {
+    padding-top: 50px;
+  }
+
+  .bn-card2-inner {
+    padding: 160px 16px 18px;
+    text-align: center;
+    align-items: center !important;
+  }
+
+    .bn-card2-thumb {
+      display: flex !important;
+      justify-content: center !important;      
+      float: none !important;
+      left: auto;
+      width: 180px;
+      height: 180px;
+    }
+  
+    /* Reset total de la imagen */
+    .bn-card2-thumb img {
+      display: block !important;
+      float: none !important;
+      margin: 0 auto !important;
+      position: static !important;
+    }
+
+  .bn-card2-line {
+    width: 100%;
+  }
+
+  .bn-card2-title,
+  .bn-card2-date,
+  .text-noticias {
+    text-align: center;
+  }
+
+
+  .btn-noticias-m {
+    margin: 15px auto 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 }
