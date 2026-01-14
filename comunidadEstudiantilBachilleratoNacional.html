@@ -11,6 +11,15 @@
       rel="stylesheet"
     />
     <style>
+
+      .carousel-wrapper{
+            display: none;
+          }
+        #noticiasList{
+          display: block;
+        }
+
+      
       #confetti-canvas {
         position: fixed;
         top: 0;
@@ -19,7 +28,15 @@
         height: 100vh;
         pointer-events: none;
         z-index: 9999;
-    }
+      }
+      
+      @media (max-width: 767px) {
+        
+          #noticiasList { display: none !important; }
+          .carousel-wrapper{
+            display: block;
+          }
+      }
 
     </style>
     <link
@@ -145,6 +162,23 @@
 
 
     </div>
+
+
+
+    <div class="carousel-wrapper">
+      <button class="carousel-btn left" onclick="scrollCarrusel(-1)">
+        &#10094;
+      </button>
+
+      <div class="carrusel-scroll horizontal" id="carrusel-horizontal">
+        <!--  tarjetas -->
+      </div>
+
+      <button class="carousel-btn right" onclick="scrollCarrusel(1)">
+        &#10095;
+      </button>
+    </div>
+
 
   </div>
 </section>
@@ -493,6 +527,92 @@
   }
 
   renderPage(1);
+
+
+
+
+
+
+  const $carrusel = document.getElementById("carrusel-horizontal");
+
+function renderCarruselMobile(items) {
+  if (!$carrusel) return;
+
+  $carrusel.innerHTML = items.map(item => {
+    const numero = (item["Número de noticia"] || "").trim();
+    const titulo = (item["TÍTULO "] || "").trim();
+    const resumen = (item["RESUMEN "] || "").trim();
+    const link = (item["LINK PARA REDIRECCIÓN "] || "#").trim();
+    const fechaRaw = (item["FECHA PUBLICACIÓN ESCUELA"] || "").trim();
+    const fecha = formatFecha(parseFecha(fechaRaw));
+    const imgSrc = `assets/comunidad-estudiantil/${numero}.png`;
+
+    return `
+      <div class="card-noticia card-carrusel">
+        <article class="bn-card2">
+          <div class="bn-card2-inner">
+
+            <div class="bn-card2-thumb">
+              <img src="${imgSrc}" alt="${titulo}" class="img-responsive">
+            </div>
+
+            <div class="bn-card2-body">
+              <h3 class="bn-card2-title">${titulo}</h3>
+              <div class="bn-card2-line"></div>
+              <div class="bn-card2-date">${fecha}</div>
+              <p class="text-noticias">${resumen}</p>
+              <a href="${link}" target="_blank" rel="noopener" class="btn-noticias-m">
+                Leer más <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
+
+          </div>
+        </article>
+      </div>
+    `;
+  }).join("");
+}
+
+
+function scrollCarrusel(direction) {
+  if (!$carrusel) return;
+
+ 
+  const firstSlide = $carrusel.querySelector(".card-carrusel");
+  if (!firstSlide) return;
+
+  const slideWidth = firstSlide.getBoundingClientRect().width;
+  const styles = getComputedStyle($carrusel);
+  const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+
+  $carrusel.scrollBy({
+    left: direction * (slideWidth + gap),
+    behavior: "smooth"
+  });
+}
+
+function isMobile() {
+  return window.matchMedia("(max-width: 767px)").matches;
+}
+
+/*function renderNoticias() {
+  if (isMobile()) {
+    // renderiza carrusel
+    renderCarruselMobile(noticiasData);
+
+  } else {
+    // renderiza grid/paginador
+    const grid = document.getElementById("noticiasList");
+    
+    if (grid) grid.style.display = "";
+    renderPage(1);
+  }
+}*/
+
+//window.addEventListener("resize", renderNoticias);
+//renderNoticias();
+
+renderCarruselMobile(noticiasData);
 
 </script>
 
