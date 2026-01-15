@@ -399,6 +399,20 @@
 
 
             function renderPage(page) {
+                //Ordenar noticias
+                noticiasData.sort((a, b) => {
+                const fechaA = parseFecha(a["FECHA PUBLICACIÓN ESCUELA"]?.trim());
+                const fechaB = parseFecha(b["FECHA PUBLICACIÓN ESCUELA"]?.trim());
+
+
+                if (!fechaA && !fechaB) return 0;
+                if (!fechaA) return 1; 
+                if (!fechaB) return -1;
+
+
+                return fechaB - fechaA;
+                 });
+
                 const totalItems = noticiasData.length;
                 const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
                 currentPage = Math.min(Math.max(1, page), totalPages);
