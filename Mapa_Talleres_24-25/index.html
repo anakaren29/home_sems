@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Talleres EMS</title>
+    <title>Bachillerato Nacional 24-25</title>
     <meta name="description" content="Mapa interactivo de planteles públicos de Educación Media Superior en México para el ciclo escolar 2024-2025">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="escudo_mexico.ico" type="image/x-icon">
@@ -27,9 +27,9 @@
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-
-    <!-- SheetJS para exportación a Excel -->
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    
+    <!-- SheetJS para exportar a Excel -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 
     <style>
         :root {
@@ -39,7 +39,6 @@
             --color-texto: #333;
             --color-borde: #ddd;
             --sombra: 0 0 15px rgba(0,0,0,0.2);
-            --ancho-panel: 320px;
         }
         
         body {
@@ -49,169 +48,24 @@
             background-color: var(--color-fondo);
             color: var(--color-texto);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
         }
         
-        .header {
+        html, body, #map {
+            height: 91%;
+            width: 100%;
+        }
+        
+        #panel {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-left: 15px;
             background-color: var(--color-fondo);
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 1000;
-            flex-shrink: 0;
-        }
-        
-        .main-container {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-        
-        #panel-lateral {
-            width: var(--ancho-panel);
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-right: 1px solid var(--color-borde);
-            overflow-y: auto;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            z-index: 500;
-            flex-shrink: 0;
-        }
-        
-        #map-container {
-            flex: 1;
-            position: relative;
-        }
-        
-        #map {
-            height: 100%;
-            width: 100%;
-        }
-        
-        .titulo {
-            margin: 0;
-            padding: 0;
-            line-height: 1.2;
-            text-align: center;
-        }
-        
-        .filtro-grupo {
-            margin-bottom: 10px;
-            border-bottom: 1px solid var(--color-borde);
-            padding-bottom: 8px;
-        }
-        
-        .filtro-grupo:last-child {
-            border-bottom: none;
-        }
-        
-        .filtro-grupo label {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--color-primario);
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-        
-        /* Estilos para selectores múltiples */
-        .selector-multiple {
-            max-height: 100px;
-            overflow-y: auto;
-            border: 1px solid var(--color-borde);
-            border-radius: 4px;
-            background-color: white;
-            padding: 4px;
-        }
-        
-        .selector-alto {
-            max-height: 150px;
-        }
-        
-        .opcion-filtro {
-            display: flex;
-            align-items: center;
-            padding: 4px 6px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-size: 0.85rem;
-        }
-        
-        .opcion-filtro:hover {
-            background-color: #f0f0f0;
-        }
-        
-        .opcion-filtro input {
-            margin-right: 6px;
-            transform: scale(0.9);
-        }
-        
-        .opcion-filtro label {
-            margin: 0;
-            font-weight: normal;
-            cursor: pointer;
-            flex: 1;
-            font-size: 0.85rem;
-        }
-        
-        .opcion-filtro.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .opcion-filtro.disabled input {
-            cursor: not-allowed;
-        }
-        
-        .opcion-filtro.disabled label {
-            cursor: not-allowed;
-        }
-        
-        #limpiarBtn {
-            width: 100%;
-            padding: 8px;
-            background-color: var(--color-primario);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 8px;
-        }
-        
-        #limpiarBtn:hover {
-            background-color: var(--color-secundario);
-        }
-
-        /* Botón de exportación */
-        #exportarBtn {
-            width: 100%;
-            padding: 8px;
-            background-color: #1e5b4f;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-        
-        #exportarBtn:hover {
-            background-color: #2d7a6c;
-        }
-        
-        #exportarBtn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 8px 0;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .info {
@@ -219,11 +73,6 @@
             background: rgba(255,255,255,0.9);
             box-shadow: var(--sombra);
             border-radius: 5px;
-        }
-        
-        .info h2 {
-            margin: 0 0 5px;
-            color: #777;
         }
         
         .legend {
@@ -241,6 +90,13 @@
             border: 1px solid #fff;
         }
         
+        .titulo {
+            margin: 1px 0;
+            padding: 0;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
         .img {
             margin-left: 10px;
             margin-bottom: -28px;
@@ -248,7 +104,26 @@
         
         .footer {
             margin-top: 5px;
-            flex-shrink: 0;
+        }
+        
+        select {
+            padding: 5px;
+            border: 1px solid var(--color-primario);
+            border-radius: 4px;
+            font-family: 'Noto Sans', sans-serif;
+            min-width: 200px;
+            background-color: white;
+        }
+        
+        select:disabled {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        select option:disabled {
+            color: #999;
+            background-color: #f5f5f5;
         }
         
         button {
@@ -267,6 +142,15 @@
             outline: none;
         }
         
+        .btn-excel {
+            background-color: #1e5b4f !important;
+            color: white !important;
+        }
+        
+        .btn-excel:hover, .btn-excel:focus {
+            background-color: #2a7c6e !important;
+        }
+        
         .info-overlay {
             position: fixed;
             top: 50%;
@@ -279,7 +163,7 @@
             z-index: 10000;
             max-width: 80%;
             max-height: 80vh;
-            overflow: hidden;
+            overflow: auto;
             display: none;
         }
         
@@ -309,8 +193,6 @@
         
         .overlay-content {
             line-height: 1.6;
-            overflow: hidden;
-            max-height: calc(80vh - 100px);
         }
         
         .overlay-backdrop {
@@ -334,6 +216,88 @@
             vertical-align: top;
         }
         
+        @media (max-width: 768px) {
+            #panel {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 5px;
+                gap: 8px;
+            }
+            
+            .titulo p {
+                font-size: 1rem !important;
+            }
+            
+            select, button {
+                width: 95%;
+                font-size: 0.9rem;
+            }
+            
+            #map {
+                height: 85%;
+            }
+            
+            .info-overlay {
+                max-width: 95%;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .titulo p {
+                font-size: 0.9rem !important;
+            }
+            
+            #panel {
+                padding: 5px 0;
+            }
+        }
+        
+        [tabindex]:focus {
+            outline: 2px solid var(--color-primario);
+            outline-offset: 2px;
+        }
+        
+        @media (prefers-reduced-motion: no-preference) {
+            .info-overlay, .overlay-backdrop {
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+        }
+        
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        .error-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: #ffebee;
+            color: #c62828;
+            z-index: 10000;
+            text-align: center;
+            display: none;
+        }
+
+        .leaflet-marker-icon:focus, 
+        .leaflet-marker-icon:active, 
+        .leaflet-marker-icon:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
         /* Estilo para el icono de PODEBIS con fondo blanco */
         .podebis-record-circle {
             color: #a57f2c; /* Color dorado */
@@ -385,7 +349,7 @@
         /* Estilos para la simbología mejorada */
         .legend h3 {
             margin: 0 0 8px 0;
-            font-size: 0.9rem,
+            font-size: 0.9rem;
             color: #333;
         }
 
@@ -406,17 +370,7 @@
         }
 
         .legend-bachillerato-tecnologico {
-            background: #9b2247;
-            border: 1px solid #FFFFFF;
-        }
-
-        .legend-bachillerato-general {
             background: #1e5b4f;
-            border: 1px solid #FFFFFF;
-        }
-
-        .legend-tbc {
-            background: #2e8b57; /* Color verde para TBC */
             border: 1px solid #FFFFFF;
         }
 
@@ -437,187 +391,33 @@
             border: 1px solid #a57f2c;
         }
         
-        /* Estilos para popups más compactos y orgánicos */
-        .popup-content {
-            max-width: 260px;
-            font-size: 0.8rem;
-            line-height: 1.3;
-        }
-        
-        .popup-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .popup-table td {
-            padding: 2px 3px;
-            vertical-align: top;
-            font-size: 0.8rem;
-            line-height: 1.3;
-            word-break: normal;
-            overflow-wrap: break-word;
-        }
-        
-        .popup-table td:first-child {
-            width: 40%;
-            text-align: left;
-            font-weight: bold;
-            color: #691C32;
-            padding-right: 5px;
-            font-size: 0.8rem;
-            word-break: normal;
-            white-space: nowrap;
-        }
-        
-        .popup-table td:last-child {
-            width: 60%;
-            text-align: left;
-            font-size: 0.8rem;
-            word-break: normal;
-            overflow-wrap: break-word;
-        }
-        
-        .popup-url {
-            display: inline-block;
-            max-width: 100%;
-            color: #691C32;
-            text-decoration: underline;
-            font-weight: normal;
-            font-size: 0.8rem;
-            word-break: break-all;
-        }
-        
-        .popup-url:hover {
-            color: #8a2442;
-            text-decoration: none;
-        }
-        
-        .popup-header {
-            text-align: center;
-            margin-bottom: 5px;
-            padding-bottom: 3px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .popup-header h3 {
-            margin: 0;
-            color: #691C32;
-            font-size: 0.9rem;
-            font-weight: bold;
-            line-height: 1.2;
-            word-break: normal;
-        }
-        
-        .popup-header h4 {
-            margin: 1px 0 0 0;
-            color: #333;
-            font-size: 0.85rem;
-            font-weight: normal;
-            line-height: 1.2;
-            word-break: normal;
-        }
-        
-        .popup-divider {
-            margin: 5px 0;
-            border: 0;
-            border-top: 1px solid #ddd;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            
-            #panel-lateral {
-                width: 100%;
-                max-height: 250px;
-                border-right: none;
-                border-bottom: 1px solid var(--color-borde);
-            }
-            
-            #map-container {
-                height: calc(100vh - 350px);
-            }
-            
-            .titulo p {
-                font-size: 1rem !important;
-            }
-            
-            .selector-multiple {
-                max-height: 100px;
-            }
-            
-            .selector-alto {
-                max-height: 120px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .titulo p {
-                font-size: 0.9rem !important;
-            }
-            
-            #panel-lateral {
-                padding: 8px;
-            }
-            
-            .filtro-grupo {
-                margin-bottom: 8px;
-            }
-            
-            .selector-multiple {
-                max-height: 80px;
-            }
-            
-            .selector-alto {
-                max-height: 100px;
-            }
-        }
-        
-        [tabindex]:focus {
-            outline: 2px solid var(--color-primario);
-            outline-offset: 2px;
-        }
-        
-        @media (prefers-reduced-motion: no-preference) {
-            .info-overlay, .overlay-backdrop {
-                transition: opacity 0.3s ease, transform 0.3s ease;
-            }
-        }
-        
-        #loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.8);
-            z-index: 9999;
+        /* Leyenda para el icono PODEBIS */
+        .legend-record-circle {
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #555;
         }
         
-        .error-message {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem;
-            background-color: #ffebee;
-            color: #c62828;
-            z-index: 10000;
-            text-align: center;
-            display: none;
+        .legend-record-circle-icon {
+            margin-right: 8px;
+            color: #a57f2c;
+            font-size: 16px;
+            background-color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .leaflet-marker-icon:focus, 
-        .leaflet-marker-icon:active, 
-        .leaflet-marker-icon:focus-visible {
-            outline: none !important;
-            box-shadow: none !important;
+        
+        /* Estilos para el botón de exportación */
+        .export-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
     </style>
 </head>
@@ -628,103 +428,77 @@
     
     <!-- Mensaje de error -->
     <div class="error-message" id="errorMessage"></div>
-
-    <!-- Header -->
-    <div class="header">
-        <div class="titulo">
-            <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
-                <b>Bachillerato Nacional</b>
-            </p>
-            <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">Construcción, readecuación y equipamiento de laboratorios y talleres de las formaciones técnicas, tecnológicas y profesionales.
-            </p>
-        </div>
+    
+    <div class="titulo">
+        <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
+            <b>Oferta académica en planteles públicos del Bachillerato Nacional</b>
+        </p>
+        <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">
+            Ciclo escolar 2024-2025
+        </p>
     </div>
 
-    <!-- Contenedor principal -->
-    <div class="main-container">
-        <!-- Panel lateral de filtros -->
-        <div id="panel-lateral" aria-live="polite" aria-atomic="true">
-            <!-- NUEVO FILTRO DE CRITERIOS -->
-            <div class="filtro-grupo">
-                <label for="filtro-criterios">
-                    Criterios
-                </label>
-                <div class="selector-multiple" id="filtro-criterios">
-                    <div class="opcion-filtro">
-                        <input type="checkbox" id="criterio-propuesta1" value="Propuesta_1">
-                        <label for="criterio-propuesta1">Propuesta 1</label>
-                    </div>
-                    <div class="opcion-filtro">
-                        <input type="checkbox" id="criterio-propuesta2" value="Propuesta_2">
-                        <label for="criterio-propuesta2">Propuesta 2</label>
-                    </div>
-                </div>
-            </div>
+    <!-- Panel de control -->
+    <div id="panel" aria-live="polite" aria-atomic="true">
+        <label for="Entidad" id="entidad-label" style="color: #691C32; font-size:0.9rem; font-family: noto sans;">
+            <b>Selección&nbsp;</b>
+        </label>
+        <select id="Entidad">
+            <option value="Todos" selected>Entidades federativas</option>
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Ciudad de México">Ciudad de México</option>
+            <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="México">México</option>
+            <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
 
-            <div class="filtro-grupo">
-                <label for="filtro-entidad">
-                    Entidad federativa
-                </label>
-                <div class="selector-multiple" id="filtro-entidad">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
+        <select id="Carrera">
+            <option value="Todos" selected>Todas las carreras técnicas</option>
+            <!-- Las opciones se llenarán dinámicamente -->
+        </select>
 
-            <div class="filtro-grupo">
-                <label for="filtro-planes">
-                    Planes
-                </label>
-                <div class="selector-multiple" id="filtro-planes">
-                    <div class="opcion-filtro">
-                        <input type="checkbox" id="plan-justicia" value="Justicia">
-                        <label for="plan-justicia">Planes de Justicia</label>
-                    </div>
-                    <div class="opcion-filtro">
-                        <input type="checkbox" id="plan-balsas" value="Balsas">
-                        <label for="plan-balsas">Plan Balsas</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-subsistema">
-                    Subsistema
-                </label>
-                <div class="selector-multiple" id="filtro-subsistema">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-carrera">
-                    Carrera/formación laboral
-                </label>
-                <div class="selector-multiple selector-alto" id="filtro-carrera">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
-            <div class="filtro-grupo">
-                <label for="filtro-sector">
-                    Sector estratégico
-                </label>
-                <div class="selector-multiple" id="filtro-sector">
-                    <!-- Las opciones se llenarán dinámicamente -->
-                </div>
-            </div>
-
+        <select id="Sector">
+            <option value="Todos" selected>Todos los sectores</option>
+            <!-- Las opciones se llenarán dinámicamente -->
+        </select>
+        
+        <div class="export-container">
             <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
-            <button id="exportarBtn" style="display: none;">
-                <i class="bi bi-download"></i>
-                Exportar a Excel
+            <button id="exportarExcelBtn" class="btn-excel">
+                <i class="bi bi-file-earmark-excel"></i> Exportar a Excel
             </button>
         </div>
-
-        <!-- Contenedor del mapa -->
-        <div id="map-container">
-            <div id="map"></div>
-        </div>
     </div>
+
+    <!-- Mapa -->
+    <div id="map"></div>
     
     <!-- Superposición de información -->
     <div class="overlay-backdrop" id="overlayBackdrop"></div>
@@ -735,25 +509,6 @@
         </div>
         <div class="overlay-content" id="overlayContent"></div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <div style="text-align: center;">
-            <div class="img" style="margin-bottom: 15px;">
-                <img src="SEP_25.png" 
-                     style="display: block; margin: 0 auto;" 
-                     width="150"
-                     height="66"
-                     alt="Logo de la Secretaría de Educación Pública"
-                     loading="lazy">
-            </div>
-            <div class="footer">
-                <p style="color: #691C32; font-size:0.7rem; font-family: Noto Sans; text-align:center">
-                    <b>Subsecretaría de Educación Media Superior | Área de Estadística</b>
-                </p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
@@ -776,9 +531,44 @@
                 zoom: 5.5
             },
             maxBounds: [
-                [-0.3538, -141.4463],
-                [53.8564, -52.8319]
-            ]
+                [-0.3538, -141.4463], // suroeste
+                [53.8564, -52.8319]   // noreste
+            ],
+            // Acercamiento verificado para cada entidad
+            estadosBboxes: {
+                "Aguascalientes": [[21.4534, -102.8625], [22.4697, -101.9234]],
+                "Baja California": [[28.0000, -117.5000], [32.7188, -112.5000]],
+                "Baja California Sur": [[22.8644, -112.5000], [28.0000, -109.0000]],
+                "Campeche": [[17.4500, -92.5000], [21.1887, -89.0075]],
+                "Chiapas": [[14.5000, -94.5000], [18.0000, -90.0000]],
+                "Chihuahua": [[25.5000, -109.5000], [31.5000, -103.0000]],
+                "Ciudad de México": [[19.2051, -99.2172], [19.4854, -99.0278]],
+                "Coahuila de Zaragoza": [[24.9309, -103.8191], [29.5000, -99.5000]],
+                "Colima": [[18.6836, -104.7016], [19.5000, -103.5000]],
+                "Durango": [[22.3744, -106.9199], [26.8508, -102.5424]],
+                "Guanajuato": [[19.9879, -102.0272], [21.8690, -99.7852]],
+                "Guerrero": [[16.0000, -102.0000], [19.0000, -97.5000]],
+                "Hidalgo": [[19.5000, -99.5000], [21.5000, -97.5000]],
+                "Jalisco": [[18.5000, -105.5000], [22.5000, -101.5000]],
+                "México": [[18.0000, -100.5000], [20.5000, -98.5000]],
+                "Michoacán de Ocampo": [[17.5000, -103.5000], [20.5000, -100.0000]],
+                "Morelos": [[18.0000, -99.5000], [19.5000, -98.5000]],
+                "Nayarit": [[20.5000, -105.5000], [23.0000, -103.5000]],
+                "Nuevo León": [[23.5000, -101.0000], [27.5000, -98.5000]],
+                "Oaxaca": [[15.5000, -98.5000], [18.5000, -93.5000]],
+                "Puebla": [[17.5000, -99.0000], [21.0583, -96.9185]],
+                "Querétaro": [[19.9838, -100.5261], [21.7031, -99.0928]],
+                "Quintana Roo": [[17.9247, -89.2722], [21.6134, -86.6493]],
+                "San Luis Potosí": [[21.0000, -102.5000], [24.5000, -98.5000]],
+                "Sinaloa": [[22.1823, -108.8329], [26.9376, -105.6067]],
+                "Sonora": [[26.0000, -115.0000], [32.5000, -108.5000]],
+                "Tabasco": [[17.0000, -94.0000], [19.0000, -90.5000]],
+                "Tamaulipas": [[22.0000, -99.5000], [27.5000, -96.5000]],
+                "Tlaxcala": [[19.0351, -98.5616], [19.7284, -97.5418]],
+                "Veracruz de Ignacio de la Llave": [[17.2691, -98.2507], [22.3614, -93.5670]],
+                "Yucatán": [[19.5129, -90.3824], [21.5563, -87.4755]],
+                "Zacatecas": [[21.0000, -104.0000], [25.0000, -100.5000]]
+            }
         };
 
         // Variables globales
@@ -787,406 +577,110 @@
         let plantelesLayer;
         let podebisLayer;
         let municipiosResaltadosEntidad = null;
-        let municipiosResaltadosPlanes = null;
-        let plantelesFiltradosActuales = [];
-        let ordenColumnasOriginal = []; // Para mantener el orden original de las columnas
+        let searchControl;
+        let carrerasUnicas = new Set();
+        let sectoresUnicos = new Set();
+        let blinkingInterval;
 
-        // Variables para almacenar las selecciones de filtros (ahora incluye criterios)
-        let filtrosSeleccionados = {
-            criterios: [],
-            entidad: [],
-            planes: [],
-            subsistema: [],
-            carrera: [],
-            sector: []
-        };
-
-        // Variables para almacenar todas las opciones disponibles
-        let todasLasOpciones = {
-            criterios: ['Propuesta_1', 'Propuesta_2'],
-            entidad: [],
-            planes: ['Justicia', 'Balsas'],
-            subsistema: [],
-            carrera: [],
-            sector: []
-        };
-
-        // Variable para almacenar el criterio seleccionado actualmente
-        let criterioActual = null;
+        // Orden personalizado para sectores - CORREGIDO
+        const ordenSectores = [
+            "Aeroespacial",
+            "Agroindustria",
+            "Automotriz y electromovilidad",
+            "Bienes de consumo",
+            "Economía circular",
+            "Electrónica y semiconductores",
+            "Energía",
+            "Energías limpias",
+            "Farmacéutica y dispositivos médicos",
+            "Industria del plástico",
+            "Industrias metálicas básicas",
+            "Logística",
+            "Metalmecánica",
+            "Química y petroquímica",
+            "Textil y calzado",
+            "Industria cultural",
+            "Industrial",
+            "Salud y cuidados",
+            "Turismo",
+            "TIC"
+        ];
 
         // Función para formatear números con separador de miles
         function formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-        // Función para normalizar valores de filtros
-        function normalizarValorFiltro(valor) {
-            if (valor === true || valor === "true" || valor === "Sí" || valor === "Si" || valor === 1 || valor === "1") {
-                return "Si";
-            } else if (valor === false || valor === "false" || valor === "No" || valor === 0 || valor === "0") {
-                return "No";
-            }
-            return valor;
-        }
-
-        // Función para verificar si una cadena es una URL válida
-        function esURLValida(url) {
-            if (!url) return false;
-            try {
-                const urlObj = new URL(url);
-                return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
-            } catch {
-                return false;
-            }
-        }
-
-        // Función para generar contenido de popup para planteles (con el formato solicitado)
-        function generarPopupPlanteles(feature) {
-            // Procesar la guía mecánica para convertirla en hipervínculo si es una URL
-            let listaequipamientoHtml = feature.properties.lista_equipamiento || 'No disponible';
-            if (esURLValida(feature.properties.lista_equipamiento)) {
-                // Acortar URL para que quepa mejor
-                const url = feature.properties.lista_equipamiento;
-                const displayUrl = url.length > 35 ? url.substring(0, 35) + '...' : url;
-                listaequipamientoHtml = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="popup-url" title="${url}">${displayUrl}</a>`;
-            }
-            
-            // Determinar qué variables usar según el criterio seleccionado
-            let costoAproximado = 'No disponible';
-            let accionesPlantel = 'No disponible';
-            let costoAcciones = 'No disponible';
-            
-            if (criterioActual === 'Propuesta_1') {
-                costoAproximado = feature.properties.costo_1 || 'No disponible';
-                accionesPlantel = feature.properties.acciones_plantel_1 || 'No disponible';
-                costoAcciones = feature.properties.costo_total_1 || 'No disponible';
-            } else if (criterioActual === 'Propuesta_2') {
-                costoAproximado = feature.properties.costo_2 || 'No disponible';
-                accionesPlantel = feature.properties.acciones_plantel_2 || 'No disponible';
-                costoAcciones = feature.properties.costo_total_2 || 'No disponible';
-            }
-            
-            let popupContent = `
-                <div class="popup-content">
-                    <div class="popup-header">
-                        <h3>${feature.properties.CCT}</h3>
-                        <h4>${feature.properties.Subsistema}</h4>
-                    </div>
-                    
-                    <table class="popup-table">
-                        <tr><td>Entidad federativa:</td><td>${feature.properties.Entidad}</td></tr>
-                        <tr><td>Municipio:</td><td>${feature.properties.Municipio}</td></tr>
-                        <tr><td>Nombre plantel:</td><td>${feature.properties.Nombre}</td></tr>
-                        <tr><td>Carrera/Formación:</td><td>${feature.properties.Carrera}</td></tr>
-                        <tr><td>Estatus:</td><td>${feature.properties.estatus}</td></tr>
-                        <tr><td>Sector:</td><td>${feature.properties.Sector}</td></tr>
-                        <tr><td>Matrícula carrera:</td><td>${formatNumber(feature.properties.Mat_carr)}</td></tr>
-                        <tr><td>Matrícula del plantel:</td><td>${formatNumber(feature.properties.Matr_plantel)}</td></tr>
-                        <tr><td>Oferta adicional:</td><td>${feature.properties.Otros || 'No disponible'}</td></tr>
-                    </table>
-                    
-                    <div class="popup-divider"></div>
-                    
-                    <table class="popup-table">
-                        <tr><td>Listado de equipamiento:</td><td>${listaequipamientoHtml}</td></tr>`;
-            
-            // Solo mostrar costos si hay un criterio seleccionado
-            if (criterioActual) {
-                popupContent += `
-                        <tr><td>Costo aproximado taller:</td><td>${costoAproximado}</td></tr>
-                        <tr><td>Acciones en plantel:</td><td>${accionesPlantel} acciones</td></tr>
-                        <tr><td>Costo acciones en plantel:</td><td>${costoAcciones}</td></tr>`;
-            }
-            
-            popupContent += `
-                    </table>
-                </div>`;
-            
-            return popupContent;
-        }
-
-        // Función para generar popup para municipios (con variable Plan agregada)
-        function generarPopupMunicipios(feature) {
-            // Formatear los números con separador de miles
-            const pobTot25 = formatNumber(feature.properties.PobTot25);
-            const pob1519 = formatNumber(feature.properties.Pob_15_19);
-            
+        // Función para generar contenido base de popup
+        function generarPopupBase(feature) {
             return `
-                <div class="popup-content">
-                    <div class="popup-header">
-                        <h3>${feature.properties.NOMGEO}</h3>
-                        <h4>${feature.properties.Entidad}</h4>
-                    </div>
-                    
-                    <table class="popup-table">
-                        <tr><td>Grado marginación:</td><td>${feature.properties.GM_2020}</td></tr>
-                        <tr><td>Población total:</td><td>${pobTot25}</td></tr>
-                        <tr><td>Población 15-19:</td><td>${pob1519}</td></tr>
-                        <tr><td>Porcentaje 15-19:</td><td>${feature.properties.Porc_15_19}</td></tr>
-                    </table>
-                </div>`;
+                <div style="text-align:center">
+                    <h4>${feature.properties.CCT}</h4>
+                    <h3>${feature.properties.Subsistema}</h3>
+                </div>
+                <hr>
+                <table>
+                    <tr><td style="text-align:left"><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                    <tr><td style="text-align:left"><b>Municipio: </b>${feature.properties.Municipio}</td></tr>
+                    <tr><td style="text-align:left"><b>Nombre: </b>${feature.properties.Nombre}</td></tr>
+                    <tr><td style="text-align:left"><b>Carrera técnica: </b>${feature.properties.Carrera}</td></tr>
+                    <tr><td style="text-align:left"><b>Tipo de sector: </b>${feature.properties.Tipo_sec}</td></tr>
+                    <tr><td style="text-align:left"><b>Nombre del sector: </b>${feature.properties.Sector}</td></tr>
+                    <tr><td style="text-align:left"><b>Matrícula de la carrera/formación laboral: </b>${feature.properties.Mat_carr}</td></tr>
+                    <tr><td style="text-align:left"><b>Matrícula total del plantel: </b>${feature.properties.Matr_total}</td></tr>
+                </table>
+                <hr>`;
         }
 
-        // Función para mostrar ventana emergente del criterio
-        function mostrarVentanaCriterio(criterio) {
-            let titulo = '';
-            let contenido = '';
-            
-            if (criterio === 'Propuesta_1') {
-                titulo = 'Propuesta 1';
-                contenido = 'COLBACH: 13 planteles atendidos | 19 acciones | $12,158,629.20 costo total | 6,498 estudiantes beneficiados.<br>CONALEP: 33 planteles atendidos | 33 acciones | sin dato costo total | 11,846 estudiantes beneficiados<br>DGB: 39 planteles atendidos | 39 acciones | $39,000,000.00 costo total | 24,236 estudiantes beneficiados<br>DGETAyCM: 384 planteles atendidos | 685 acciones | $12,117,535,738.00 costo total | 75,659 estudiantes beneficiados<br>DGETI: 367 planteles atendidos | 579 acciones | $3,265,094,152.00 costo total | 126,554 estudiantes beeficiados.';
-            } else if (criterio === 'Propuesta_2') {
-                titulo = 'Propuesta 2';
-                contenido = 'CONALEP: 33 planteles atendidos | 33 acciones | sin dato costo total | 11,846 estudiantes beneficiados<br>DGB: 39 planteles atendidos | 39 acciones | $39,000,000.00 costo total | 24,236 estudiantes beneficiados<br>DGETAyCM: 404 planteles beneficiados | 810 acciones | $11,286,637,024.00 costo total aproximado | 84,048 estudiantes beneficiados<br>DGETI: 472 planteles atendidos | 717 acciones | $3,682,650,923.00 costo total aproximado | 142,835 estudiantes benficiados<br>TBC: 1,090 planteles atendidos | 1,090 acciones | $1,090,000,000.00 costo total | 46,574 estudiantes beneficiados.';
+        // Función optimizada para hacer zoom a una entidad
+        function zoomAEntidad(entidadSeleccionada) {
+            if (entidadSeleccionada === "Todos") {
+                map.flyTo(config.zoomNacional.center, config.zoomNacional.zoom, {
+                    duration: 0.5
+                });
+                return;
             }
             
-            document.getElementById('overlayTitle').textContent = titulo;
-            document.getElementById('overlayContent').innerHTML = `<p>${contenido}</p>`;
-            document.getElementById('overlayBackdrop').style.display = 'block';
-            document.getElementById('infoOverlay').style.display = 'block';
+            const bounds = config.estadosBboxes[entidadSeleccionada];
+            
+            if (bounds) {
+                const leafletBounds = new L.LatLngBounds(
+                    new L.LatLng(bounds[0][0], bounds[0][1]),
+                    new L.LatLng(bounds[1][0], bounds[1][1])
+                );
+                
+                map.flyToBounds(leafletBounds, {
+                    padding: [50, 50],
+                    duration: 0.5,
+                    maxZoom: 10
+                });
+            }
         }
 
         // Función para cerrar el overlay
         function closeInfoOverlay() {
             document.getElementById('overlayBackdrop').style.display = 'none';
             document.getElementById('infoOverlay').style.display = 'none';
+            document.getElementById('Entidad').focus();
         }
 
-        // Función para obtener opciones compatibles basadas en las selecciones actuales
-        function obtenerOpcionesCompatibles(tipoFiltro) {
-            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) {
-                return todasLasOpciones[tipoFiltro];
-            }
-
-            // Filtrar planteles con las selecciones actuales (excluyendo el filtro que estamos evaluando)
-            const plantelesFiltrados = window.Planteles_carreras2.features.filter(function(feature) {
-                // Verificar cada filtro excepto el que estamos evaluando
-                const cumpleCriterios = filtrosSeleccionados.criterios.length === 0 || tipoFiltro === 'criterios' || 
-                    (filtrosSeleccionados.criterios.includes('Propuesta_1') && normalizarValorFiltro(feature.properties.Propuesta_1) === "Si") ||
-                    (filtrosSeleccionados.criterios.includes('Propuesta_2') && normalizarValorFiltro(feature.properties.Propuesta_2) === "Si");
-                
-                const cumpleEntidad = filtrosSeleccionados.entidad.length === 0 || tipoFiltro === 'entidad' || 
-                    filtrosSeleccionados.entidad.includes(feature.properties.Entidad);
-                
-                // FILTRADO DE PLANES
-                let cumplePlanes = true;
-                if (filtrosSeleccionados.planes.length > 0 && tipoFiltro !== 'planes') {
-                    cumplePlanes = false;
-                    for (const plan of filtrosSeleccionados.planes) {
-                        if (plan === "Justicia" && normalizarValorFiltro(feature.properties.Justicia) === "Si") {
-                            cumplePlanes = true;
-                            break;
-                        }
-                        if (plan === "Balsas" && normalizarValorFiltro(feature.properties.Balsas) === "Si") {
-                            cumplePlanes = true;
-                            break;
-                        }
-                    }
-                }
-                
-                const cumpleSubsistema = filtrosSeleccionados.subsistema.length === 0 || tipoFiltro === 'subsistema' || 
-                    filtrosSeleccionados.subsistema.includes(feature.properties.Subsistema);
-                
-                const cumpleCarrera = filtrosSeleccionados.carrera.length === 0 || tipoFiltro === 'carrera' || 
-                    filtrosSeleccionados.carrera.includes(feature.properties.Carrera);
-                
-                const cumpleSector = filtrosSeleccionados.sector.length === 0 || tipoFiltro === 'sector' || 
-                    filtrosSeleccionados.sector.includes(feature.properties.Sector);
-                
-                return cumpleCriterios && cumpleEntidad && cumplePlanes && cumpleSubsistema && cumpleCarrera && cumpleSector;
-            });
-
-            // Obtener valores únicos para el tipo de filtro especificado
-            let opciones = [];
-            switch(tipoFiltro) {
-                case 'entidad':
-                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Entidad).filter(Boolean))].sort();
-                    break;
-                case 'subsistema':
-                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Subsistema).filter(Boolean))].sort();
-                    break;
-                case 'carrera':
-                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Carrera).filter(Boolean))].sort();
-                    break;
-                case 'sector':
-                    opciones = [...new Set(plantelesFiltrados.map(f => f.properties.Sector).filter(Boolean))].sort();
-                    break;
-                case 'planes':
-                    opciones = ['Justicia', 'Balsas'];
-                    break;
-                case 'criterios':
-                    opciones = ['Propuesta_1', 'Propuesta_2'];
-                    break;
-            }
-
-            return opciones;
-        }
-
-        // Función para crear un selector múltiple con opciones compatibles
-        function crearSelectorMultiple(contenedorId, tipoFiltro) {
-            const contenedor = document.getElementById(contenedorId);
-            contenedor.innerHTML = '';
-            
-            // Obtener opciones compatibles
-            const opciones = obtenerOpcionesCompatibles(tipoFiltro);
-            
-            opciones.forEach(opcion => {
-                const div = document.createElement('div');
-                div.className = 'opcion-filtro';
-                
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.id = `${contenedorId}-${opcion.replace(/\s+/g, '-')}`;
-                checkbox.value = opcion;
-                
-                // Para criterios, solo mostrar "Si" en las opciones
-                if (tipoFiltro === 'criterios') {
-                    checkbox.checked = filtrosSeleccionados[tipoFiltro].includes(opcion);
-                } else {
-                    checkbox.checked = filtrosSeleccionados[tipoFiltro].includes(opcion);
-                }
-                
-                checkbox.disabled = false; // Por defecto habilitado
-                
-                checkbox.addEventListener('change', function() {
-                    if (!this.disabled) {
-                        actualizarFiltroSeleccionado(tipoFiltro, opcion, this.checked);
-                    }
-                });
-                
-                const label = document.createElement('label');
-                label.htmlFor = checkbox.id;
-                
-                // Personalizar etiquetas para criterios
-                if (tipoFiltro === 'criterios') {
-                    if (opcion === 'Propuesta_1') {
-                        label.textContent = 'Propuesta 1';
-                    } else if (opcion === 'Propuesta_2') {
-                        label.textContent = 'Propuesta 2';
-                    }
-                } else {
-                    label.textContent = opcion;
-                }
-                
-                div.appendChild(checkbox);
-                div.appendChild(label);
-                contenedor.appendChild(div);
-            });
-            
-            // Deshabilitar opciones que no están en la lista de compatibles pero están seleccionadas
-            filtrosSeleccionados[tipoFiltro].forEach(opcionSeleccionada => {
-                if (!opciones.includes(opcionSeleccionada)) {
-                    // Crear un elemento deshabilitado para mostrar la opción seleccionada
-                    const div = document.createElement('div');
-                    div.className = 'opcion-filtro disabled';
-                    
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.id = `${contenedorId}-${opcionSeleccionada.replace(/\s+/g, '-')}-disabled`;
-                    checkbox.value = opcionSeleccionada;
-                    checkbox.checked = true;
-                    checkbox.disabled = true;
-                    
-                    const label = document.createElement('label');
-                    label.htmlFor = checkbox.id;
-                    label.textContent = `${opcionSeleccionada} (no disponible con filtros actuales)`;
-                    label.style.fontStyle = 'italic';
-                    label.style.color = '#666';
-                    
-                    div.appendChild(checkbox);
-                    div.appendChild(label);
-                    contenedor.appendChild(div);
-                }
-            });
-        }
-
-        // Función para actualizar todos los selectores basados en las selecciones actuales
-        function actualizarTodosLosSelectores() {
-            crearSelectorMultiple('filtro-criterios', 'criterios');
-            crearSelectorMultiple('filtro-entidad', 'entidad');
-            crearSelectorMultiple('filtro-subsistema', 'subsistema');
-            crearSelectorMultiple('filtro-carrera', 'carrera');
-            crearSelectorMultiple('filtro-sector', 'sector');
-            
-            // Para planes, mantener siempre habilitados
-            const contenedorPlanes = document.getElementById('filtro-planes');
-            contenedorPlanes.innerHTML = '';
-            
-            ['Justicia', 'Balsas'].forEach(opcion => {
-                const div = document.createElement('div');
-                div.className = 'opcion-filtro';
-                
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.id = `plan-${opcion.toLowerCase()}`;
-                checkbox.value = opcion;
-                checkbox.checked = filtrosSeleccionados.planes.includes(opcion);
-                checkbox.disabled = false;
-                checkbox.addEventListener('change', function() {
-                    actualizarFiltroSeleccionado('planes', opcion, this.checked);
-                });
-                
-                const label = document.createElement('label');
-                label.htmlFor = checkbox.id;
-                label.textContent = opcion === 'Justicia' ? 'Planes de Justicia' : 'Plan Balsas';
-                
-                div.appendChild(checkbox);
-                div.appendChild(label);
-                contenedorPlanes.appendChild(div);
-            });
-        }
-
-        // Función para filtrar planteles según selección múltiple (incluyendo criterios y planes)
+        // Función para filtrar planteles según selección
         function filtrarPlanteles() {
-            // Verificar que los datos estén cargados
-            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) {
-                console.error("Los datos de planteles no están disponibles");
-                return;
-            }
-
-            plantelesFiltradosActuales = window.Planteles_carreras2.features.filter(function(feature) {
-                // Verificar cada filtro (incluyendo criterios y planes)
-                const cumpleCriterios = filtrosSeleccionados.criterios.length === 0 || 
-                    (filtrosSeleccionados.criterios.includes('Propuesta_1') && normalizarValorFiltro(feature.properties.Propuesta_1) === "Si") ||
-                    (filtrosSeleccionados.criterios.includes('Propuesta_2') && normalizarValorFiltro(feature.properties.Propuesta_2) === "Si");
-                
-                const cumpleEntidad = filtrosSeleccionados.entidad.length === 0 || 
-                    filtrosSeleccionados.entidad.includes(feature.properties.Entidad);
-                
-                // FILTRADO DE PLANES - Solo mostrar planteles que cumplan con los planes seleccionados
-                let cumplePlanes = true;
-                if (filtrosSeleccionados.planes.length > 0) {
-                    cumplePlanes = false;
-                    
-                    // Verificar si el plantel cumple con al menos uno de los planes seleccionados
-                    for (const plan of filtrosSeleccionados.planes) {
-                        if (plan === "Justicia" && normalizarValorFiltro(feature.properties.Justicia) === "Si") {
-                            cumplePlanes = true;
-                            break;
-                        }
-                        if (plan === "Balsas" && normalizarValorFiltro(feature.properties.Balsas) === "Si") {
-                            cumplePlanes = true;
-                            break;
-                        }
-                    }
-                }
-                
-                const cumpleSubsistema = filtrosSeleccionados.subsistema.length === 0 || 
-                    filtrosSeleccionados.subsistema.includes(feature.properties.Subsistema);
-                
-                const cumpleCarrera = filtrosSeleccionados.carrera.length === 0 || 
-                    filtrosSeleccionados.carrera.includes(feature.properties.Carrera);
-                
-                const cumpleSector = filtrosSeleccionados.sector.length === 0 || 
-                    filtrosSeleccionados.sector.includes(feature.properties.Sector);
-                
-                return cumpleCriterios && cumpleEntidad && cumplePlanes && cumpleSubsistema && cumpleCarrera && cumpleSector;
+            const entidadSeleccionada = document.getElementById("Entidad").value;
+            const carreraSeleccionada = document.getElementById("Carrera").value;
+            const sectorSeleccionado = document.getElementById("Sector").value;
+            
+            const plantelesFiltrados = Planteles_carreras.features.filter(function(feature) {
+                const cumpleEntidad = (entidadSeleccionada === "Todos" || feature.properties.Entidad === entidadSeleccionada);
+                const cumpleCarrera = (carreraSeleccionada === "Todos" || feature.properties.Carrera === carreraSeleccionada);
+                const cumpleSector = (sectorSeleccionado === "Todos" || feature.properties.Sector === sectorSeleccionado);
+                return cumpleEntidad && cumpleCarrera && cumpleSector;
             });
             
             plantelesLayer.clearLayers();
             
-            if (plantelesFiltradosActuales.length > 0) {
-                plantelesLayer.addData(plantelesFiltradosActuales);
+            if (plantelesFiltrados.length > 0) {
+                plantelesLayer.addData(plantelesFiltrados);
             }
             
             // Asegurar que PODEBIS esté siempre encima
@@ -1195,58 +689,21 @@
                 map.addLayer(podebisLayer);
             }
             
-            // Actualizar los selectores basados en los nuevos filtros
-            actualizarTodosLosSelectores();
+            searchControl.setLayer(plantelesLayer);
             
-            // Actualizar el botón de limpiar y exportar
-            actualizarBotones();
-        }
-
-        // Función para recopilar todas las propiedades disponibles y mantener el orden original
-        function recopilarTodasLasPropiedades() {
-            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) return;
-            
-            ordenColumnasOriginal = [];
-            const propiedadesSet = new Set();
-            
-            // Usar el primer feature para determinar el orden original
-            if (window.Planteles_carreras2.features.length > 0) {
-                const primerFeature = window.Planteles_carreras2.features[0];
-                ordenColumnasOriginal = Object.keys(primerFeature.properties);
-                
-                // Asegurarnos de que todas las propiedades estén incluidas
-                window.Planteles_carreras2.features.forEach(feature => {
-                    Object.keys(feature.properties).forEach(propiedad => {
-                        propiedadesSet.add(propiedad);
-                    });
-                });
-                
-                // Mantener el orden original pero agregar propiedades que puedan faltar
-                const propiedadesCompletas = [...ordenColumnasOriginal];
-                propiedadesSet.forEach(propiedad => {
-                    if (!propiedadesCompletas.includes(propiedad)) {
-                        propiedadesCompletas.push(propiedad);
-                    }
-                });
-                
-                ordenColumnasOriginal = propiedadesCompletas;
-            }
-            
-            // Inicializar todas las opciones disponibles
-            todasLasOpciones.entidad = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Entidad).filter(Boolean))].sort();
-            todasLasOpciones.subsistema = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Subsistema).filter(Boolean))].sort();
-            todasLasOpciones.carrera = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Carrera).filter(Boolean))].sort();
-            todasLasOpciones.sector = [...new Set(window.Planteles_carreras2.features.map(f => f.properties.Sector).filter(Boolean))].sort();
+            // Actualizar el botón de limpiar
+            actualizarBotonLimpiar();
         }
 
         // Función para resaltar municipios por entidad
         function resaltarMunicipiosPorEntidad() {
+            const entidadSeleccionada = document.getElementById("Entidad").value;
+            
             if (municipiosResaltadosEntidad) {
                 map.removeLayer(municipiosResaltadosEntidad);
-                municipiosResaltadosEntidad = null;
             }
             
-            if (filtrosSeleccionados.entidad.length === 0) {
+            if (entidadSeleccionada === "Todos") {
                 return;
             }
             
@@ -1254,199 +711,260 @@
                 pane: 'municipiosResaltados',
                 style: function(feature) {
                     return {
-                        fillColor: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? '#98989a' : '#D3D3D3',
-                        weight: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? 1.5 : 0.8,
-                        opacity: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? 1 : 0.4,
-                        color: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? '#5e5e5e' : '#6F7271',
+                        fillColor: feature.properties.Entidad === entidadSeleccionada ? '#98989a' : '#D3D3D3',
+                        weight: feature.properties.Entidad === entidadSeleccionada ? 1.5 : 0.8,
+                        opacity: feature.properties.Entidad === entidadSeleccionada ? 1 : 0.4,
+                        color: feature.properties.Entidad === entidadSeleccionada ? '#5e5e5e' : '#6F7271',
                         dashArray: '0',
-                        fillOpacity: filtrosSeleccionados.entidad.includes(feature.properties.Entidad) ? 0.7 : 0.6
+                        fillOpacity: feature.properties.Entidad === entidadSeleccionada ? 0.7 : 0.6
                     };
                 },
-                onEachFeature: function(feature, layer) {
-                    layer.bindPopup(generarPopupMunicipios(feature), {minWidth: 180, maxWidth: 220});
-                }
+                onEachFeature: popupMunicipio
             }).addTo(map);
-        }
-
-        // Función para resaltar municipios por planes - USANDO LAS VARIABLES EN nvomun
-        function resaltarMunicipiosPorPlanes() {
-            if (municipiosResaltadosPlanes) {
-                map.removeLayer(municipiosResaltadosPlanes);
-                municipiosResaltadosPlanes = null;
-            }
-            
-            if (filtrosSeleccionados.planes.length === 0) {
-                return;
-            }
-            
-            console.log("Filtros de planes seleccionados:", filtrosSeleccionados.planes);
-            
-            // FILTRAR SOLO LOS MUNICIPIOS QUE TIENEN "Si" EN LOS PLANES SELECCIONADOS
-            const municipiosFiltrados = {
-                type: "FeatureCollection",
-                features: nvomun.features.filter(feature => {
-                    // Verificar si este municipio tiene "Si" en alguno de los planes seleccionados
-                    let tienePlanSeleccionado = false;
-                    
-                    // Para cada plan seleccionado, verificar si el municipio tiene "Si"
-                    filtrosSeleccionados.planes.forEach(plan => {
-                        if (plan === "Justicia") {
-                            if (normalizarValorFiltro(feature.properties.Justicia) === "Si") {
-                                tienePlanSeleccionado = true;
-                            }
-                        }
-                        if (plan === "Balsas") {
-                            if (normalizarValorFiltro(feature.properties.Balsas) === "Si") {
-                                tienePlanSeleccionado = true;
-                            }
-                        }
-                    });
-                    
-                    return tienePlanSeleccionado;
-                })
-            };
-            
-            console.log("Municipios con planes 'Si':", municipiosFiltrados.features.length);
-            
-            if (municipiosFiltrados.features.length === 0) {
-                console.log("No hay municipios con los planes seleccionados activos");
-                return;
-            }
-            
-            // CREAR LA CAPA SOLO CON LOS MUNICIPIOS QUE TIENEN "Si" EN LOS PLANES
-            municipiosResaltadosPlanes = L.geoJSON(municipiosFiltrados, {
-                pane: 'municipiosResaltados',
-                style: function() {
-                    // MISMO COLOR QUE PARA ENTIDAD, PERO SOLO PARA LOS QUE TIENEN PLANES
-                    return {
-                        fillColor: '#e6d194',
-                        weight: 1.3,
-                        opacity: .08,
-                        color: '#806b4a',
-                        dashArray: '0',
-                        fillOpacity: 0.7
-                    };
-                },
-                onEachFeature: function(feature, layer) {
-                    layer.bindPopup(generarPopupMunicipios(feature), {minWidth: 180, maxWidth: 220});
-                }
-            }).addTo(map);
-            
-            console.log("Municipios resaltados:", municipiosFiltrados.features.length, "de", nvomun.features.length);
         }
 
         // Función para verificar selección activa
         function haySeleccionActiva() {
-            return Object.values(filtrosSeleccionados).some(filtro => filtro.length > 0);
+            const entidad = document.getElementById("Entidad").value;
+            const carrera = document.getElementById("Carrera").value;
+            const sector = document.getElementById("Sector").value;
+            return entidad !== "Todos" || carrera !== "Todos" || sector !== "Todos";
         }
 
-        // Función para actualizar los botones
-        function actualizarBotones() {
+        // Función para actualizar el botón de limpiar
+        function actualizarBotonLimpiar() {
             const limpiarBtn = document.getElementById("limpiarBtn");
-            const exportarBtn = document.getElementById("exportarBtn");
-            const haySeleccion = haySeleccionActiva();
-            const hayPlantelesFiltrados = plantelesFiltradosActuales.length > 0;
+            limpiarBtn.style.display = haySeleccionActiva() ? "inline-block" : "none";
+        }
+
+        // Función para obtener planteles filtrados actuales
+        function obtenerPlantelesFiltrados() {
+            const entidadSeleccionada = document.getElementById("Entidad").value;
+            const carreraSeleccionada = document.getElementById("Carrera").value;
+            const sectorSeleccionado = document.getElementById("Sector").value;
             
-            limpiarBtn.style.display = haySeleccion ? "inline-block" : "none";
-            exportarBtn.style.display = hayPlantelesFiltrados ? "inline-block" : "none";
-            exportarBtn.disabled = !hayPlantelesFiltrados;
+            return Planteles_carreras.features.filter(function(feature) {
+                const cumpleEntidad = (entidadSeleccionada === "Todos" || feature.properties.Entidad === entidadSeleccionada);
+                const cumpleCarrera = (carreraSeleccionada === "Todos" || feature.properties.Carrera === carreraSeleccionada);
+                const cumpleSector = (sectorSeleccionado === "Todos" || feature.properties.Sector === sectorSeleccionado);
+                return cumpleEntidad && cumpleCarrera && cumpleSector;
+            });
         }
 
         // Función para limpiar todas las selecciones
         function limpiarSeleccion() {
-            // Limpiar todas las selecciones (incluyendo criterios y planes)
-            Object.keys(filtrosSeleccionados).forEach(key => {
-                filtrosSeleccionados[key] = [];
+            document.getElementById("Entidad").value = "Todos";
+            document.getElementById("Carrera").value = "Todos";
+            document.getElementById("Sector").value = "Todos";
+            
+            // Habilitar todas las opciones de entidad
+            const entidadSelect = document.getElementById("Entidad");
+            Array.from(entidadSelect.options).forEach(option => {
+                option.disabled = false;
             });
             
-            // Limpiar criterio actual
-            criterioActual = null;
-            
-            // Actualizar todos los selectores
-            actualizarTodosLosSelectores();
+            // Llenar carreras y sectores con todas las opciones disponibles
+            actualizarSelectoresCompletamente();
             
             // Aplicar filtros
             filtrarPlanteles();
             resaltarMunicipiosPorEntidad();
-            resaltarMunicipiosPorPlanes();
+            zoomAEntidad("Todos");
             
-            actualizarBotones();
+            document.getElementById("limpiarBtn").style.display = "none";
         }
 
-        // Función para actualizar un filtro seleccionado
-        function actualizarFiltroSeleccionado(propiedad, valor, seleccionado) {
-            if (propiedad === 'criterios') {
-                // Solo permitir seleccionar un criterio a la vez
-                if (seleccionado) {
-                    // Si ya hay un criterio seleccionado, deseleccionarlo primero
-                    if (filtrosSeleccionados.criterios.length > 0) {
-                        const criterioAnterior = filtrosSeleccionados.criterios[0];
-                        filtrosSeleccionados.criterios = [];
-                        
-                        // Mostrar ventana emergente del nuevo criterio
-                        mostrarVentanaCriterio(valor);
+        // Función para obtener combinaciones disponibles entre selectores
+        function obtenerCombinacionesDisponibles() {
+            const entidadActual = document.getElementById("Entidad").value;
+            const carreraActual = document.getElementById("Carrera").value;
+            const sectorActual = document.getElementById("Sector").value;
+            
+            const combinaciones = {
+                entidades: new Set(),
+                carreras: new Set(),
+                sectores: new Set()
+            };
+            
+            Planteles_carreras.features.forEach(function(feature) {
+                const entidad = feature.properties.Entidad;
+                const carrera = feature.properties.Carrera;
+                const sector = feature.properties.Sector ? feature.properties.Sector.trim() : "";
+                
+                // Filtrar según las selecciones actuales
+                let cumple = true;
+                
+                if (entidadActual !== "Todos" && entidad !== entidadActual) {
+                    cumple = false;
+                }
+                if (carreraActual !== "Todos" && carrera !== carreraActual) {
+                    cumple = false;
+                }
+                if (sectorActual !== "Todos" && sector !== sectorActual) {
+                    cumple = false;
+                }
+                
+                if (cumple) {
+                    // Agregar todas las entidades que tienen la combinación actual
+                    if (entidad) combinaciones.entidades.add(entidad);
+                    // Agregar todas las carreras que tienen la combinación actual
+                    if (carrera) combinaciones.carreras.add(carrera);
+                    // Agregar todos los sectores que tienen la combinación actual
+                    if (sector) combinaciones.sectores.add(sector);
+                }
+            });
+            
+            return combinaciones;
+        }
+
+        // Función para actualizar los selectores de manera interoperante - CORREGIDA
+        function actualizarSelectoresCompletamente() {
+            const combinaciones = obtenerCombinacionesDisponibles();
+            
+            const entidadActual = document.getElementById("Entidad").value;
+            const carreraActual = document.getElementById("Carrera").value;
+            const sectorActual = document.getElementById("Sector").value;
+            
+            // 1. Actualizar selector de entidades
+            const entidadSelect = document.getElementById("Entidad");
+            Array.from(entidadSelect.options).forEach(option => {
+                if (option.value === "Todos") {
+                    option.disabled = false;
+                } else {
+                    // Deshabilitar entidades que no tienen la combinación carrera-sector seleccionada
+                    if (carreraActual !== "Todos" || sectorActual !== "Todos") {
+                        option.disabled = !combinaciones.entidades.has(option.value);
                     } else {
-                        // Primera selección de criterio
-                        mostrarVentanaCriterio(valor);
+                        option.disabled = false;
                     }
-                    
-                    filtrosSeleccionados.criterios = [valor];
-                    criterioActual = valor;
-                } else {
-                    filtrosSeleccionados.criterios = [];
-                    criterioActual = null;
                 }
+            });
+            
+            // Si la entidad actual está deshabilitada, resetear a "Todos"
+            if (entidadActual !== "Todos") {
+                const opcionActual = Array.from(entidadSelect.options).find(opt => opt.value === entidadActual);
+                if (opcionActual && opcionActual.disabled) {
+                    entidadSelect.value = "Todos";
+                }
+            }
+            
+            // 2. Actualizar selector de carreras
+            const carreraSelect = document.getElementById("Carrera");
+            carreraSelect.innerHTML = '<option value="Todos">Todas las carreras técnicas</option>';
+            
+            // Obtener carreras disponibles según combinación actual
+            const carrerasDisponibles = Array.from(combinaciones.carreras);
+            carrerasDisponibles.sort().forEach(function(carrera) {
+                const option = document.createElement("option");
+                option.value = carrera;
+                option.textContent = carrera;
+                carreraSelect.appendChild(option);
+            });
+            
+            // Si la carrera actual no está disponible, resetear a "Todos"
+            if (carreraActual !== "Todos" && !carrerasDisponibles.includes(carreraActual)) {
+                carreraSelect.value = "Todos";
             } else {
-                // Para otros filtros, comportamiento normal
-                if (seleccionado) {
-                    if (!filtrosSeleccionados[propiedad].includes(valor)) {
-                        filtrosSeleccionados[propiedad].push(valor);
-                    }
-                } else {
-                    const index = filtrosSeleccionados[propiedad].indexOf(valor);
-                    if (index > -1) {
-                        filtrosSeleccionados[propiedad].splice(index, 1);
-                    }
-                }
+                carreraSelect.value = carreraActual;
             }
             
-            console.log("Filtros seleccionados:", filtrosSeleccionados);
-            console.log("Criterio actual:", criterioActual);
+            // 3. Actualizar selector de sectores
+            const sectorSelect = document.getElementById("Sector");
+            sectorSelect.innerHTML = '<option value="Todos">Todos los sectores</option>';
             
-            // Aplicar filtros
-            filtrarPlanteles();
+            // Obtener sectores disponibles según combinación actual
+            const sectoresDisponibles = Array.from(combinaciones.sectores);
             
-            // Aplicar resaltados según el tipo de filtro
-            if (propiedad === 'entidad') {
-                resaltarMunicipiosPorEntidad();
-                resaltarMunicipiosPorPlanes(); // También actualizar planes si hay selección
-            } else if (propiedad === 'planes') {
-                resaltarMunicipiosPorPlanes();
-                resaltarMunicipiosPorEntidad(); // También actualizar entidad si hay selección
+            // Ordenar sectores según orden personalizado
+            const sectoresOrdenados = sectoresDisponibles.sort((a, b) => {
+                const indexA = ordenSectores.indexOf(a);
+                const indexB = ordenSectores.indexOf(b);
+                
+                if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                if (indexA !== -1) return -1;
+                if (indexB !== -1) return 1;
+                return a.localeCompare(b);
+            });
+            
+            sectoresOrdenados.forEach(function(sector) {
+                const option = document.createElement("option");
+                option.value = sector;
+                option.textContent = sector;
+                sectorSelect.appendChild(option);
+            });
+            
+            // Si el sector actual no está disponible, resetear a "Todos"
+            if (sectorActual !== "Todos" && !sectoresOrdenados.includes(sectorActual)) {
+                sectorSelect.value = "Todos";
+            } else {
+                sectorSelect.value = sectorActual;
             }
-            
-            actualizarBotones();
         }
 
-        // Función para inicializar todos los selectores
-        function inicializarSelectoresMultiples() {
-            // Verificar que los datos estén cargados
-            if (!window.Planteles_carreras2 || !window.Planteles_carreras2.features) {
-                console.error("Los datos de planteles no están disponibles para inicializar selectores");
-                return;
-            }
-
-            // Inicializar todas las opciones disponibles
-            recopilarTodasLasPropiedades();
+        // Función para inicializar los selectores al cargar
+        function inicializarSelectores() {
+            // Obtener todas las carreras y sectores únicos
+            const carrerasSet = new Set();
+            const sectoresSet = new Set();
             
-            // Crear los selectores múltiples iniciales
-            actualizarTodosLosSelectores();
+            Planteles_carreras.features.forEach(function(feature) {
+                if (feature.properties.Carrera) carrerasSet.add(feature.properties.Carrera);
+                if (feature.properties.Sector) sectoresSet.add(feature.properties.Sector.trim());
+            });
+            
+            // Llenar selector de carreras
+            const carreraSelect = document.getElementById("Carrera");
+            const carrerasOrdenadas = Array.from(carrerasSet).sort();
+            carrerasOrdenadas.forEach(function(carrera) {
+                const option = document.createElement("option");
+                option.value = carrera;
+                option.textContent = carrera;
+                carreraSelect.appendChild(option);
+            });
+            
+            // Llenar selector de sectores
+            const sectorSelect = document.getElementById("Sector");
+            const sectoresOrdenados = Array.from(sectoresSet).sort((a, b) => {
+                const indexA = ordenSectores.indexOf(a);
+                const indexB = ordenSectores.indexOf(b);
+                
+                if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                if (indexA !== -1) return -1;
+                if (indexB !== -1) return 1;
+                return a.localeCompare(b);
+            });
+            
+            sectoresOrdenados.forEach(function(sector) {
+                const option = document.createElement("option");
+                option.value = sector;
+                option.textContent = sector;
+                sectorSelect.appendChild(option);
+            });
         }
 
         // Función para popup de municipios
         function popupMunicipio(feature, layer) {
             if (feature.properties && feature.properties.NOMGEO) {
-                layer.bindPopup(generarPopupMunicipios(feature), {minWidth: 180, maxWidth: 220});
+                // Formatear los números con separador de miles
+                const conEMSsigue = formatNumber(feature.properties.Con_EMS_sigue);
+                const conEMSNoSigue = formatNumber(feature.properties.Con_EMS_NoSigue);
+                const pobTot25 = formatNumber(feature.properties.PobTot25);
+                const pob1519 = formatNumber(feature.properties.Pob_15_19);
+                
+                layer.bindPopup(
+                    `<div style="text-align:center">
+                        <h2>${feature.properties.NOMGEO}</h2>
+                    </div>
+                    <hr>
+                    <table>
+                        <tr><td><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
+                        <tr><td><b>Grado de marginación: </b>${feature.properties.GM_2020}</td></tr>
+                        <tr><td><b>Población total: </b>${pobTot25}</td></tr>
+                        <tr><td><b>Población 15 a 19: </b>${pob1519}</td></tr>
+                        <tr><td><b>Porcentaje 15 a 19: </b>${feature.properties.Porc_15_19}</td></tr>
+                    </table>`,
+                    {minWidth: 150, maxWidth: 200}
+                );
             }
         }
 
@@ -1468,7 +986,7 @@
             const recordCircleIcon = L.divIcon({
                 className: 'podebis-record-circle blinking',
                 html: '<i class="bi bi-record-circle"></i>',
-                iconSize: [20, 20],
+                iconSize: [20, 20], // Tamaño más pequeño
                 iconAnchor: [10, 10],
                 popupAnchor: [0, -10]
             });
@@ -1476,9 +994,9 @@
             return L.marker(latlng, { icon: recordCircleIcon });
         }
 
-        // Función para manejar eventos de mouse en puntos PODEBIS - CON TOOLTIP PERO SIN POPUP AL CLIC
+        // Función para manejar eventos de mouse en puntos PODEBIS
         function onEachPodebisFeature(feature, layer) {
-            // Tooltip con la propiedad descriptio (solo hover)
+            // Tooltip con la propiedad descriptio
             layer.bindTooltip(feature.properties.descriptio, {
                 permanent: false,
                 direction: 'top',
@@ -1487,119 +1005,135 @@
 
             // Eventos para el efecto de resaltado
             layer.on('mouseover', function() {
+                // Cambiar estilo para resaltar - hacer el icono más grande
                 const iconElement = layer.getElement();
                 if (iconElement) {
                     iconElement.style.fontSize = '24px';
-                    iconElement.style.filter = 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))';
+                    iconElement.style.filter = 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))'; // Sombra blanca
                 }
             });
 
             layer.on('mouseout', function() {
+                // Restaurar estilo original
                 const iconElement = layer.getElement();
                 if (iconElement) {
                     iconElement.style.fontSize = '20px';
-                    iconElement.style.filter = 'drop-shadow(0 0 2px rgba(255, 255, 255, 0.7))';
+                    iconElement.style.filter = 'drop-shadow(0 0 2px rgba(255, 255, 255, 0.7))'; // Sombra blanca
                 }
             });
 
-            // ELIMINAR POPUP - no mostrar ventana al hacer clic
-            // Solo mantener el tooltip en hover, sin popup al clic
-            layer.off('click');
-            layer.unbindPopup();
-            
-            // Prevenir que el clic abra cualquier popup
-            layer.on('click', function(e) {
-                L.DomEvent.stopPropagation(e);
-                // No hacer nada al hacer clic
-            });
+            // Popup para PODEBIS
+            if (feature.properties) {
+                let popupContent = `<div style="text-align:center"><h3>${feature.properties.descriptio || 'Polo de Desarrollo'}</h3></div>`;
+                
+                if (feature.properties.entidad) {
+                    popupContent += `<p><b>Entidad:</b> ${feature.properties.entidad}</p>`;
+                }
+                
+                if (feature.properties.municipio) {
+                    popupContent += `<p><b>Municipio:</b> ${feature.properties.municipio}</p>`;
+                }
+                
+                if (feature.properties.descripcion) {
+                    popupContent += `<p><b>Descripción:</b> ${feature.properties.descripcion}</p>`;
+                }
+            }
         }
 
         // Función para color de puntos
         function colorPuntos(d) {
             const colores = {
-                "DGETAyCM": '#9b2247',
-                "DGETI": '#9b2247',
-                "CONALEP": '#9b2247',   
-                "DGB": '#1e5b4f',  
-                "COLBACH": '#1e5b4f',
-                "TBC": '#1e5b4f'
+                "DGETAyCM": '#1e5b4f',
+                "DGETI": '#1e5b4f',
+                "BTED": '#1e5b4f',
+                "CETI": '#1e5b4f',
+                "CECyTE": '#1e5b4f',
+                "CONALEP (CDMX-OAX)": '#1e5b4f',
+                "CONALEP (Estados)": '#1e5b4f',
             };
             return colores[d] || '#000000';
         }
 
-        // Popup para planteles con oferta educativa - AJUSTADO PARA MEJORES SALTOS DE LÍNEA
+        // Popup para planteles con oferta educativa
         function popupPlanteles(feature, layer) {
-            const popupContent = generarPopupPlanteles(feature);
-            layer.bindPopup(popupContent, {
-                minWidth: 260,
-                maxWidth: 280,
-                className: 'custom-popup'
-            });
+            const baseContent = generarPopupBase(feature);
+            
+            const content = baseContent + `
+                <table>
+                    <tr><td style="text-align:left"><b>Oferta educativa adicional (matrícula): </b>${feature.properties.Otros || 'No disponible'}</td></tr>
+                </table>`;
+            
+            layer.bindPopup(content, {minWidth: 250, maxWidth: 300});
         }
 
-        // FUNCIONES PARA EXPORTAR A EXCEL - VERSIÓN MEJORADA
+        // FUNCIÓN PARA EXPORTAR A EXCEL
         function exportarAExcel() {
-            if (plantelesFiltradosActuales.length === 0) {
-                alert('No hay planteles filtrados para exportar.');
-                return;
-            }
-
-            // Si no tenemos el orden original, lo recopilamos
-            if (ordenColumnasOriginal.length === 0) {
-                recopilarTodasLasPropiedades();
-            }
-
-            // Filtrar columnas para EXCLUIR Latitud y Longitud
-            const columnas = ordenColumnasOriginal.filter(columna => 
-                !['Latitud', 'Longitud'].includes(columna)
-            );
-
-            // Preparar los datos para Excel
-            const datosExcel = plantelesFiltradosActuales.map(feature => {
-                const propiedades = feature.properties;
-                const fila = {};
+            try {
+                const plantelesFiltrados = obtenerPlantelesFiltrados();
                 
-                columnas.forEach(columna => {
-                    let valor = propiedades[columna];
-                    
-                    // Manejar valores nulos o undefined
-                    if (valor === null || valor === undefined) {
-                        valor = '';
-                    }
-                    
-                    // Convertir valores booleanos a Si/No para mejor legibilidad
-                    if (columna === 'Justicia' || columna === 'Balsas' || 
-                        columna === 'Propuesta_1' || columna === 'Propuesta_2') {
-                        valor = normalizarValorFiltro(valor);
-                    }
-                    
-                    // Si es un número, mantenerlo como número
-                    if (typeof valor === 'number') {
-                        fila[columna] = valor;
-                    } else {
-                        fila[columna] = valor.toString();
-                    }
+                if (plantelesFiltrados.length === 0) {
+                    alert("No hay datos para exportar. Por favor, ajuste los filtros para seleccionar algunos registros.");
+                    return;
+                }
+                
+                // Crear array de datos excluyendo Latitud y Longitud
+                const datosExcel = plantelesFiltrados.map(feature => {
+                    const props = feature.properties;
+                    return {
+                        'CCT': props.CCT || '',
+                        'Subsistema': props.Subsistema || '',
+                        'Entidad': props.Entidad || '',
+                        'Municipio': props.Municipio || '',
+                        'Nombre': props.Nombre || '',
+                        'Carrera': props.Carrera || '',
+                        'Tipo de sector': props.Tipo_sec || '',
+                        'Sector': props.Sector || '',
+                        'Matrícula carrera': props.Mat_carr || '',
+                        'Matrícula total': props.Matr_total || '',
+                        'Oferta educativa adicional': props.Otros || ''
+                    };
                 });
                 
-                return fila;
-            });
-
-            // Crear libro de trabajo de Excel
-            const wb = XLSX.utils.book_new();
-            const ws = XLSX.utils.json_to_sheet(datosExcel);
-            
-            // Añadir la hoja al libro
-            XLSX.utils.book_append_sheet(wb, ws, "Planteles");
-            
-            // Generar nombre de archivo con fecha y hora
-            const fecha = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-            const nombreArchivo = `planteles_EMS_filtrados_25-26_${fecha}.xlsx`;
-            
-            // Descargar el archivo
-            XLSX.writeFile(wb, nombreArchivo);
-            
-            // Mostrar mensaje de éxito
-            alert(`Se exportaron ${plantelesFiltradosActuales.length} planteles al archivo ${nombreArchivo}`);
+                // Crear hoja de cálculo
+                const ws = XLSX.utils.json_to_sheet(datosExcel);
+                
+                // Ajustar anchos de columnas
+                const wscols = [
+                    {wch: 15}, // CCT
+                    {wch: 20}, // Subsistema
+                    {wch: 20}, // Entidad
+                    {wch: 25}, // Municipio
+                    {wch: 40}, // Nombre
+                    {wch: 50}, // Carrera
+                    {wch: 20}, // Tipo de sector
+                    {wch: 25}, // Sector
+                    {wch: 18}, // Matrícula carrera
+                    {wch: 18}, // Matrícula total
+                    {wch: 30}  // Oferta educativa adicional
+                ];
+                ws['!cols'] = wscols;
+                
+                // Crear libro de trabajo
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, "Planteles");
+                
+                // Generar nombre de archivo con fecha
+                const fecha = new Date();
+                const fechaStr = fecha.toISOString().split('T')[0];
+                const horaStr = fecha.getHours().toString().padStart(2, '0') + 
+                               fecha.getMinutes().toString().padStart(2, '0');
+                
+                const nombreArchivo = `Planteles_Bachillerato_${fechaStr}_${horaStr}.xlsx`;
+                
+                // Descargar archivo
+                XLSX.writeFile(wb, nombreArchivo);
+                
+                console.log(`Exportados ${plantelesFiltrados.length} registros a Excel`);
+                
+            } catch (error) {
+                console.error("Error al exportar a Excel:", error);
+                alert("Ocurrió un error al exportar los datos. Por favor, intente nuevamente.");
+            }
         }
 
         function inicializarMapa() {
@@ -1629,14 +1163,31 @@
             
             // Panel específico para PODEBIS con mayor z-index
             map.createPane('podebisPane');
-            map.getPane('podebisPane').style.zIndex = 450;
+            map.getPane('podebisPane').style.zIndex = 450; // Mayor que overlayPane (400)
 
-            // SOLO mapa base en grises
             const grises = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
                 minZoom: 5, 
                 maxZoom: 16,
-                attribution: 'Fuente: DGPPyEE-SEP, ciclo escolar 25-26'
+                attribution: 'Fuente: DGPPyEE-SEP, ciclo escolar 24-25'
             }).addTo(map);
+
+            const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                minZoom: 5, 
+                maxZoom: 18,
+                attribution: 'Fuente: DGPPyEE-SEP'
+            });
+
+            const baseLayers = {
+                "Mapa en grises": grises,
+                "Mapa satelital": Esri_WorldImagery
+            };
+            L.control.layers(baseLayers, null, {collapsed: false}).addTo(map);
+
+            const win = L.control.window(map, {
+                title: '¿Cómo navegar el mapa interactivo?', 
+                content: 'El mapa permite explorar la oferta académica de los planteles tecnológicos públicos del Bachillerato Nacional para el ciclo 2024-2025, así como la ubicación de los Polos de Desarrollo para el Bienestar (PODEBIS), en el marco del Plan México. Además, se puede identificar el sector estratégico, secundario o transversal al que pertenece cada carrera técnica. <br>Para navegar es posible:<br>-Filtrar los resultados por entidad federativa, carrera técnica o sector.<br>-Buscar directamente por Clave de Centro de Trabajo (CCT) del plantel.<br>-Activar la ubicación en tiempo real para encontrar opciones cercanas.<br>Es posible exportar la base de datos de los planteles públicos seleccionados, haciendo clic en el botón "Exportar a Excel".', 
+                position: 'top'
+            }).show();
 
             L.control.resetView({
                 position: "topleft",
@@ -1648,15 +1199,6 @@
 
         function inicializarCapas() {
             try {
-                // Verificar que los datos estén cargados
-                if (!window.Planteles_carreras2) {
-                    throw new Error("Los datos de planteles no se cargaron correctamente");
-                }
-
-                // Recopilar todas las propiedades disponibles y su orden original
-                recopilarTodasLasPropiedades();
-
-                // Capa base de municipios (gris claro) - NIVEL MÁS BAJO
                 mun = L.geoJSON(nvomun, {
                     style: function() {
                         return {
@@ -1672,8 +1214,7 @@
                     onEachFeature: popupMunicipio
                 }).addTo(map);
 
-                // Capa de planteles
-                plantelesLayer = L.geoJSON(window.Planteles_carreras2, {
+                plantelesLayer = L.geoJSON(Planteles_carreras, {
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng);
                     },
@@ -1685,21 +1226,17 @@
                 });
 
                 // Capa PODEBIS con panel personalizado
-                if (window.PODEBIS) {
-                    podebisLayer = L.geoJSON(window.PODEBIS, {
-                        pointToLayer: function (feature, latlng) {
-                            return createPodebisMarker(feature, latlng);
-                        },
-                        pane: 'podebisPane',
-                        onEachFeature: onEachPodebisFeature
-                    });
-                }
-                
-                // Añadir capas en el orden correcto (solo planteles y PODEBIS por defecto)
+                podebisLayer = L.geoJSON(PODEBIS, {
+                    pointToLayer: function (feature, latlng) {
+                        return createPodebisMarker(feature, latlng);
+                    },
+                    pane: 'podebisPane',
+                    onEachFeature: onEachPodebisFeature
+                });
+
+                // Añadir capas en el orden correcto
                 map.addLayer(plantelesLayer);
-                if (podebisLayer) {
-                    map.addLayer(podebisLayer);
-                }
+                map.addLayer(podebisLayer);
                 
             } catch (error) {
                 console.error("Error al cargar las capas:", error);
@@ -1709,7 +1246,25 @@
         }
 
         function inicializarControles() {
-            // SIMBOLOGÍA - ACTUALIZADA PARA INCLUIR CONALEP CON BACHILLERATO TECNOLÓGICO
+            searchControl = new L.Control.Search({
+                layer: plantelesLayer,
+                propertyName: 'CCT',
+                circleLocation: true,
+                collapsed: true,
+                zoom: 13,
+                hideMarkerOnCollapse: true,
+                textPlaceholder: 'Búsqueda por CCT',
+            });
+            
+            searchControl.on('search_locationfound', function(e) {
+                e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+            }).on('search_collapsed', function() {
+                plantelesLayer.resetStyle();
+            });
+            
+            map.addControl(searchControl);
+
+            // Simbología
             const legend = L.control({position: 'bottomright'});
             
             legend.onAdd = function () {
@@ -1717,22 +1272,31 @@
                 div.innerHTML = '<h3>Simbología</h3>' +
                '<div class="legend-item">' +
                '<div class="legend-symbol legend-bachillerato-tecnologico"></div>' +
-               '<span>Bachillerato Tecnológico</span>' +
-               '</div>' +
-               '<div class="legend-item">' +
-               '<div class="legend-symbol legend-bachillerato-general"></div>' +
-               '<span>Bachillerato General</span>' +
+               '<span>Bachilleratos Tecnológicos</span>' +
                '</div>' +
                '<div class="legend-item">' +
                '<div class="legend-symbol legend-podebis-svg"></div>' +
-               '<span>Polo de Desarrollo</span>' +
+               '<span>Polos de Desarrollo</span>' +
                '</div>';
                 return div;
             };
             
             legend.addTo(map);
+
+            const lc = L.control.locate({
+                position: "topleft",
+                flyTo: true,
+                strings: {
+                    title: "Su localización",
+                    popup: "Su ubicación aproximada es a {distance}m de este punto."
+                },
+                locateOptions: {
+                    enableHighAccuracy: true,
+                    maxZoom: 14
+                }
+            }).addTo(map);
         }
-        
+
         // Inicialización al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             try {
@@ -1740,27 +1304,39 @@
                 inicializarCapas();
                 inicializarControles();
                 
-                // Inicializar selectores múltiples después de verificar que los datos estén cargados
-                if (window.Planteles_carreras2 && window.Planteles_carreras2.features) {
-                    inicializarSelectoresMultiples();
-                    document.getElementById('loading').style.display = 'none';
-                } else {
-                    // Si los datos no están cargados, mostrar error después de un tiempo
-                    setTimeout(function() {
-                        if (!window.Planteles_carreras2) {
-                            document.getElementById('loading').style.display = 'none';
-                            document.getElementById('errorMessage').textContent = "Error al cargar los datos. Verifique que el archivo Planteles_carreras2.js exista y esté correctamente formateado.";
-                            document.getElementById('errorMessage').style.display = 'block';
-                        }
-                    }, 3000);
-                }
+                // Inicializar selectores
+                inicializarSelectores();
                 
-                // Event listeners para los botones
+                // Configurar event listeners
+                document.getElementById('Entidad').addEventListener('change', function() {
+                    resaltarMunicipiosPorEntidad();
+                    zoomAEntidad(document.getElementById("Entidad").value);
+                    actualizarSelectoresCompletamente();
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
+                document.getElementById('Carrera').addEventListener('change', function() {
+                    actualizarSelectoresCompletamente();
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
+                document.getElementById('Sector').addEventListener('change', function() {
+                    actualizarSelectoresCompletamente();
+                    filtrarPlanteles();
+                    actualizarBotonLimpiar();
+                });
+                
                 document.getElementById('limpiarBtn').addEventListener('click', limpiarSeleccion);
-                document.getElementById('exportarBtn').addEventListener('click', exportarAExcel);
+                
+                // Event listener para el botón de exportar a Excel
+                document.getElementById('exportarExcelBtn').addEventListener('click', exportarAExcel);
+                
                 document.getElementById('closeOverlayBtn').addEventListener('click', closeInfoOverlay);
                 document.getElementById('overlayBackdrop').addEventListener('click', closeInfoOverlay);
                 
+                document.getElementById('loading').style.display = 'none';
             } catch (error) {
                 console.error("Error al inicializar:", error);
                 document.getElementById('loading').style.display = 'none';
@@ -1775,7 +1351,26 @@
 
     <!-- Capas JS -->
     <script src="nvomun.js"></script>
-    <script src="Planteles_carreras2.js"></script>
+    <script src="Planteles_carreras.js"></script>
     <script src="PODEBIS.js"></script>
-</body>
+
+<footer>
+        <div style="text-align: center;">
+            <div class="img" style="margin-bottom: 15px;">
+                <img src="SEP_25.png" 
+                     style="display: block; margin: 0 auto;" 
+                     width="200"
+                     height="88"
+                     alt="Logo de la Secretaría de Educación Pública"
+                     loading="lazy">
+            </div>
+            <div class="footer">
+                <p style="color: #691C32; font-size:0.7rem; font-family: Noto Sans; text-align:center">
+                    <b>Subsecretaría de Educación Media Superior | Área de Estadística</b>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
 </html>
