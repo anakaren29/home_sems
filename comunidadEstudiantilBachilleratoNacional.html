@@ -33,42 +33,57 @@
       @media (max-width: 767px) {
         
           #noticiasList { display: none !important; }
-          .carousel-wrapper{
+          #carousel-bachiller{
             display:block;
             position:relative;
-            padding:0 44px;
+            padding: 0 44px;
           }
 
-          .carrusel-scroll.horizontal{
+          .carousel-viewport{
+            overflow: hidden;
+            width: 100%;
+          }
+
+          .carousel-track{
             display:flex;
-            overflow-x:auto;
-            scroll-behavior:smooth;
-            -webkit-overflow-scrolling:touch;
-
-            /* Scroll snap safari*/
-            scroll-snap-type:x mandatory;
-            -webkit-scroll-snap-type:x mandatory;
-            padding: 8px 2px 16px;
+            will-change: transform;
+            transition: transform 280ms ease;
           }
 
-          
-          .card-carrusel{
-            flex:0 0 88%;
-            scroll-snap-align:start;
-            -webkit-scroll-snap-align:start;
-
-            margin-right:14px; /* fallback */
-          }
-          .card-carrusel:last-child{
-            margin-right:0;
+          .carousel-slide{
+            flex: 0 0 100%; /* 1 tarjeta por vista */
+            padding: 8px 0 16px;
           }
 
-          /* Safari */
-          .card-carrusel,
-          .bn-card2,
-          .bn-card2-inner{
-            float:none !important;
-            position:relative;
+          /* flechas */
+          .carousel-btn{
+            position:absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width:36px;
+            height:36px;
+            border-radius:50%;
+            border:0;
+            z-index:3;
+            cursor:pointer;
+          }
+          .carousel-btn.left{ left:6px; }
+          .carousel-btn.right{ right:6px; }
+
+          /* centrar contenido en mobile */
+          .carousel-slide .bn-card2-inner,
+          .carousel-slide .bn-card2-title,
+          .carousel-slide .bn-card2-date,
+          .carousel-slide .text-noticias{
+            text-align:center;
+          }
+          .carousel-slide .bn-card2-thumb{
+            display:flex;
+            justify-content:center;
+          }
+          .carousel-slide .bn-card2-thumb img{
+            display:block;
+            margin:0 auto;
           }
       }
 
@@ -197,20 +212,21 @@
 
 
 
-    <div class="carousel-wrapper">
-      <button class="carousel-btn left" onclick="scrollCarrusel(-1)">
-        &#10094;
-      </button>
+      <div class="carousel-wrapper" id="carousel-bachiller">
+        <button class="carousel-btn left" type="button" aria-label="Anterior">
+          &#10094;
+        </button>
 
-      <div class="carrusel-scroll horizontal" id="carrusel-horizontal">
-        <!--  tarjetas -->
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carrusel-track">
+            <!-- slides aquí -->
+          </div>
+        </div>
+
+        <button class="carousel-btn right" type="button" aria-label="Siguiente">
+          &#10095;
+        </button>
       </div>
-
-      <button class="carousel-btn right" onclick="scrollCarrusel(1)">
-        &#10095;
-      </button>
-    </div>
-
 
   </div>
 </section>
@@ -294,6 +310,16 @@
     
     
     <script>
+
+      function scrollToListTop() {
+        const el = document.getElementById("noticiasList") || document.querySelector(".noticiasList");
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+
+
+
 (function () {
   var canvas = document.getElementById('confetti-canvas');
   var ctx = canvas.getContext('2d');
@@ -421,35 +447,37 @@
    
     {
       "Número de noticia": "31",
-                    "TÍTULO ": "Estudiante mexicana recibe reconocimiento mundial en educación",
-                    "RESUMEN ": "Valeria Palacios Cruz fue distinguida con la Medalla Mundial de la Educación 2025, otorgada por la Fundación HP, por sus aportaciones innovadoras en tecnología. Egresada del CONALEP y del Tecnológico Nacional de México, su trayectoria refleja el impacto de la educación pública en la formación de talento de alto nivel. El reconocimiento destaca sus proyectos en inteligencia artificial, robótica y desarrollo de drones con enfoque social y ambiental. Entre ellos se encuentran Drones para la Reforestación, Clean Water Drone, Proyecto Mantarraya y el robot CONIA. Su logro posiciona a la juventud mexicana en el escenario internacional de la innovación educativa.",
-                    "LINK PARA REDIRECCIÓN ": "https://www.facebook.com/watch/?v=1175280941318886",
+                    "TÍTULO": "Estudiante mexicana recibe reconocimiento mundial en educación",
+                    "RESUMEN": "Valeria Palacios Cruz fue distinguida con la Medalla Mundial de la Educación 2025, otorgada por la Fundación HP, por sus aportaciones innovadoras en tecnología. Egresada del CONALEP y del Tecnológico Nacional de México, su trayectoria refleja el impacto de la educación pública en la formación de talento de alto nivel. El reconocimiento destaca sus proyectos en inteligencia artificial, robótica y desarrollo de drones con enfoque social y ambiental. Entre ellos se encuentran Drones para la Reforestación, Clean Water Drone, Proyecto Mantarraya y el robot CONIA. Su logro posiciona a la juventud mexicana en el escenario internacional de la innovación educativa.",
+                    "LINK PARA REDIRECCIÓN": "https://www.facebook.com/watch/?v=1175280941318886",
                     "FECHA PUBLICACIÓN ESCUELA": "14/1/2026"
     },
     {
        "Número de noticia": "30",
-                    "TÍTULO ": "Estudiantes del Conalep y TecNM logran primeros lugares internacionales en innovación y robótica",
-                    "RESUMEN ": "Estudiantes del Conalep I y del TecNM, ambos de Tlalnepantla, obtuvieron primeros lugares en certámenes internacionales en Singapur, Japón y Ecuador. Jorge Auri Leguizamo González y Alexander Moroni Hernández del Conalep ganaron el Global Youth Invention Summit 2025 con un dispositivo capaz de generar agua potable a partir de la humedad del aire, una solución con alto impacto social. El equipo del TecNM, integrado por Diego Guzmán Silverio, Rodrigo Ortiz Luis, Kevin Ferioli Castellanos, Luis Cortés Hernández, Omar Antonio Barrera Spíndola y Marisol Coba Martínez, destacó en robótica al triunfar en el All Japan Robot Sumo Tournament y en el Taita Robot en Ecuador. Estos logros consolidan a ambos planteles como referentes de talento y creatividad en ciencia y tecnología a nivel internacional.",
-                    "LINK PARA REDIRECCIÓN ": "http://www.gob.mx/sep/prensa/boletin-13-estudiantes-del-conalep-y-tecnm-primeros-lugares-en-concursos-de-innovacion-y-robotica-en-singapur-japon-y-ecuador-secretario?idiom=es",
+                    "TÍTULO": "Estudiantes del Conalep y TecNM logran primeros lugares internacionales en innovación y robótica",
+                    "RESUMEN": "Estudiantes del Conalep I y del TecNM, ambos de Tlalnepantla, obtuvieron primeros lugares en certámenes internacionales en Singapur, Japón y Ecuador. Jorge Auri Leguizamo González y Alexander Moroni Hernández del Conalep ganaron el Global Youth Invention Summit 2025 con un dispositivo capaz de generar agua potable a partir de la humedad del aire, una solución con alto impacto social. El equipo del TecNM, integrado por Diego Guzmán Silverio, Rodrigo Ortiz Luis, Kevin Ferioli Castellanos, Luis Cortés Hernández, Omar Antonio Barrera Spíndola y Marisol Coba Martínez, destacó en robótica al triunfar en el All Japan Robot Sumo Tournament y en el Taita Robot en Ecuador. Estos logros consolidan a ambos planteles como referentes de talento y creatividad en ciencia y tecnología a nivel internacional.",
+                    "LINK PARA REDIRECCIÓN": "http://www.gob.mx/sep/prensa/boletin-13-estudiantes-del-conalep-y-tecnm-primeros-lugares-en-concursos-de-innovacion-y-robotica-en-singapur-japon-y-ecuador-secretario?idiom=es",
                     "FECHA PUBLICACIÓN ESCUELA": "9/1/2025"
     },
     {
       "Número de noticia": "29",
-                    "TÍTULO ": "Jocelyne Silguero logra cuarto lugar en Olimpiada Mexicana de Matemáticas",
-                    "RESUMEN ": "Jocelyne Guadalupe Silguero Rosas, alumna del grupo 5.C de Programación del Centro de Bachillerato Tecnológico Industrial y de Servicios No. 236, obtuvo el cuarto lugar en la Olimpiada Mexicana de Matemáticas, realizada del 16 al 21 de noviembre en Oaxtepec, Morelos. Compitiendo con alrededor de 200 jóvenes de todo el país, quedó a solo un punto de la medalla de bronce. Su trayectoria incluyó superar las etapas estatales en Tamaulipas y consolidarse como una de las seis representantes del estado en la fase nacional.",
-                    "LINK PARA REDIRECCIÓN ": "https://www.facebook.com/story.php?story_fbid=1295502989269859&id=100064305117205&post_id=100064305117205_1295502989269859&rdid=p04rmSo5rjxUSx1b#",
+                    "TÍTULO": "Jocelyne Silguero logra cuarto lugar en Olimpiada Mexicana de Matemáticas",
+                    "RESUMEN": "Jocelyne Guadalupe Silguero Rosas, alumna del grupo 5.C de Programación del Centro de Bachillerato Tecnológico Industrial y de Servicios No. 236, obtuvo el cuarto lugar en la Olimpiada Mexicana de Matemáticas, realizada del 16 al 21 de noviembre en Oaxtepec, Morelos. Compitiendo con alrededor de 200 jóvenes de todo el país, quedó a solo un punto de la medalla de bronce. Su trayectoria incluyó superar las etapas estatales en Tamaulipas y consolidarse como una de las seis representantes del estado en la fase nacional.",
+                    "LINK PARA REDIRECCIÓN": "https://www.facebook.com/story.php?story_fbid=1295502989269859&id=100064305117205&post_id=100064305117205_1295502989269859&rdid=p04rmSo5rjxUSx1b#",
                     "FECHA PUBLICACIÓN ESCUELA": "30/12/2025"
     },
     {
       "Número de noticia": "28",
-                    "TÍTULO ": "Alumno del CBTA 167 gana medalla de bronce en Olimpiada de Matemáticas",
-                    "RESUMEN ": "Matías Vinalay Acalco, del grupo 301 del Plantel CONALEP Acapulco II, obtuvo el primer lugar en la Primera Edición del XXV Concurso Nacional “La Juventud y la Mar”, organizado por la Secretaría de Marina. Su compañera Dana Valeria Bello Clara, del grupo 303, logró el segundo lugar, colocando a Guerrero en la lista de ganadores nacionales. Los resultados reflejan la formación académica y creativa que ofrece Conalep Guerrero y destaca la participación activa del estudiantado en competencias culturales de alto nivel. ",
-                    "LINK PARA REDIRECCIÓN ": "https://www.facebook.com/story.php?story_fbid=1424120906390491&id=100063777841295&rdid=wsdsYJITmcg4c7wl#",
-                    "FECHA PUBLICACIÓN ESCUELA": "17/12/2025 "
+                    "TÍTULO": "Alumno del CBTA 167 gana medalla de bronce en Olimpiada de Matemáticas",
+                    "RESUMEN": "Matías Vinalay Acalco, del grupo 301 del Plantel CONALEP Acapulco II, obtuvo el primer lugar en la Primera Edición del XXV Concurso Nacional “La Juventud y la Mar”, organizado por la Secretaría de Marina. Su compañera Dana Valeria Bello Clara, del grupo 303, logró el segundo lugar, colocando a Guerrero en la lista de ganadores nacionales. Los resultados reflejan la formación académica y creativa que ofrece Conalep Guerrero y destaca la participación activa del estudiantado en competencias culturales de alto nivel. ",
+                    "LINK PARA REDIRECCIÓN": "https://www.facebook.com/story.php?story_fbid=1424120906390491&id=100063777841295&rdid=wsdsYJITmcg4c7wl#",
+                    "FECHA PUBLICACIÓN ESCUELA": "17/12/2025"
     }
   ];
 
-  const pageSize = 10;
+ 
+
+    const pageSize = 10;
   let currentPage = 1;
 
   const $list = document.getElementById("noticiasList");
@@ -514,9 +542,9 @@
 
       slice.slice(i, i + 2).forEach(item => {
         const numero = item["Número de noticia"]?.trim() || "";
-        const titulo = item["TÍTULO "]?.trim() || "";
-        const resumen = item["RESUMEN "]?.trim() || "";
-        const link = item["LINK PARA REDIRECCIÓN "]?.trim() || "#";
+        const titulo = item["TÍTULO"]?.trim() || "";
+        const resumen = item["RESUMEN"]?.trim() || "";
+        const link = item["LINK PARA REDIRECCIÓN"]?.trim() || "#";
         const fechaRaw = item["FECHA PUBLICACIÓN ESCUELA"]?.trim() || "";
         const fecha = formatFecha(parseFecha(fechaRaw));
         const imgSrc = `assets/comunidad-estudiantil/${numero}.png`;
@@ -555,42 +583,54 @@
     scrollToListTop();
   }
 
+  function scrollCarrusel(direction) {
+    const el = document.getElementById("carrusel-track") || document.getElementById("carrusel-horizontal");
+    if (!el) return; // <- si no existe, no hace nada
+
+    const first = el.querySelector(".carousel-slide, .card-carrusel");
+    if (!first) return;
+
+    const step = first.getBoundingClientRect().width;
+
+    try {
+      el.scrollBy({ left: direction * step, top: 0, behavior: "smooth" });
+    } catch (e) {
+      el.scrollLeft += direction * step;
+    }
+  }
 
 
   if (currentPage !== 1) {
-  scrollToListTop();
-}
+    scrollToListTop();
+  }
 
   renderPage(1);
 
 
+let currentIndex = 0;
 
+function renderSlider(items) {
+  const track = document.getElementById("carrusel-track");
+  const wrapper = document.getElementById("carousel-bachiller");
+  if (!track || !wrapper) return;
 
-
-
-  const $carrusel = document.getElementById("carrusel-horizontal");
-
-function renderCarruselMobile(items) {
-  if (!$carrusel) return;
-
-  $carrusel.innerHTML = items.map(item => {
+  // slides
+  track.innerHTML = items.map(item => {
     const numero = (item["Número de noticia"] || "").trim();
-    const titulo = (item["TÍTULO "] || "").trim();
-    const resumen = (item["RESUMEN "] || "").trim();
-    const link = (item["LINK PARA REDIRECCIÓN "] || "#").trim();
+    const titulo  = (item["TÍTULO"] || item["TÍTULO "] || "").trim();
+    const resumen = (item["RESUMEN"] || item["RESUMEN "] || "").trim();
+    const link    = (item["LINK PARA REDIRECCIÓN"] || item["LINK PARA REDIRECCIÓN "] || "#").trim();
     const fechaRaw = (item["FECHA PUBLICACIÓN ESCUELA"] || "").trim();
     const fecha = formatFecha(parseFecha(fechaRaw));
     const imgSrc = `assets/comunidad-estudiantil/${numero}.png`;
 
     return `
-      <div class="card-noticia card-carrusel">
+      <div class="carousel-slide">
         <article class="bn-card2">
           <div class="bn-card2-inner">
-
             <div class="bn-card2-thumb">
               <img src="${imgSrc}" alt="${titulo}" class="img-responsive">
             </div>
-
             <div class="bn-card2-body">
               <h3 class="bn-card2-title">${titulo}</h3>
               <div class="bn-card2-line"></div>
@@ -600,52 +640,85 @@ function renderCarruselMobile(items) {
                 Leer más <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
             </div>
-
           </div>
         </article>
       </div>
     `;
   }).join("");
+
+  currentIndex = 0;
+  updateSlider();
+  bindSliderControls();
+  bindSwipe(track);
 }
 
+function updateSlider() {
+  const track = document.getElementById("carrusel-track");
+  const viewport = document.querySelector("#carousel-bachiller .carousel-viewport");
+  if (!track || !viewport) return;
 
-function scrollCarrusel(direction) {
-  const el = document.getElementById("carrusel-horizontal");
-  if (!el) return;
+  const total = track.children.length;
+  if (total === 0) return;
 
-  const slide = el.querySelector(".card-carrusel");
-  const step = slide ? (slide.offsetWidth + 14) : el.clientWidth;
+  // clamp
+  currentIndex = Math.max(0, Math.min(currentIndex, total - 1));
 
-  // Safari viejo puede fallar con el objeto {behavior:'smooth'}
-  try {
-    el.scrollBy({ left: direction * step, top: 0, behavior: "smooth" });
-  } catch (e) {
-    el.scrollLeft += direction * step;
-  }
+  const width = viewport.getBoundingClientRect().width;
+  track.style.transform = `translateX(${-currentIndex * width}px)`;
+
+  // disable buttons
+  const btnL = document.querySelector("#carousel-bachiller .carousel-btn.left");
+  const btnR = document.querySelector("#carousel-bachiller .carousel-btn.right");
+  if (btnL) btnL.disabled = currentIndex === 0;
+  if (btnR) btnR.disabled = currentIndex === total - 1;
 }
 
-function isMobile() {
-  return window.matchMedia("(max-width: 767px)").matches;
+function bindSliderControls() {
+  const wrapper = document.getElementById("carousel-bachiller");
+  if (!wrapper || wrapper.dataset.bound === "1") return; // evita doble bind
+  wrapper.dataset.bound = "1";
+
+  const btnL = wrapper.querySelector(".carousel-btn.left");
+  const btnR = wrapper.querySelector(".carousel-btn.right");
+
+  if (btnL) btnL.addEventListener("click", () => { currentIndex--; updateSlider(); });
+  if (btnR) btnR.addEventListener("click", () => { currentIndex++; updateSlider(); });
+
+  window.addEventListener("resize", updateSlider);
 }
 
-/*function renderNoticias() {
-  if (isMobile()) {
-    // renderiza carrusel
-    renderCarruselMobile(noticiasData);
+function bindSwipe(track) {
+  let startX = 0;
+  let isDown = false;
 
-  } else {
-    // renderiza grid/paginador
-    const grid = document.getElementById("noticiasList");
-    
-    if (grid) grid.style.display = "";
-    renderPage(1);
-  }
-}*/
+  track.addEventListener("touchstart", (e) => {
+    isDown = true;
+    startX = e.touches[0].clientX;
+  }, { passive: true });
 
-//window.addEventListener("resize", renderNoticias);
-//renderNoticias();
+  track.addEventListener("touchend", (e) => {
+    if (!isDown) return;
+    isDown = false;
+    const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
+    const dx = endX - startX;
 
-renderCarruselMobile(noticiasData);
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) currentIndex++;
+      else currentIndex--;
+      updateSlider();
+    }
+  }, { passive: true });
+}
+
+// init
+document.addEventListener("DOMContentLoaded", () => {
+
+    renderSlider(noticiasData);
+  
+});
+
+
+  
 
 </script>
 
