@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Subsecretaría de Educación Media Superior</title>
     <link href='https://framework-gb.cdn.gob.mx/applications/cms/favicon.png' rel='shortcut icon'>
     <link
@@ -34,7 +34,41 @@
         
           #noticiasList { display: none !important; }
           .carousel-wrapper{
-            display: block;
+            display:block;
+            position:relative;
+            padding:0 44px;
+          }
+
+          .carrusel-scroll.horizontal{
+            display:flex;
+            overflow-x:auto;
+            scroll-behavior:smooth;
+            -webkit-overflow-scrolling:touch;
+
+            /* Scroll snap safari*/
+            scroll-snap-type:x mandatory;
+            -webkit-scroll-snap-type:x mandatory;
+            padding: 8px 2px 16px;
+          }
+
+          
+          .card-carrusel{
+            flex:0 0 88%;
+            scroll-snap-align:start;
+            -webkit-scroll-snap-align:start;
+
+            margin-right:14px; /* fallback */
+          }
+          .card-carrusel:last-child{
+            margin-right:0;
+          }
+
+          /* Safari */
+          .card-carrusel,
+          .bn-card2,
+          .bn-card2-inner{
+            float:none !important;
+            position:relative;
           }
       }
 
@@ -576,20 +610,18 @@ function renderCarruselMobile(items) {
 
 
 function scrollCarrusel(direction) {
-  if (!$carrusel) return;
+  const el = document.getElementById("carrusel-horizontal");
+  if (!el) return;
 
- 
-  const firstSlide = $carrusel.querySelector(".card-carrusel");
-  if (!firstSlide) return;
+  const slide = el.querySelector(".card-carrusel");
+  const step = slide ? (slide.offsetWidth + 14) : el.clientWidth;
 
-  const slideWidth = firstSlide.getBoundingClientRect().width;
-  const styles = getComputedStyle($carrusel);
-  const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
-
-  $carrusel.scrollBy({
-    left: direction * (slideWidth + gap),
-    behavior: "smooth"
-  });
+  // Safari viejo puede fallar con el objeto {behavior:'smooth'}
+  try {
+    el.scrollBy({ left: direction * step, top: 0, behavior: "smooth" });
+  } catch (e) {
+    el.scrollLeft += direction * step;
+  }
 }
 
 function isMobile() {
