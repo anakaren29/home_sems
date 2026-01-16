@@ -122,6 +122,8 @@
 
 
 
+
+
         </div>
     </main>
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
@@ -359,24 +361,25 @@
 
             /***helpers**/
             function parseFecha(raw) {
-                // formatos a convertir  "10/1/25" o "15/10/2025"
-                if (!raw) return null;
-                const parts = raw.split("/");
-                if (parts.length !== 3) return null;
+            // Acepta "10/1/25" o "15/10/2025" (formato d/m/yy o d/m/yyyy)
+            if (!raw) return null;
+            const parts = String(raw).trim().split("/");
+            if (parts.length !== 3) return null;
 
-                let [d, m, y] = parts.map(p => p.trim());
-                let year = Number(y);
+            let [d, m, y] = parts.map(x => x.trim());
+            let year = Number(y);
 
-                if (String(y).length === 2) {
+            // Si viene con 2 dígitos, asumimos 2000+ (para tus noticias 25 => 2025)
+            if (String(y).length === 2) year = 2000 + year;
 
-                    year = (year <= 69) ? (2000 + year) : (1900 + year);
-                }
-                const day = Number(d);
-                const month = Number(m) - 1;
+            const day = Number(d);
+            const month = Number(m) - 1;
 
-                const dt = new Date(year, month, day);
-                return isNaN(dt.getTime()) ? null : dt;
+            const dt = new Date(year, month, day);
+            return isNaN(dt.getTime()) ? null : dt;
             }
+
+            
 
             function formatFecha(dt) {
                 if (!dt) return "";
@@ -400,7 +403,7 @@
 
             function renderPage(page) {
                 //Ordenar noticias
-                noticiasData.sort((a, b) => {
+                /*noticiasData.sort((a, b) => {
                 const fechaA = parseFecha(a["FECHA PUBLICACIÓN ESCUELA"]?.trim());
                 const fechaB = parseFecha(b["FECHA PUBLICACIÓN ESCUELA"]?.trim());
 
@@ -411,7 +414,16 @@
 
 
                 return fechaB - fechaA;
-                 });
+                 });*/
+
+                 // más nuevas primero
+                noticiasData.sort((a, b) => {
+                const na = parseInt(String(a["Número de noticia"]).trim(), 10) || 0;
+                //const na = Number(a["Número de noticia"] || 0);
+                const nb = Number(b["Número de noticia"] || 0);
+                return nb - na; // más grande primero
+                });
+
 
                 const totalItems = noticiasData.length;
                 const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
