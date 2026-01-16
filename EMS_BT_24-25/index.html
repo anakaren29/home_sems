@@ -27,6 +27,9 @@
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- SheetJS para exportar a Excel -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 
     <style>
         :root {
@@ -70,11 +73,6 @@
             background: rgba(255,255,255,0.9);
             box-shadow: var(--sombra);
             border-radius: 5px;
-        }
-        
-        .info h2 {
-            margin: 0 0 5px;
-            color: #777;
         }
         
         .legend {
@@ -142,6 +140,15 @@
         button:hover, button:focus {
             background-color: var(--color-secundario);
             outline: none;
+        }
+        
+        .btn-excel {
+            background-color: #1e5b4f !important;
+            color: white !important;
+        }
+        
+        .btn-excel:hover, .btn-excel:focus {
+            background-color: #2a7c6e !important;
         }
         
         .info-overlay {
@@ -312,26 +319,26 @@
         }
 
         .legend-podebis-svg {
-    width: 14px;
-    height: 14px;
-    margin-right: 8px;
-    border-radius: 50%;
-    background: white;
-    border: 2px solid #a57f2c;
-    position: relative;
-}
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #a57f2c;
+            position: relative;
+        }
 
-.legend-podebis-svg::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    background: #a57f2c;
-    border-radius: 50%;
-}
+        .legend-podebis-svg::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: #a57f2c;
+            border-radius: 50%;
+        }
 
         @keyframes blink {
             0% { opacity: 0.3; }
@@ -363,11 +370,6 @@
         }
 
         .legend-bachillerato-tecnologico {
-            background: #9b2247;
-            border: 1px solid #FFFFFF;
-        }
-
-        .legend-bachillerato-general {
             background: #1e5b4f;
             border: 1px solid #FFFFFF;
         }
@@ -410,6 +412,13 @@
             align-items: center;
             justify-content: center;
         }
+        
+        /* Estilos para el botón de exportación */
+        .export-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -422,7 +431,7 @@
     
     <div class="titulo">
         <p style="color: #691C32; font-size:1.25rem; font-family: patria; text-align: center; margin: 0;">
-            <b>Oferta académica en planteles públicos del Bachillerato Nacional</b>
+            <b>Oferta académica en planteles tecnológicos públicos del Bachillerato Nacional</b>
         </p>
         <p style="color: #691C32; font-size: 0.9rem; font-family: noto sans; text-align: center; margin: 0;">
             Ciclo escolar 2024-2025
@@ -471,7 +480,7 @@
         </select>
 
         <select id="Carrera">
-            <option value="Todos" selected>Todas las carreras/formaciones laborales</option>
+            <option value="Todos" selected>Todas las carreras técnicas</option>
             <!-- Las opciones se llenarán dinámicamente -->
         </select>
 
@@ -479,8 +488,13 @@
             <option value="Todos" selected>Todos los sectores</option>
             <!-- Las opciones se llenarán dinámicamente -->
         </select>
-
-        <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
+        
+        <div class="export-container">
+            <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
+            <button id="exportarExcelBtn" class="btn-excel">
+                <i class="bi bi-file-earmark-excel"></i> Exportar a Excel
+            </button>
+        </div>
     </div>
 
     <!-- Mapa -->
@@ -579,17 +593,19 @@
             "Energía",
             "Energías limpias",
             "Farmacéutica y dispositivos médicos",
+            "Gestión administrativa y productividad",
+            "Industrial",
+            "Industria cultural",
+            "Industria de la construcción",
             "Industria del plástico",
             "Industrias metálicas básicas",
             "Logística",
             "Metalmecánica",
             "Química y petroquímica",
-            "Textil y calzado",
-            "Industria cultural",
-            "Industrial",
             "Salud y cuidados",
-            "Turismo",
-            "TIC"
+            "Tecnologías de la Información y las Comunicaciones (TIC)",
+            "Textil y calzado",
+            "Turismo"
         ];
 
         // Función para formatear números con separador de miles
@@ -609,7 +625,7 @@
                     <tr><td style="text-align:left"><b>Entidad federativa: </b>${feature.properties.Entidad}</td></tr>
                     <tr><td style="text-align:left"><b>Municipio: </b>${feature.properties.Municipio}</td></tr>
                     <tr><td style="text-align:left"><b>Nombre: </b>${feature.properties.Nombre}</td></tr>
-                    <tr><td style="text-align:left"><b>Carrera/Formación laboral: </b>${feature.properties.Carrera}</td></tr>
+                    <tr><td style="text-align:left"><b>Carrera técnica: </b>${feature.properties.Carrera}</td></tr>
                     <tr><td style="text-align:left"><b>Tipo de sector: </b>${feature.properties.Tipo_sec}</td></tr>
                     <tr><td style="text-align:left"><b>Nombre del sector: </b>${feature.properties.Sector}</td></tr>
                     <tr><td style="text-align:left"><b>Matrícula de la carrera/formación laboral: </b>${feature.properties.Mat_carr}</td></tr>
@@ -723,6 +739,20 @@
             limpiarBtn.style.display = haySeleccionActiva() ? "inline-block" : "none";
         }
 
+        // Función para obtener planteles filtrados actuales
+        function obtenerPlantelesFiltrados() {
+            const entidadSeleccionada = document.getElementById("Entidad").value;
+            const carreraSeleccionada = document.getElementById("Carrera").value;
+            const sectorSeleccionado = document.getElementById("Sector").value;
+            
+            return Planteles_carreras.features.filter(function(feature) {
+                const cumpleEntidad = (entidadSeleccionada === "Todos" || feature.properties.Entidad === entidadSeleccionada);
+                const cumpleCarrera = (carreraSeleccionada === "Todos" || feature.properties.Carrera === carreraSeleccionada);
+                const cumpleSector = (sectorSeleccionado === "Todos" || feature.properties.Sector === sectorSeleccionado);
+                return cumpleEntidad && cumpleCarrera && cumpleSector;
+            });
+        }
+
         // Función para limpiar todas las selecciones
         function limpiarSeleccion() {
             document.getElementById("Entidad").value = "Todos";
@@ -822,7 +852,7 @@
             
             // 2. Actualizar selector de carreras
             const carreraSelect = document.getElementById("Carrera");
-            carreraSelect.innerHTML = '<option value="Todos">Todas las carreras/formaciones laborales</option>';
+            carreraSelect.innerHTML = '<option value="Todos">Todas las carreras técnicas</option>';
             
             // Obtener carreras disponibles según combinación actual
             const carrerasDisponibles = Array.from(combinaciones.carreras);
@@ -1015,17 +1045,13 @@
         // Función para color de puntos
         function colorPuntos(d) {
             const colores = {
-                "DGETAyCM": '#9b2247',
-                "DGETI": '#9b2247',
-                "BTED": '#9b2247',
-                "CETI": '#9b2247',
-                "CECyTE": '#9b2247',
-                "CONALEP (CDMX-OAX)": '#9b2247',
-                "CONALEP (Estados)": '#9b2247',
-                "DGB": '#1e5b4f', 
-                "EMSaD": '#1e5b4f', 
-                "COBACH": '#1e5b4f',
-                "COLBACH (CDMX-EdoMéx)": '#1e5b4f',
+                "DGETAyCM": '#1e5b4f',
+                "DGETI": '#1e5b4f',
+                "BTED": '#1e5b4f',
+                "CETI": '#1e5b4f',
+                "CECyTE": '#1e5b4f',
+                "CONALEP (CDMX-OAX)": '#1e5b4f',
+                "CONALEP (Estados)": '#1e5b4f',
             };
             return colores[d] || '#000000';
         }
@@ -1040,6 +1066,76 @@
                 </table>`;
             
             layer.bindPopup(content, {minWidth: 250, maxWidth: 300});
+        }
+
+        // FUNCIÓN PARA EXPORTAR A EXCEL
+        function exportarAExcel() {
+            try {
+                const plantelesFiltrados = obtenerPlantelesFiltrados();
+                
+                if (plantelesFiltrados.length === 0) {
+                    alert("No hay datos para exportar. Por favor, ajuste los filtros para seleccionar algunos registros.");
+                    return;
+                }
+                
+                // Crear array de datos excluyendo Latitud y Longitud
+                const datosExcel = plantelesFiltrados.map(feature => {
+                    const props = feature.properties;
+                    return {
+                        'CCT': props.CCT || '',
+                        'Subsistema': props.Subsistema || '',
+                        'Entidad': props.Entidad || '',
+                        'Municipio': props.Municipio || '',
+                        'Nombre': props.Nombre || '',
+                        'Carrera': props.Carrera || '',
+                        'Tipo de sector': props.Tipo_sec || '',
+                        'Sector': props.Sector || '',
+                        'Matrícula carrera': props.Mat_carr || '',
+                        'Matrícula total': props.Matr_total || '',
+                        'Oferta educativa adicional': props.Otros || ''
+                    };
+                });
+                
+                // Crear hoja de cálculo
+                const ws = XLSX.utils.json_to_sheet(datosExcel);
+                
+                // Ajustar anchos de columnas
+                const wscols = [
+                    {wch: 15}, // CCT
+                    {wch: 20}, // Subsistema
+                    {wch: 20}, // Entidad
+                    {wch: 25}, // Municipio
+                    {wch: 40}, // Nombre
+                    {wch: 50}, // Carrera
+                    {wch: 20}, // Tipo de sector
+                    {wch: 25}, // Sector
+                    {wch: 18}, // Matrícula carrera
+                    {wch: 18}, // Matrícula total
+                    {wch: 30}  // Oferta educativa adicional
+                ];
+                ws['!cols'] = wscols;
+                
+                // Crear libro de trabajo
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, "Planteles");
+                
+                // Generar nombre de archivo con fecha
+                const fecha = new Date();
+                const fechaStr = fecha.toISOString().split('T')[0];
+                const horaStr = fecha.getHours().toString().padStart(2, '0') + 
+                               fecha.getMinutes().toString().padStart(2, '0');
+                
+                const nombreArchivo = `Planteles_Bachillerato_${fechaStr}_${horaStr}.xlsx`;
+                
+                // Descargar archivo
+                XLSX.writeFile(wb, nombreArchivo);
+                
+                console.log(`Exportados ${plantelesFiltrados.length} registros a Excel`);
+                
+            } catch (error) {
+                console.error("Error al exportar a Excel:", error);
+                alert("Ocurrió un error al exportar los datos. Por favor, intente nuevamente.");
+            }
         }
 
         function inicializarMapa() {
@@ -1091,7 +1187,7 @@
 
             const win = L.control.window(map, {
                 title: '¿Cómo navegar el mapa interactivo?', 
-                content: 'El mapa permite explorar la oferta académica de los planteles públicos del Bachillerato Nacional para el ciclo 2024-2025, así como la ubicación de los Polos de Desarrollo para el Bienestar (PODEBIS), en el marco del Plan México. Además, se puede identificar el sector estratégico, secundario o transversal al que pertenece cada carrera técnica o formación laboral. <br>Para navegar es posible:<br>-Filtrar los resultados por entidad federativa, carrera/formación laboral o sector.<br>-Buscar directamente por Clave de Centro de Trabajo (CCT) del plantel.<br>-Activar la ubicación en tiempo real para encontrar opciones cercanas.', 
+                content: 'El mapa permite explorar la oferta académica de los planteles tecnológicos públicos del Bachillerato Nacional para el ciclo 2024-2025, así como la ubicación de los Polos de Desarrollo para el Bienestar (PODEBIS), en el marco del Plan México. Además, se puede identificar el sector estratégico, secundario o transversal al que pertenece cada carrera técnica. <br>Para navegar es posible:<br>-Filtrar los resultados por entidad federativa, carrera técnica o sector.<br>-Buscar directamente por Clave de Centro de Trabajo (CCT) del plantel.<br>-Activar la ubicación en tiempo real para encontrar opciones cercanas.<br>Es posible exportar la base de datos de los planteles públicos seleccionados, haciendo clic en el botón "Exportar a Excel".', 
                 position: 'top'
             }).show();
 
@@ -1170,7 +1266,7 @@
             
             map.addControl(searchControl);
 
-            // SIMBOLOGÍA ACTUALIZADA CON BACHILLERATO GENERAL EN VERDE
+            // Simbología
             const legend = L.control({position: 'bottomright'});
             
             legend.onAdd = function () {
@@ -1178,15 +1274,11 @@
                 div.innerHTML = '<h3>Simbología</h3>' +
                '<div class="legend-item">' +
                '<div class="legend-symbol legend-bachillerato-tecnologico"></div>' +
-               '<span>Bachillerato Tecnológico</span>' +
-               '</div>' +
-               '<div class="legend-item">' +
-               '<div class="legend-symbol legend-bachillerato-general"></div>' +
-               '<span>Bachillerato General</span>' +
+               '<span>Bachilleratos Tecnológicos</span>' +
                '</div>' +
                '<div class="legend-item">' +
                '<div class="legend-symbol legend-podebis-svg"></div>' +
-               '<span>Polo de Desarrollo</span>' +
+               '<span>Polos de Desarrollo</span>' +
                '</div>';
                 return div;
             };
@@ -1239,6 +1331,10 @@
                 });
                 
                 document.getElementById('limpiarBtn').addEventListener('click', limpiarSeleccion);
+                
+                // Event listener para el botón de exportar a Excel
+                document.getElementById('exportarExcelBtn').addEventListener('click', exportarAExcel);
+                
                 document.getElementById('closeOverlayBtn').addEventListener('click', closeInfoOverlay);
                 document.getElementById('overlayBackdrop').addEventListener('click', closeInfoOverlay);
                 
