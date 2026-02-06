@@ -2708,3 +2708,15 @@ h2{
   }
 
 }
+
+/* SINBANEM */
+
+
+
+
+
+@media (max-width: 767px) {
+  .contenido-documentos{
+    flex-direction: column;
+  }
+}
