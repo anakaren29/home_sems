@@ -2720,3 +2720,81 @@ h2{
     flex-direction: column;
   }
 }
+
+/* MOCHILA DE HERRAMIENTAS */
+.btn-campana{
+  width: 24%;
+}
+.btn-campana-span{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h3{
+  color: #691C32;
+}
+.hotspot, .hotspot2{
+        position:absolute;
+        transform:translate(-50%, -50%);
+        width:15px;
+        height:15px;
+        border-radius:999px;
+        background: #9F2241;
+        border:2px solid #fff;
+        z-index:10;
+        box-shadow:0 6px 20px rgba(0,0,0,.25);
+        animation: hotspot2-pulse 1.6s ease-in-out infinite;
+}
+  .hotspot2::after{
+        content:"";
+        position:absolute;
+        inset:-14px;
+        border-radius:999px;
+        border:2px solid #9F2241;
+        animation: hotspot2-ripple 1.6s ease-out infinite;
+    } 
+
+.transition-img{
+    transition: opacity .35s ease;
+    }
+    .transition-img.is-fading{
+    opacity: 0;
+    }
+
+     /* Animaciones */
+    @keyframes hotspot2-pulse{
+    0%,100%{ transform:translate(-50%, -50%) scale(1); }
+    50%{ transform:translate(-50%, -50%) scale(1.15); }
+    }
+    @keyframes hotspot2-ripple{
+    0%{ transform:scale(.6); opacity:.9; }
+    100%{ transform:scale(1.5); opacity:0; }
+    }
+
+    /* Accesibilidad */
+    @media (prefers-reduced-motion: reduce){
+    .hotspot,
+    .hotspot::after{ animation:none !important; }
+    }
+
+    .background{
+      background-image: url('./../assets/mochila/bground.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      height: 346px;
+    }
+
+    .card{
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    height: 258px;
+    width: 297px;
+    padding: 0 9px;
+    margin-top: 30px;
+     }
+    
+    .card >h3{
+      font-size: 24px;
+    }
