@@ -2734,7 +2734,7 @@ h2{
 h3{
   color: #691C32;
 }
-.hotspot, .hotspot2{
+.hotspot{
         position:absolute;
         transform:translate(-50%, -50%);
         width:15px;
@@ -2744,15 +2744,15 @@ h3{
         border:2px solid #fff;
         z-index:10;
         box-shadow:0 6px 20px rgba(0,0,0,.25);
-        animation: hotspot2-pulse 1.6s ease-in-out infinite;
+        animation: hotspot-pulse 1.6s ease-in-out infinite;
 }
-  .hotspot2::after{
+  .hotspot::after{
         content:"";
         position:absolute;
         inset:-14px;
         border-radius:999px;
         border:6px solid #9F2241;
-        animation: hotspot2-ripple 1.6s ease-out infinite;
+        animation: hotspot-ripple 1.6s ease-out infinite;
     } 
 
 .transition-img{
@@ -2763,11 +2763,11 @@ h3{
     }
 
      /* Animaciones */
-    @keyframes hotspot2-pulse{
+    @keyframes hotspot-pulse{
     0%,100%{ transform:translate(-50%, -50%) scale(1); }
     50%{ transform:translate(-50%, -50%) scale(1.15); }
     }
-    @keyframes hotspot2-ripple{
+    @keyframes hotspot-ripple{
     0%{ transform:scale(.6); opacity:.9; }
     100%{ transform:scale(1.5); opacity:0; }
     }
@@ -2787,7 +2787,7 @@ h3{
     }
 
     .card{
-    background-color: #FFFFFF;
+    background: #ffffff;
     border-radius: 15px;
     height: 258px;
     width: 297px;
@@ -2798,3 +2798,99 @@ h3{
     .card >h3{
       font-size: 24px;
     }
+    .card-info{
+      background: #ffffff;
+      margin-top: 77px;
+      border-radius: 20px;
+      height: auto;
+      width: auto;
+      padding: 4px;
+    }
+    .card-info > h3{
+      font-size: 24px;
+    }
+    .card-info > p{
+      font-weight: normal;
+    }
+
+
+    .inicial{
+      background-image: url("/assets/mochila/bground.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+  
+    .form-buscar{
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+    width: 52%;
+    height: 40px;
+    margin: 0 auto;
+    border: none;
+    }
+
+    .form-buscar >input{
+      border: none;
+      width: 40%;
+    }
+    
+    .btn-buscar{
+    border: none;
+    background-color: #611232;
+    color: #ffffff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 80px;
+    height: 40px;
+    }
+
+    .campaign-card{
+    background:#fff;
+    padding:15px 20px;
+    border-radius:25px;
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:15px auto;
+    max-width:260px;
+    transition:.3s;
+}
+.campaign-card img{
+    max-height:81px;
+}
+.a-card{
+  text-decoration: none;
+}
+.card-categorias{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+   background:#fff;
+   border: 1px solid #9F2241;
+   border-radius:25px;
+   max-width:276px;
+   height: 293px;
+}
+.card-categorias img{
+  max-height: 120px;
+}
+.btn-ver{
+  width: 40%;
+    height: 39px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.difusion{
+  background-image: url('../assets/mochila/img_difusion.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 150px;
+  width: auto;
+}

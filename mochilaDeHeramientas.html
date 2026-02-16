@@ -262,7 +262,7 @@
 
           <br /><br />
           <div class="col-sm-12 btn-description">
-            <a href="" target="_self">
+            <a href="/campanaCulturaPaz.html" target="_self">
               <button type="button" class="btn boton btn-campana">
                 <div class="btn-campana-span">
                   <span>Campañas</span>
@@ -299,30 +299,27 @@
           <div class="col-md-4">
             <div class="canva-wrap">
               <img
-                class="img-responsive"
+                class="img-responsive mochila-img"
                 src="assets/mochila/img-mochila/MOCHILA_1.png"
                 alt=""
               />
 
               <button
-                class="hotspot is-active"
+                class="hotspot"
                 style="left: 48%; top: 32%"
                 data-tab="#tab-2"
-                data-img="mochila1.jpg"
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 75%; top: 72%"
                 data-tab="#tab-3"
-                data-img="mochila3.jpg"
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 48%; top: 68%"
                 data-tab="#tab-4"
-                data-img="mochila2.jpg"
               ></button>
             </div>
           </div>
@@ -355,35 +352,33 @@
           <div class="col-md-4">
             <div class="canva-wrap">
               <img
-                class="img-responsive"
-                src="assets/mochila/img-mochila/MOCHILA_2.png"
+                class="img-responsive mochila-img"
+                src="assets/mochila/img-mochila/MOCHILA_1.png"
                 alt=""
               />
 
               <button
-                class="hotspot hotspot2 is-active"
+                class="hotspot is-active"
                 style="left: 48%; top: 32%"
                 data-tab="#tab-2"
-                data-img="mochila1.jpg"
+                data-img="assets/mochila/img-mochila/MOCHILA_2.png"
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 75%; top: 72%"
                 data-tab="#tab-3"
-                data-img="mochila3.jpg"
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 48%; top: 68%"
                 data-tab="#tab-4"
-                data-img="mochila2.jpg"
               ></button>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="car-info">
+            <div class="card-info">
               <h3>Formativos</h3>
               <p>
                 Recursos gráficos diseñados para compartir mensajes, promover
@@ -419,8 +414,8 @@
           <div class="col-md-4">
             <div class="canva-wrap">
               <img
-                class="img-responsive"
-                src="assets/mochila/img-mochila/MOCHILA_3.png"
+                class="img-responsive mochila-img"
+                src="assets/mochila/img-mochila/MOCHILA_1.png"
                 alt=""
               />
 
@@ -428,26 +423,25 @@
                 class="hotspot"
                 style="left: 48%; top: 32%"
                 data-tab="#tab-2"
-                data-img="mochila1.jpg"
+                
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 75%; top: 72%"
                 data-tab="#tab-3"
-                data-img="mochila3.jpg"
               ></button>
 
               <button
-                class="hotspot hotspot2"
+                class="hotspot is-active"
                 style="left: 48%; top: 68%"
                 data-tab="#tab-4"
-                data-img="mochila2.jpg"
+                 data-img="assets/mochila/img-mochila/MOCHILA_3.png"
               ></button>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="car-info">
+            <div class="card-info">
               <h3>Audiovisuales</h3>
               <p>
                 Espacios en video que invitan a reflexionar, dialogar y
@@ -483,8 +477,8 @@
           <div class="col-md-4">
             <div class="canva-wrap">
               <img
-                class="img-responsive"
-                src="assets/mochila/img-mochila/MOCHILA_4.png"
+                class="img-responsive mochila-img"
+                src="assets/mochila/img-mochila/MOCHILA_1.png"
                 alt=""
               />
 
@@ -492,26 +486,24 @@
                 class="hotspot"
                 style="left: 48%; top: 32%"
                 data-tab="#tab-2"
-                data-img="mochila1.jpg"
               ></button>
 
               <button
-                class="hotspot hotspot2"
+                class="hotspot is-active"
                 style="left: 75%; top: 72%"
                 data-tab="#tab-3"
-                data-img="mochila3.jpg"
+                data-img="assets/mochila/img-mochila/MOCHILA_4.png"
               ></button>
 
               <button
-                class="hotspot"
+                class="hotspot "
                 style="left: 48%; top: 68%"
                 data-tab="#tab-4"
-                data-img="mochila2.jpg"
               ></button>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="car-info">
+            <div class="card-info">
               <h3>Difusión y <br> divulgación</h3>
               <p>
                 Espacios en video que invitan a reflexionar, dialogar y
@@ -522,7 +514,7 @@
         </div>
       </div>
       <br><br>
-      
+
     </main>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -531,5 +523,41 @@
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+
+  const hotspots = document.querySelectorAll(".hotspot");
+
+  hotspots.forEach(hotspot => {
+    hotspot.addEventListener("click", function () {
+
+      const container = this.closest(".canva-wrap");
+      const img = container.querySelector(".mochila-img");
+      const newSrc = this.dataset.img;
+
+      if (!newSrc) return;
+
+      // Quitar activo de los otros botones del mismo bloque
+      container.querySelectorAll(".hotspot").forEach(btn => {
+        btn.classList.remove("is-active");
+      });
+
+      this.classList.add("is-active");
+
+      // Animación fade
+      img.classList.add("is-fading");
+
+      setTimeout(() => {
+        img.src = newSrc;
+        img.classList.remove("is-fading");
+      }, 200);
+
+    });
+  });
+
+});
+    </script>
+
+
   </body>
 </html>
