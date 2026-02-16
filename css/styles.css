@@ -2751,7 +2751,7 @@ h3{
         position:absolute;
         inset:-14px;
         border-radius:999px;
-        border:2px solid #9F2241;
+        border:6px solid #9F2241;
         animation: hotspot2-ripple 1.6s ease-out infinite;
     } 
 
