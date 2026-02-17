@@ -1469,7 +1469,7 @@ h2{
   font-weight: 600;
 }
 
-/* Responsivo */
+
 @media only screen and (max-width: 560px) {
    .img-derecho{
       height: 100px!important;
