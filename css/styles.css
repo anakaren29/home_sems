@@ -382,6 +382,8 @@ h2{
 .info-item{
   flex-direction: column;
 }
+
+
 }
 /* Ocultar en mobile (ejemplo: hasta 991px) */
 @media (max-width: 991px) {
@@ -1468,7 +1470,20 @@ h2{
 }
 
 /* Responsivo */
+@media only screen and (max-width: 560px) {
+   .img-derecho{
+      height: 100px!important;
+    }
+    .img-derecho > img{
+      margin-left: 20px!important; 
+      margin-top: 53px!important;
+    } 
+}
+
+
+
 @media (max-width:767px) {
+  
 
   .edu-card-container{
     margin: 20px auto 0;
@@ -2813,6 +2828,13 @@ h3{
       font-weight: normal;
     } */
 
+    .img-derecho{
+      height: 133px;
+    }
+    .img-derecho > img{
+      margin-left: 55px; 
+      margin-top: 23px;
+    }
 
     .inicial{
       background-image: url("/assets/mochila/bground.jpg");
