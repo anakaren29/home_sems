@@ -1470,17 +1470,6 @@ h2{
 }
 
 
-@media only screen and (max-width: 560px) {
-   .img-derecho{
-      height: 100px!important;
-    }
-    .img-derecho > img{
-      margin-left: 20px!important; 
-      margin-top: 53px!important;
-    } 
-}
-
-
 
 @media (max-width:767px) {
   
@@ -1760,7 +1749,13 @@ h2{
 
 
 
-
+ .img-derecho{
+      height: 133px;
+    }
+    .img-derecho > img{
+      margin-left: 55px; 
+      margin-top: 23px;
+    }
 /* termina seccion quienes somos carrusel de documentos */
 
 /* media query */
@@ -1773,6 +1768,15 @@ h2{
     width: auto;
     height: 213px;
   }
+  .img-derecho{
+    height: 70px!important;
+  }
+
+  .img-derecho > img {
+    margin-left: 10px;
+    margin-top: 63px;
+}
+
   .img-box {
     height: 53px;
 }
@@ -2828,13 +2832,7 @@ h3{
       font-weight: normal;
     } */
 
-    .img-derecho{
-      height: 133px;
-    }
-    .img-derecho > img{
-      margin-left: 55px; 
-      margin-top: 23px;
-    }
+   
 
     .inicial{
       background-image: url("/assets/mochila/bground.jpg");
