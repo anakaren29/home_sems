@@ -58,6 +58,15 @@ function scrollCarrusel(direction) {
     });
   }
 
+function scrollCarruselDestacados(direction) {
+  const carrusel = document.getElementById('carrusel-destacados');
+    const cardWidth = carrusel.querySelector('.card-destacado').offsetWidth + 20;
+    carrusel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+
 function scrollCarruselCompartimiento1(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-compartimiento1');
     const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20;

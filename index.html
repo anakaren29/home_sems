@@ -284,8 +284,14 @@
       <!-- Destacados -->
       <div class="container" style="margin-bottom: 30px;">
         <h2>Destacados</h2>
-        <div class="row">
-            <div class="col-md-3 col-xs-6">
+
+        <div class="carousel-wrapper" style="max-width: 1200px;">
+            <button style="color: var(--text-primary); font-weight: bold; font-size: 28px;" class="carousel-btn left" onclick="scrollCarruselDestacados(-1)">
+              &#10094;
+            </button>
+            <div class="carrusel-scroll horizontal" id="carrusel-destacados">
+              
+            <div class="col-md-3 col-xs-6 card-destacado">
               <a href="bachilleratoNacional.html" target="_self" class="a-card">
                 <div class="card-info">
                 <div class="img-box" >
@@ -305,7 +311,7 @@
               </a>
             </div>
 
-           <div class="col-md-3 col-xs-6">
+           <div class="col-md-3 col-xs-6 card-destacado">
               <a href="modeloeducativo2025.html" target="_blank" class="a-card">
                 <div class="card-info">
                 <div class="img-box" style="height: 100px;">
@@ -326,7 +332,7 @@
               </a>
             </div>
 
-            <div class="col-md-3 col-xs-6">
+            <div class="col-md-3 col-xs-6 card-destacado">
               <a href="#" class="open-modal a-card" data-img="assets/carousel/avisos/Convocatoria1.jpg, assets/carousel/avisos/Convocatoria2.jpg,  assets/carousel/modal/condolencias_Mario-delgado.jpeg, assets/carousel/modal/olimpiada_mexicana.jpeg, assets/carousel/Comunicado_SEP_no_21.jpg, assets/carousel/Felicitacion_Jesús_Antonio3.jpg, assets/carousel/mobil/b3.jpeg">
                 <div class="card-info">
                 <div class="img-box">
@@ -348,8 +354,7 @@
               </a>
             </div>
 
-            <!-- por confirmar -->
-            <div class="col-md-3 col-xs-6">
+            <div class="col-md-3 col-xs-6 card-destacado">
               <a href="assets/carousel/202 acciones.pdf" target="_blank" class="a-card">
                 <div class="card-info">
                 <div class="img-box" style="height: 80px;">
@@ -370,7 +375,34 @@
               </a>
             </div>
 
-          </div>
+            <div class="col-md-3 col-xs-6 card-destacado">
+              <a href="javascript:void(0)"  class="a-card">
+                <div class="card-info">
+                <div class="img-box" style="height: 133px;">
+                  <img style="margin-left: 55px; margin-top: 23px;" class="img-marco"
+                  src="assets/icons/logomiderecholibrovino.png"
+                  alt="miderecho"
+                />
+                </div>
+                
+                <!-- <p class="card-info-margin" style="font-size: 15px; ">202 Acciones de Ampliación de Infraestructura Educativa</p> -->
+                <div class="card-info-span" >
+                    <span class="hover-text">Ver más</span>
+                    <svg class="svg-hover" width="15" height="26" viewBox="0 0 15 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"/>
+                    </svg>
+                  </div>
+              </div>
+              </a>
+            </div>
+
+              
+            </div>
+            <button style="color: var(--text-primary); font-weight: bold; font-size: 28px;" class="carousel-btn right" onclick="scrollCarruselDestacados(1)">
+              &#10095;
+            </button>
+        </div>
+        
       </div>
 
       
