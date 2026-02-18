@@ -67,6 +67,16 @@ function scrollCarruselDestacados(direction) {
     });
   }
 
+let autoScroll = setInterval(() => {
+  const carrusel = document.getElementById('carrusel-destacados');
+
+  if (carrusel.scrollLeft + carrusel.clientWidth >= carrusel.scrollWidth - 5) {
+    carrusel.scrollTo({ left: 0, behavior: 'smooth' });
+  } else {
+    scrollCarruselDestacados(1);
+  }
+}, 3000);
+
 function scrollCarruselCompartimiento1(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-compartimiento1');
     const cardWidth = carrusel.querySelector('.card-noticia').offsetWidth + 20;
@@ -214,6 +224,7 @@ function scrollCarruselCompartimiento1(direction) {
 
   setInterval(autoScrollCarrusel, intervalTime);
 }); 
+
 
 
   // SCRIPT FILTRO BOLETINES
