@@ -2914,3 +2914,27 @@ h3{
   height: 150px;
   width: auto;
 }
+
+
+.tabla-container {
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.tabla-porfiriato {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 15px;
+}
+
+.tabla-porfiriato th,
+.tabla-porfiriato td {
+    border: 1px solid #999;
+    padding: 8px 10px;
+}
+
+.tabla-porfiriato thead th {
+    background-color: #f3f3f3;
+    font-weight: bold;
+}
