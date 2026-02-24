@@ -200,6 +200,15 @@
       min-height: 400px;
     }
 
+    .formativo__back {
+        background-image: url("/assets/mochila/img_formativos.jpg");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 400px;
+    }
+
+
     .form-buscar-mochila{
         display: flex;
         justify-content: space-between;
@@ -269,6 +278,14 @@
         background-size: contain;
         background-repeat: no-repeat;
         min-height: 400px;
+        }
+
+        .formativo__back {
+            background-image: url("/assets/mochila/img_formativos_MB.jpg");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            min-height: 400px;
         }
     }
 
@@ -352,4 +369,288 @@
         .descripcion-recurso {
             text-align: center;
         }
+    }
+
+
+        .btn-ver-video {
+            background-color: #95223A;
+            /* El tono guinda de la imagen */
+            color: #ffffff;
+            border-radius: 50px;
+            /* Bordes totalmente redondeados */
+            padding: 8px 30px;
+            /* Espaciado interno horizontal */
+            font-weight: 500;
+            font-size: 16px;
+            border: none;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            /* Alinea icono y texto perfectamente */
+            align-items: center;
+            gap: 10px;
+            /* Espacio entre el triángulo y el texto */
+        }
+    
+        .btn-ver-video:hover,
+        .btn-ver-video:focus {
+            background-color: #691C32;
+            /* Un guinda más oscuro al pasar el mouse */
+            color: #ffffff;
+            text-decoration: none;
+        }
+    
+        /* Ajuste para el icono de play */
+        .btn-ver-video .glyphicon-play {
+            font-size: 14px;
+        }
+
+
+    /* AUDIOVISALES */
+    .custom-card {
+        background-color: #F3F1ED;
+        /* Fondo crema suave */
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+    }
+
+    .pos-relative {
+        position: relative;
+    }
+
+    .full-width {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .overlay-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .btn-play-central {
+        background-color: #95223A;
+        color: white;
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 24px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-play-central:hover {
+        transform: scale(1.1);
+    }
+
+
+    .label-video {
+        background-color: #B28B45;
+        color: black;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 10px;
+    }
+
+    .text-primary-dark {
+        color: #1D3D38;
+    }
+
+    .text-guinda {
+        color: #95223A;
+    }
+
+
+    .btn-descargar-v2 {
+        background-color: #95223A;
+        color: white;
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+    .btn-compartir-v2 {
+        background-color: #2D5B4F;
+        /* Verde oscuro */
+        color: white;
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+
+    .bg-white-soft {
+        background-color: #F8F9F9;
+    }
+
+    .playlist-item {
+        background: #EAECEE;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .playlist-item:hover,
+    .playlist-item.active {
+        background: #D5DBDB;
+    }
+
+    .hr-small {
+        border-top: 1px solid #B28B45;
+        width: 80%;
+        margin: 10px auto;
+    }
+
+
+    @media (min-width: 992px) {
+        .border-left-desktop {
+            border-left: 1px solid #dcdcdc;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .custom-card {
+            margin: 0 15px;
+        }
+
+        .video-info {
+            text-align: center;
+        }
+    }
+
+
+
+    .contenedor-portada {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    }
+
+    .embed-responsive-item {
+    border: 1px solid #ddd;
+    background-color: #eee;
+    }
+
+    .shadow-lg {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    @media (max-width: 767px) {
+    .contenedor-portada {
+        margin-bottom: 30px;
+        height: 400px;
+    }
+
+    .embed-responsive {
+        padding-bottom: 0 !important;
+        height: 100%;
+    }
+    }
+
+
+    .item-video {
+        padding: 10px;
+    }
+
+    .item-video iframe {
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Flechas de navegación */
+    .pos-relative {
+        position: relative;
+    }
+
+    .prev-btn,
+    .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #691C32;
+
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .prev-btn {
+        left: -5px;
+    }
+
+    .next-btn {
+        right: -5px;
+    }
+
+    .slick-dots {
+        bottom: -30px;
+    }
+
+    .slick-dots li button:before {
+        font-size: 12px;
+        color: #ddd;
+        opacity: 1;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: #691C32;
+    }
+
+    .slider-wrapper {
+        position: relative;
+        padding: 0 40px;
+    }
+
+
+    .slider-prev,
+    .slider-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #691C32;
+
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-prev {
+        left: 0;
+    }
+
+    .slider-next {
+        right: 0;
+    }
+
+
+    .slick-dots li button:before {
+        color: #ccc;
+        font-size: 10px;
+        opacity: 1;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: #691C32;
+
+    }
+
+
+    .item-video iframe {
+        border-radius: 15px;
     }

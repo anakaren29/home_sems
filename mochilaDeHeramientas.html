@@ -104,7 +104,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="css/mochilaHerramientas.css">
+    <link rel="stylesheet" href="./css/mochilaHerramientas.css">
 
 
   </head>
@@ -214,68 +214,47 @@
       </div>
 
       <!-- Qué es cultura de paz  -->
-      <div style="background-color: var(--bg-secondary)">
+      
+      <div style="background-color: var(--bg-secondary); padding: 50px 0;">
         <div class="container text-center">
           <div class="row vertical-wrapper">
-            <div
-              class="col-xs-12 col-sm-6 d-flex-col text-left "
-              style="gap: 23px"
-            >
-              <div></div>
+            <div class="col-xs-12 col-sm-6 d-flex-col text-left" style="gap: 23px">
               <h3>¿Qué es Cultura de Paz?</h3>
               <p style="text-align: justify">
-                En el marco de la campaña Por la Paz y contra las Adicciones
-                impulsada por la Presidencia de la República, la Subsecretaría
-                de Educación Media Superior (SEMS) promueve la cultura de paz
-                con el propósito de construir comunidad y
-                aprendizaje significativo, en vinculación con estrategias como
-                la de Vida Saludable, Atención a la Desafiliación Escolar,
-                Prevención de Adicciones, De la Escuela a la Comunidad, entre
-                otras.  
+                En el marco de la campaña Por la Paz y contra las Adicciones impulsada por la Presidencia de la República...
+                (tu texto)
               </p>
             </div>
-
+      
             <div class="vertical-line hidden-xs"></div>
+      
+            <div class="col-xs-12 col-sm-6 slider-wrapper">
+              <div class="youtube-slider">
+                <div class="item-video">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/B9TlIWDUTEc?si=wLvgAkuZxnP4zi_L"
+                      allowfullscreen></iframe>
+                  </div>
+                </div>
 
-            <div class="col-xs-12 col-sm-6">
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="300px"
-                  style="border-radius: 20px"
-                  src=""
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="
-                    autoplay;
-                    encrypted-media;
-                    accelerometer;
-                    clipboard-write;
-                    gyroscope;
-                    picture-in-picture;
-                    web-share;
-                  "
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                >
-                </iframe>
               </div>
+            
+              <button class="slider-prev"><span class="glyphicon glyphicon-chevron-left"></span></button>
+              <button class="slider-next"><span class="glyphicon glyphicon-chevron-right"></span></button>
             </div>
           </div>
-
-          <br /><br />
-          <div class="col-sm-12 btn-description">
-            <a href="/campanaCulturaPaz.html" target="_self">
-              <button type="button" class="btn boton btn-campana">
-                <div class="btn-campana-span">
-                  <span>Campañas</span>
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </div>
-              </button>
-            </a>
+      
+          <div class="row pt-40">
+            <div class="col-sm-12">
+              <a href="/campanaCulturaPaz.html" class="btn btn-ver-video active">
+                Campañas <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
+
       <br />
 
       <!-- Cards Mochila 1  -->
@@ -338,25 +317,29 @@
               </div>
             
               <div class="col-xs-4">
-                <div class=" mobile-badge" data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png">
-                  <div class="badge-icon icon-audiovisuales">
-                    <img src="assets/mochila/iconos/audiovisuales-icon.png" alt="Audiovisuales">
+                <a href="audiovisuales.html">
+                  <div class=" mobile-badge" data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png">
+                    <div class="badge-icon icon-audiovisuales">
+                      <img src="assets/mochila/iconos/audiovisuales-icon.png" alt="Audiovisuales">
+                    </div>
+                    <div class="badge-content">
+                      <span>Audiovisuales</span>
+                    </div>
                   </div>
-                  <div class="badge-content">
-                    <span>Audiovisuales</span>
-                  </div>
-                </div>
+                </a>
               </div>
             
               <div class="col-xs-4">
-                <div class=" mobile-badge" data-tab="#formativos" data-bolcillo="MOCHILA_2.png">
-                  <div class="badge-icon icon-formativos">
-                    <img src="assets/mochila/iconos/formativos-icon.png" alt="Formativos">
+                <a href="formativos.html">
+                  <div class=" mobile-badge" data-tab="#formativos" data-bolcillo="MOCHILA_2.png">
+                    <div class="badge-icon icon-formativos">
+                      <img src="assets/mochila/iconos/formativos-icon.png" alt="Formativos">
+                    </div>
+                    <div class="badge-content">
+                      <span>Formativos</span>
+                    </div>
                   </div>
-                  <div class="badge-content">
-                    <span>Formativos</span>
-                  </div>
-                </div>
+                </a>
               </div>
             
             </div>
@@ -592,6 +575,36 @@
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
     <script>
+
+  $(document).ready(function () {
+    $('.youtube-slider').slick({
+      dots: true,            // Los puntos que se ven abajo en tu imagen
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      adaptiveHeight: true,
+      prevArrow: $('.slider-prev'), // Vinculamos tus botones personalizados
+      nextArrow: $('.slider-next'),
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: true // Mantener flechas en móvil
+          }
+        }
+      ]
+    });
+
+    // Truco: Detener video al cambiar de slide
+    $('.youtube-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      var frames = $(this).find('iframe');
+      frames.each(function () {
+        this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      });
+    });
+  });
+
+
      document.addEventListener("DOMContentLoaded", function () {
         const hotspots = document.querySelectorAll(".hotspot");
         const cards = document.querySelectorAll(".infoMochila");
