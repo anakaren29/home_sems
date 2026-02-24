@@ -104,6 +104,190 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+
+    <style>
+      .btn-campana{
+        width: 24%;
+      }
+      .btn-campana-span{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      h3{
+        color: #691C32;
+      }
+
+      .infoMochila{
+        display: none;
+        padding: 10px;
+        height: auto;
+      }
+
+      .infoMochila.active {
+        display: block; /* O flex, según tu diseño */
+        animation: fadeIn 0.5s;
+      }
+
+      .mochila-img {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+        max-height: 300px;
+      }
+
+      .mochila-img.is-fading {
+        opacity: 0;
+      }
+
+      .canva-wrap {
+          position: relative;
+          max-width: 100%; 
+          display: inline-block; 
+          margin: 0 auto;
+      }
+
+      .canva-wrap img {
+          width: 100%;
+          height: auto;
+          display: block;
+      }
+
+    .hotspot{
+          position:absolute;
+          transform:translate(-50%, -50%);
+          width:18px;
+          height:18px;
+          border-radius:999px;
+          background: #9F2241;
+          border:2px solid #fff;
+          cursor:pointer;
+          z-index:10;
+          box-shadow:0 6px 20px rgba(0,0,0,.25);
+          animation: hotspot-pulse 1.6s ease-in-out infinite;
+      }
+
+    .background{
+        background-image: url('./../assets/mochila/bground.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        height: auto;
+      }
+
+      .card{
+        background: #ffffff;
+        border-radius: 15px;
+        height: 258px;
+        width: 297px;
+        padding: 0 9px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+      
+      .card >h3{
+        font-size: 24px;
+      }
+
+
+      /*****mobile*****/
+
+      .mobile-cards-container {
+    margin-top: 50px; /* Espacio para que el círculo no pise la mochila */
+    padding-bottom: 20px;
+}
+
+.mobile-badge {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* El círculo que contiene tu imagen .png */
+.badge-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    margin-bottom: -25px; /* Mitad del alto para el efecto overlap */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.badge-icon img {
+    width: 60%; /* Ajusta este % según cómo quieras que luzca el icono dentro del círculo */
+    height: auto;
+}
+
+/* Colores de fondo de los círculos */
+.icon-difusion { background-color: #A61D37; }     /* Guinda */
+.icon-audiovisuales { background-color: #1D6355; } /* Verde */
+.icon-formativos { background-color: #A61D37; }    /* Guinda */
+
+/* La tarjeta rosada inferior */
+.badge-content {
+    background-color: #FDE7EF; /* Rosado pálido */
+    border: 2px solid #A61D37; /* Borde guinda */
+    border-radius: 12px;
+    padding: 30px 5px 10px 5px; /* Mucho padding superior para librar el círculo */
+    text-align: center;
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-content span {
+    font-size: 10px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.1;
+    display: block;
+}
+
+/* Limpieza de estilos de escritorio en mobile */
+@media (max-width: 767px) {
+    .canva-wrap .hotspot { 
+        display: none !important; /* Ocultamos los puntos azules sobre la imagen */
+    }
+    
+    .mobile-badge {
+        position: relative !important;
+        transform: none !important;
+        left: auto !important;
+        top: auto !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        animation: none !important;
+    }
+}
+
+      
+
+      /* Ocultar hotspots */
+      /*@media (max-width: 767px) {
+          .hotspot:not(.btn-mochila-mobile) {
+              display: none !important;
+          }
+      }*/
+
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (max-width: 767px) {
+        .btn-campana{
+          width: auto;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -215,7 +399,7 @@
         <div class="container text-center">
           <div class="row vertical-wrapper">
             <div
-              class="col-xs-12 col-sm-6 d-flex-col text-left"
+              class="col-xs-12 col-sm-6 d-flex-col text-left "
               style="gap: 23px"
             >
               <div></div>
@@ -279,13 +463,7 @@
       <div class="container">
         <div class="row background">
           <div
-            class="col-md-4"
-            style="
-              display: flex;
-              justify-content: flex-end;
-              align-items: center;
-            "
-          >
+            class="col-md-4 col-sm-12">
             <div class="card">
               <h3>Mochila de Herramientas</h3>
               <p>
@@ -296,39 +474,110 @@
               </p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12 text-center">
             <div class="canva-wrap">
               <img
                 class="img-responsive mochila-img"
                 src="assets/mochila/img-mochila/MOCHILA_1.png"
-                alt=""
+                alt="Mochila" id="mochilaSEP" class="img-fluid transition-img"
               />
 
               <button
                 class="hotspot"
-                style="left: 48%; top: 32%"
-                data-tab="#tab-2"
+                style="left: 48%; top: 25%"
+                data-tab="#formativos" data-bolcillo="MOCHILA_2.png"
               ></button>
 
               <button
                 class="hotspot"
-                style="left: 75%; top: 72%"
-                data-tab="#tab-3"
+                style="left: 88%; top: 72%"
+                data-tab="#dibulgacion" data-bolcillo="MOCHILA_4.png"
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 48%; top: 68%"
-                data-tab="#tab-4"
+                data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png"
               ></button>
             </div>
           </div>
-          <div class="col-md-4"></div>
+          <div class="col-md-4 col-sm-12">
+
+            <div class="row visible-xs-block mobile-cards-container">
+            
+              <div class="col-xs-4">
+                <a href="difusionYdibulgacion.html">
+                  <div class=" mobile-badge" data-tab="#dibulgacion" data-bolcillo="MOCHILA_4.png">
+                    <div class="badge-icon icon-difusion">
+                      <img src="assets/mochila/iconos/difusion-icon.png" alt="Difusión">
+                    </div>
+                    <div class="badge-content">
+                      <span>Difusión y Divulgación</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            
+              <div class="col-xs-4">
+                <div class=" mobile-badge" data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png">
+                  <div class="badge-icon icon-audiovisuales">
+                    <img src="assets/mochila/iconos/audiovisuales-icon.png" alt="Audiovisuales">
+                  </div>
+                  <div class="badge-content">
+                    <span>Audiovisuales</span>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="col-xs-4">
+                <div class=" mobile-badge" data-tab="#formativos" data-bolcillo="MOCHILA_2.png">
+                  <div class="badge-icon icon-formativos">
+                    <img src="assets/mochila/iconos/formativos-icon.png" alt="Formativos">
+                  </div>
+                  <div class="badge-content">
+                    <span>Formativos</span>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+
+
+
+            <div class="card-info infoMochila" id="formativos" >
+              <h3>Formativos</h3>
+              <p>
+                Recursos gráficos diseñados para compartir mensajes, promover
+                acciones y expandir la cultura de paz en la comunidad educativa.
+              </p>
+            </div>
+
+            <div class="card-info infoMochila" id="audiovisuales">
+              <h3>Audiovisuales</h3>
+              <p>
+                Espacios en video que invitan a reflexionar, dialogar y
+                fortalecer la cultura de paz desde la experiencia y la escucha.
+              </p>
+            </div>
+
+            <div class="card-info infoMochila" id="dibulgacion">
+              <h3>Difusión y <br> divulgación</h3>
+              <p>
+                Espacios en video que invitan a reflexionar, dialogar y
+                fortalecer la cultura de paz desde la experiencia y la escucha.
+              </p>
+            </div>
+
+
+
+
+
+          </div>
         </div>
       </div>
 
       <br /><br />
-      <!-- Cards Mochila 2  -->
+      <!-- Cards Mochila 2 
       <div class="container">
         <div class="row background">
           <div
@@ -388,9 +637,9 @@
           </div>
         </div>
       </div>
-      <br /><br />
+      <br /><br />-->
 
-      <!-- Cards Mochila 3  -->
+      <!-- Cards Mochila 3  
       <div class="container">
         <div class="row background">
           <div
@@ -451,9 +700,9 @@
           </div>
         </div>
       </div>
-      <br /><br />
+      <br /><br />-->
 
-      <!-- Cards Mochila 4  -->
+      <!-- Cards Mochila 4  
       <div class="container">
         <div class="row background">
           <div
@@ -513,7 +762,7 @@
           </div>
         </div>
       </div>
-      <br><br>
+      <br><br>-->
 
     </main>
 
@@ -524,38 +773,54 @@
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+     document.addEventListener("DOMContentLoaded", function () {
+        const hotspots = document.querySelectorAll(".hotspot");
+        const cards = document.querySelectorAll(".infoMochila");
+        
 
-  const hotspots = document.querySelectorAll(".hotspot");
+        // Opcional: Ocultar todas las tarjetas al inicio excepto la primera
+        // cards.forEach((card, index) => { if(index > 0) card.style.display = 'none'; });
 
-  hotspots.forEach(hotspot => {
-    hotspot.addEventListener("click", function () {
+        hotspots.forEach((hotspot) => {
+          hotspot.addEventListener("click", function () {
+            // 1. Manejo de la Imagen (Mochila)
+            const container = this.closest(".canva-wrap");
+            const img = container.querySelector(".mochila-img");
+            const fileName = this.getAttribute("data-bolcillo");
+            const newSrc = `assets/mochila/img-mochila/${fileName}`;
 
-      const container = this.closest(".canva-wrap");
-      const img = container.querySelector(".mochila-img");
-      const newSrc = this.dataset.img;
+            if (fileName && img.src.indexOf(fileName) === -1) {
+              
+              img.classList.add("is-fading"); // Por si tienes CSS de transición
+              setTimeout(() => {
+                img.src = newSrc;
+                img.onload = () => {
+                  img.classList.remove("is-fading");
+                };
+              }, 200);
+            }
 
-      if (!newSrc) return;
+            // 2. Manejo de las Tarjetas (Info)
+            const targetId = this.getAttribute("data-tab"); // Obtiene el #id
 
-      // Quitar activo de los otros botones del mismo bloque
-      container.querySelectorAll(".hotspot").forEach(btn => {
-        btn.classList.remove("is-active");
+            cards.forEach((card) => {
+              // Quitamos una clase 'active' o usamos display directo
+              card.classList.remove("active");
+              card.style.display = "none";
+            });
+
+            const activeCard = document.querySelector(targetId);
+            if (activeCard) {
+              activeCard.classList.add("active");
+              activeCard.style.display = "block"; // O el tipo de display que uses
+            }
+
+            // 3. Feedback visual en los hotspots (opcional)
+            hotspots.forEach(h => h.classList.remove("is-active"));
+            this.classList.add("is-active");
+          });
+        });
       });
-
-      this.classList.add("is-active");
-
-      // Animación fade
-      img.classList.add("is-fading");
-
-      setTimeout(() => {
-        img.src = newSrc;
-        img.classList.remove("is-fading");
-      }, 200);
-
-    });
-  });
-
-});
     </script>
 
 
