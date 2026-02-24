@@ -2753,7 +2753,7 @@ h2{
 h3{
   color: #691C32;
 }
-.hotspot{
+/*.hotspot{
         position:absolute;
         transform:translate(-50%, -50%);
         width:15px;
@@ -2772,7 +2772,7 @@ h3{
         border-radius:999px;
         border:6px solid #9F2241;
         animation: hotspot-ripple 1.6s ease-out infinite;
-    } 
+    } */
 
 .transition-img{
     transition: opacity .35s ease;

@@ -103,6 +103,10 @@
       media="all"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/mochilaHerramientas.css">
 
@@ -266,32 +270,57 @@
             <div class="col-xs-12 col-sm-6 d-flex-col text-left" style="gap: 23px">
               <h3>¿Qué es Cultura de Paz?</h3>
               <p style="text-align: justify">
-                En el marco de la campaña Por la Paz y contra las Adicciones impulsada por la Presidencia de la República...
-                (tu texto)
+                La Subsecretaría de Educación Media Superior fortalece la cultura de paz en los planteles mediante acciones y recursos
+                que construyen entornos escolares seguros e inclusivos. Promueve la convivencia y el aprendizaje con estrategias que
+                respetan la vida, la dignidad y los derechos humanos. Esta Mochila de Herramientas forma parte de la campaña Por la Paz
+                y Contra las Adicciones, impulsada por la presidencia de la República.
               </p>
             </div>
       
             <div class="vertical-line hidden-xs"></div>
       
-            <div class="col-xs-12 col-sm-6 slider-wrapper">
-              <div class="youtube-slider">
-                <div class="item-video">
-                  <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/B9TlIWDUTEc?si=wLvgAkuZxnP4zi_L"
-                      allowfullscreen></iframe>
-                  </div>
-                </div>
+            <div class="col-xs-12 col-sm-6">
 
+              <!--carrusel videos-->
+              <div class="pos-relative">
+
+                <div class="youtube-slider">
+                  <div class="item-video">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ujn0OpgWgog?si=r7jHWRt6g9lUjwWa"
+                      allowfullscreen></iframe>
+  
+                    </div>
+                  </div>
+                  <div class="item-video">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mxg1aCAsTW8?si=f9gnjLo6M6JS0ecl"
+                        allowfullscreen></iframe>
+                    </div>
+                  </div>
+  
+                  <div class="item-video">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5Dnlp-niv1g?si=haWnqnKDvhqP7SHF"
+                        allowfullscreen></iframe>
+                    </div>
+                  </div>
+  
+                </div>
+                
+                <button class="slider-prev"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                <button class="slider-next"><span class="glyphicon glyphicon-chevron-right"></span></button>
               </div>
-            
-              <button class="slider-prev"><span class="glyphicon glyphicon-chevron-left"></span></button>
-              <button class="slider-next"><span class="glyphicon glyphicon-chevron-right"></span></button>
+              
+              <!--carrusel videos-->
+
+
             </div>
           </div>
       
           <div class="row pt-40">
             <div class="col-sm-12">
-              <a href="/campanaCulturaPaz.html" class="btn btn-ver-video active">
+              <a href="/campanaCulturaPaz.html" class="btn btn-ver-video">
                 Campañas <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
             </div>
@@ -305,51 +334,51 @@
       <!-- Cards Mochila 1  -->
       <div class="container">
         <div class="row background">
-          <div
-            class="col-md-4 col-sm-12">
-            <div class="card">
+          <div class="col-md-3 col-sm-12" style="display: flex; align-items: center;">
+            <div class="card-mochila">
               <h3>Mochila de Herramientas</h3>
               <p>
-                La Mochila de Herramientas es un espacio digital que reúne
-                recursos formativos, audiovisuales y materiales de difusión para
-                fortalecer la cultura de paz en la comunidad educativa del
-                Bachillerato Nacional.
+                Estrategias y recursos prácticos para prevenir y atender violencias en el entorno escolar. Ofrece orientaciones y
+                actividades que fortalecen la convivencia, el respeto y la corresponsabilidad en la comunidad educativa.
               </p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-12 text-center">
+          <div class="col-md-6 col-sm-12 text-center">
             <div class="canva-wrap">
               <img
-                class="img-responsive mochila-img"
+                class="img-responsive mochila-img img-fluid transition-img"
                 src="assets/mochila/img-mochila/MOCHILA_1.png"
-                alt="Mochila" id="mochilaSEP" class="img-fluid transition-img"
+                alt="Mochila" id="mochilaSEP"
               />
 
               <button
                 class="hotspot"
                 style="left: 48%; top: 25%"
                 data-tab="#formativos" data-bolcillo="MOCHILA_2.png"
+                onclick="window.location.href='formativos.html'"
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 88%; top: 72%"
                 data-tab="#dibulgacion" data-bolcillo="MOCHILA_4.png"
+                onclick="window.location.href='difusionYdibulgacion.html'"
               ></button>
 
               <button
                 class="hotspot"
                 style="left: 48%; top: 68%"
                 data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png"
+                onclick="window.location.href='audiovisuales.html'"
               ></button>
             </div>
           </div>
-          <div class="col-md-4 col-sm-12">
+          <div class="col-md-3 col-sm-12 row-flex-center" >
 
             <div class="row visible-xs-block mobile-cards-container">
             
               <div class="col-xs-4">
-                <a href="difusionYdibulgacion.html">
+                <a href="difusionYdibulgacion.html" class="hotspot-link">
                   <div class=" mobile-badge" data-tab="#dibulgacion" data-bolcillo="MOCHILA_4.png">
                     <div class="badge-icon icon-difusion">
                       <img src="assets/mochila/iconos/difusion-icon.png" alt="Difusión">
@@ -362,7 +391,7 @@
               </div>
             
               <div class="col-xs-4">
-                <a href="audiovisuales.html">
+                <a href="audiovisuales.html" class="hotspot-link">
                   <div class=" mobile-badge" data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png">
                     <div class="badge-icon icon-audiovisuales">
                       <img src="assets/mochila/iconos/audiovisuales-icon.png" alt="Audiovisuales">
@@ -375,7 +404,7 @@
               </div>
             
               <div class="col-xs-4">
-                <a href="formativos.html">
+                <a href="formativos.html" class="hotspot-link">
                   <div class=" mobile-badge" data-tab="#formativos" data-bolcillo="MOCHILA_2.png">
                     <div class="badge-icon icon-formativos">
                       <img src="assets/mochila/iconos/formativos-icon.png" alt="Formativos">
@@ -391,32 +420,27 @@
 
 
 
-            <div class="card-info infoMochila" id="formativos" onclick="window.location.href='formativos.html'" >
+            <div class="card-mochila infoMochila" style="margin-top: 100px;" id="formativos" onclick="window.location.href='formativos.html'" >
               <h3>Formativos</h3>
               <p>
-                Recursos gráficos diseñados para compartir mensajes, promover
-                acciones y expandir la cultura de paz en la comunidad educativa.
+                Fichas, guías y talleres que desarrollan habilidades para prevenir violencias y fortalecer la convivencia escolar.
               </p>
             </div>
 
-            <div class="card-info infoMochila" id="audiovisuales" onclick="window.location.href='audiovisuales.html'">
+            <div class="card-mochila infoMochila" style="margin-top: 100px;" id="audiovisuales" onclick="window.location.href='audiovisuales.html'">
               <h3>Audiovisuales</h3>
               <p>
-                Espacios en video que invitan a reflexionar, dialogar y
-                fortalecer la cultura de paz desde la experiencia y la escucha.
+                Infografías, trípticos y videos que difunden la cultura de paz y orientan acciones para prevenir y atender violencias.
               </p>
             </div>
 
-            <div class="card-info infoMochila" id="dibulgacion" onclick="window.location.href='difusionYdibulgacion.html'">
+            <div class="card-mochila infoMochila" style="margin-top: 100px;" id="dibulgacion" onclick="window.location.href='difusionYdibulgacion.html'">
               <h3>Difusión y <br> divulgación</h3>
               <p>
-                Espacios en video que invitan a reflexionar, dialogar y
-                fortalecer la cultura de paz desde la experiencia y la escucha.
+                Acciones y herramientas para atender y dar seguimiento a violencias, en coordinación interinstitucional y comunicación
+                oportuna.
               </p>
             </div>
-
-
-
 
 
           </div>
@@ -424,192 +448,7 @@
       </div>
 
       <br /><br />
-      <!-- Cards Mochila 2 
-      <div class="container">
-        <div class="row background">
-          <div
-            class="col-md-4"
-            style="
-              display: flex;
-              justify-content: flex-end;
-              align-items: center;
-            "
-          >
-            <div class="card">
-              <h3>Mochila de Herramientas</h3>
-              <p>
-                La Mochila de Herramientas es un espacio digital que reúne
-                recursos formativos, audiovisuales y materiales de difusión para
-                fortalecer la cultura de paz en la comunidad educativa del
-                Bachillerato Nacional.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="canva-wrap">
-              <img
-                class="img-responsive mochila-img"
-                src="assets/mochila/img-mochila/MOCHILA_1.png"
-                alt=""
-              />
-
-              <button
-                class="hotspot is-active"
-                style="left: 48%; top: 32%"
-                data-tab="#tab-2"
-                data-img="assets/mochila/img-mochila/MOCHILA_2.png"
-              ></button>
-
-              <button
-                class="hotspot"
-                style="left: 75%; top: 72%"
-                data-tab="#tab-3"
-              ></button>
-
-              <button
-                class="hotspot"
-                style="left: 48%; top: 68%"
-                data-tab="#tab-4"
-              ></button>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card-info">
-              <h3>Formativos</h3>
-              <p>
-                Recursos gráficos diseñados para compartir mensajes, promover
-                acciones y expandir la cultura de paz en la comunidad educativa.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br /><br />-->
-
-      <!-- Cards Mochila 3  
-      <div class="container">
-        <div class="row background">
-          <div
-            class="col-md-4"
-            style="
-              display: flex;
-              justify-content: flex-end;
-              align-items: center;
-            "
-          >
-            <div class="card">
-              <h3>Mochila de Herramientas</h3>
-              <p>
-                La Mochila de Herramientas es un espacio digital que reúne
-                recursos formativos, audiovisuales y materiales de difusión para
-                fortalecer la cultura de paz en la comunidad educativa del
-                Bachillerato Nacional.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="canva-wrap">
-              <img
-                class="img-responsive mochila-img"
-                src="assets/mochila/img-mochila/MOCHILA_1.png"
-                alt=""
-              />
-
-              <button
-                class="hotspot"
-                style="left: 48%; top: 32%"
-                data-tab="#tab-2"
-                
-              ></button>
-
-              <button
-                class="hotspot"
-                style="left: 75%; top: 72%"
-                data-tab="#tab-3"
-              ></button>
-
-              <button
-                class="hotspot is-active"
-                style="left: 48%; top: 68%"
-                data-tab="#tab-4"
-                 data-img="assets/mochila/img-mochila/MOCHILA_3.png"
-              ></button>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card-info">
-              <h3>Audiovisuales</h3>
-              <p>
-                Espacios en video que invitan a reflexionar, dialogar y
-                fortalecer la cultura de paz desde la experiencia y la escucha.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br /><br />-->
-
-      <!-- Cards Mochila 4  
-      <div class="container">
-        <div class="row background">
-          <div
-            class="col-md-4"
-            style="
-              display: flex;
-              justify-content: flex-end;
-              align-items: center;
-            "
-          >
-            <div class="card">
-              <h3>Mochila de Herramientas</h3>
-              <p>
-                La Mochila de Herramientas es un espacio digital que reúne
-                recursos formativos, audiovisuales y materiales de difusión para
-                fortalecer la cultura de paz en la comunidad educativa del
-                Bachillerato Nacional.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="canva-wrap">
-              <img
-                class="img-responsive mochila-img"
-                src="assets/mochila/img-mochila/MOCHILA_1.png"
-                alt=""
-              />
-
-              <button
-                class="hotspot"
-                style="left: 48%; top: 32%"
-                data-tab="#tab-2"
-              ></button>
-
-              <button
-                class="hotspot is-active"
-                style="left: 75%; top: 72%"
-                data-tab="#tab-3"
-                data-img="assets/mochila/img-mochila/MOCHILA_4.png"
-              ></button>
-
-              <button
-                class="hotspot "
-                style="left: 48%; top: 68%"
-                data-tab="#tab-4"
-              ></button>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card-info">
-              <h3>Difusión y <br> divulgación</h3>
-              <p>
-                Espacios en video que invitan a reflexionar, dialogar y
-                fortalecer la cultura de paz desde la experiencia y la escucha.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br><br>-->
+      
 
     </main>
 
@@ -619,85 +458,83 @@
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
 
   $(document).ready(function () {
-    $('.youtube-slider').slick({
-      dots: true,            // Los puntos que se ven abajo en tu imagen
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      adaptiveHeight: true,
-      prevArrow: $('.slider-prev'), // Vinculamos tus botones personalizados
-      nextArrow: $('.slider-next'),
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: true // Mantener flechas en móvil
-          }
-        }
-      ]
-    });
-
-    // Truco: Detener video al cambiar de slide
-    $('.youtube-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-      var frames = $(this).find('iframe');
-      frames.each(function () {
-        this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    // Verificamos si la función slick existe para evitar errores
+    if ($.isFunction($.fn.slick)) {
+      $('.youtube-slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: true,
+        // Vinculamos tus botones manualmente
+        prevArrow: $('.slider-prev'),
+        nextArrow: $('.slider-next'),
+        adaptiveHeight: true
       });
-    });
+    } else {
+      console.error("Slick Slider no ha sido cargado correctamente.");
+    }
   });
 
 
-     document.addEventListener("DOMContentLoaded", function () {
-        const hotspots = document.querySelectorAll(".hotspot");
-        const cards = document.querySelectorAll(".infoMochila");
-        
+  document.addEventListener("DOMContentLoaded", function () {
+      const hotspots = document.querySelectorAll(".hotspot");
+      const cards = document.querySelectorAll(".infoMochila");
 
-        // Opcional: Ocultar todas las tarjetas al inicio excepto la primera
-        // cards.forEach((card, index) => { if(index > 0) card.style.display = 'none'; });
+     
+      function ejecutarAnimacion(element) {
+        const container = document.querySelector(".canva-wrap"); // Buscamos el contenedor global
+        const img = container ? container.querySelector(".mochila-img") : null;
+        const fileName = element.getAttribute("data-bolcillo");
 
-        hotspots.forEach((hotspot) => {
-          hotspot.addEventListener("click", function () {
-            // 1. Manejo de la Imagen (Mochila)
-            const container = this.closest(".canva-wrap");
-            const img = container.querySelector(".mochila-img");
-            const fileName = this.getAttribute("data-bolcillo");
-            const newSrc = `assets/mochila/img-mochila/${fileName}`;
+        if (img && fileName) {
+          const newSrc = `assets/mochila/img-mochila/${fileName}`;
+          img.classList.add("is-fading");
+          setTimeout(() => {
+            img.src = newSrc;
+            img.classList.remove("is-fading");
+          }, 200);
+        }
+      }
 
-            if (fileName && img.src.indexOf(fileName) === -1) {
-              
-              img.classList.add("is-fading"); // Por si tienes CSS de transición
-              setTimeout(() => {
-                img.src = newSrc;
-                img.onload = () => {
-                  img.classList.remove("is-fading");
-                };
-              }, 200);
-            }
+      //manejo de clics en mobile 
+      const linksMobile = document.querySelectorAll(".hotspot-link");
+      linksMobile.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault(); // Detenemos el salto inmediato
 
-            // 2. Manejo de las Tarjetas (Info)
-            const targetId = this.getAttribute("data-tab"); // Obtiene el #id
+          const url = this.getAttribute("href");
+          const badge = this.querySelector(".mobile-badge");
 
-            cards.forEach((card) => {
-              // Quitamos una clase 'active' o usamos display directo
-              card.classList.remove("active");
-              card.style.display = "none";
-            });
+          //animacion de mochila
+          ejecutarAnimacion(badge);
 
-            const activeCard = document.querySelector(targetId);
-            if (activeCard) {
-              activeCard.classList.add("active");
-              activeCard.style.display = "block"; // O el tipo de display que uses
-            }
-
-            // 3. Feedback visual en los hotspots (opcional)
-            hotspots.forEach(h => h.classList.remove("is-active"));
-            this.classList.add("is-active");
-          });
+          //tiempo de espera
+          setTimeout(() => {
+            window.location.href = url;
+          }, 800);
         });
       });
+
+      // Mantener Hover para Desktop (tu lógica anterior)
+      hotspots.forEach((hotspot) => {
+        hotspot.addEventListener("mouseenter", function () {
+          // Solo ejecutar si no estamos en mobile o si prefieres que funcione en ambos
+          ejecutarAnimacion(this);
+
+          // Lógica de mostrar tarjetas (Desktop)
+          const targetId = this.getAttribute("data-tab");
+          cards.forEach(card => card.style.display = "none");
+          const activeCard = document.querySelector(targetId);
+          if (activeCard) activeCard.style.display = "block";
+        });
+      });
+    });
+
     </script>
 
 

@@ -69,6 +69,7 @@ function scrollCarruselDestacados(direction) {
 
 let autoScroll = setInterval(() => {
   const carrusel = document.getElementById('carrusel-destacados');
+  if (!carrusel) return;
 
   if (carrusel.scrollLeft + carrusel.clientWidth >= carrusel.scrollWidth - 5) {
     carrusel.scrollTo({ left: 0, behavior: 'smooth' });
@@ -316,6 +317,7 @@ function scrollCarruselBachilleratoTecnologico(direction) {
 
   function scrollCarruselBachilleratoGral(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-bachillerato-gral');
+  if (!carrusel) return;
     const cardWidth = carrusel.querySelector('.imgCarrusel-bachillerato').offsetWidth + 20;
     carrusel.scrollBy({
       left: direction * cardWidth,
@@ -325,6 +327,7 @@ function scrollCarruselBachilleratoTecnologico(direction) {
 
   function scrollCarruselBachiller(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-bachiller');
+  if (!carrusel) return;
     const cardWidth = carrusel.querySelector('.card-bachiller').offsetWidth + 20;
     carrusel.scrollBy({
       left: direction * cardWidth,
@@ -333,6 +336,7 @@ function scrollCarruselBachilleratoTecnologico(direction) {
   }
   function verificaYReiniciaCarruselBachiller() {
   const carrusel = document.getElementById('carrusel-horizontal-bachiller');
+  if (!carrusel) return;
   const maxScrollLeft = carrusel.scrollWidth - carrusel.clientWidth;
   if (carrusel.scrollLeft >= maxScrollLeft) {
     carrusel.scrollTo({
@@ -954,6 +958,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function scrollCarruselIAl(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-IAl');
+  if (!carrusel) return;
   const cardWidth = carrusel.querySelector('.img-IAl').offsetWidth + 20;
 
   const totalSteps = Math.floor(carrusel.scrollWidth / cardWidth);

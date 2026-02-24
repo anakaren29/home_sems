@@ -25,7 +25,7 @@
       .mochila-img {
         transition: opacity 0.3s ease-in-out;
         opacity: 1;
-        max-height: 300px;
+        max-height: 450px;
       }
 
       .mochila-img.is-fading {
@@ -48,8 +48,8 @@
     .hotspot{
           position:absolute;
           transform:translate(-50%, -50%);
-          width:18px;
-          height:18px;
+          width:14px;
+          height:14px;
           border-radius:999px;
           background: #9F2241;
           border:2px solid #fff;
@@ -58,6 +58,15 @@
           box-shadow:0 6px 20px rgba(0,0,0,.25);
           animation: hotspot-pulse 1.6s ease-in-out infinite;
       }
+
+    .hotspot::after {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        border-radius: 999px;
+        border: 3px solid #9F2241;
+        animation: hotspot-ripple 1.6s ease-out infinite;
+    }
 
     .background{
         background-image: url('./../assets/mochila/bground.jpg');
@@ -80,6 +89,24 @@
       .card >h3{
         font-size: 24px;
       }
+
+    .card-mochila {
+        background: #ffffff;
+        border-radius: 15px;
+        height: auto;
+        
+        padding: 0 9px;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+
+    .card-mochila>h3 {
+        font-size: 22px;
+    }
+
+    .card-mochila>p {
+        font-size: 12px;
+    }
 
 
       /*****mobile*****/
@@ -653,4 +680,42 @@
 
     .item-video iframe {
         border-radius: 15px;
+    }
+
+    .hotspot-link:active .badge-content {
+        background-color: #fce4ec;
+        transform: scale(0.95);
+        transition: all 0.2s;
+    }
+
+    .youtube-slider:not(.slick-initialized) .item-video:not(:first-child) {
+        display: none;
+    }
+
+    .youtube-slider .item-video {
+        outline: none;
+    }
+
+    .slider-prev,
+    .slider-next {
+        z-index: 100 !important;
+        cursor: pointer;
+    }
+
+    @media (max-width: 767px) {
+
+        /* Asegura que el slider y sus items tengan dimensiones visibles */
+        .youtube-slider,
+        .slick-list,
+        .slick-track {
+            height: auto !important;
+            min-height: 200px;
+            /* Altura mínima para que no desaparezca */
+        }
+
+        .item-video {
+            display: block !important;
+            /* Slick a veces pone display:none por error al inicio */
+            width: 100%;
+        }
     }
