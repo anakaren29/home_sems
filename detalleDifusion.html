@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png"
+      rel="shortcut icon"
+    />
+
+    <!--   SEO  -->
+    <title>
+      Educación Media Superior | Secretaría de Educación Pública (SEP)
+    </title>
+    <meta
+      name="description"
+      content="Portal de Educación Media Superior de la SEP. Información para estudiantes, docentes y familias: oferta educativa, trámites, becas, normatividad y programas para fortalecer el bachillerato en México."
+    />
+    <link rel="canonical" href="https://educacionmediasuperior.sep.gob.mx/" />
+
+    <link
+      rel="alternate"
+      href="https://educacionmediasuperior.sep.gob.mx/"
+      hreflang="es-MX"
+    />
+
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+
+    <!--  OPEN GRAPH (Facebook/LinkedIn/WhatsApp)  -->
+    <meta property="og:site_name" content="Educación Media Superior | SEP" />
+    <meta
+      property="og:title"
+      content="Educación Media Superior | Secretaría de Educación Pública (SEP)"
+    />
+    <meta
+      property="og:description"
+      content="Información oficial de Educación Media Superior en México: oferta, trámites, becas y programas."
+    />
+    <meta
+      property="og:url"
+      content="https://educacionmediasuperior.sep.gob.mx/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta
+      property="og:image"
+      content="https://educacionmediasuperior.sep.gob.mx/assets/images/og/OPEN-GRAPH-SEP.jpg"
+    />
+    <meta
+      property="og:image:alt"
+      content="Educación Media Superior | Secretaría de Educación Pública"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Educación Media Superior | Secretaría de Educación Pública (SEP)"
+    />
+    <meta
+      name="twitter:description"
+      content="Oferta educativa, trámites, becas y recursos oficiales para EMS en México."
+    />
+    <meta
+      name="twitter:image"
+      content="https://educacionmediasuperior.sep.gob.mx/assets/images/og/OPEN-GRAPH-SEP.jpg"
+    />
+
+    <!--  METAS INSTITUCIONALES -->
+    <meta name="theme-color" content="#0b3a82" />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://educacionmediasuperior.sep.gob.mx/assets/images/og/apple-touch-icon.jpg"
+    />
+
+    <link
+      href="https://framework-gb.cdn.gob.mx/assets/styles/main.css"
+      rel="stylesheet"
+    />
+    <link
+      data-turbolinks-track="true"
+      href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css"
+      media="all"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <style>
+
+    .seccion-recurso {
+        padding: 40px 0;
+        background-color: #f9f9f9; /* Color de fondo sutil */
+    }
+
+    .titulo-recurso {
+        color: #691C32;
+        font-weight: 700;
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    .descripcion-recurso {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin: 20px 0;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+
+    /* Botones específicos de la sección */
+    .btn-recurso {
+        width: 100%;
+        border-radius: 25px;
+        padding: 10px 15px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    .btn-descargar {
+        background-color: #691C32;
+        color: #fff;
+        border: 1px solid #691C32;
+    }
+
+    .btn-descargar:hover {
+        background-color: #4a1323;
+        color: #fff;
+    }
+
+    .btn-compartir {
+        background-color: transparent;
+        color: #1D6355;
+        border: 1px solid #1D6355;
+    }
+
+    .btn-compartir:hover {
+        background-color: #1D6355;
+        color: #fff;
+    }
+
+    /* Alineación vertical en Desktop */
+    @media (min-width: 992px) {
+        .display-flex-util {
+            display: flex;
+            align-items: center;
+        }
+        .titulo-recurso {
+            margin-top: 0;
+            font-size: 32px;
+        }
+    }
+
+    /* Espaciado en Mobile */
+    @media (max-width: 767px) {
+        .contenedor-portada {
+            margin-bottom: 25px;
+        }
+        .titulo-recurso {
+            text-align: center;
+        }
+        .descripcion-recurso {
+            text-align: center;
+        }
+    }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#subenlaces"
+            >
+              <span class="sr-only">Interruptor de Navegación</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="subenlaces">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="index.html">
+                  <span class="icon icon-home"></span>
+                </a>
+              </li>
+              <li><a href="quienesSomos.html">¿Quiénes Somos?</a></li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
+                  >Comunicación<span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/boletines.html">Boletines</a></li>
+                  <li>
+                    <a href="https://www.youtube.com/@MediaSuperiorMxSEP"
+                      >Multimedia</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://168.255.153.170/es_mx/sems/boletines_informativos_sems"
+                      >Histórico</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="marco_normativo.html">Normatividad</a></li>
+              <li><a href="http://168.255.153.170/SINBANEM">SINBANEM</a></li>
+              <li><a href="./transparencia.html">Transparencia</a></li>
+              <li>
+                <a href="Informacion_de_programas_presupuestarios.html"
+                  >Programas Presupuestarios</a
+                >
+              </li>
+              <li><a href="#tu-voz-nos-importa">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main style="margin-top: 58px">
+
+    <section class="seccion-recurso">
+
+        <div class="container">
+            <div class="row display-flex-util">
+                <a href="/difusionYdibulgacion.html" style="text-decoration: none;">
+                    <span style="color: #611232;" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span style="color: #611232; font-weight: bold;">Volver a compartimento de Difusion y Divulgación</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="container pt-20">
+            <div class="row display-flex-util">
+                <div class="col-xs-12 col-md-5">
+                    <div class="contenedor-portada">
+                        <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png"
+                            class="img-responsive center-block shadow-lg" alt="Portada Diagnóstico">
+                    </div>
+                </div>
+    
+                <div class="col-xs-12 col-md-7">
+                    <div class="contenido-recurso">
+                        <h2 class="titulo-recurso">Diagnóstico Cultura de Paz en la Educación Media Superior</h2>
+                        <p class="descripcion-recurso">
+                            Este documento presenta los resultados y hallazgos clave sobre la convivencia escolar y la
+                            percepción de la cultura de paz dentro de los planteles de Bachillerato Nacional, sirviendo como
+                            base para las estrategias de intervención.
+                        </p>
+    
+                        <div class="row botones-recurso">
+                            <div class="col-xs-6 col-sm-4">
+                                <a href="ruta/al/archivo.pdf" download class="btn btn-recurso btn-descargar">
+                                    <i class="fa fa-download"></i> Descargar
+                                </a>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <button class="btn btn-recurso btn-compartir">
+                                    <i class="fa fa-share-alt"></i> Compartir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+            <br><br>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+  </body>
+</html>
