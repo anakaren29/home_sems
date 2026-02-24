@@ -104,7 +104,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="css/mochilaHerramientas.css">
+    <link rel="stylesheet" href="./css/mochilaHerramientas.css">
+
   </head>
   <body>
     <header>
@@ -171,109 +172,93 @@
     </header>
 
     <main style="margin-top: 58px">
-      <section class="difusion__back">
+
+    <section class="seccion-recurso">
+
         <div class="container">
-            <br>
-          <a href="/mochilaDeHeramientas.html" style="text-decoration: none;">
-            <span
-              style="color: #611232;"
-              class="glyphicon glyphicon-chevron-left"
-              aria-hidden="true"
-            ></span>
-            <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas</span>
-          </a>
-          
-
-   
-         
-          </div>
-        </div>
-        <br />
-      </section>
-
-      <br>
-
-      <section class="container campanas">
-
-        <!-- Buscador -->
-        <div class="search-box">
-            <form action="/buscar" method="get" class="form-buscar-mochila">
-                <span class="icon-search"></span>
-                <input type="search" id="busqueda" name="q" placeholder="Busca carteles, Infografias, trípticos..." required />
-                <button class="btn-buscar" type="submit">Buscar</button>
-            </form>
-        </div>
-
-        <div class="row pt-20 flex-center">
-
-            <button class="btn boton__filtro btn-ver active">
-                <span>Todos   6</span>                
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Infografias 3</span>
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Carteles 3</span>
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Trpticos</span>
-            </button>
-
-        </div>
-
-
-        
-        <div class="row pt-20">
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-libre de violencia">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver" onclick="window.location.href='detalleDifusion.html'" >
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-guia">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver"  onclick="window.location.href='detalleDifusion.html'">
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-arte">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver" onclick="window.location.href='detalleDifusion.html'">
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
+            <div class="row display-flex-util">
+                <a href="/audiovisuales.html" style="text-decoration: none;">
+                    <span style="color: #611232;" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span style="color: #611232; font-weight: bold;">Volver a compartimento de Audiovisuales</span>
+                </a>
             </div>
         </div>
-      </section>
-      <br><br>
 
-      <div class="row">
-                <div class="col-xs-12 text-center" style="margin-top:20px;">
-                    <ul class="pagination" id="noticiasPager" style="margin:0;">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
+        <div class="container pt-20">
+            <section class="seccion-videos p-y-40">
+              <div class="container">
+                <div class="row bg-light-gray custom-card">
+            
+                  <div class="col-md-8 col-xs-12 p-20">
+                    <div class="video-container m-b-20">
+                      <div class="embed-responsive embed-responsive-16by9 pos-relative">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/B9TlIWDUTEc?si=wLvgAkuZxnP4zi_L"
+                          title="YouTube video player" frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                      </div>
+                    </div>
+            
+                    <div class="video-info">
+                      <h2 class="text-primary-dark font-bold">Taller de Resolución de conflictos</h2>
+                      <div class="tags m-b-15">
+                        <span class="label label-video">VIDEO</span>
+                        <span class="text-muted">Familia</span>
+                      </div>
+                      <p class="text-justify m-b-25">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s.
+                      </p>
+            
+                      <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                          <a href="#" class="btn btn-descargar-v2 btn-block">
+                            <i class="fa fa-download"></i> Descargar
+                          </a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                          <button class="btn btn-compartir-v2 btn-block">
+                            <i class="fa fa-share-alt"></i> Compartir
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="col-md-4 col-xs-12 bg-white-soft p-20 border-left-desktop">
+                    <h4 class="text-center text-guinda font-bold m-b-20">Otros videos del Foro</h4>
+                    <hr class="hr-small">
+            
+                    <div class="playlist-scroll">
+                      <div class="playlist-item active">
+                        <div class="row no-gutter">
+                          <div class="col-xs-4">
+                            <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive img-rounded" alt="Thumb">
+                          </div>
+                          <div class="col-xs-8 p-l-10">
+                            <p class="m-0"><strong>1.</strong> cp6 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="playlist-item">
+                        <div class="row no-gutter">
+                          <div class="col-xs-4">
+                            <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive img-rounded" alt="Thumb">
+                          </div>
+                          <div class="col-xs-8 p-l-10">
+                            <p class="m-0"><strong>2.</strong> Video 2_CNDH</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
                 </div>
-            </div>
+              </div>
+            </section>
+        </div>
+    </section>
+
             <br><br>
     </main>
 

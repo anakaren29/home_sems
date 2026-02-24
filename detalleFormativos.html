@@ -104,7 +104,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="css/mochilaHerramientas.css">
+    <link rel="stylesheet" href="./css/mochilaHerramientas.css">
+
   </head>
   <body>
     <header>
@@ -171,109 +172,60 @@
     </header>
 
     <main style="margin-top: 58px">
-      <section class="difusion__back">
+
+    <section class="seccion-recurso">
+
         <div class="container">
-            <br>
-          <a href="/mochilaDeHeramientas.html" style="text-decoration: none;">
-            <span
-              style="color: #611232;"
-              class="glyphicon glyphicon-chevron-left"
-              aria-hidden="true"
-            ></span>
-            <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas</span>
-          </a>
-          
-
-   
-         
-          </div>
-        </div>
-        <br />
-      </section>
-
-      <br>
-
-      <section class="container campanas">
-
-        <!-- Buscador -->
-        <div class="search-box">
-            <form action="/buscar" method="get" class="form-buscar-mochila">
-                <span class="icon-search"></span>
-                <input type="search" id="busqueda" name="q" placeholder="Busca carteles, Infografias, trípticos..." required />
-                <button class="btn-buscar" type="submit">Buscar</button>
-            </form>
-        </div>
-
-        <div class="row pt-20 flex-center">
-
-            <button class="btn boton__filtro btn-ver active">
-                <span>Todos   6</span>                
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Infografias 3</span>
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Carteles 3</span>
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Trpticos</span>
-            </button>
-
-        </div>
-
-
-        
-        <div class="row pt-20">
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-libre de violencia">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver" onclick="window.location.href='detalleDifusion.html'" >
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-guia">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver"  onclick="window.location.href='detalleDifusion.html'">
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-arte">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver" onclick="window.location.href='detalleDifusion.html'">
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
+            <div class="row display-flex-util">
+                <a href="/formativos.html" style="text-decoration: none;">
+                    <span style="color: #611232;" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span style="color: #611232; font-weight: bold;">Volver a compartimento de Formativos</span>
+                </a>
             </div>
         </div>
-      </section>
-      <br><br>
 
-      <div class="row">
-                <div class="col-xs-12 text-center" style="margin-top:20px;">
-                    <ul class="pagination" id="noticiasPager" style="margin:0;">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
+        <div class="container pt-20">
+            <div class="row display-flex-util">
+                <div class="col-xs-12 col-md-5">
+                  <div class="contenedor-portada">
+                    <div class="embed-responsive shadow-lg" style="padding-bottom: 120%; border-radius: 8px; overflow: hidden;">
+                      <iframe src="assets/mochila/20251020_Ficha Informativa Diagnostico cultura paz_SEMS.pdf#toolbar=0&navpanes=0" class="embed-responsive-item" frameborder="0">
+                      </iframe>
+                    </div>
+                    <p class="visible-xs-block text-center pt-10">
+                      <small><a href="assets/mochila/20251020_Ficha Informativa Diagnostico cultura paz_SEMS.pdf" target="_blank">Ver PDF en pantalla completa</a></small>
+                    </p>
+                  </div>
                 </div>
+    
+                <div class="col-xs-12 col-md-7">
+                    <div class="contenido-recurso">
+                        <h2 class="titulo-recurso">Diagnóstico Cultura de Paz en la Educación Media Superior</h2>
+                        <p class="descripcion-recurso">
+                            Este documento presenta los resultados y hallazgos clave sobre la convivencia escolar y la
+                            percepción de la cultura de paz dentro de los planteles de Bachillerato Nacional, sirviendo como
+                            base para las estrategias de intervención.
+                        </p>
+    
+                        <div class="row botones-recurso">
+                            <div class="col-xs-6 col-sm-4">
+                                <a href="ruta/al/archivo.pdf" download class="btn btn-recurso btn-descargar">
+                                    <i class="fa fa-download"></i> Descargar
+                                </a>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <button class="btn btn-recurso btn-compartir">
+                                    <i class="fa fa-share-alt"></i> Compartir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
             </div>
+        </div>
+    </section>
+
             <br><br>
     </main>
 

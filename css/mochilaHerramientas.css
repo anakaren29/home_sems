@@ -1,0 +1,656 @@
+  .btn-campana{
+        width: 24%;
+      }
+      .btn-campana-span{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      h3{
+        color: #691C32;
+      }
+
+      .infoMochila{
+        display: none;
+        padding: 10px;
+        height: auto;
+      }
+
+      .infoMochila.active {
+        display: block; /* O flex, según tu diseño */
+        animation: fadeIn 0.5s;
+      }
+
+      .mochila-img {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+        max-height: 300px;
+      }
+
+      .mochila-img.is-fading {
+        opacity: 0;
+      }
+
+      .canva-wrap {
+          position: relative;
+          max-width: 100%; 
+          display: inline-block; 
+          margin: 0 auto;
+      }
+
+      .canva-wrap img {
+          width: 100%;
+          height: auto;
+          display: block;
+      }
+
+    .hotspot{
+          position:absolute;
+          transform:translate(-50%, -50%);
+          width:18px;
+          height:18px;
+          border-radius:999px;
+          background: #9F2241;
+          border:2px solid #fff;
+          cursor:pointer;
+          z-index:10;
+          box-shadow:0 6px 20px rgba(0,0,0,.25);
+          animation: hotspot-pulse 1.6s ease-in-out infinite;
+      }
+
+    .background{
+        background-image: url('./../assets/mochila/bground.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        height: auto;
+      }
+
+      .card{
+        background: #ffffff;
+        border-radius: 15px;
+        height: 258px;
+        width: 297px;
+        padding: 0 9px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+      
+      .card >h3{
+        font-size: 24px;
+      }
+
+
+      /*****mobile*****/
+
+      .mobile-cards-container {
+    margin-top: 50px; /* Espacio para que el círculo no pise la mochila */
+    padding-bottom: 20px;
+}
+
+.mobile-badge {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* El círculo que contiene tu imagen .png */
+.badge-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    margin-bottom: -25px; /* Mitad del alto para el efecto overlap */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.badge-icon img {
+    width: 60%; /* Ajusta este % según cómo quieras que luzca el icono dentro del círculo */
+    height: auto;
+}
+
+/* Colores de fondo de los círculos */
+.icon-difusion { background-color: #A61D37; }     /* Guinda */
+.icon-audiovisuales { background-color: #1D6355; } /* Verde */
+.icon-formativos { background-color: #A61D37; }    /* Guinda */
+
+/* La tarjeta rosada inferior */
+.badge-content {
+    background-color: #FDE7EF; /* Rosado pálido */
+    border: 2px solid #A61D37; /* Borde guinda */
+    border-radius: 12px;
+    padding: 30px 5px 10px 5px; /* Mucho padding superior para librar el círculo */
+    text-align: center;
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-content span {
+    font-size: 10px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.1;
+    display: block;
+}
+
+/* Limpieza de estilos de escritorio en mobile */
+@media (max-width: 767px) {
+    .canva-wrap .hotspot { 
+        display: none !important; /* Ocultamos los puntos azules sobre la imagen */
+    }
+    
+    .mobile-badge {
+        position: relative !important;
+        transform: none !important;
+        left: auto !important;
+        top: auto !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        animation: none !important;
+    }
+}
+
+      
+
+      /* Ocultar hotspots */
+      /*@media (max-width: 767px) {
+          .hotspot:not(.btn-mochila-mobile) {
+              display: none !important;
+          }
+      }*/
+
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (max-width: 767px) {
+        .btn-campana{
+          width: auto;
+        }
+      }
+
+
+
+
+
+    .difusion__back{
+      background-color: #E7F2EA;
+      background-image: url("/assets/mochila/img_difusion.jpg");
+      background-position: center;
+      background-size: cover;
+      min-height: 400px;
+    }
+
+    .audiovisuales__back{
+      background-color: #E7F2EA;
+      background-image: url("/assets/mochila/img_audiovisuales.jpg");
+      background-position: center;
+      background-size: cover;
+      min-height: 400px;
+    }
+
+    .formativo__back {
+        background-image: url("/assets/mochila/img_formativos.jpg");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 400px;
+    }
+
+
+    .form-buscar-mochila{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px;
+        background-color: white;
+        width: 52%;
+        height: 40px;
+        margin: 0 auto;
+        border: solid 1px black;
+    }
+
+    .form-buscar-mochila >input{
+        border: none;
+        width: 40%;
+    }
+
+    .boton__filtro{
+        background-color: #FFFFFF;
+        color: #691C32;
+        border: 1px solid #691C32;
+        border-radius: 25px;
+        width: auto;
+        margin: 0 10px;
+        height: 26px;
+        font-size: 10px;
+    }
+
+    .boton__filtro:hover, 
+    .boton__filtro.active{
+        background-color: #691C32;
+        color: #FFFFFF;
+        transition: all .3s ease;
+    }
+
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .card-categorias img{
+        max-height: 180px;
+        border-radius: 10PX;
+    }
+
+
+    [class*=" icon-"],
+    [class^=icon-] {
+        margin-left: 10px;
+    }
+    
+
+    @media (max-width: 767px) {
+        .difusion__back{
+        background-image: url("/assets/mochila/img_difusion_MB.jpg");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 400px;
+        }
+
+         .audiovisuales__back{
+        background-image: url("/assets/mochila/img_audiovisuales_MB.jpg");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 400px;
+        }
+
+        .formativo__back {
+            background-image: url("/assets/mochila/img_formativos_MB.jpg");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            min-height: 400px;
+        }
+    }
+
+     .seccion-recurso {
+        padding: 40px 0;
+        background-color: #f9f9f9; /* Color de fondo sutil */
+    }
+
+    .titulo-recurso {
+        color: #691C32;
+        font-weight: 700;
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    .descripcion-recurso {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin: 20px 0;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+
+    /* Botones específicos de la sección */
+    .btn-recurso {
+        width: 100%;
+        border-radius: 25px;
+        padding: 10px 15px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    .btn-descargar {
+        background-color: #691C32;
+        color: #fff;
+        border: 1px solid #691C32;
+    }
+
+    .btn-descargar:hover {
+        background-color: #4a1323;
+        color: #fff;
+    }
+
+    .btn-compartir {
+        background-color: transparent;
+        color: #1D6355;
+        border: 1px solid #1D6355;
+    }
+
+    .btn-compartir:hover {
+        background-color: #1D6355;
+        color: #fff;
+    }
+
+    /* Alineación vertical en Desktop */
+    @media (min-width: 992px) {
+        .display-flex-util {
+            display: flex;
+            align-items: center;
+        }
+        .titulo-recurso {
+            margin-top: 0;
+            font-size: 32px;
+        }
+    }
+
+    /* Espaciado en Mobile */
+    @media (max-width: 767px) {
+        .contenedor-portada {
+            margin-bottom: 25px;
+        }
+        .titulo-recurso {
+            text-align: center;
+        }
+        .descripcion-recurso {
+            text-align: center;
+        }
+    }
+
+
+        .btn-ver-video {
+            background-color: #95223A;
+            /* El tono guinda de la imagen */
+            color: #ffffff;
+            border-radius: 50px;
+            /* Bordes totalmente redondeados */
+            padding: 8px 30px;
+            /* Espaciado interno horizontal */
+            font-weight: 500;
+            font-size: 16px;
+            border: none;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            /* Alinea icono y texto perfectamente */
+            align-items: center;
+            gap: 10px;
+            /* Espacio entre el triángulo y el texto */
+        }
+    
+        .btn-ver-video:hover,
+        .btn-ver-video:focus {
+            background-color: #691C32;
+            /* Un guinda más oscuro al pasar el mouse */
+            color: #ffffff;
+            text-decoration: none;
+        }
+    
+        /* Ajuste para el icono de play */
+        .btn-ver-video .glyphicon-play {
+            font-size: 14px;
+        }
+
+
+    /* AUDIOVISALES */
+    .custom-card {
+        background-color: #F3F1ED;
+        /* Fondo crema suave */
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+    }
+
+    .pos-relative {
+        position: relative;
+    }
+
+    .full-width {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .overlay-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .btn-play-central {
+        background-color: #95223A;
+        color: white;
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 24px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-play-central:hover {
+        transform: scale(1.1);
+    }
+
+
+    .label-video {
+        background-color: #B28B45;
+        color: black;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 10px;
+    }
+
+    .text-primary-dark {
+        color: #1D3D38;
+    }
+
+    .text-guinda {
+        color: #95223A;
+    }
+
+
+    .btn-descargar-v2 {
+        background-color: #95223A;
+        color: white;
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+    .btn-compartir-v2 {
+        background-color: #2D5B4F;
+        /* Verde oscuro */
+        color: white;
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+
+    .bg-white-soft {
+        background-color: #F8F9F9;
+    }
+
+    .playlist-item {
+        background: #EAECEE;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .playlist-item:hover,
+    .playlist-item.active {
+        background: #D5DBDB;
+    }
+
+    .hr-small {
+        border-top: 1px solid #B28B45;
+        width: 80%;
+        margin: 10px auto;
+    }
+
+
+    @media (min-width: 992px) {
+        .border-left-desktop {
+            border-left: 1px solid #dcdcdc;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .custom-card {
+            margin: 0 15px;
+        }
+
+        .video-info {
+            text-align: center;
+        }
+    }
+
+
+
+    .contenedor-portada {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    }
+
+    .embed-responsive-item {
+    border: 1px solid #ddd;
+    background-color: #eee;
+    }
+
+    .shadow-lg {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    @media (max-width: 767px) {
+    .contenedor-portada {
+        margin-bottom: 30px;
+        height: 400px;
+    }
+
+    .embed-responsive {
+        padding-bottom: 0 !important;
+        height: 100%;
+    }
+    }
+
+
+    .item-video {
+        padding: 10px;
+    }
+
+    .item-video iframe {
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Flechas de navegación */
+    .pos-relative {
+        position: relative;
+    }
+
+    .prev-btn,
+    .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #691C32;
+
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .prev-btn {
+        left: -5px;
+    }
+
+    .next-btn {
+        right: -5px;
+    }
+
+    .slick-dots {
+        bottom: -30px;
+    }
+
+    .slick-dots li button:before {
+        font-size: 12px;
+        color: #ddd;
+        opacity: 1;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: #691C32;
+    }
+
+    .slider-wrapper {
+        position: relative;
+        padding: 0 40px;
+    }
+
+
+    .slider-prev,
+    .slider-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #691C32;
+
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-prev {
+        left: 0;
+    }
+
+    .slider-next {
+        right: 0;
+    }
+
+
+    .slick-dots li button:before {
+        color: #ccc;
+        font-size: 10px;
+        opacity: 1;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: #691C32;
+
+    }
+
+
+    .item-video iframe {
+        border-radius: 15px;
+    }

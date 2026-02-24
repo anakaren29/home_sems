@@ -104,190 +104,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
-
-    <style>
-      .btn-campana{
-        width: 24%;
-      }
-      .btn-campana-span{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-      }
-
-      h3{
-        color: #691C32;
-      }
-
-      .infoMochila{
-        display: none;
-        padding: 10px;
-        height: auto;
-      }
-
-      .infoMochila.active {
-        display: block; /* O flex, según tu diseño */
-        animation: fadeIn 0.5s;
-      }
-
-      .mochila-img {
-        transition: opacity 0.3s ease-in-out;
-        opacity: 1;
-        max-height: 300px;
-      }
-
-      .mochila-img.is-fading {
-        opacity: 0;
-      }
-
-      .canva-wrap {
-          position: relative;
-          max-width: 100%; 
-          display: inline-block; 
-          margin: 0 auto;
-      }
-
-      .canva-wrap img {
-          width: 100%;
-          height: auto;
-          display: block;
-      }
-
-    .hotspot{
-          position:absolute;
-          transform:translate(-50%, -50%);
-          width:18px;
-          height:18px;
-          border-radius:999px;
-          background: #9F2241;
-          border:2px solid #fff;
-          cursor:pointer;
-          z-index:10;
-          box-shadow:0 6px 20px rgba(0,0,0,.25);
-          animation: hotspot-pulse 1.6s ease-in-out infinite;
-      }
-
-    .background{
-        background-image: url('./../assets/mochila/bground.jpg');
-        background-size: cover;
-        background-position: center;
-        border-radius: 20px;
-        height: auto;
-      }
-
-      .card{
-        background: #ffffff;
-        border-radius: 15px;
-        height: 258px;
-        width: 297px;
-        padding: 0 9px;
-        margin: 0 auto;
-        margin-top: 30px;
-      }
-      
-      .card >h3{
-        font-size: 24px;
-      }
+    <link rel="stylesheet" href="./css/mochilaHerramientas.css">
 
 
-      /*****mobile*****/
-
-      .mobile-cards-container {
-    margin-top: 50px; /* Espacio para que el círculo no pise la mochila */
-    padding-bottom: 20px;
-}
-
-.mobile-badge {
-    position: relative;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-/* El círculo que contiene tu imagen .png */
-.badge-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    margin-bottom: -25px; /* Mitad del alto para el efecto overlap */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.badge-icon img {
-    width: 60%; /* Ajusta este % según cómo quieras que luzca el icono dentro del círculo */
-    height: auto;
-}
-
-/* Colores de fondo de los círculos */
-.icon-difusion { background-color: #A61D37; }     /* Guinda */
-.icon-audiovisuales { background-color: #1D6355; } /* Verde */
-.icon-formativos { background-color: #A61D37; }    /* Guinda */
-
-/* La tarjeta rosada inferior */
-.badge-content {
-    background-color: #FDE7EF; /* Rosado pálido */
-    border: 2px solid #A61D37; /* Borde guinda */
-    border-radius: 12px;
-    padding: 30px 5px 10px 5px; /* Mucho padding superior para librar el círculo */
-    text-align: center;
-    min-height: 85px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.badge-content span {
-    font-size: 10px;
-    font-weight: 700;
-    color: #333;
-    line-height: 1.1;
-    display: block;
-}
-
-/* Limpieza de estilos de escritorio en mobile */
-@media (max-width: 767px) {
-    .canva-wrap .hotspot { 
-        display: none !important; /* Ocultamos los puntos azules sobre la imagen */
-    }
-    
-    .mobile-badge {
-        position: relative !important;
-        transform: none !important;
-        left: auto !important;
-        top: auto !important;
-        background: none !important;
-        border: none !important;
-        box-shadow: none !important;
-        animation: none !important;
-    }
-}
-
-      
-
-      /* Ocultar hotspots */
-      /*@media (max-width: 767px) {
-          .hotspot:not(.btn-mochila-mobile) {
-              display: none !important;
-          }
-      }*/
-
-
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      @media (max-width: 767px) {
-        .btn-campana{
-          width: auto;
-        }
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -395,68 +214,47 @@
       </div>
 
       <!-- Qué es cultura de paz  -->
-      <div style="background-color: var(--bg-secondary)">
+      
+      <div style="background-color: var(--bg-secondary); padding: 50px 0;">
         <div class="container text-center">
           <div class="row vertical-wrapper">
-            <div
-              class="col-xs-12 col-sm-6 d-flex-col text-left "
-              style="gap: 23px"
-            >
-              <div></div>
+            <div class="col-xs-12 col-sm-6 d-flex-col text-left" style="gap: 23px">
               <h3>¿Qué es Cultura de Paz?</h3>
               <p style="text-align: justify">
-                En el marco de la campaña Por la Paz y contra las Adicciones
-                impulsada por la Presidencia de la República, la Subsecretaría
-                de Educación Media Superior (SEMS) promueve la cultura de paz
-                con el propósito de construir comunidad y
-                aprendizaje significativo, en vinculación con estrategias como
-                la de Vida Saludable, Atención a la Desafiliación Escolar,
-                Prevención de Adicciones, De la Escuela a la Comunidad, entre
-                otras.  
+                En el marco de la campaña Por la Paz y contra las Adicciones impulsada por la Presidencia de la República...
+                (tu texto)
               </p>
             </div>
-
+      
             <div class="vertical-line hidden-xs"></div>
+      
+            <div class="col-xs-12 col-sm-6 slider-wrapper">
+              <div class="youtube-slider">
+                <div class="item-video">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/B9TlIWDUTEc?si=wLvgAkuZxnP4zi_L"
+                      allowfullscreen></iframe>
+                  </div>
+                </div>
 
-            <div class="col-xs-12 col-sm-6">
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="300px"
-                  style="border-radius: 20px"
-                  src=""
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="
-                    autoplay;
-                    encrypted-media;
-                    accelerometer;
-                    clipboard-write;
-                    gyroscope;
-                    picture-in-picture;
-                    web-share;
-                  "
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                >
-                </iframe>
               </div>
+            
+              <button class="slider-prev"><span class="glyphicon glyphicon-chevron-left"></span></button>
+              <button class="slider-next"><span class="glyphicon glyphicon-chevron-right"></span></button>
             </div>
           </div>
-
-          <br /><br />
-          <div class="col-sm-12 btn-description">
-            <a href="/campanaCulturaPaz.html" target="_self">
-              <button type="button" class="btn boton btn-campana">
-                <div class="btn-campana-span">
-                  <span>Campañas</span>
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </div>
-              </button>
-            </a>
+      
+          <div class="row pt-40">
+            <div class="col-sm-12">
+              <a href="/campanaCulturaPaz.html" class="btn btn-ver-video active">
+                Campañas <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
+
       <br />
 
       <!-- Cards Mochila 1  -->
@@ -519,32 +317,36 @@
               </div>
             
               <div class="col-xs-4">
-                <div class=" mobile-badge" data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png">
-                  <div class="badge-icon icon-audiovisuales">
-                    <img src="assets/mochila/iconos/audiovisuales-icon.png" alt="Audiovisuales">
+                <a href="audiovisuales.html">
+                  <div class=" mobile-badge" data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png">
+                    <div class="badge-icon icon-audiovisuales">
+                      <img src="assets/mochila/iconos/audiovisuales-icon.png" alt="Audiovisuales">
+                    </div>
+                    <div class="badge-content">
+                      <span>Audiovisuales</span>
+                    </div>
                   </div>
-                  <div class="badge-content">
-                    <span>Audiovisuales</span>
-                  </div>
-                </div>
+                </a>
               </div>
             
               <div class="col-xs-4">
-                <div class=" mobile-badge" data-tab="#formativos" data-bolcillo="MOCHILA_2.png">
-                  <div class="badge-icon icon-formativos">
-                    <img src="assets/mochila/iconos/formativos-icon.png" alt="Formativos">
+                <a href="formativos.html">
+                  <div class=" mobile-badge" data-tab="#formativos" data-bolcillo="MOCHILA_2.png">
+                    <div class="badge-icon icon-formativos">
+                      <img src="assets/mochila/iconos/formativos-icon.png" alt="Formativos">
+                    </div>
+                    <div class="badge-content">
+                      <span>Formativos</span>
+                    </div>
                   </div>
-                  <div class="badge-content">
-                    <span>Formativos</span>
-                  </div>
-                </div>
+                </a>
               </div>
             
             </div>
 
 
 
-            <div class="card-info infoMochila" id="formativos" >
+            <div class="card-info infoMochila" id="formativos" onclick="window.location.href='formativos.html'" >
               <h3>Formativos</h3>
               <p>
                 Recursos gráficos diseñados para compartir mensajes, promover
@@ -552,7 +354,7 @@
               </p>
             </div>
 
-            <div class="card-info infoMochila" id="audiovisuales">
+            <div class="card-info infoMochila" id="audiovisuales" onclick="window.location.href='audiovisuales.html'">
               <h3>Audiovisuales</h3>
               <p>
                 Espacios en video que invitan a reflexionar, dialogar y
@@ -560,7 +362,7 @@
               </p>
             </div>
 
-            <div class="card-info infoMochila" id="dibulgacion">
+            <div class="card-info infoMochila" id="dibulgacion" onclick="window.location.href='difusionYdibulgacion.html'">
               <h3>Difusión y <br> divulgación</h3>
               <p>
                 Espacios en video que invitan a reflexionar, dialogar y
@@ -773,6 +575,36 @@
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
     <script>
+
+  $(document).ready(function () {
+    $('.youtube-slider').slick({
+      dots: true,            // Los puntos que se ven abajo en tu imagen
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      adaptiveHeight: true,
+      prevArrow: $('.slider-prev'), // Vinculamos tus botones personalizados
+      nextArrow: $('.slider-next'),
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: true // Mantener flechas en móvil
+          }
+        }
+      ]
+    });
+
+    // Truco: Detener video al cambiar de slide
+    $('.youtube-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      var frames = $(this).find('iframe');
+      frames.each(function () {
+        this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      });
+    });
+  });
+
+
      document.addEventListener("DOMContentLoaded", function () {
         const hotspots = document.querySelectorAll(".hotspot");
         const cards = document.querySelectorAll(".infoMochila");
