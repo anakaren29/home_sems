@@ -569,18 +569,42 @@
         const hotspots = document.querySelectorAll(".hotspot");
         const cards = document.querySelectorAll(".infoMochila");
 
+        // Función centralizada para cambiar la imagen
         function gestionarImagen(archivo) {
           if (!imgMochila || !archivo || imgMochila.src.includes(archivo)) return;
+
           imgMochila.classList.add("is-fading");
           setTimeout(() => {
             imgMochila.src = `assets/mochila/img-mochila/${archivo}`;
-            imgMochila.classList.remove("is-fading");
+            imgMochila.onload = () => imgMochila.classList.remove("is-fading");
           }, 200);
         }
 
+        // --- LÓGICA PARA MOBILE ---
+        const linksMobile = document.querySelectorAll(".hotspot-link");
+
+        linksMobile.forEach(link => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault(); // Detiene la navegación instantánea
+
+            const destino = this.getAttribute("href");
+            const badge = this.querySelector(".mobile-badge");
+            const archivoBolsillo = badge ? badge.getAttribute("data-bolcillo") : null;
+
+            if (archivoBolsillo) {
+              gestionarImagen(archivoBolsillo);
+            }
+
+            // Esperamos a que la animación de fade ocurra antes de cambiar de página
+            setTimeout(() => {
+              window.location.href = destino;
+            }, 1000); // 800ms permite ver el cambio de imagen claramente
+          });
+        });
+
+        // --- LÓGICA PARA DESKTOP (Hover) ---
         function dibujarVinculo(punto, idTarjeta) {
           const tarjeta = document.querySelector(idTarjeta);
-          // Validación extra: Si la tarjeta no mide nada, no dibujamos para evitar el salto al (0,0)
           if (!punto || !tarjeta || !svg || tarjeta.offsetWidth === 0) return;
 
           const rectSvg = svg.getBoundingClientRect();
@@ -589,8 +613,6 @@
 
           const x1 = rectPunto.left + (rectPunto.width / 2) - rectSvg.left;
           const y1 = rectPunto.top + (rectPunto.height / 2) - rectSvg.top;
-
-          // Conectamos al borde izquierdo de la tarjeta
           const x2 = rectTarjeta.left - rectSvg.left;
           const y2 = rectTarjeta.top + (rectTarjeta.height / 2) - rectSvg.top;
 
@@ -599,10 +621,7 @@
           linea.setAttribute('x2', x2);
           linea.setAttribute('y2', y2);
 
-          // Solo mostramos la línea si las coordenadas son válidas (mayores a 0)
-          if (x2 > 0 && y2 > 0) {
-            linea.style.opacity = "1";
-          }
+          if (x2 > 0) linea.style.opacity = "1";
         }
 
         hotspots.forEach(hotspot => {
@@ -612,18 +631,13 @@
 
             gestionarImagen(archivoBolsillo);
 
-            // 1. Ocultamos todas y mostramos la activa
             cards.forEach(c => c.style.display = "none");
             const activeCard = document.querySelector(targetId);
 
             if (activeCard) {
               activeCard.style.display = "block";
-
-              // 2. Usamos doble frame para garantizar que el navegador ya calculó la posición
               requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                  dibujarVinculo(this, targetId);
-                });
+                requestAnimationFrame(() => dibujarVinculo(this, targetId));
               });
             }
           });
@@ -633,11 +647,6 @@
             linea.style.opacity = "0";
             cards.forEach(c => c.style.display = "none");
           });
-        });
-
-        // 3. Limpiar línea si se cambia el tamaño de la ventana para evitar líneas huérfanas
-        window.addEventListener('resize', () => {
-          linea.style.opacity = "0";
         });
       });
 
