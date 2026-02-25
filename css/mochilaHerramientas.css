@@ -25,7 +25,7 @@
       .mochila-img {
         transition: opacity 0.3s ease-in-out;
         opacity: 1;
-        max-height: 450px;
+        max-height: 550px;
       }
 
       .mochila-img.is-fading {
@@ -62,10 +62,50 @@
     .hotspot::after {
         content: "";
         position: absolute;
-        inset: -5px;
+        inset: -3px;
         border-radius: 999px;
-        border: 3px solid #9F2241;
+        border: 2px solid #9F2241;
         animation: hotspot-ripple 1.6s ease-out infinite;
+    }
+
+    @keyframes pulse-simple {
+        0% {
+            box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
+        }
+
+        70% {
+            box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+        }
+    }
+
+    /* Animación de pulso AGRESIVO/LLAMATIVO para el hover */
+    @keyframes pulse-llamativo {
+        0% {
+            box-shadow: 0 0 0 0 rgba(165, 29, 54, 0.7),
+                0 0 0 0 rgba(165, 29, 54, 0.4);
+        }
+
+        100% {
+            box-shadow: 0 0 0 15px rgba(165, 29, 54, 0),
+                0 0 0 30px rgba(165, 29, 54, 0);
+        }
+    }
+
+    /* Animación de pulso LLAMATIVO en Amarillo Claro */
+    @keyframes pulse-llamativo-amarillo {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.7),
+                0 0 0 0 rgba(255, 251, 231, 0.5);
+        }
+
+        100% {
+            box-shadow: 0 0 0 15px rgba(255, 255, 0, 0),
+                0 0 0 30px rgba(255, 251, 231, 0);
+        }
     }
 
     .background{
@@ -101,11 +141,11 @@
     }
 
     .card-mochila>h3 {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     .card-mochila>p {
-        font-size: 12px;
+        font-size: 14px;
     }
 
 
@@ -719,3 +759,24 @@
             width: 100%;
         }
     }
+
+
+        #linea-vinculo {
+            stroke: #FFFF00;
+
+            stroke-width: 3;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.8));
+
+            animation: dash-animation 2s linear infinite;
+        }
+    
+        @keyframes dash-animation {
+            from {
+                stroke-dashoffset: 20;
+            }
+    
+            to {
+                stroke-dashoffset: 0;
+            }
+        }

@@ -333,9 +333,16 @@
 
       <!-- Cards Mochila 1  -->
       <div class="container">
-        <div class="row background">
+        <div class="row background row-flex-center" style="position: relative;">
+
+          <svg id="svg-lineas"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5;">
+            <line id="linea-vinculo" x1="0" y1="0" x2="0" y2="0"
+              style="stroke: #9F2241; stroke-width: 2.5; stroke-dasharray: 8; opacity: 0;" />
+          </svg>
+
           <div class="col-md-3 col-sm-12" style="display: flex; align-items: center;">
-            <div class="card-mochila">
+            <div class="card-mochila" style="margin-top: 150px;">
               <h3>Mochila de Herramientas</h3>
               <p>
                 Estrategias y recursos prácticos para prevenir y atender violencias en el entorno escolar. Ofrece orientaciones y
@@ -371,9 +378,40 @@
                 data-tab="#audiovisuales" data-bolcillo="MOCHILA_3.png"
                 onclick="window.location.href='audiovisuales.html'"
               ></button>
+
+              
+
             </div>
           </div>
           <div class="col-md-3 col-sm-12 row-flex-center" >
+
+            <div class="card-mochila infoMochila" style="margin-top: 200px;" id="formativos"
+              onclick="window.location.href='formativos.html'">
+              <h3>Formativos</h3>
+              <p>
+                Fichas, guías y talleres que desarrollan habilidades para prevenir violencias y fortalecer la convivencia escolar.
+              </p>
+            </div>
+            
+            <div class="card-mochila infoMochila" style="margin-top: 200px;" id="audiovisuales"
+              onclick="window.location.href='audiovisuales.html'">
+              <h3>Audiovisuales</h3>
+              <p>
+                Infografías, trípticos y videos que difunden la cultura de paz y orientan acciones para prevenir y atender
+                violencias.
+              </p>
+            </div>
+            
+            <div class="card-mochila infoMochila" style="margin-top: 200px;" id="dibulgacion"
+              onclick="window.location.href='difusionYdibulgacion.html'">
+              <h3>Difusión y <br> divulgación</h3>
+              <p>
+                Acciones y herramientas para atender y dar seguimiento a violencias, en coordinación interinstitucional y
+                comunicación
+                oportuna.
+              </p>
+            </div>
+
 
             <div class="row visible-xs-block mobile-cards-container">
             
@@ -420,27 +458,6 @@
 
 
 
-            <div class="card-mochila infoMochila" style="margin-top: 100px;" id="formativos" onclick="window.location.href='formativos.html'" >
-              <h3>Formativos</h3>
-              <p>
-                Fichas, guías y talleres que desarrollan habilidades para prevenir violencias y fortalecer la convivencia escolar.
-              </p>
-            </div>
-
-            <div class="card-mochila infoMochila" style="margin-top: 100px;" id="audiovisuales" onclick="window.location.href='audiovisuales.html'">
-              <h3>Audiovisuales</h3>
-              <p>
-                Infografías, trípticos y videos que difunden la cultura de paz y orientan acciones para prevenir y atender violencias.
-              </p>
-            </div>
-
-            <div class="card-mochila infoMochila" style="margin-top: 100px;" id="dibulgacion" onclick="window.location.href='difusionYdibulgacion.html'">
-              <h3>Difusión y <br> divulgación</h3>
-              <p>
-                Acciones y herramientas para atender y dar seguimiento a violencias, en coordinación interinstitucional y comunicación
-                oportuna.
-              </p>
-            </div>
 
 
           </div>
@@ -481,18 +498,19 @@
   });
 
 
-  document.addEventListener("DOMContentLoaded", function () {
+  /*document.addEventListener("DOMContentLoaded", function () {
       const hotspots = document.querySelectorAll(".hotspot");
       const cards = document.querySelectorAll(".infoMochila");
+      const container = document.querySelector(".canva-wrap");
+      const img = container ? container.querySelector(".mochila-img") : null;
 
-     
-      function ejecutarAnimacion(element) {
-        const container = document.querySelector(".canva-wrap"); // Buscamos el contenedor global
-        const img = container ? container.querySelector(".mochila-img") : null;
-        const fileName = element.getAttribute("data-bolcillo");
+      // Función para cambiar la imagen con fade
+      function cambiarImagenMochila(nombreArchivo) {
+        if (img && nombreArchivo) {
+          const newSrc = `assets/mochila/img-mochila/${nombreArchivo}`;
+          // Evitamos disparar la animación si ya es la misma imagen
+          if (img.src.includes(nombreArchivo)) return;
 
-        if (img && fileName) {
-          const newSrc = `assets/mochila/img-mochila/${fileName}`;
           img.classList.add("is-fading");
           setTimeout(() => {
             img.src = newSrc;
@@ -501,39 +519,127 @@
         }
       }
 
-      //manejo de clics en mobile 
+      // Hover para Desktop
+      hotspots.forEach((hotspot) => {
+        // Al entrar: Cambia a la imagen del bolsillo y muestra info
+        hotspot.addEventListener("mouseenter", function () {
+          const bolsillo = this.getAttribute("data-bolcillo");
+          const targetId = this.getAttribute("data-tab");
+
+          cambiarImagenMochila(bolsillo);
+
+          cards.forEach(card => card.style.display = "none");
+          const activeCard = document.querySelector(targetId);
+          if (activeCard) activeCard.style.display = "block";
+        });
+
+        // NUEVO: Al salir: Regresa a la mochila inicial y oculta info
+        hotspot.addEventListener("mouseleave", function () {
+          cambiarImagenMochila("MOCHILA_1.png");
+          cards.forEach(card => card.style.display = "none");
+        });
+      });
+
+      // Manejo de clics en mobile (se mantiene igual con la nueva función)
       const linksMobile = document.querySelectorAll(".hotspot-link");
       linksMobile.forEach(link => {
         link.addEventListener("click", function (e) {
-          e.preventDefault(); // Detenemos el salto inmediato
-
+          e.preventDefault();
           const url = this.getAttribute("href");
           const badge = this.querySelector(".mobile-badge");
+          const bolsillo = badge.getAttribute("data-bolcillo");
 
-          //animacion de mochila
-          ejecutarAnimacion(badge);
+          cambiarImagenMochila(bolsillo);
 
-          //tiempo de espera
           setTimeout(() => {
             window.location.href = url;
           }, 800);
         });
       });
+    });*/
 
-      // Mantener Hover para Desktop (tu lógica anterior)
-      hotspots.forEach((hotspot) => {
-        hotspot.addEventListener("mouseenter", function () {
-          // Solo ejecutar si no estamos en mobile o si prefieres que funcione en ambos
-          ejecutarAnimacion(this);
+   
+    document.addEventListener("DOMContentLoaded", function () {
+        const container = document.querySelector(".canva-wrap");
+        if (!container) return;
 
-          // Lógica de mostrar tarjetas (Desktop)
-          const targetId = this.getAttribute("data-tab");
-          cards.forEach(card => card.style.display = "none");
-          const activeCard = document.querySelector(targetId);
-          if (activeCard) activeCard.style.display = "block";
+        const imgMochila = document.getElementById("mochilaSEP");
+        const linea = document.getElementById('linea-vinculo');
+        const svg = document.getElementById('svg-lineas');
+        const hotspots = document.querySelectorAll(".hotspot");
+        const cards = document.querySelectorAll(".infoMochila");
+
+        function gestionarImagen(archivo) {
+          if (!imgMochila || !archivo || imgMochila.src.includes(archivo)) return;
+          imgMochila.classList.add("is-fading");
+          setTimeout(() => {
+            imgMochila.src = `assets/mochila/img-mochila/${archivo}`;
+            imgMochila.classList.remove("is-fading");
+          }, 200);
+        }
+
+        function dibujarVinculo(punto, idTarjeta) {
+          const tarjeta = document.querySelector(idTarjeta);
+          // Validación extra: Si la tarjeta no mide nada, no dibujamos para evitar el salto al (0,0)
+          if (!punto || !tarjeta || !svg || tarjeta.offsetWidth === 0) return;
+
+          const rectSvg = svg.getBoundingClientRect();
+          const rectPunto = punto.getBoundingClientRect();
+          const rectTarjeta = tarjeta.getBoundingClientRect();
+
+          const x1 = rectPunto.left + (rectPunto.width / 2) - rectSvg.left;
+          const y1 = rectPunto.top + (rectPunto.height / 2) - rectSvg.top;
+
+          // Conectamos al borde izquierdo de la tarjeta
+          const x2 = rectTarjeta.left - rectSvg.left;
+          const y2 = rectTarjeta.top + (rectTarjeta.height / 2) - rectSvg.top;
+
+          linea.setAttribute('x1', x1);
+          linea.setAttribute('y1', y1);
+          linea.setAttribute('x2', x2);
+          linea.setAttribute('y2', y2);
+
+          // Solo mostramos la línea si las coordenadas son válidas (mayores a 0)
+          if (x2 > 0 && y2 > 0) {
+            linea.style.opacity = "1";
+          }
+        }
+
+        hotspots.forEach(hotspot => {
+          hotspot.addEventListener("mouseenter", function () {
+            const archivoBolsillo = this.getAttribute("data-bolcillo");
+            const targetId = this.getAttribute("data-tab");
+
+            gestionarImagen(archivoBolsillo);
+
+            // 1. Ocultamos todas y mostramos la activa
+            cards.forEach(c => c.style.display = "none");
+            const activeCard = document.querySelector(targetId);
+
+            if (activeCard) {
+              activeCard.style.display = "block";
+
+              // 2. Usamos doble frame para garantizar que el navegador ya calculó la posición
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  dibujarVinculo(this, targetId);
+                });
+              });
+            }
+          });
+
+          hotspot.addEventListener("mouseleave", function () {
+            gestionarImagen("MOCHILA_1.png");
+            linea.style.opacity = "0";
+            cards.forEach(c => c.style.display = "none");
+          });
+        });
+
+        // 3. Limpiar línea si se cambia el tamaño de la ventana para evitar líneas huérfanas
+        window.addEventListener('resize', () => {
+          linea.style.opacity = "0";
         });
       });
-    });
 
     </script>
 
