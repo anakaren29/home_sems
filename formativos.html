@@ -180,7 +180,7 @@
               class="glyphicon glyphicon-chevron-left"
               aria-hidden="true"
             ></span>
-            <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas</span>
+            <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas<br> de Cultura de Paz</span>
           </a>
           
 
@@ -197,91 +197,350 @@
 
         <!-- Buscador -->
         <div class="search-box">
-            <form action="/buscar" method="get" class="form-buscar-mochila">
-                <span class="icon-search"></span>
-                <input type="search" id="busqueda" name="q" placeholder="Busca carteles, Infografias, trípticos..." required />
-                <button class="btn-buscar" type="submit">Buscar</button>
-            </form>
+          <form action="/buscar" method="get" class="form-buscar-mochila">
+            <span class="icon-search"></span>
+            <input type="search" id="searchInput" name="q" placeholder="Busca carteles, Infografias, trípticos..." required />
+            <button class="btn-buscar" type="button" id="searchBtn">Buscar</button>
+          </form>
         </div>
-
-        <div class="row pt-20 flex-center">
-
-            <button class="btn boton__filtro btn-ver active">
-                <span>Todos   6</span>                
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Diagnóstico Participativo</span>
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Estrategias de Intervención</span>
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Actividades Lúdicas</span>
-            </button>
-
-        </div>
-
-
         
-        <div class="row pt-20">
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-libre de violencia">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver" onclick="window.location.href='detalleFormativos.html'" >
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-guia">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver"  onclick="window.location.href='detalleFormativos.html'">
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-arte">
-                    <span>Titulo</span>
-                    <button class="btn boton btn-ver" onclick="window.location.href='detalleFormativos.html'">
-                        <span>ver</span>
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
+        
+        <div class="filter-container pt-20" id="filterButtons">
+          <button class="filter-btn active" data-filter="todos">Todos <span class="badge-count"
+              id="count-todos">0</span></button>
+          <button class="filter-btn" data-filter="diagnostico">Diagnóstico Participativo <span class="badge-count"
+              id="count-infografias">0</span></button>
+          <button class="filter-btn" data-filter="estrategias">Estrategias de Intervención <span class="badge-count"
+              id="count-carteles">0</span></button>
+          <button class="filter-btn" data-filter="actividades">Actividades Lúdicas <span class="badge-count"
+              id="count-tripticos">0</span></button>
         </div>
-      </section>
-      <br><br>
-
-      <div class="row">
-                <div class="col-xs-12 text-center" style="margin-top:20px;">
-                    <ul class="pagination" id="noticiasPager" style="margin:0;">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
-                </div>
+        
+        <div class="row" id="resultsContainer">
+        </div>
+        
+        <div class="text-center">
+          <ul class="pagination" id="paginationContainer">
+          </ul>
+        </div>
+        
+        
+        
+        
+        
+        </section>
+        <br><br>
+        
+        <br><br>
+        </main>
+        
+        
+        <div class="modal fade" id="recursoModal" tabindex="-1" role="dialog" aria-labelledby="recursoModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="border-radius: 20px; overflow: hidden;">
+              <div class="modal-header" style="background-color: var(--color-primario); color: white;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                  style="color: white; opacity: 1; text-shadow: none;">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="recursoModalLabel">Visor de Recurso</h4>
+              </div>
+              <div class="modal-body text-center" id="visorContenido" style="background-color: #f9f9f9; padding: 20px;">
+              </div>
             </div>
-            <br><br>
-    </main>
+          </div>
+        </div>
+        
+        
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        
+        <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+        <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+        
+        <script>
+          $(document).ready(function () {
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+            // 1. Tu estructura JSON real
+            var jsonData = [
+              {
+                "Id": 1,
+                "Categoria_text": "Diagnóstico Participativo",
+                "Categoria": "diagnostico",
+                "Nombre": "Diagnóstico Cultura de Paz en la Educación Media Superior SEMS",
+                "Url": "assets\/mochila\/Materialesformativo\/Diagnóstico Cultura de Paz en la Educación Media Superior SEMS.pdf",
+                "Imagen_preview": "assets\/mochila\/PDF.png",
+                "Tipo_material": "pdf"
+              },
+              {
+                "Id": 2,
+                "Categoria_text": "Diagnóstico Participativo",
+                "Categoria": "diagnostico",
+                "Nombre": "Informe ejecutivo: Primer Foro Metropolitano Cultura de Paz COLBACH",
+                "Url": "assets\/mochila\/Materialesformativo\/Guía para la resolución de conflictos.pdf",
+                "Imagen_preview": "assets\/mochila\/PDF.png",
+                "Tipo_material": "pdf"
+              },
+              {
+                "Id": 3,
+                "Categoria_text": "Estrategias de Intervención",
+                "Categoria": "estrategias",
+                "Nombre": "Guía para la conformación de Comités de Paz del Bachillerato Nacional",
+                "Url": "assets\/mochila\/Materialesformativo\/Guía para la conformación de Comités de Paz del Bachillerato Nacional.pdf",
+                "Imagen_preview": "assets\/mochila\/PDF.png",
+                "Tipo_material": "pdf"
+              },
+              {
+                "Id": 4,
+                "Categoria_text": "Actividades Lúdicas",
+                "Categoria": "actividades",
+                "Nombre": "Guía para la conformación de Comités de Paz del Bachillerato Nacional",
+                "Url": "assets\/mochila\/Materialesformativo\/Guía para la conformación de Comités de Paz del Bachillerato Nacional.pdf",
+                "Imagen_preview": "assets\/mochila\/PDF.png",
+                "Tipo_material": "pdf"
+              }
+            ];
 
-    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
-    <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
-  </body>
-</html>
+            // Variables de estado
+            var currentCategory = 'todos';
+            var currentPage = 1;
+            var itemsPerPage = 6; // Mostrar 6 elementos por página
+            var filteredData = []; // Guardará los datos después de aplicar búsqueda/filtro
+
+            // 2. Utilidad: Quitar acentos para que la búsqueda sea exacta
+            function removeAccents(str) {
+              return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            }
+
+            // 3. Contadores para los botones
+            function updateCounts() {
+              $('#count-todos').text(jsonData.length);
+              $('#count-infografias').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'diagnostico').length);
+              $('#count-carteles').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'estrategias').length);
+              $('#count-tripticos').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'actividades').length);
+            }
+
+            // 4. Renderizar las Tarjetas (Solo la página actual)
+            function renderResults(data) {
+              var container = $('#resultsContainer');
+              container.empty();
+
+              if (data.length === 0) {
+                container.append('<div class="col-xs-12 text-center"><h4>No se encontraron recursos.</h4></div>');
+                return;
+              }
+
+              $.each(data, function (index, item) {
+                var html = `
+                        <div class="col-sm-6 col-md-4">
+                            <div class="recurso-card">
+                                <div class="recurso-img-box">
+                                    
+                                    <img src="${item.Imagen_preview}" alt="${item.Nombre}">
+                                </div>
+                                <h4 class="recurso-titulo">${item.Nombre}</h4>
+                                <button class="btn btn-ver btn-block btn-abrir-modal" 
+                                        data-url="${item.Url}" 
+                                        data-tipo="${item.Tipo_material}"
+                                        data-titulo="${item.Nombre}">
+                                   Ver &nbsp; <i class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                container.append(html);
+              });
+            }
+
+            // 5. Renderizar los botones de Paginación
+            function renderPagination(totalItems) {
+              var pagination = $('#paginationContainer');
+              pagination.empty();
+
+              var totalPages = Math.ceil(totalItems / itemsPerPage);
+
+              if (totalPages <= 1) return; // Si solo hay 1 página, no mostramos botones
+
+              // Botón Anterior
+              var prevClass = (currentPage === 1) ? 'disabled' : '';
+              pagination.append(`<li class="${prevClass}"><a href="#" data-page="prev">&laquo;</a></li>`);
+
+              // Números de página
+              for (var i = 1; i <= totalPages; i++) {
+                var activeClass = (currentPage === i) ? 'active' : '';
+                pagination.append(`<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`);
+              }
+
+              // Botón Siguiente
+              var nextClass = (currentPage === totalPages) ? 'disabled' : '';
+              pagination.append(`<li class="${nextClass}"><a href="#" data-page="next">&raquo;</a></li>`);
+            }
+
+            // 6. Lógica Principal: Filtrar, Cortar (Paginación) y Renderizar
+            function processData() {
+              var searchTerm = removeAccents($('#searchInput').val().toLowerCase());
+
+              // A. Aplicar Filtros y Búsqueda
+              filteredData = jsonData.filter(function (item) {
+                var itemCategoria = removeAccents(item.Categoria.toLowerCase());
+                var matchesCategory = (currentCategory === 'todos') || (itemCategoria === currentCategory);
+
+                var itemNombre = removeAccents(item.Nombre.toLowerCase());
+                var matchesSearch = itemNombre.includes(searchTerm);
+
+                return matchesCategory && matchesSearch;
+              });
+
+              // B. Calcular Paginación
+              var totalPages = Math.ceil(filteredData.length / itemsPerPage);
+              if (currentPage > totalPages) currentPage = totalPages || 1;
+
+              var startIndex = (currentPage - 1) * itemsPerPage;
+              var endIndex = startIndex + itemsPerPage;
+              var paginatedData = filteredData.slice(startIndex, endIndex);
+
+              // C. Dibujar en Pantalla
+              renderResults(paginatedData);
+              renderPagination(filteredData.length);
+            }
+
+            // Renderizar resultados
+            function renderResults(data) {
+              var container = $('#resultsContainer');
+              container.empty();
+
+              if (data.length === 0) {
+                container.append('<div class="col-xs-12 text-center"><h4>No se encontraron recursos.</h4></div>');
+                return;
+              }
+
+              $.each(data, function (index, item) {
+                // CAMBIO: Ahora usamos un <button> en lugar de un <a> y le pasamos atributos "data-"
+                var html = `
+                        <div class="col-sm-6 col-md-4">
+                            <div class="recurso-card">
+                                <div class="recurso-img-box">
+                                    
+                                    <img src="${item.Imagen_preview}" alt="${item.Nombre}">
+                                </div>
+                                <h4 class="recurso-titulo">${item.Nombre}</h4>
+                                <button class="btn btn-ver btn-block btn-abrir-modal" 
+                                        data-url="${item.Url}" 
+                                        data-tipo="${item.Tipo_material}"
+                                        data-titulo="${item.Nombre}">
+                                   Ver &nbsp; <i class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                container.append(html);
+              });
+            }
+
+            // Lógica de filtrado
+            function filterData() {
+              var searchTerm = $('#searchInput').val().toLowerCase();
+              var filteredData = jsonData.filter(function (item) {
+                var matchesCategory = (currentCategory === 'todos') || (item.categoria === currentCategory);
+                var matchesSearch = item.Nombre.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+              });
+              console.log("filteredData", filteredData);
+              renderResults(filteredData);
+            }
+
+            // --- EVENTOS DEL BUSCADOR Y FILTROS ---
+            $('#searchInput').on('keyup', function () { filterData(); });
+            $('#searchBtn').on('click', function () { filterData(); });
+            $('.filter-btn').on('click', function () {
+              $('.filter-btn').removeClass('active');
+              $(this).addClass('active');
+              currentCategory = $(this).attr('data-filter');
+              console.log(currentCategory);
+
+              filterData();
+            });
+
+            // Búsqueda (Al escribir, reiniciamos a la página 1)
+            $('#searchInput').on('keyup', function () {
+              currentPage = 1;
+              processData();
+            });
+
+            // Filtro por Categoría
+            $('.filter-btn').on('click', function () {
+              $('.filter-btn').removeClass('active');
+              $(this).addClass('active');
+              currentCategory = $(this).attr('data-filter');
+              currentPage = 1; // Volver a la página 1 al cambiar categoría
+              processData();
+            });
+
+            // Clic en la Paginación
+            $('#paginationContainer').on('click', 'a', function (e) {
+              e.preventDefault();
+              var targetPage = $(this).attr('data-page');
+              var totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+              if (targetPage === 'prev' && currentPage > 1) {
+                currentPage--;
+              } else if (targetPage === 'next' && currentPage < totalPages) {
+                currentPage++;
+              } else if (targetPage !== 'prev' && targetPage !== 'next') {
+                currentPage = parseInt(targetPage);
+              }
+
+              processData();
+            });
+
+
+            // --- LÓGICA DEL MODAL ---
+
+            // Usamos delegación de eventos porque los botones se generan dinámicamente
+            $('#resultsContainer').on('click', '.btn-abrir-modal', function () {
+              // Obtenemos los datos del botón que se hizo clic
+              var url = $(this).data('url');
+              var tipo = $(this).data('tipo');
+              var titulo = $(this).data('titulo');
+
+              // Actualizamos el título del modal
+              $('#recursoModalLabel').text(titulo);
+
+              var visor = $('#visorContenido');
+              visor.empty(); // Limpiamos lo que hubiera antes
+
+              // Inyectamos el HTML correcto según el tipo de archivo
+              if (tipo === 'imagen') {
+                visor.append('<img src="assets/mochila/Materialesdedifusion/' + url + '" class="img-responsive" style="margin: 0 auto; max-height: 70vh; border-radius: 10px;">');
+              }
+              else if (tipo === 'pdf') {
+                // Usamos un iframe para embeber el PDF
+                visor.append('<iframe src="' + url + '" width="100%" height="500px" style="border: none; border-radius: 10px;"></iframe>');
+              }
+              else if (tipo === 'video') {
+                // Usamos la etiqueta video nativa de HTML5
+                visor.append('<video width="100%" controls autoplay style="border-radius: 10px; max-height: 70vh;"><source src="' + url + '" type="video/mp4">Tu navegador no soporta el tag de video.</video>');
+              }
+              else {
+                visor.append('<p class="text-danger">Formato no soportado.</p>');
+              }
+
+              // Finalmente, mostramos el modal
+              $('#recursoModal').modal('show');
+            });
+
+            // IMPORTANTE: Limpiar el modal al cerrarlo (evita que el video/audio siga sonando en el fondo)
+            $('#recursoModal').on('hidden.bs.modal', function () {
+              $('#visorContenido').empty();
+            });
+
+            // Inicializar
+            updateCounts();
+            processData();
+          });
+
+        </script>
+        </body>
+        
+        </html>

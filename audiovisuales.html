@@ -181,7 +181,7 @@
               class="glyphicon glyphicon-chevron-left"
               aria-hidden="true"
             ></span>
-            <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas</span>
+            <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas<br> de Cultura de Paz</span>
           </a>
           
 
@@ -198,84 +198,638 @@
 
         <!-- Buscador -->
         <div class="search-box">
-            <form action="/buscar" method="get" class="form-buscar-mochila">
-                <span class="icon-search"></span>
-                <input type="search" id="busqueda" name="q" placeholder="Busca carteles, Infografias, trípticos..." required />
-                <button class="btn-buscar" type="submit">Buscar</button>
-            </form>
+          <form action="/buscar" method="get" class="form-buscar-mochila">
+            <span class="icon-search"></span>
+            <input type="search" id="searchInput" name="q" placeholder="Busca carteles, Infografias, trípticos..." required />
+            <button class="btn-buscar" type="button" id="searchBtn">Buscar</button>
+          </form>
         </div>
-
-        <div class="row pt-20 flex-center">
-
-            <button class="btn boton__filtro btn-ver active">
-                <span>Todos   6</span>                
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Foros Metropolitanos de Cultura de Paz</span>
-            </button>
-
-            <button class="btn boton__filtro btn-ver">
-                <span>Estrategias en aula</span>
-            </button>
-
-        </div>
-
-
         
-        <div class="row pt-20">
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-libre de violencia">
-                    <span>Titulo</span>
-                    <button type="button" class="btn btn-ver-video" onclick="window.location.href='detalleAudiovisual.html'">
-                      <span class="glyphicon glyphicon-play"></span> Ver
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-guia">
-                    <span>Titulo</span>
-                    <button type="button" class="btn btn-ver-video" onclick="window.location.href='detalleAudiovisual.html'">
-                      <span class="glyphicon glyphicon-play"></span> Ver
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card-categorias text-center">
-                    <img src="assets/mochila/3a9096f4af9dda0d857cd3dc1075c3e83e093c6a.png" class="img-responsive"  alt="icono-arte">
-                    <span>Titulo</span>
-                    <button type="button" class="btn btn-ver-video" onclick="window.location.href='detalleAudiovisual.html'">
-                      <span class="glyphicon glyphicon-play"></span> Ver
-                    </button>
-                </div>
-            </div>
+        
+        <div class="filter-container pt-20" id="filterButtons">
+          <button class="filter-btn active" data-filter="todos">Todos <span class="badge-count"
+              id="count-todos">0</span></button>
+          <button class="filter-btn" data-filter="culturadepaz">Memoria Foros Metropolitanos de Cultura de Paz<span class="badge-count"
+              id="count-filtro01">0</span></button>
+          <button class="filter-btn" data-filter="comitesdepaz">Comités de Paz <span class="badge-count"
+              id="count-filtro02">0</span></button>
+
         </div>
-      </section>
-      <br><br>
-
-      <div class="row">
-                <div class="col-xs-12 text-center" style="margin-top:20px;">
-                    <ul class="pagination" id="noticiasPager" style="margin:0;">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
-                </div>
+        
+        <div class="row" id="resultsContainer">
+        </div>
+        
+        <div class="text-center">
+          <ul class="pagination" id="paginationContainer">
+          </ul>
+        </div>
+        
+        
+        
+        
+        
+        </section>
+        <br><br>
+        
+        <br><br>
+        </main>
+        
+        
+        <div class="modal fade" id="recursoModal" tabindex="-1" role="dialog" aria-labelledby="recursoModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="border-radius: 20px; overflow: hidden;">
+              <div class="modal-header" style="background-color: var(--color-primario); color: white;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                  style="color: white; opacity: 1; text-shadow: none;">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="recursoModalLabel">Visor de Recurso</h4>
+              </div>
+              <div class="modal-body text-center" id="visorContenido" style="background-color: #f9f9f9; padding: 20px;">
+              </div>
             </div>
-            <br><br>
-    </main>
+          </div>
+        </div>
+        
+        
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        
+        <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+        <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+        
+        <script>
+          $(document).ready(function () {
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+            // 1. Tu estructura JSON real
+            var jsonData = [
+              {
+                "Id": 1,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "Primer Foro Metropolitano de Cultura de Paz – Sede COLBACH.",
+                "Descripcion": "El Primer Foro Metropolitano de Cultura de Paz, celebrado el 11 de abril de 2025, documentó actividades destinadas a fomentar la paz en entornos educativos, centrándose en la identificación de la violencia, la formación de comités de paz, la resolución de conflictos. Fue organizado por la Subsecretaría de Educación Media Superior (SEMS) y el Colegio de Bachilleres.",
+                "Url": "https:\/\/youtu.be\/DRJWrXhIQI4",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 2,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "1_Estrategias para una cultura de paz- Propuestas",
+                "Descripcion": "El video documenta las intervenciones del Primer Foro Metropolitano en el COLBACH, para la Promoción de una Cultura de Paz en la Educación Media Superior (EMS). Destaca estrategias para la prevención de la violencia, la convivencia armoniosa y la implementación de protocolos de atención y mediación escolar",
+                "Url": "https:\/\/youtu.be\/gq8aZ_eTTqE",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 3,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "2_Estrategias para una cultura de paz- Comunicación asertiva",
+                "Descripcion": "El video identifica la comunicación asertiva como una herramienta para la transformación de conflictos en las escuelas de EMS. Enfatiza que la paz es un proceso activo que requiere escucha activa, expresión clara y respetuosa, diálogo horizontal entre estudiantes, docentes y administradores, y el uso de lenguaje no violento para prevenir conflictos.",
+                "Url": "https:\/\/youtu.be\/Q7QTtQqsryA",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 4,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "3_Estrategias para una cultura de paz- Comunidad escolar",
+                "Descripcion": "El video destaca cómo la participación de docentes, directivos y autoridades no es solo un ejercicio de escucha, sino el motor principal para transformar la realidad de los planteles. La propuesta se basa en la capacidad de generar acuerdos compartidos y soluciones diseñadas desde la propia comunidad escolar.",
+                "Url": "https:\/\/youtu.be\/39T03B8FoHk",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 5,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "4_Estrategias para una cultura de paz- Prevención de la violencia",
+                "Descripcion": "El video destaca estrategias para la prevención de la violencia, la convivencia armoniosa y la implementación de protocolos de atención y mediación escolar",
+                "Url": "https:\/\/youtu.be\/SAAxEVjhq8o",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 6,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "5_Estrategias para una cultura de paz- Entornos seguros",
+                "Descripcion": "El contenido expone diversas iniciativas orientadas a fomentar una coexistencia armónica. Se plantea que el desafío fundamental radica en la edificación de entornos seguros, utilizando las expresiones artísticas y la convivencia pacífica como las herramientas principales para transformar el tejido social. ",
+                "Url": "https:\/\/youtu.be\/VpaDq_2yqRM",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 7,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "#HazMázPaz",
+                "Descripcion": "El video presenta una visión integral de la Cultura de Paz como herramienta fundamental para la defensa de los derechos humanos y la transformación social. Enfatiza la construcción de la armonía y la convivencia basadas en el respeto, la tolerancia, la igualdad, la solidaridad y el diálogo, a la vez que aboga por la justicia transgeneracional y un sistema no autoritario que priorice la dignidad humana.",
+                "Url": "https:\/\/youtu.be\/6AEGKzPm5Lg",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 8,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "#HazMázPaz_Cuestionemos el descuido",
+                "Descripcion": "El video aborda una perspectiva de derechos humanos, definiéndola como un proceso transformador que involucra a todos para abordar las injusticias estructurales. Sus pilares clave son el respeto, la tolerancia, la igualdad, la solidaridad, la reflexión y el diálogo como elementos centrales para una convivencia armoniosa, con un compromiso con la justicia transgeneracional y un enfoque no autoritario de los derechos humanos.",
+                "Url": "https:\/\/youtu.be\/_MadMyoOLes",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 9,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz COLBACH ",
+                "Nombre": "Cultura de Paz y la no violencia",
+                "Descripcion": "En un video de la CNDH, donde refiere que Cultura de Paz es un proceso dinámico y participativo que busca eliminar la violencia estructural y promover la justicia social, más allá de la simple ausencia de guerra. Esta cultura se fundamenta en valores como la libertad, la justicia, la democracia, la tolerancia y la solidaridad, y requiere transformar las mentalidades mediante la educación y el diálogo para reemplazar la cultura de la violencia por una convivencia armoniosa.",
+                "Url": "https:\/\/youtu.be\/LQ7TYB43w7Q",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 10,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI-Ciudad de México",
+                "Nombre": "Foro Metropolitano de Cultura de Paz – Sede DGETI",
+                "Descripcion": "Este material recopila los esfuerzos del Segundo Foro Metropolitano de Cultura de Paz en la DGETI. Resalta cómo la comunidad escolar, alumnos, maestros y directivos se involucran en tareas de resolución de conflictos, inclusión y respeto, reafirmando la meta institucional de consolidar espacios educativos seguros y libres de violencia.",
+                "Url": "https:\/\/youtu.be\/lfcVtzVdplY",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 11,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI-Ciudad de México",
+                "Nombre": "Cultura de Paz y violencia escolar",
+                "Descripcion": "El material identifica las principales problemáticas que afectan a la comunidad estudiantil de la DGETI, tales como el acoso escolar, la violencia de género y los conflictos verbales o físicos entre compañeros. Ante esto, los propios estudiantes plantean la necesidad de implementar charlas de sensibilización como estrategia clave para erradicar estas violencias y mejorar el entorno escolar.",
+                "Url": "https:\/\/youtu.be\/-KWSNp-NsvQ",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 12,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI-Ciudad de México",
+                "Nombre": "Cultura de Paz y entornos seguros",
+                "Descripcion": "Este video pone sobre la mesa los retos que enfrenta la comunidad de la DGETI, desde la violencia verbal y las riñas hasta el consumo de sustancias ilícitas y el porrismo. A través de la voz de las y los estudiantes, expresan cómo la Cultura de Paz puede ser la clave para transformar estas realidades y construir un entorno escolar más seguro y respetuoso.",
+                "Url": "https:\/\/youtu.be\/ZS8H3AKg4og",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 13,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI-Ciudad de México",
+                "Nombre": "¿Qué violencia vivimos?",
+                "Descripcion": "Bajo la interrogante “¿Qué violencias suceden afuera y dentro de tu escuela y qué se podría evitar con la Cultura de Paz?”, este video expone la realidad de los planteles de la DGETI en la CDMX. A través del testimonio estudiantil, se visibilizan conflictos que van desde problemas personales que derivan en peleas físicas y riñas clandestinas entre escuelas, hasta la violencia de género, subrayando la urgencia de adoptar una Cultura de Paz para transformar este entorno.",
+                "Url": "https:\/\/youtu.be\/lOVFqFxpIdU",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 14,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI- Estado de México",
+                "Nombre": "Tercer Foro Metropolitano de Cultura de Paz – Sede DGETI",
+                "Descripcion": "El video visibiliza las acciones realizadas en el Tercer Foro Metropolitano de Cultura de Paz, realizado en los planteles de la DGETI del Estado de México, un espacio de reflexión y diálogo. El encuentro reunió a estudiantes, docentes y directivos para diagnosticar las violencias en sus planteles y compartir las estrategias que se están aplicando para la resolución pacífica de conflictos.",
+                "Url": "https:\/\/youtu.be\/I2UvqJcrs4Y",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 15,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI- Estado de México",
+                "Nombre": "¿Qué es cultura de paz?",
+                "Descripcion": "El video presenta una dinámica de \"Ping-Pong\" de preguntas rápidas, donde estudiantes de la DGETI en el Estado de México comparten su visión sobre la Cultura de Paz. Para ellas, se trata de construir entornos seguros y libres de discriminación, donde el respeto mutuo sea la base de la convivencia diaria.",
+                "Url": "https:\/\/youtu.be\/SHtAU7JTXVw",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 16,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI- Estado de México",
+                "Nombre": "¿Qué es cultura de paz? _2",
+                "Descripcion": "A través de un ejercicio de \"Ping-Pong\" de preguntas, estudiantes de la DGETI en el Estado de México definen la Cultura de Paz como la capacidad de mantener diálogos amenos y respetar la diversidad de ideas. Subrayan que foros y charlas de sensibilización son las herramientas clave que utilizan en sus planteles para lograrlo.",
+                "Url": "https:\/\/youtu.be\/yylp-qUFdHY",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 17,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI- Estado de México",
+                "Nombre": "¿Qué es cultura de paz? _3",
+                "Descripcion": "Mediante un formato de \"Ping-Pong\" de preguntas rápidas, estudiantes de la DGETI en el Estado de México comparten su perspectiva sobre la Cultura de Paz. Resaltan que su esencia es fortalecer el respeto mutuo en las aulas y subrayan el valor de los foros escolares como espacios clave para integrar a toda la comunidad en esta cultura.",
+                "Url": "https:\/\/youtu.be\/piLDN6Dc7FA",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 18,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz DGETI- Estado de México",
+                "Nombre": "¿Qué es cultura de paz? _4",
+                "Descripcion": "En una dinámica de \"Ping-Pong\" de preguntas rápidas, estudiantes de la DGETI en el Estado de México definen la Cultura de Paz como la creación de entornos saludables y libres de abuso psicológico. Destacan que esto se logra mediante el uso de carteles informativos, conferencias de sensibilización y la aplicación de sanciones justas para garantizar el respeto.",
+                "Url": "https:\/\/youtu.be\/GctsZUjFCxo",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 19,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz-CONALEP",
+                "Nombre": "Cuarto Foro Metropolitano de Cultura de Paz – Sede CONALEP",
+                "Descripcion": "Este material audiovisual documenta el Cuarto Foro Metropolitano realizado en el municipio de Cuautitlán Izcalli. El evento tuvo como eje central el fortalecimiento de la comunidad escolar a través de la creación de comités de paz, una estrategia clave coordinada por la SEMS para promover la armonía en todos sus subsistemas.",
+                "Url": "https:\/\/youtu.be\/Fz-txlrzqAI",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 20,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz-CONALEP",
+                "Nombre": "¿Qué es cultura de paz? _5",
+                "Descripcion": "Durante el Cuarto Foro Metropolitano de Cultura de Paz, estudiantes del Conalep participaron en un ejercicio de preguntas rápidas donde definieron la cultura de paz como el respeto familiar, señalando que aún enfrentan problemas de acoso, bullying y violencia física.",
+                "Url": "https:\/\/youtube.com\/shorts\/Obtj3ZIJPe8",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 21,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz-CONALEP",
+                "Nombre": "¿Qué es cultura de paz? _6",
+                "Descripcion": "Durante el Cuarto Foro Metropolitano de Cultura de Paz, alumnos del Conalep participaron en un ejercicio de preguntas rápidas donde definieron la cultura de paz como algo fundamental en la sociedad, recalcando que hay violencia verbal, física, psicológica, y acoso.",
+                "Url": "https:\/\/youtube.com\/shorts\/a_u_g5-zLpE",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 22,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz-CONALEP",
+                "Nombre": "¿Qué es cultura de paz? _7",
+                "Descripcion": "Estudiantes del CONALEP destacaron, mediante un ejercicio de \"Ping-Pong\", la importancia de mejorar la convivencia juvenil para construir paz, revelando que viven diversos tipos de agresiones emocionales y físicas. actualmente",
+                "Url": "https:\/\/youtube.com\/shorts\/KebiOE1a7BA",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 23,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz-CONALEP",
+                "Nombre": "Pingpong Paz",
+                "Descripcion": "Durante un ejercicio participativo de \"Ping-Pong\", estudiantes del CONALEP destacaron que implementar una cultura de paz es una herramienta esencial para combatir y reducir los diversos tipos de violencia dentro de sus escuelas.",
+                "Url": "https:\/\/youtube.com\/shorts\/DjlgM4arHK4",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 24,
+                "Categoria": "culturadepaz",
+                "Evento": "Foro Metropolitano Cultura de Paz-CONALEP",
+                "Nombre": "¿Qué es cultura de paz? _8",
+                "Descripcion": "En una dinámica de \"Ping-Pong\", alumnos del CONALEP explicaron que la cultura de paz consiste en adoptar actitudes y valores que permitan rechazar cualquier forma de violencia.",
+                "Url": "https:\/\/youtube.com\/shorts\/2fr5WSaAECw",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              },
+              {
+                "Id": 25,
+                "Categoria": "comitesdepaz",
+                "Evento": "Comités de Paz",
+                "Nombre": "Comités de Paz del Bachillerato Nacional",
+                "Descripcion": "Conoce cómo se integran los Comités de Paz en el Bachillerato Nacional. Estos espacios reúnen a estudiantes, docentes, directivos y familias con un objetivo común: transformar nuestra comunidad escolar. A través de estas instancias, trabajamos activamente para prevenir y atender problemáticas como el acoso, el consumo de sustancias, la violencia y el porrismo, construyendo juntos un entorno seguro para todos.",
+                "Url": "https:\/\/youtu.be\/uiHCiG-IXi8",
+                "imagen": "assets\/mochila\/VIDEO.png",
+                "Tipo_material": "video"
+              }
+            ];
 
-    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
-    <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
-  </body>
-</html>
+            // Variables de estado
+            var currentCategory = 'todos';
+            var currentPage = 1;
+            var itemsPerPage = 6; // Mostrar 6 elementos por página
+            var filteredData = []; // Guardará los datos después de aplicar búsqueda/filtro
+
+            // 2. Utilidad: Quitar acentos para que la búsqueda sea exacta
+            function removeAccents(str) {
+              return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            }
+
+            // 3. Contadores para los botones
+            function updateCounts() {
+              $('#count-todos').text(jsonData.length);
+              $('#count-filtro01').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'culturadepaz').length);
+              $('#count-filtro02').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'comitesdepaz').length);
+
+            }
+
+            // 4. Renderizar las Tarjetas (Solo la página actual)
+            function renderResults(data) {
+              var container = $('#resultsContainer');
+              container.empty();
+
+              if (data.length === 0) {
+                container.append('<div class="col-xs-12 text-center"><h4>No se encontraron recursos.</h4></div>');
+                return;
+              }
+
+              $.each(data, function (index, item) {
+                var html = `
+                        <div class="col-sm-6 col-md-4">
+                            <div class="recurso-card">
+                                <div class="recurso-img-box">
+                              
+                                    <img src="${item.imagen}" >
+                                </div>
+                                <h4 class="recurso-titulo">${item.Nombre}</h4>
+                                <button class="btn btn-ver btn-block btn-abrir-modal" 
+                                        data-url="${item.Url}" 
+                                        data-tipo="${item.Tipo_material}"
+                                        data-evento="${item.Evento || 'Sin evento disponible.'}"
+                                        data-descripcion="${item.Descripcion || 'Sin descripción disponible.'}"
+                                        data-titulo="${item.Nombre}">
+                                   Ver &nbsp; <i class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                container.append(html);
+              });
+            }
+
+            // 5. Renderizar los botones de Paginación
+            function renderPagination(totalItems) {
+              var pagination = $('#paginationContainer');
+              pagination.empty();
+
+              var totalPages = Math.ceil(totalItems / itemsPerPage);
+
+              if (totalPages <= 1) return; // Si solo hay 1 página, no mostramos botones
+
+              // Botón Anterior
+              var prevClass = (currentPage === 1) ? 'disabled' : '';
+              pagination.append(`<li class="${prevClass}"><a href="#" data-page="prev">&laquo;</a></li>`);
+
+              // Números de página
+              for (var i = 1; i <= totalPages; i++) {
+                var activeClass = (currentPage === i) ? 'active' : '';
+                pagination.append(`<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`);
+              }
+
+              // Botón Siguiente
+              var nextClass = (currentPage === totalPages) ? 'disabled' : '';
+              pagination.append(`<li class="${nextClass}"><a href="#" data-page="next">&raquo;</a></li>`);
+            }
+
+            // 6. Lógica Principal: Filtrar, Cortar (Paginación) y Renderizar
+            function processData() {
+              var searchTerm = removeAccents($('#searchInput').val().toLowerCase());
+
+              // A. Aplicar Filtros y Búsqueda
+              filteredData = jsonData.filter(function (item) {
+                var itemCategoria = removeAccents(item.Categoria.toLowerCase());
+                var matchesCategory = (currentCategory === 'todos') || (itemCategoria === currentCategory);
+
+                var itemNombre = removeAccents(item.Nombre.toLowerCase());
+                var matchesSearch = itemNombre.includes(searchTerm);
+
+                return matchesCategory && matchesSearch;
+              });
+
+              // B. Calcular Paginación
+              var totalPages = Math.ceil(filteredData.length / itemsPerPage);
+              if (currentPage > totalPages) currentPage = totalPages || 1;
+
+              var startIndex = (currentPage - 1) * itemsPerPage;
+              var endIndex = startIndex + itemsPerPage;
+              var paginatedData = filteredData.slice(startIndex, endIndex);
+
+              // C. Dibujar en Pantalla
+              renderResults(paginatedData);
+              renderPagination(filteredData.length);
+            }
+
+            // Renderizar resultados
+            function renderResults(data) {
+              var container = $('#resultsContainer');
+              container.empty();
+
+              if (data.length === 0) {
+                container.append('<div class="col-xs-12 text-center"><h4>No se encontraron recursos.</h4></div>');
+                return;
+              }
+
+              $.each(data, function (index, item) {
+                // CAMBIO: Ahora usamos un <button> en lugar de un <a> y le pasamos atributos "data-"
+                var html = `
+                        <div class="col-sm-6 col-md-4">
+                            <div class="recurso-card">
+                                <div class="recurso-img-box">
+                                    
+                                    <img src="${item.imagen}" alt="${item.Nombre}">
+                                </div>
+                                <h4 class="recurso-titulo">${item.Nombre}</h4>
+                                <button class="btn btn-ver btn-block btn-abrir-modal" 
+                                        data-url="${item.Url}" 
+                                        data-tipo="${item.Tipo_material}"
+                                        data-evento="${item.Evento || 'Sin evento disponible.'}"
+                                        data-descripcion="${item.Descripcion || 'Sin descripción disponible.'}"
+                                        data-titulo="${item.Nombre}">
+                                   Ver &nbsp; <i class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                container.append(html);
+              });
+            }
+
+            // Lógica de filtrado
+            function filterData() {
+              var searchTerm = $('#searchInput').val().toLowerCase();
+
+              var filteredData = jsonData.filter(function (item) {
+                // 1. CORRECCIÓN OCULTA: Usar item.Categoria (con 'C' mayúscula igual que en tu JSON)
+                var matchesCategory = (currentCategory === 'todos') || (item.Categoria === currentCategory);
+
+                // 2. CORRECCIÓN DEL ERROR NULL: Si item.Nombre es null/undefined, usamos "" (texto vacío)
+                var nombreSeguro = item.Nombre || "";
+                var matchesSearch = nombreSeguro.toLowerCase().includes(searchTerm);
+
+                return matchesCategory && matchesSearch;
+              });
+
+              console.log("filteredData", filteredData);
+              renderResults(filteredData);
+            }
+
+            // --- EVENTOS DEL BUSCADOR Y FILTROS ---
+            $('#searchInput').on('keyup', function () { filterData(); });
+            $('#searchBtn').on('click', function () { filterData(); });
+            $('.filter-btn').on('click', function () {
+              $('.filter-btn').removeClass('active');
+              $(this).addClass('active');
+              currentCategory = $(this).attr('data-filter');
+              console.log(currentCategory);
+
+              filterData();
+            });
+
+            // Búsqueda (Al escribir, reiniciamos a la página 1)
+            $('#searchInput').on('keyup', function () {
+              currentPage = 1;
+              processData();
+            });
+
+            // Filtro por Categoría
+            $('.filter-btn').on('click', function () {
+              $('.filter-btn').removeClass('active');
+              $(this).addClass('active');
+              currentCategory = $(this).attr('data-filter');
+              currentPage = 1; // Volver a la página 1 al cambiar categoría
+              processData();
+            });
+
+            // Clic en la Paginación
+            $('#paginationContainer').on('click', 'a', function (e) {
+              e.preventDefault();
+              var targetPage = $(this).attr('data-page');
+              var totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+              if (targetPage === 'prev' && currentPage > 1) {
+                currentPage--;
+              } else if (targetPage === 'next' && currentPage < totalPages) {
+                currentPage++;
+              } else if (targetPage !== 'prev' && targetPage !== 'next') {
+                currentPage = parseInt(targetPage);
+              }
+
+              processData();
+            });
+
+
+            // --- LÓGICA DEL MODAL ---
+
+            function obtenerUrlEmbedYouTube(url) {
+              var videoId = "";
+              // Limpiamos espacios en blanco por si acaso en el JSON hay espacios al final
+              url = url.trim();
+
+              // Si es formato corto: youtu.be/ID
+              if (url.includes("youtu.be/")) {
+                videoId = url.split("youtu.be/")[1].split("?")[0];
+              }
+              // Si es formato largo: youtube.com/watch?v=ID
+              else if (url.includes("youtube.com/watch")) {
+                var urlParams = new URLSearchParams(url.split("?")[1]);
+                videoId = urlParams.get("v");
+              }
+
+              // Devolvemos el enlace con autoplay activado
+              if (videoId) {
+                return "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+              }
+              return url; // Si no lo reconoce, devuelve el original
+            }
+
+            window.copiarUrl = function (url) {
+              navigator.clipboard.writeText(url).then(function () {
+                alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
+              }).catch(function (err) {
+                console.error('Error al copiar: ', err);
+                alert("Tu navegador no soporta copiar automáticamente. El enlace es: " + url);
+              });
+            };
+
+            // Usamos delegación de eventos porque los botones se generan dinámicamente
+            $('#resultsContainer').on('click', '.btn-abrir-modal', function () {
+              // Obtenemos los datos del botón que se hizo clic
+              var url = $(this).data('url');
+              var tipo = $(this).data('tipo');
+              var titulo = $(this).data('titulo');
+              var descripcion = $(this).data('descripcion');
+              var evento = $(this).data('evento');
+              console.log("url", url);
+              
+
+              // Actualizamos el título del modal
+              $('#recursoModalLabel').text(titulo);
+
+              var visor = $('#visorContenido');
+              visor.empty(); // Limpiamos lo que hubiera antes
+
+              // Inyectamos el HTML correcto según el tipo de archivo
+              if (tipo === 'imagen') {
+                visor.append('<img src="' + url + '" class="img-responsive" style="margin: 0 auto; max-height: 70vh; border-radius: 10px;">');
+              }
+              else if (tipo === 'pdf') {
+                // Usamos un iframe para embeber el PDF
+                visor.append('<iframe src="' + url + '" width="100%" height="500px" style="border: none; border-radius: 10px;"></iframe>');
+              }
+              else if (tipo === 'video') {
+                // Usamos la etiqueta video nativa de HTML5
+                var embedUrl = obtenerUrlEmbedYouTube(url);
+                console.log("embedUrl", embedUrl);
+                var contenidoModal = `
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="embed-responsive embed-responsive-16by9" style="border-radius: 10px; overflow: hidden; background-color: #000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                            <iframe class="embed-responsive-item" src="${embedUrl}" allowfullscreen allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12">
+                        <div class="modal-info-container" style="text-align: left; padding: 25px 5px 10px 5px;">
+                            <h2 class="modal-titulo-recurso">${titulo}</h2>
+                            <div class="modal-badges">
+                                <span class="badge-video">VIDEO</span>
+                                <span class="badge-categoria">${evento}</span>
+                            </div>
+                            <p class="modal-descripcion">${descripcion}</p>
+                            <div class="modal-botones">
+       
+                                <button class="btn btn-compartir" onclick="copiarUrl('${url}')">
+                                    Compartir <i class="glyphicon glyphicon-share" style="margin-left:5px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                visor.append(contenidoModal);
+              }
+              else {
+                visor.append('<p class="text-danger">Formato no soportado.</p>');
+              }
+
+              // Finalmente, mostramos el modal
+              $('#recursoModal').modal('show');
+            });
+
+            // IMPORTANTE: Limpiar el modal al cerrarlo (evita que el video/audio siga sonando en el fondo)
+            $('#recursoModal').on('hidden.bs.modal', function () {
+              $('#visorContenido').empty();
+            });
+
+            // Inicializar
+            updateCounts();
+            processData();
+          });
+
+        </script>
+        </body>
+        
+        </html>

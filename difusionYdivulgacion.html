@@ -1,194 +1,567 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png"
-      rel="shortcut icon"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--   SEO  -->
-    <title>
-      Educación Media Superior | Secretaría de Educación Pública (SEP)
-    </title>
-    <meta
-      name="description"
-      content="Portal de Educación Media Superior de la SEP. Información para estudiantes, docentes y familias: oferta educativa, trámites, becas, normatividad y programas para fortalecer el bachillerato en México."
-    />
-    <link rel="canonical" href="https://educacionmediasuperior.sep.gob.mx/" />
+  <link href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png" rel="shortcut icon" />
 
-    <link
-      rel="alternate"
-      href="https://educacionmediasuperior.sep.gob.mx/"
-      hreflang="es-MX"
-    />
+  <!--   SEO  -->
+  <title>
+    Educación Media Superior | Secretaría de Educación Pública (SEP)
+  </title>
+  <meta name="description"
+    content="Portal de Educación Media Superior de la SEP. Información para estudiantes, docentes y familias: oferta educativa, trámites, becas, normatividad y programas para fortalecer el bachillerato en México." />
+  <link rel="canonical" href="https://educacionmediasuperior.sep.gob.mx/" />
 
-    <meta name="robots" content="index, follow" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
+  <link rel="alternate" href="https://educacionmediasuperior.sep.gob.mx/" hreflang="es-MX" />
 
-    <!--  OPEN GRAPH (Facebook/LinkedIn/WhatsApp)  -->
-    <meta property="og:site_name" content="Educación Media Superior | SEP" />
-    <meta
-      property="og:title"
-      content="Educación Media Superior | Secretaría de Educación Pública (SEP)"
-    />
-    <meta
-      property="og:description"
-      content="Información oficial de Educación Media Superior en México: oferta, trámites, becas y programas."
-    />
-    <meta
-      property="og:url"
-      content="https://educacionmediasuperior.sep.gob.mx/"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_MX" />
-    <meta
-      property="og:image"
-      content="https://educacionmediasuperior.sep.gob.mx/assets/images/og/OPEN-GRAPH-SEP.jpg"
-    />
-    <meta
-      property="og:image:alt"
-      content="Educación Media Superior | Secretaría de Educación Pública"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+  <meta name="robots" content="index, follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <!-- TWITTER CARD -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Educación Media Superior | Secretaría de Educación Pública (SEP)"
-    />
-    <meta
-      name="twitter:description"
-      content="Oferta educativa, trámites, becas y recursos oficiales para EMS en México."
-    />
-    <meta
-      name="twitter:image"
-      content="https://educacionmediasuperior.sep.gob.mx/assets/images/og/OPEN-GRAPH-SEP.jpg"
-    />
+  <!--  OPEN GRAPH (Facebook/LinkedIn/WhatsApp)  -->
+  <meta property="og:site_name" content="Educación Media Superior | SEP" />
+  <meta property="og:title" content="Educación Media Superior | Secretaría de Educación Pública (SEP)" />
+  <meta property="og:description"
+    content="Información oficial de Educación Media Superior en México: oferta, trámites, becas y programas." />
+  <meta property="og:url" content="https://educacionmediasuperior.sep.gob.mx/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:image" content="https://educacionmediasuperior.sep.gob.mx/assets/images/og/OPEN-GRAPH-SEP.jpg" />
+  <meta property="og:image:alt" content="Educación Media Superior | Secretaría de Educación Pública" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-    <!--  METAS INSTITUCIONALES -->
-    <meta name="theme-color" content="#0b3a82" />
-    <meta name="format-detection" content="telephone=no" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="https://educacionmediasuperior.sep.gob.mx/assets/images/og/apple-touch-icon.jpg"
-    />
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Educación Media Superior | Secretaría de Educación Pública (SEP)" />
+  <meta name="twitter:description"
+    content="Oferta educativa, trámites, becas y recursos oficiales para EMS en México." />
+  <meta name="twitter:image" content="https://educacionmediasuperior.sep.gob.mx/assets/images/og/OPEN-GRAPH-SEP.jpg" />
 
-    <link
-      href="https://framework-gb.cdn.gob.mx/assets/styles/main.css"
-      rel="stylesheet"
-    />
-    <link
-      data-turbolinks-track="true"
-      href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css"
-      media="all"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button
-              type="button"
-              class="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#subenlaces"
-            >
-              <span class="sr-only">Interruptor de Navegación</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="subenlaces">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="index.html">
-                  <span class="icon icon-home"></span>
-                </a>
-              </li>
-              <li><a href="quienesSomos.html">¿Quiénes Somos?</a></li>
-              <li class="dropdown">
-                <a
-                  href="#"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false"
-                  >Comunicación<span class="caret"></span
-                ></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="/boletines.html">Boletines</a></li>
-                  <li>
-                    <a href="https://www.youtube.com/@MediaSuperiorMxSEP"
-                      >Multimedia</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="http://168.255.153.170/es_mx/sems/boletines_informativos_sems"
-                      >Histórico</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li><a href="marco_normativo.html">Normatividad</a></li>
-              <li><a href="http://168.255.153.170/SINBANEM">SINBANEM</a></li>
-              <li><a href="./transparencia.html">Transparencia</a></li>
-              <li>
-                <a href="Informacion_de_programas_presupuestarios.html"
-                  >Programas Presupuestarios</a
-                >
-              </li>
-              <li><a href="#tu-voz-nos-importa">Contacto</a></li>
-            </ul>
-          </div>
+  <!--  METAS INSTITUCIONALES -->
+  <meta name="theme-color" content="#0b3a82" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="icon" type="image/svg+xml" href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://framework-gb.cdn.gob.mx/applications/cms/favicon.png" />
+  <link rel="apple-touch-icon" href="https://educacionmediasuperior.sep.gob.mx/assets/images/og/apple-touch-icon.jpg" />
+
+  <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet" />
+  <link data-turbolinks-track="true"
+    href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css" media="all"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="css/mochilaHerramientas.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subenlaces">
+            <span class="sr-only">Interruptor de Navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
-      </nav>
-    </header>
+        <div class="collapse navbar-collapse" id="subenlaces">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="index.html">
+                <span class="icon icon-home"></span>
+              </a>
+            </li>
+            <li><a href="quienesSomos.html">¿Quiénes Somos?</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">Comunicación<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/boletines.html">Boletines</a></li>
+                <li>
+                  <a href="https://www.youtube.com/@MediaSuperiorMxSEP">Multimedia</a>
+                </li>
+                <li>
+                  <a href="http://168.255.153.170/es_mx/sems/boletines_informativos_sems">Histórico</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="marco_normativo.html">Normatividad</a></li>
+            <li><a href="http://168.255.153.170/SINBANEM">SINBANEM</a></li>
+            <li><a href="./transparencia.html">Transparencia</a></li>
+            <li>
+              <a href="Informacion_de_programas_presupuestarios.html">Programas Presupuestarios</a>
+            </li>
+            <li><a href="#tu-voz-nos-importa">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <main style="margin-top: 58px">
-        <section class="difusion">
-            <div class="container">
-                <a href="/mochilaDeHeramientas.html" style="text-decoration: none;">
-            <span
-              style="color: #611232;"
-              class="glyphicon glyphicon-chevron-left"
-              aria-hidden="true"
-            ></span>
-            <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas</span>
-                </a>
-            </div>
-        </section>
-    </main>
+  <main style="margin-top: 58px">
+    <section class="difusion__back">
+      <div class="container">
+        <br>
+        <a href="/mochilaDeHeramientas.html" style="text-decoration: none;">
+          <span style="color: #611232;" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span style="color: #611232; font-weight: bold;">Volver a Mochila de Herramientas<br> de Cultura de Paz</span>
+        </a>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
-    <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
-  </body>
+
+
+      </div>
+      </div>
+      <br />
+    </section>
+
+    <br>
+
+    <section class="container campanas">
+
+      <!-- Buscador -->
+      <div class="search-box">
+        <form action="/buscar" method="get" class="form-buscar-mochila">
+          <span class="icon-search"></span>
+          <input type="search" id="searchInput" name="q" placeholder="Busca carteles, Infografias, trípticos..."
+            required />
+          <button class="btn-buscar" type="button" id="searchBtn">Buscar</button>
+        </form>
+      </div>
+
+
+      <div class="filter-container pt-20" id="filterButtons">
+        <button class="filter-btn active" data-filter="todos">Todos <span class="badge-count"
+            id="count-todos">0</span></button>
+        <button class="filter-btn" data-filter="infografias">Infografías <span class="badge-count"
+            id="count-infografias">0</span></button>
+        <button class="filter-btn" data-filter="carteles">Carteles <span class="badge-count"
+            id="count-carteles">0</span></button>
+        <button class="filter-btn" data-filter="tripticos">Trípticos <span class="badge-count"
+            id="count-tripticos">0</span></button>
+      </div>
+
+      <div class="row" id="resultsContainer">
+      </div>
+
+      <div class="text-center">
+        <ul class="pagination" id="paginationContainer">
+        </ul>
+      </div>
+
+
+
+
+
+    </section>
+    <br><br>
+
+    <br><br>
+  </main>
+
+
+  <div class="modal fade" id="recursoModal" tabindex="-1" role="dialog" aria-labelledby="recursoModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content" style="border-radius: 20px; overflow: hidden;">
+        <div class="modal-header" style="background-color: var(--color-primario); color: white;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            style="color: white; opacity: 1; text-shadow: none;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="recursoModalLabel">Visor de Recurso</h4>
+        </div>
+        <div class="modal-body text-center" id="visorContenido" style="background-color: #f9f9f9; padding: 20px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+  <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // 1. Tu estructura JSON real
+      var jsonData = [
+        {
+          "Id": 1,
+          "Categoria": "Infografías",
+          "Url": "Infografía_1 Día de la paz.jpg",
+          "imagen_preview": "Infografía_1 Día de la paz.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Día de la paz"
+        },
+        {
+          "Id": 2,
+          "Categoria": "Infografías",
+          "Url": "Infografía_2 Día Internacional del personal de Paz.jpg",
+          "imagen_preview": "Infografía_2 Día Internacional del personal de Paz.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Día Internacional del personal de Paz"
+        },
+        {
+          "Id": 3,
+          "Categoria": "Infografías",
+          "Url": "Infografía_3 Día escolar de la paz y la no violencia.jpg",
+          "imagen_preview": "Infografía_3 Día escolar de la paz y la no violencia.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Día escolar de la paz y la no violencia"
+        },
+        {
+          "Id": 4,
+          "Categoria": "Infografías",
+          "Url": "Infografía_4 Día Internacional de la No violencia.jpg",
+          "imagen_preview": "Infografía_4 Día Internacional de la No violencia.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Día Internacional de la No violencia"
+        },
+        {
+          "Id": 5,
+          "Categoria": "Infografías",
+          "Url": "Infografía_5 Día Internacional para la erradicación de la violencia.jpg",
+          "imagen_preview": "Infografía_5 Día Internacional para la erradicación de la violencia.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Día Internacional para la erradicación de la violencia"
+        },
+        {
+          "Id": 6,
+          "Categoria": "Infografías",
+          "Url": "Infografía_6 Día Internacional de la felicidad.jpg",
+          "imagen_preview": "Infografía_6 Día Internacional de la felicidad.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Día Internacional de la felicidad"
+        },
+        {
+          "Id": 7,
+          "Categoria": "Infografías",
+          "Url": "Infografía_7 Comités de Paz.jpg",
+          "imagen_preview": "Infografía_7 Comités de Paz.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Comités de Paz"
+        },
+        {
+          "Id": 8,
+          "Categoria": "Infografías",
+          "Url": "Infografía_8 Cultura de paz y medio ambiente.jpg",
+          "imagen_preview": "Infografía_8 Cultura de paz y medio ambiente.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Cultura de paz y medio ambiente"
+        },
+        {
+          "Id": 9,
+          "Categoria": "Infografías",
+          "Url": "Infografía_9 Prevenir adicciones es construir futuro.jpg",
+          "imagen_preview": "Infografía_9 Prevenir adicciones es construir futuro.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Prevenir adicciones es construir futuro"
+        },
+        {
+          "Id": 10,
+          "Categoria": "Infografías",
+          "Url": "Infografía_10 Cultura de paz y Vida saludable.jpg",
+          "imagen_preview": "Infografía_10 Cultura de paz y Vida saludable.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Cultura de paz y Vida saludable"
+        },
+        {
+          "Id": 11,
+          "Categoria": "Infografías",
+          "Url": "Infografía_11 Construyamos una Cultura de paz.jpg",
+          "imagen_preview": "Infografía_11 Construyamos una Cultura de paz.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Construyamos una Cultura de paz"
+        },
+        {
+          "Id": 12,
+          "Categoria": "Infografías",
+          "Url": "Infografía_12 Declaratoria cero tolerancia.jpg",
+          "imagen_preview": "Infografía_12 Declaratoria cero tolerancia.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Declaratoria de Cero tolerancia"
+        },
+        {
+          "Id": 13,
+          "Categoria": "Carteles",
+          "Url": "Cartel_1 Habilidades socioemocionales en lo personal.jpg",
+          "imagen_preview": "Cartel_1 Habilidades socioemocionales en lo personal.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Habilidades socioemocionales en lo personal"
+        },
+        {
+          "Id": 14,
+          "Categoria": "Carteles",
+          "Url": "Cartel_2 Habilidades socioemocionales en la comunidad.jpg",
+          "imagen_preview": "Cartel_2 Habilidades socioemocionales en la comunidad.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Habilidades socioemocionales en la comunidad"
+        },
+        {
+          "Id": 15,
+          "Categoria": "Carteles",
+          "Url": "Cartel_3 Habilidades socioemocionales en la familia.jpg",
+          "imagen_preview": "Cartel_3 Habilidades socioemocionales en la familia.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Habilidades socioemocionales en la familia"
+        },
+        {
+          "Id": 16,
+          "Categoria": "Carteles",
+          "Url": "Cartel_4 Habilidades socioemocionales en la escuela.jpg",
+          "imagen_preview": "Cartel_4 Habilidades socioemocionales en la escuela.jpg",
+          "tipo_material": "imagen",
+          "Nombre": "Habilidades socioemocionales en la escuela"
+        }
+      ];
+
+      // Variables de estado
+      var currentCategory = 'todos';
+      var currentPage = 1;
+      var itemsPerPage = 6; // Mostrar 6 elementos por página
+      var filteredData = []; // Guardará los datos después de aplicar búsqueda/filtro
+
+      // 2. Utilidad: Quitar acentos para que la búsqueda sea exacta
+      function removeAccents(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      }
+
+      // 3. Contadores para los botones
+      function updateCounts() {
+        $('#count-todos').text(jsonData.length);
+        $('#count-infografias').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'infografias').length);
+        $('#count-carteles').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'carteles').length);
+        $('#count-tripticos').text(jsonData.filter(item => removeAccents(item.Categoria.toLowerCase()) === 'tripticos').length);
+      }
+
+      // 4. Renderizar las Tarjetas (Solo la página actual)
+      function renderResults(data) {
+        var container = $('#resultsContainer');
+        container.empty();
+
+        if (data.length === 0) {
+          container.append('<div class="col-xs-12 text-center"><h4>No se encontraron recursos.</h4></div>');
+          return;
+        }
+
+        $.each(data, function (index, item) {
+          var html = `
+                <div class="col-sm-6 col-md-4">
+                    <div class="recurso-card">
+                        <div class="recurso-img-box">
+                            <span class="recurso-badge">${item.Categoria}</span>
+                            <img src="assets/mochila/Materialesdedifusion/${item.imagen_preview}" alt="${item.Nombre}">
+                        </div>
+                        <h4 class="recurso-titulo">${item.Nombre}</h4>
+                        <button class="btn btn-ver btn-block btn-abrir-modal" 
+                                data-url="${item.Url}" 
+                                data-tipo="${item.tipo_material}"
+                                data-titulo="${item.Nombre}">
+                           Ver &nbsp; <i class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+          container.append(html);
+        });
+      }
+
+      // 5. Renderizar los botones de Paginación
+      function renderPagination(totalItems) {
+        var pagination = $('#paginationContainer');
+        pagination.empty();
+
+        var totalPages = Math.ceil(totalItems / itemsPerPage);
+
+        if (totalPages <= 1) return; // Si solo hay 1 página, no mostramos botones
+
+        // Botón Anterior
+        var prevClass = (currentPage === 1) ? 'disabled' : '';
+        pagination.append(`<li class="${prevClass}"><a href="#" data-page="prev">&laquo;</a></li>`);
+
+        // Números de página
+        for (var i = 1; i <= totalPages; i++) {
+          var activeClass = (currentPage === i) ? 'active' : '';
+          pagination.append(`<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`);
+        }
+
+        // Botón Siguiente
+        var nextClass = (currentPage === totalPages) ? 'disabled' : '';
+        pagination.append(`<li class="${nextClass}"><a href="#" data-page="next">&raquo;</a></li>`);
+      }
+
+      // 6. Lógica Principal: Filtrar, Cortar (Paginación) y Renderizar
+      function processData() {
+        var searchTerm = removeAccents($('#searchInput').val().toLowerCase());
+
+        // A. Aplicar Filtros y Búsqueda
+        filteredData = jsonData.filter(function (item) {
+          var itemCategoria = removeAccents(item.Categoria.toLowerCase());
+          var matchesCategory = (currentCategory === 'todos') || (itemCategoria === currentCategory);
+
+          var itemNombre = removeAccents(item.Nombre.toLowerCase());
+          var matchesSearch = itemNombre.includes(searchTerm);
+
+          return matchesCategory && matchesSearch;
+        });
+
+        // B. Calcular Paginación
+        var totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        if (currentPage > totalPages) currentPage = totalPages || 1;
+
+        var startIndex = (currentPage - 1) * itemsPerPage;
+        var endIndex = startIndex + itemsPerPage;
+        var paginatedData = filteredData.slice(startIndex, endIndex);
+
+        // C. Dibujar en Pantalla
+        renderResults(paginatedData);
+        renderPagination(filteredData.length);
+      }
+
+      // Renderizar resultados
+      function renderResults(data) {
+        var container = $('#resultsContainer');
+        container.empty();
+
+        if (data.length === 0) {
+          container.append('<div class="col-xs-12 text-center"><h4>No se encontraron recursos.</h4></div>');
+          return;
+        }
+
+        $.each(data, function (index, item) {
+          // CAMBIO: Ahora usamos un <button> en lugar de un <a> y le pasamos atributos "data-"
+          var html = `
+                <div class="col-sm-6 col-md-4">
+                    <div class="recurso-card">
+                        <div class="recurso-img-box">
+                            <span class="recurso-badge">${item.Categoria}</span>
+                            <img src="assets/mochila/Materialesdedifusion/${item.imagen_preview}" alt="${item.Nombre}">
+                        </div>
+                        <h4 class="recurso-titulo">${item.Nombre}</h4>
+                        <button class="btn btn-ver btn-block btn-abrir-modal" 
+                                data-url="${item.Url}" 
+                                data-tipo="${item.tipo_material}"
+                                data-titulo="${item.Nombre}">
+                           Ver &nbsp; <i class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+          container.append(html);
+        });
+      }
+
+      // Lógica de filtrado
+      function filterData() {
+        var searchTerm = $('#searchInput').val().toLowerCase();
+        var filteredData = jsonData.filter(function (item) {
+          var matchesCategory = (currentCategory === 'todos') || (item.categoria === currentCategory);
+          var matchesSearch = item.Nombre.toLowerCase().includes(searchTerm);
+          return matchesCategory && matchesSearch;
+        });
+        console.log("filteredData", filteredData);
+        renderResults(filteredData);
+      }
+
+      // --- EVENTOS DEL BUSCADOR Y FILTROS ---
+      $('#searchInput').on('keyup', function () { filterData(); });
+      $('#searchBtn').on('click', function () { filterData(); });
+      $('.filter-btn').on('click', function () {
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+        currentCategory = $(this).attr('data-filter');
+        console.log(currentCategory);
+
+        filterData();
+      });
+
+      // Búsqueda (Al escribir, reiniciamos a la página 1)
+      $('#searchInput').on('keyup', function () {
+        currentPage = 1;
+        processData();
+      });
+
+      // Filtro por Categoría
+      $('.filter-btn').on('click', function () {
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+        currentCategory = $(this).attr('data-filter');
+        currentPage = 1; // Volver a la página 1 al cambiar categoría
+        processData();
+      });
+
+      // Clic en la Paginación
+      $('#paginationContainer').on('click', 'a', function (e) {
+        e.preventDefault();
+        var targetPage = $(this).attr('data-page');
+        var totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        if (targetPage === 'prev' && currentPage > 1) {
+          currentPage--;
+        } else if (targetPage === 'next' && currentPage < totalPages) {
+          currentPage++;
+        } else if (targetPage !== 'prev' && targetPage !== 'next') {
+          currentPage = parseInt(targetPage);
+        }
+
+        processData();
+      });
+
+
+      // --- LÓGICA DEL MODAL ---
+
+      // Usamos delegación de eventos porque los botones se generan dinámicamente
+      $('#resultsContainer').on('click', '.btn-abrir-modal', function () {
+        // Obtenemos los datos del botón que se hizo clic
+        var url = $(this).data('url');
+        var tipo = $(this).data('tipo');
+        var titulo = $(this).data('titulo');
+
+        // Actualizamos el título del modal
+        $('#recursoModalLabel').text(titulo);
+
+        var visor = $('#visorContenido');
+        visor.empty(); // Limpiamos lo que hubiera antes
+
+        // Inyectamos el HTML correcto según el tipo de archivo
+        if (tipo === 'imagen') {
+          visor.append('<img src="assets/mochila/Materialesdedifusion/' + url + '" class="img-responsive" style="margin: 0 auto; max-height: 70vh; border-radius: 10px;">');
+        }
+        else if (tipo === 'pdf') {
+          // Usamos un iframe para embeber el PDF
+          visor.append('<iframe src="' + url + '" width="100%" height="500px" style="border: none; border-radius: 10px;"></iframe>');
+        }
+        else if (tipo === 'video') {
+          // Usamos la etiqueta video nativa de HTML5
+          visor.append('<video width="100%" controls autoplay style="border-radius: 10px; max-height: 70vh;"><source src="' + url + '" type="video/mp4">Tu navegador no soporta el tag de video.</video>');
+        }
+        else {
+          visor.append('<p class="text-danger">Formato no soportado.</p>');
+        }
+
+        // Finalmente, mostramos el modal
+        $('#recursoModal').modal('show');
+      });
+
+      // IMPORTANTE: Limpiar el modal al cerrarlo (evita que el video/audio siga sonando en el fondo)
+      $('#recursoModal').on('hidden.bs.modal', function () {
+        $('#visorContenido').empty();
+      });
+
+      // Inicializar
+      updateCounts();
+      processData();
+    });
+
+  </script>
+</body>
+
 </html>
