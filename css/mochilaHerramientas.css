@@ -1051,3 +1051,47 @@
                     background-color: #7a1f37;
                     color: white;
                 }
+
+                /* --- Nuevos estilos para las Tarjetas de Eventos --- */
+.recurso-card {
+    position: relative;
+    border: 1px solid #9b2847; /* Borde vinotinto */
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 30px;
+    background: white;
+    text-align: center;
+}
+.badge-videos-count {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #f2d5df; /* Fondo rosado claro */
+    color: #82213e; /* Texto vinotinto oscuro */
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 10;
+}
+.video-icon-placeholder {
+    background-color: #82213e;
+    border-radius: 20px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    margin-top: 25px; /* Espacio para el badge */
+}
+/* Estilo del botón Ver con icono de Play */
+.btn-ver {
+    background-color: #9b2847;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
