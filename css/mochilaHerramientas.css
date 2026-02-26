@@ -184,7 +184,7 @@
 
 /* Colores de fondo de los círculos */
 .icon-difusion { background-color: #A61D37; }     /* Guinda */
-.icon-audiovisuales { background-color: #1D6355; } /* Verde */
+.icon-audiovisuales { background-color: #A61D37; } /* Verde */
 .icon-formativos { background-color: #A61D37; }    /* Guinda */
 
 /* La tarjeta rosada inferior */
@@ -327,10 +327,10 @@
     }
 
 
-    [class*=" icon-"],
+   /* [class*=" icon-"],
     [class^=icon-] {
         margin-left: 10px;
-    }
+    }*/
 
     @media (max-width: 1200px) {
         .difusion__back {
