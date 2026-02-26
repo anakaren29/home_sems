@@ -557,6 +557,7 @@
                                 <button class="btn btn-ver btn-block btn-abrir-modal" 
                                         data-url="${item.Url}" 
                                         data-tipo="${item.Tipo_material}"
+                                        data-id="${item.Id}"
                                         data-evento="${item.Evento || 'Sin evento disponible.'}"
                                         data-descripcion="${item.Descripcion || 'Sin descripción disponible.'}"
                                         data-titulo="${item.Nombre}">
@@ -644,6 +645,7 @@
                                 <button class="btn btn-ver btn-block btn-abrir-modal" 
                                         data-url="${item.Url}" 
                                         data-tipo="${item.Tipo_material}"
+                                        data-id="${item.Id}"
                                         data-evento="${item.Evento || 'Sin evento disponible.'}"
                                         data-descripcion="${item.Descripcion || 'Sin descripción disponible.'}"
                                         data-titulo="${item.Nombre}">
@@ -754,14 +756,16 @@
             };
 
             // Usamos delegación de eventos porque los botones se generan dinámicamente
-            $('#resultsContainer').on('click', '.btn-abrir-modal', function () {
+            //$('#resultsContainer').on('click', '.btn-abrir-modal', function () {
+            $(document).on('click', '.btn-abrir-modal', function () {
               // Obtenemos los datos del botón que se hizo clic
               var url = $(this).data('url');
               var tipo = $(this).data('tipo');
               var titulo = $(this).data('titulo');
               var descripcion = $(this).data('descripcion');
               var evento = $(this).data('evento');
-              console.log("url", url);
+              var currentId = $(this).data('id');
+              //console.log("url", url);
               
 
               // Actualizamos el título del modal
@@ -779,30 +783,72 @@
                 visor.append('<iframe src="' + url + '" width="100%" height="500px" style="border: none; border-radius: 10px;"></iframe>');
               }
               else if (tipo === 'video') {
-                // Usamos la etiqueta video nativa de HTML5
                 var embedUrl = obtenerUrlEmbedYouTube(url);
-                console.log("embedUrl", embedUrl);
+
+                // --- LÓGICA DE RECOMENDACIONES ---
+                var listaRecomendacionesHTML = "";
+
+                if (evento) {
+                  // Filtramos el JSON buscando videos del mismo evento, excluyendo el actual
+                  var videosRelacionados = jsonData.filter(function (item) {
+                    return item.Evento === evento && item.Id !== currentId && item.Tipo_material === 'video';
+                  });
+
+                  // Tomamos un máximo de 5 videos
+                  var top5Recomendados = videosRelacionados.slice(0, 5);
+
+                  if (top5Recomendados.length > 0) {
+                    $.each(top5Recomendados, function (index, rec) {
+                      listaRecomendacionesHTML += `
+                            <div class="recomendacion-item">
+                                <div class="recomendacion-nombre">${rec.Nombre}</div>
+                                <button class="btn btn-ver-recomendacion btn-abrir-modal" 
+                                        data-url="${rec.Url}" 
+                                        data-tipo="video"
+                                        data-titulo="${rec.Nombre}"
+                                        data-descripcion="${rec.Descripcion || ''}"
+                                        data-evento="${rec.Evento}"
+                                        data-id="${rec.Id}">
+                                    Ver video
+                                </button>
+                            </div>
+                        `;
+                    });
+                  } else {
+                    listaRecomendacionesHTML = "<p class='text-muted' style='font-size:12px;'>No hay más videos de este evento.</p>";
+                  }
+                } else {
+                  listaRecomendacionesHTML = "<p class='text-muted' style='font-size:12px;'>No hay eventos relacionados.</p>";
+                }
+
+                // --- CONSTRUCCIÓN DEL HTML FINAL (Grid: 8 y 4) ---
                 var contenidoModal = `
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 col-md-8">
                         <div class="embed-responsive embed-responsive-16by9" style="border-radius: 10px; overflow: hidden; background-color: #000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
                             <iframe class="embed-responsive-item" src="${embedUrl}" allowfullscreen allow="autoplay"></iframe>
                         </div>
-                    </div>
-                    
-                    <div class="col-xs-12">
-                        <div class="modal-info-container" style="text-align: left; padding: 25px 5px 10px 5px;">
-                            <h2 class="modal-titulo-recurso">${titulo}</h2>
+                        
+                        <div class="modal-info-container" style="text-align: left; padding: 25px 0 10px 0;">
+                            <h2 class="modal-titulo-recurso" style="margin-top:0;">${titulo}</h2>
                             <div class="modal-badges">
                                 <span class="badge-video">VIDEO</span>
                                 <span class="badge-categoria">${evento}</span>
                             </div>
                             <p class="modal-descripcion">${descripcion}</p>
                             <div class="modal-botones">
-       
                                 <button class="btn btn-compartir" onclick="copiarUrl('${url}')">
                                     Compartir <i class="glyphicon glyphicon-share" style="margin-left:5px;"></i>
                                 </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12 col-md-4">
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); height: 100%; text-align: left;">
+                            <h4 class="recomendaciones-titulo">Más de este evento</h4>
+                            <div style="max-height: 450px; overflow-y: auto; padding-right: 5px;">
+                                ${listaRecomendacionesHTML}
                             </div>
                         </div>
                     </div>
@@ -817,6 +863,7 @@
 
               // Finalmente, mostramos el modal
               $('#recursoModal').modal('show');
+              $('#recursoModal').animate({ scrollTop: 0 }, 300);
             });
 
             // IMPORTANTE: Limpiar el modal al cerrarlo (evita que el video/audio siga sonando en el fondo)

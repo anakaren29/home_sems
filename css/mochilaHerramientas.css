@@ -968,7 +968,7 @@
                 }
 
                 /* Botones personalizados del modal */
-                .btn-descargar {
+                .btn-descargar-m {
                     background-color: #9b2847;
                     color: white;
                     border-radius: 25px;
@@ -978,7 +978,7 @@
                     transition: 0.3s;
                 }
 
-                .btn-descargar:hover {
+                .btn-descargar-m:hover {
                     background-color: #7a1f37;
                     color: white;
                 }
@@ -995,5 +995,59 @@
 
                 .btn-compartir:hover {
                     background-color: #1a4338;
+                    color: white;
+                }
+
+                .modal-body {
+                    display: grid;
+                }
+
+
+                /* --- Estilos para la lista de recomendaciones --- */
+                .recomendaciones-titulo {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #1a3e35;
+                    margin-bottom: 15px;
+                    border-bottom: 2px solid #e0e0e0;
+                    padding-bottom: 5px;
+                }
+
+                .recomendacion-item {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 15px;
+                    padding: 10px;
+                    border-radius: 8px;
+                    background-color: #f9f9f9;
+                    border: 1px solid #eee;
+                    transition: background-color 0.2s;
+                }
+
+                .recomendacion-item:hover {
+                    background-color: #f0f0f0;
+                }
+
+                .recomendacion-nombre {
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #333;
+                    margin-bottom: 8px;
+                    line-height: 1.3;
+                }
+
+                .btn-ver-recomendacion {
+                    background-color: #9b2847;
+                    color: white;
+                    border: none;
+                    border-radius: 15px;
+                    padding: 4px 12px;
+                    font-size: 11px;
+                    align-self: flex-start;
+                    font-weight: bold;
+                }
+
+                .btn-ver-recomendacion:hover {
+                    background-color: #7a1f37;
                     color: white;
                 }

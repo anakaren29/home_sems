@@ -588,7 +588,25 @@
               }
               else if (tipo === 'pdf') {
                 // Usamos un iframe para embeber el PDF
-                visor.append('<iframe src="' + url + '" width="100%" height="500px" style="border: none; border-radius: 10px;"></iframe>');
+                var contenidoModal = `<div class="row">
+                  <div class="col-xs-12">
+                    
+                    <iframe src="${url}" width="100%" height="500px" style="border: none; border-radius: 10px;"></iframe>
+                  </div>
+                  <div class="col-xs-12 pt-20">
+                    <div class="modal-botones" style="justify-content: center;" >
+                                <a href="${url}" target="_blank" class="btn btn-descargar-m">
+                                    Descargar <i class="glyphicon glyphicon-download-alt" style="margin-left:5px;"></i>
+                                </a>
+                                <button class="btn btn-compartir" onclick="copiarUrl('${url}')">
+                                    Compartir <i class="glyphicon glyphicon-share" style="margin-left:5px;"></i>
+                                </button>
+                            </div>
+                  </div>
+                  </div>`;
+                visor.append(contenidoModal);
+
+                //visor.append('<iframe src="' + url + '" width="100%" height="500px" style="border: none; border-radius: 10px;"></iframe>');
               }
               else if (tipo === 'video') {
                 // Usamos la etiqueta video nativa de HTML5

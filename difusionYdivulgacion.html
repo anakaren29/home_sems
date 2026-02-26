@@ -518,6 +518,15 @@
 
       // --- LÓGICA DEL MODAL ---
 
+      window.copiarUrl = function (url) {
+        navigator.clipboard.writeText(url).then(function () {
+          alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
+        }).catch(function (err) {
+          console.error('Error al copiar: ', err);
+          alert("Tu navegador no soporta copiar automáticamente. El enlace es: " + url);
+        });
+      };
+
       // Usamos delegación de eventos porque los botones se generan dinámicamente
       $('#resultsContainer').on('click', '.btn-abrir-modal', function () {
         // Obtenemos los datos del botón que se hizo clic
@@ -533,7 +542,25 @@
 
         // Inyectamos el HTML correcto según el tipo de archivo
         if (tipo === 'imagen') {
-          visor.append('<img src="assets/mochila/Materialesdedifusion/' + url + '" class="img-responsive" style="margin: 0 auto; max-height: 70vh; border-radius: 10px;">');
+
+          var contenidoModal = `<div class="row">
+                  <div class="col-xs-12">
+                    <img src="assets/mochila/Materialesdedifusion/${url}" class="img-responsive" style="margin: 0 auto; max-height: 70vh; border-radius: 10px;">
+                  </div>
+                  <div class="col-xs-12 pt-20">
+                    <div class="modal-botones" style="justify-content: center;" >
+                                <a href="assets/mochila/Materialesdedifusion/${url}" target="_blank" class="btn btn-descargar-m">
+                                    Descargar <i class="glyphicon glyphicon-download-alt" style="margin-left:5px;"></i>
+                                </a>
+                                <button class="btn btn-compartir" onclick="copiarUrl('${url}')">
+                                    Compartir <i class="glyphicon glyphicon-share" style="margin-left:5px;"></i>
+                                </button>
+                            </div>
+                  </div>
+                  </div>`;
+                  visor.append(contenidoModal);
+
+                  //visor.append('<img src="assets/mochila/Materialesdedifusion/' + url + '" class="img-responsive" style="margin: 0 auto; max-height: 70vh; border-radius: 10px;">');
         }
         else if (tipo === 'pdf') {
           // Usamos un iframe para embeber el PDF
