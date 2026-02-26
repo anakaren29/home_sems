@@ -252,25 +252,25 @@
 
 
     .difusion__back{
-      background-color: #E7F2EA;
-      background-image: url("/assets/mochila/img_difusion.jpg");
-    background-position: bottom;
-        background-size: contain;
-        background-repeat: no-repeat;
-      min-height: 300px;
-    }
-
-    .audiovisuales__back{
-      background-color: #E7F2EA;
-      background-image: url("/assets/mochila/img_audiovisuales.jpg");
-    background-position: bottom;
-        background-size: contain;
-        background-repeat: no-repeat;
-      min-height: 300px;
-    }
-
-    .formativo__back {
         background-image: url("/assets/mochila/img_formativos.jpg");
+      background-color: #E7F2EA;
+      background-position: bottom;
+      background-size: contain;
+      background-repeat: no-repeat;
+      min-height: 300px;
+    }
+    
+    .audiovisuales__back{
+        background-color: #E7F2EA;
+        background-image: url("/assets/mochila/img_audiovisuales.jpg");
+        background-position: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 300px;
+    }
+    
+    .formativo__back {
+        background-image: url("/assets/mochila/img_difusion.jpg");
         background-color: #E7F2EA;
         background-position: bottom;
         background-size: contain;
