@@ -184,7 +184,7 @@
 
 /* Colores de fondo de los círculos */
 .icon-difusion { background-color: #A61D37; }     /* Guinda */
-.icon-audiovisuales { background-color: #1D6355; } /* Verde */
+.icon-audiovisuales { background-color: #A61D37; } /* Verde */
 .icon-formativos { background-color: #A61D37; }    /* Guinda */
 
 /* La tarjeta rosada inferior */
@@ -252,25 +252,25 @@
 
 
     .difusion__back{
-      background-color: #E7F2EA;
-      background-image: url("/assets/mochila/img_difusion.jpg");
-    background-position: bottom;
-        background-size: contain;
-        background-repeat: no-repeat;
-      min-height: 300px;
-    }
-
-    .audiovisuales__back{
-      background-color: #E7F2EA;
-      background-image: url("/assets/mochila/img_audiovisuales.jpg");
-    background-position: bottom;
-        background-size: contain;
-        background-repeat: no-repeat;
-      min-height: 300px;
-    }
-
-    .formativo__back {
         background-image: url("/assets/mochila/img_formativos.jpg");
+      background-color: #E7F2EA;
+      background-position: bottom;
+      background-size: contain;
+      background-repeat: no-repeat;
+      min-height: 300px;
+    }
+    
+    .audiovisuales__back{
+        background-color: #E7F2EA;
+        background-image: url("/assets/mochila/img_audiovisuales.jpg");
+        background-position: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 300px;
+    }
+    
+    .formativo__back {
+        background-image: url("/assets/mochila/img_difusion.jpg");
         background-color: #E7F2EA;
         background-position: bottom;
         background-size: contain;
@@ -327,10 +327,10 @@
     }
 
 
-    [class*=" icon-"],
+   /* [class*=" icon-"],
     [class^=icon-] {
         margin-left: 10px;
-    }
+    }*/
 
     @media (max-width: 1200px) {
         .difusion__back {
