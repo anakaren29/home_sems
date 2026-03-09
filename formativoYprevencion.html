@@ -201,7 +201,7 @@
         <div class="search-box pt-20">
           <form action="/buscar" method="get" class="form-buscar-mochila">
             <span class="icon-search"></span>
-            <input type="search" id="searchInput" name="q" placeholder="Busca carteles, Infografias, trípticos..." required />
+            <input type="search" id="searchInput" name="q" placeholder="Busca informes, carteles, infografías…" required />
             <button class="btn-buscar" type="button" id="searchBtn">Buscar</button>
           </form>
         </div>
@@ -210,11 +210,11 @@
         <div class="filter-container pt-20" id="filterButtons">
           <button class="filter-btn active" data-filter="todos">Todos <span class="badge-count"
               id="count-todos">0</span></button>
-          <button class="filter-btn" data-filter="diagnostico">Diagnóstico Participativo <span class="badge-count"
+          <button class="filter-btn" data-filter="diagnostico">Diagnóstico participativo <span class="badge-count"
               id="count-infografias">0</span></button>
-          <button class="filter-btn" data-filter="estrategias">Estrategias de Intervención <span class="badge-count"
+          <button class="filter-btn" data-filter="estrategias">Estrategias de intervención <span class="badge-count"
               id="count-carteles">0</span></button>
-          <button class="filter-btn" data-filter="actividades">Actividades Lúdicas <span class="badge-count"
+          <button class="filter-btn" data-filter="actividades">Actividades lúdicas <span class="badge-count"
               id="count-tripticos">0</span></button>
         </div>
         
@@ -267,10 +267,19 @@
             // 1. Tu estructura JSON real
             var jsonData = [
               {
+                "Id": 1,
+                "Categoria_text": "Diagnóstico Participativo",
+                "Categoria": "diagnostico",
+                "Nombre": "Diagnóstico Cultura de Paz en la Educación Media Superior SEMS",
+                "Url": "assets\/mochila\/Materialesformativo\/Diagnóstico Cultura de Paz en la Educación Media Superior SEMS.pdf",
+                "Imagen_preview": "assets\/mochila\/PDF.png",
+                "Tipo_material": "pdf"
+              },
+              {
                 "Id": 13,
                 "Categoria_text": "Diagnóstico Participativo",
                 "Categoria": "diagnostico",
-                "Nombre": "Informe Primer Foro Metropolitano Cultura de Paz Colbach",
+                "Nombre": "Guía para la Resolución y Transformación de Conflictos",
                 "Url": "assets\/mochila\/Materialesformativo\/Informe Primer Foro Metropolitano Cultura de Paz Colbach.pdf",
                 "Imagen_preview": "assets\/mochila\/PDF.png",
                 "Tipo_material": "pdf"
@@ -290,15 +299,6 @@
                 "Categoria": "diagnostico",
                 "Nombre": "Informe Tercer Foro Metropolitano Cultura de Paz DGETI Edomex",
                 "Url": "assets\/mochila\/Materialesformativo\/Informe Tercer Foro Metropolitano Cultura de Paz DGETI Edomex VFinal.pdf",
-                "Imagen_preview": "assets\/mochila\/PDF.png",
-                "Tipo_material": "pdf"
-              },
-              {
-                "Id": 1,
-                "Categoria_text": "Diagnóstico Participativo",
-                "Categoria": "diagnostico",
-                "Nombre": "Diagnóstico Cultura de Paz en la Educación Media Superior SEMS",
-                "Url": "assets\/mochila\/Materialesformativo\/Diagnóstico Cultura de Paz en la Educación Media Superior SEMS.pdf",
                 "Imagen_preview": "assets\/mochila\/PDF.png",
                 "Tipo_material": "pdf"
               },
@@ -324,7 +324,7 @@
                   "Id": 4,
                   "Categoria_text": "Actividades Lúdicas",
                   "Categoria": "actividades",
-                  "Nombre": "Círculos de paz Fentanilo ",
+                  "Nombre": "Círculos de paz",
                   "Url": "assets\/mochila\/Materialesformativo\/Circulos de paz_Fentanilo.pdf",
                   "Imagen_preview": "assets\/mochila\/PDF.png",
                   "Tipo_material": "pdf"
@@ -333,7 +333,7 @@
                   "Id": 5,
                   "Categoria_text": "Actividades Lúdicas",
                   "Categoria": "actividades",
-                  "Nombre": "Cuidado del cuerpo Fentanilo ",
+                  "Nombre": "Cuidado del cuerpo",
                   "Url": "assets\/mochila\/Materialesformativo\/Cuidado del cuerpo_Fentanilo.pdf",
                   "Imagen_preview": "assets\/mochila\/PDF.png",
                   "Tipo_material": "pdf"
@@ -342,7 +342,7 @@
                   "Id": 6,
                   "Categoria_text": "Actividades Lúdicas",
                   "Categoria": "actividades",
-                  "Nombre": "Internet y Fentanilo ",
+                  "Nombre": "Internet e incel",
                   "Url": "assets\/mochila\/Materialesformativo\/Internet e incel_Fentanilo.pdf",
                   "Imagen_preview": "assets\/mochila\/PDF.png",
                   "Tipo_material": "pdf"
@@ -351,7 +351,7 @@
                   "Id": 7,
                   "Categoria_text": "Actividades Lúdicas",
                   "Categoria": "actividades",
-                  "Nombre": "Juguemos al Stop Fentanilo ",
+                  "Nombre": "Juguemos stop",
                   "Url": "assets\/mochila\/Materialesformativo\/Juguemosal Stop_Fentanilo.pdf",
                   "Imagen_preview": "assets\/mochila\/PDF.png",
                   "Tipo_material": "pdf"
@@ -363,7 +363,7 @@
                   "Id": 11,
                   "Categoria_text": "Actividades Lúdicas",
                   "Categoria": "actividades",
-                  "Nombre": "Mapa de violencia Fentanilo ",
+                  "Nombre": "Mapa de violencias",
                   "Url": "assets\/mochila\/Materialesformativo\/Mapa de violencia_Fentanilo.pdf",
                   "Imagen_preview": "assets\/mochila\/PDF.png",
                   "Tipo_material": "pdf"
@@ -372,7 +372,7 @@
                   "Id": 12,
                   "Categoria_text": "Actividades Lúdicas",
                   "Categoria": "actividades",
-                  "Nombre": "Carta a una persona Cercana Fentanilo",
+                  "Nombre": "Carta a una persona cercana",
                   "Url": "assets\/mochila\/Materialesformativo\/Carta a una persona Cercana_ Fentanilo.pdf",
                   "Imagen_preview": "assets\/mochila\/PDF.png",
                   "Tipo_material": "pdf"
