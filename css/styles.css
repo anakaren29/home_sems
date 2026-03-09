@@ -18,6 +18,12 @@ h2{
     text-align: center;
     color: var(--text-primary);
 }
+.btn-conocer{
+  display: none;
+}
+.btn-conocer-escritorio{
+  display: block;
+}
 
 /* CARRUSEL BANNERS SEMS */
 
@@ -372,6 +378,13 @@ h2{
   margin-right: 29px
 }
 @media (max-width: 576px) {
+  .btn-conocer{
+  display: block;
+  margin-left: 20px;
+}
+.btn-conocer-escritorio{
+  display: none;
+}
   .voz-movil{
   max-width: 100%;
   padding: 40px 18px;
