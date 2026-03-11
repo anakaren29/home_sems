@@ -1583,10 +1583,10 @@ h2{
 }
 
 /*Responsive Quienes somos sección Bachillerato*/
-@media (max-width: 576px) {
+@media (max-width: 750px) {
   .card-oferta-educativa .col-sm-8 {
     margin-left: 0 !important;
-    padding: 0 15px; 
+    padding: 0 20px; 
   }
 
   .p {
