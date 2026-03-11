@@ -818,7 +818,8 @@ h2{
 
 .modal-img {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -827,7 +828,7 @@ h2{
   width: 200px;
   height: auto;
   border-radius: 8px;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .modal-texto {
@@ -1386,6 +1387,13 @@ h2{
   margin-right: 6px;
 }
 
+#carrusel-horizontal-SEMS {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: auto; 
+  white-space: nowrap;
+}
+
 /* Responsive */
 @media (max-width: 767px) {
   .recuadro-contacto {
@@ -1397,6 +1405,17 @@ h2{
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+  .boton2{
+    width: 185px;
+    padding: 10px;
+  }
+  .card-cifras{
+    width: 230px;
+  }
+  
+  .img-wrapper img{
+    width: 150px;
   }
 }
 
@@ -1588,7 +1607,7 @@ h2{
     margin-left: 0 !important;
     padding: 0 20px; 
   }
-
+ 
   .p {
     text-align: center !important;
   }
@@ -1611,7 +1630,7 @@ h2{
 
   .card-oferta-educativa img[alt="Bachillerato general"],
   .card-oferta-educativa img[alt="Bachillerato tecnologico"] {
-    width: 100px !important;
+    width: 126px !important;
   }
 
   .card-oferta-educativa button {
@@ -1660,10 +1679,10 @@ h2{
     max-width: 100%;
   }
 
-  img {
+ /*  img {
     max-width: 100%;
     height: auto;
-  }
+  } */
 }
 
 /* Sección proceso de construccion de la ley */
@@ -1770,7 +1789,51 @@ h2{
       margin-top: 23px;
     }
 /* termina seccion quienes somos carrusel de documentos */
+.modal-subse{
+  display: none; 
+  position: fixed;
+  z-index: 9999;
+  padding-top: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+.modal-contenido{
+  margin: auto;
+  max-width: 990px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+}
+.modal-body {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 20px;
+}
+.cerrar {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
 
+.modal-img img {
+  width: 220px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.modal-texto {
+  flex: 1;
+  min-width: 250px;
+}
+.modal-footer {
+  margin-top: 20px;
+  text-align: center;
+}
 /* media query */
 @media only screen and (max-width: 700px) {
   .col-xs-6 {
@@ -1791,7 +1854,7 @@ h2{
 }
 
   .img-box {
-    height: 53px;
+    height: 48px;
 }
 .card-cosfac{
   font-size: 16px;
@@ -1880,6 +1943,24 @@ h2{
   order: 2;
 }
 
+.card-acuerdos{
+  width: 224px;
+  height: 293px;
+}
+
+ .modal-contenido {
+    padding: 15px;
+  }
+.columna-subse {
+  flex-wrap: wrap !important;
+}
+  .modal-img img {
+    width: 50%;
+  }
+
+  .modal-texto h3 {
+    text-align: center;
+  }
 
 }
 

@@ -132,14 +132,7 @@ function scrollCarruselCompartimiento1(direction) {
     });
   }
 
-  function scrollCarruselSEMSCifras(direction) {
-  const carrusel = document.getElementById('carrusel-horizontal-SEMS');
-    const cardWidth = carrusel.querySelector('.card-cifras').offsetWidth + 20;
-    carrusel.scrollBy({
-      left: direction * cardWidth,
-      behavior: 'smooth'
-    });
-  }
+ 
 
   function scrollCarruselRed(direction) {
   const carrusel = document.getElementById('carrusel-horizontal-red');
