@@ -2333,7 +2333,7 @@ h2{
     padding: 0;
   }
   .carousel-btn.left, .carousel-btn.right{
-    display: none;
+    display: none!important;
 }
 .carousel-dots{
   width: 83%;
