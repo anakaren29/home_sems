@@ -399,6 +399,8 @@
 
       <div class="modal-body text-center">
         <img id="modalImagenPreview" src="" alt="Vista previa" class="img-responsive img-rounded center-block modal-img-fdc">
+
+        <p>Lineamientos Generales para la Atención de la Violencia en la Educación Media Superior con Enfoque de Cultura de Paz y Convivencia Escolar</p>
       </div>
 
       <div class="modal-footer text-center">
@@ -430,8 +432,8 @@
           var title = $(this).attr('data-title') || 'Vista previa';
 
           $('#modalImagenPreview').attr('src', imgSrc);
-          $('#modalImagenPreview').attr('alt', title);
-          $('#modalImagenFdcLabel').text(title);
+          //$('#modalImagenPreview').attr('alt', title);
+          //$('#modalImagenFdcLabel').text(title);
           $('#btnDescargarImagen').attr('href', imgSrc);
           $('#btnDescargarImagen').attr('download', title + '.jpg');
 
