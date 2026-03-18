@@ -84,6 +84,39 @@
         
           }
 
+          .card-fcd {
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+          }
+
+          .card-fcd:hover {
+            transform: translateY(-4px) scale(1.02);
+          }
+
+          .card-fcd img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+
+          .modal-fdc {
+            border-radius: 18px;
+            overflow: hidden;
+          }
+
+          .modal-img-fdc {
+            max-height: 70vh;
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto;
+          }
+
+          .btn-fdc-download {
+            border-radius: 30px;
+            padding: 10px 22px;
+            font-weight: 600;
+          }
+
            @media (max-width: 767px) {
              .fdc__h2{
                font-size: 15px;
@@ -205,7 +238,7 @@
 
                     <a
                       class="boton-fcd"
-                      href="assets/fcd/LINEAMIENTOS P PRVENCiÓN DE LA VIOLENCIA V9.pdf"
+                      href="assets/fcd/LINEAMIENTOS P PRVENCiÓN DE LA VIOLENCIA 10 Senc.pdf"
                       download
                       target="_blank"
                     >
@@ -287,28 +320,49 @@
                   <button class="carousel-btn left" onclick="scrollCarruselFdc(-1)" style="color: black">
                     &#10094;
                   </button>
+                  
                   <div class="carrusel-scroll horizontal" id="carrusel-horizontal-fdc">
-                    <div class="card-fcd">
-                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ_Mesa de trabajo 1.jpg" alt="Festival de Cuidados"
-                        class="img-rounded intro-img right-block img-fdc-center" />
+                    <div class="card-fcd"
+                        data-img="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ_Mesa de trabajo 1.jpg"
+                        data-title="Lineamientos de Paz 01">
+                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ_Mesa de trabajo 1.jpg"
+                          alt="Festival de Cuidados"
+                          class="img-rounded intro-img right-block img-fdc-center" />
                     </div>
-                    <div class="card-fcd">
-                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-02.jpg" alt="Festival de Cuidados"
-                        class="img-rounded intro-img right-block img-fdc-center" />
+
+                    <div class="card-fcd"
+                        data-img="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-02.jpg"
+                        data-title="Lineamientos de Paz 02">
+                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-02.jpg"
+                          alt="Festival de Cuidados"
+                          class="img-rounded intro-img right-block img-fdc-center" />
                     </div>
-                    <div class="card-fcd">
-                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-03.jpg" alt="Festival de Cuidados"
-                        class="img-rounded intro-img right-block img-fdc-center" />
+
+                    <div class="card-fcd"
+                        data-img="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-03.jpg"
+                        data-title="Lineamientos de Paz 03">
+                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-03.jpg"
+                          alt="Festival de Cuidados"
+                          class="img-rounded intro-img right-block img-fdc-center" />
                     </div>
-                    <div class="card-fcd">
-                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-04.jpg" alt="Festival de Cuidados"
-                        class="img-rounded intro-img right-block img-fdc-center" />
+
+                    <div class="card-fcd"
+                        data-img="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-04.jpg"
+                        data-title="Lineamientos de Paz 04">
+                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-04.jpg"
+                          alt="Festival de Cuidados"
+                          class="img-rounded intro-img right-block img-fdc-center" />
                     </div>
-                    <div class="card-fcd">
-                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-05.jpg" alt="Festival de Cuidados"
-                        class="img-rounded intro-img right-block img-fdc-center" />
+
+                    <div class="card-fcd"
+                        data-img="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-05.jpg"
+                        data-title="Lineamientos de Paz 05">
+                      <img src="assets/fcd/CARRUSEL LINEAMIENTOS DE PAZ-05.jpg"
+                          alt="Festival de Cuidados"
+                          class="img-rounded intro-img right-block img-fdc-center" />
                     </div>
                   </div>
+
                   <button class="carousel-btn right" onclick="scrollCarruselFdc(1)" style="color: black">
                     &#10095;
                   </button>
@@ -331,7 +385,34 @@
 
 
 
-      
+      <!-- Modal -->
+<div class="modal fade" id="modalImagenFdc" tabindex="-1" role="dialog" aria-labelledby="modalImagenFdcLabel">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content modal-fdc">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="modalImagenFdcLabel">Vista previa</h4>
+      </div>
+
+      <div class="modal-body text-center">
+        <img id="modalImagenPreview" src="" alt="Vista previa" class="img-responsive img-rounded center-block modal-img-fdc">
+      </div>
+
+      <div class="modal-footer text-center">
+        <a id="btnDescargarImagen"
+           href="#"
+           download
+           class="btn btn-primary btn-fdc-download">
+          Descargar imagen
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
       
       
 
@@ -340,5 +421,23 @@
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
+
+    <script>
+  $(document).ready(function () {
+    $('.card-fcd').on('click', function () {
+      var imgSrc = $(this).attr('data-img');
+      var title = $(this).attr('data-title') || 'Vista previa';
+
+      $('#modalImagenPreview').attr('src', imgSrc);
+      $('#modalImagenPreview').attr('alt', title);
+      $('#modalImagenFdcLabel').text(title);
+      $('#btnDescargarImagen').attr('href', imgSrc);
+      $('#btnDescargarImagen').attr('download', title + '.jpg');
+
+      $('#modalImagenFdc').modal('show');
+    });
+  });
+</script>
+
   </body>
 </html>
