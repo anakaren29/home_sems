@@ -423,21 +423,22 @@
     <script src="js/script.js"></script>
 
     <script>
-  $(document).ready(function () {
-    $('.card-fcd').on('click', function () {
-      var imgSrc = $(this).attr('data-img');
-      var title = $(this).attr('data-title') || 'Vista previa';
+      //pop de imagenes
+      $(document).ready(function () {
+        $('.card-fcd').on('click', function () {
+          var imgSrc = $(this).attr('data-img');
+          var title = $(this).attr('data-title') || 'Vista previa';
 
-      $('#modalImagenPreview').attr('src', imgSrc);
-      $('#modalImagenPreview').attr('alt', title);
-      $('#modalImagenFdcLabel').text(title);
-      $('#btnDescargarImagen').attr('href', imgSrc);
-      $('#btnDescargarImagen').attr('download', title + '.jpg');
+          $('#modalImagenPreview').attr('src', imgSrc);
+          $('#modalImagenPreview').attr('alt', title);
+          $('#modalImagenFdcLabel').text(title);
+          $('#btnDescargarImagen').attr('href', imgSrc);
+          $('#btnDescargarImagen').attr('download', title + '.jpg');
 
-      $('#modalImagenFdc').modal('show');
-    });
-  });
-</script>
+          $('#modalImagenFdc').modal('show');
+        });
+      });
+    </script>
 
   </body>
 </html>
