@@ -1,0 +1,1192 @@
+  .btn-campana{
+        width: 24%;
+      }
+      .btn-campana-span{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      h3{
+        color: #691C32;
+      }
+
+      .infoMochila{
+        display: none;
+        padding: 10px;
+        height: auto;
+      }
+
+      .infoMochila.active {
+        display: block; /* O flex, según tu diseño */
+        animation: fadeIn 0.5s;
+      }
+
+      .mochila-img {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+        max-height: 550px;
+      }
+
+      .mochila-img.is-fading {
+        opacity: 0;
+      }
+
+      .canva-wrap {
+          position: relative;
+          max-width: 100%; 
+          display: inline-block; 
+          margin: 0 auto;
+      }
+
+      .canva-wrap img {
+          width: 100%;
+          height: auto;
+          display: block;
+      }
+
+    .hotspot{
+          position:absolute;
+          transform:translate(-50%, -50%);
+          width:14px;
+          height:14px;
+          border-radius:999px;
+          background: #9F2241;
+          border:2px solid #fff;
+          cursor:pointer;
+          z-index:10;
+          box-shadow:0 6px 20px rgba(0,0,0,.25);
+          animation: hotspot-pulse 1.6s ease-in-out infinite;
+      }
+
+    .hotspot::after {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        border-radius: 999px;
+        border: 2px solid #9F2241;
+        animation: hotspot-ripple 1.6s ease-out infinite;
+    }
+
+    @keyframes pulse-simple {
+        0% {
+            box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
+        }
+
+        70% {
+            box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+        }
+    }
+
+    /* Animación de pulso AGRESIVO/LLAMATIVO para el hover */
+    @keyframes pulse-llamativo {
+        0% {
+            box-shadow: 0 0 0 0 rgba(165, 29, 54, 0.7),
+                0 0 0 0 rgba(165, 29, 54, 0.4);
+        }
+
+        100% {
+            box-shadow: 0 0 0 15px rgba(165, 29, 54, 0),
+                0 0 0 30px rgba(165, 29, 54, 0);
+        }
+    }
+
+    /* Animación de pulso LLAMATIVO en Amarillo Claro */
+    @keyframes pulse-llamativo-amarillo {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.7),
+                0 0 0 0 rgba(255, 251, 231, 0.5);
+        }
+
+        100% {
+            box-shadow: 0 0 0 15px rgba(255, 255, 0, 0),
+                0 0 0 30px rgba(255, 251, 231, 0);
+        }
+    }
+
+    .background{
+        background-image: url('./../assets/mochila/bground.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        height: auto;
+      }
+
+      .card{
+        background: #ffffff;
+        border-radius: 15px;
+        height: 258px;
+        width: 297px;
+        padding: 0 9px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+      
+      .card >h3{
+        font-size: 24px;
+      }
+
+    .card-mochila {
+        background: #ffffff;
+        border-radius: 15px;
+        height: auto;
+        
+        padding: 0 9px;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+
+    .card-mochila>h3 {
+        font-size: 24px;
+    }
+
+    .card-mochila>p {
+        font-size: 14px;
+    }
+
+
+      /*****mobile*****/
+
+      .mobile-cards-container {
+    margin-top: 50px; /* Espacio para que el círculo no pise la mochila */
+    padding-bottom: 20px;
+}
+
+.mobile-badge {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* El círculo que contiene tu imagen .png */
+.badge-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    margin-bottom: -25px; /* Mitad del alto para el efecto overlap */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.badge-icon img {
+    width: 60%; /* Ajusta este % según cómo quieras que luzca el icono dentro del círculo */
+    height: auto;
+}
+
+/* Colores de fondo de los círculos */
+.icon-difusion { background-color: #A61D37; }     /* Guinda */
+.icon-audiovisuales { background-color: #A61D37; } /* Verde */
+.icon-formativos { background-color: #A61D37; }    /* Guinda */
+
+/* La tarjeta rosada inferior */
+.badge-content {
+    background-color: #FDE7EF; /* Rosado pálido */
+    border: 2px solid #A61D37; /* Borde guinda */
+    border-radius: 12px;
+    padding: 30px 5px 10px 5px; /* Mucho padding superior para librar el círculo */
+    text-align: center;
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-content span {
+    font-size: 10px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.1;
+    display: block;
+}
+
+/* Limpieza de estilos de escritorio en mobile */
+@media (max-width: 767px) {
+    .canva-wrap .hotspot { 
+        display: none !important; /* Ocultamos los puntos azules sobre la imagen */
+    }
+    
+    .mobile-badge {
+        position: relative !important;
+        transform: none !important;
+        left: auto !important;
+        top: auto !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        animation: none !important;
+    }
+}
+
+      
+
+      /* Ocultar hotspots */
+      /*@media (max-width: 767px) {
+          .hotspot:not(.btn-mochila-mobile) {
+              display: none !important;
+          }
+      }*/
+
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (max-width: 767px) {
+        .btn-campana{
+          width: auto;
+        }
+      }
+
+
+
+
+
+    .difusion__back{
+        background-image: url("/assets/mochila/img_formativos.jpg");
+      background-color: #E7F2EA;
+      background-position: bottom;
+      background-size: contain;
+      background-repeat: no-repeat;
+      min-height: 300px;
+    }
+    
+    .audiovisuales__back{
+        background-color: #E7F2EA;
+        background-image: url("/assets/mochila/img_audiovisuales.jpg");
+        background-position: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 300px;
+    }
+    
+    .formativo__back {
+        background-image: url("/assets/mochila/img_difusion.jpg");
+        background-color: #E7F2EA;
+        background-position: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 300px;
+    }
+
+
+    .form-buscar-mochila{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px;
+        background-color: white;
+        width: 52%;
+        height: 40px;
+        margin: 0 auto;
+        border: solid 1px black;
+    }
+
+    .form-buscar-mochila >input{
+        border: none;
+        width: 40%;
+    }
+
+    .boton__filtro{
+        background-color: #FFFFFF;
+        color: #691C32;
+        border: 1px solid #691C32;
+        border-radius: 25px;
+        width: auto;
+        margin: 0 10px;
+        height: 26px;
+        font-size: 10px;
+    }
+
+    .boton__filtro:hover, 
+    .boton__filtro.active{
+        background-color: #691C32;
+        color: #FFFFFF;
+        transition: all .3s ease;
+    }
+
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .card-categorias img{
+        max-height: 180px;
+        border-radius: 10PX;
+    }
+
+
+   /* [class*=" icon-"],
+    [class^=icon-] {
+        margin-left: 10px;
+    }*/
+
+    @media (max-width: 1200px) {
+        .difusion__back {
+            min-height: 250px;
+        }
+
+        .audiovisuales__back {
+            min-height: 250px;
+        }
+
+        .formativo__back {
+            min-height: 250px;
+        }
+    }
+
+    
+
+    @media (max-width: 767px) {
+        .difusion__back{
+        /*background-image: url("/assets/mochila/img_difusion_MB.jpg");*/
+        min-height: 200px;
+        }
+
+         .audiovisuales__back{
+        /*background-image: url("/assets/mochila/img_audiovisuales_MB.jpg");*/
+        min-height: 200px;
+        }
+
+        .formativo__back {
+            /*background-image: url("/assets/mochila/img_formativos_MB.jpg");*/
+            min-height: 200px;
+        }
+    }
+
+     .seccion-recurso {
+        padding: 40px 0;
+        background-color: #f9f9f9; /* Color de fondo sutil */
+    }
+
+    .titulo-recurso {
+        color: #691C32;
+        font-weight: 700;
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    .descripcion-recurso {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin: 20px 0;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+
+    /* Botones específicos de la sección */
+    .btn-recurso {
+        width: 100%;
+        border-radius: 25px;
+        padding: 10px 15px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    .btn-descargar {
+        background-color: #691C32;
+        color: #fff;
+        border: 1px solid #691C32;
+    }
+
+    .btn-descargar:hover {
+        background-color: #4a1323;
+        color: #fff;
+    }
+
+    .btn-compartir {
+        background-color: transparent;
+        color: #1D6355;
+        border: 1px solid #1D6355;
+    }
+
+    .btn-compartir:hover {
+        background-color: #1D6355;
+        color: #fff;
+    }
+
+    /* Alineación vertical en Desktop */
+    @media (min-width: 992px) {
+        .display-flex-util {
+            display: flex;
+            align-items: center;
+        }
+        .titulo-recurso {
+            margin-top: 0;
+            font-size: 32px;
+        }
+    }
+
+    /* Espaciado en Mobile */
+    @media (max-width: 767px) {
+        .contenedor-portada {
+            margin-bottom: 25px;
+        }
+        .titulo-recurso {
+            text-align: center;
+        }
+        .descripcion-recurso {
+            text-align: center;
+        }
+    }
+
+
+        .btn-ver-video {
+            background-color: #95223A;
+            /* El tono guinda de la imagen */
+            color: #ffffff;
+            border-radius: 50px;
+            /* Bordes totalmente redondeados */
+            padding: 8px 30px;
+            /* Espaciado interno horizontal */
+            font-weight: 700;
+            font-size: 12px;
+            border: none;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            /* Alinea icono y texto perfectamente */
+            align-items: center;
+            gap: 10px;
+            /* Espacio entre el triángulo y el texto */
+        }
+    
+        .btn-ver-video:hover,
+        .btn-ver-video:focus {
+            background-color: #691C32;
+            /* Un guinda más oscuro al pasar el mouse */
+            color: #ffffff;
+            text-decoration: none;
+        }
+    
+        /* Ajuste para el icono de play */
+        .btn-ver-video .glyphicon-play {
+            font-size: 14px;
+        }
+
+
+    /* AUDIOVISALES */
+    .custom-card {
+        background-color: #F3F1ED;
+        /* Fondo crema suave */
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+    }
+
+    .pos-relative {
+        position: relative;
+    }
+
+    .full-width {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .overlay-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .btn-play-central {
+        background-color: #95223A;
+        color: white;
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 24px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-play-central:hover {
+        transform: scale(1.1);
+    }
+
+
+    .label-video {
+        background-color: #B28B45;
+        color: black;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 10px;
+    }
+
+    .text-primary-dark {
+        color: #1D3D38;
+    }
+
+    .text-guinda {
+        color: #95223A;
+    }
+
+
+    .btn-descargar-v2 {
+        background-color: #95223A;
+        color: white;
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+    .btn-compartir-v2 {
+        background-color: #2D5B4F;
+        /* Verde oscuro */
+        color: white;
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+
+    .bg-white-soft {
+        background-color: #F8F9F9;
+    }
+
+    .playlist-item {
+        background: #EAECEE;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .playlist-item:hover,
+    .playlist-item.active {
+        background: #D5DBDB;
+    }
+
+    .hr-small {
+        border-top: 1px solid #B28B45;
+        width: 80%;
+        margin: 10px auto;
+    }
+
+
+    @media (min-width: 992px) {
+        .border-left-desktop {
+            border-left: 1px solid #dcdcdc;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .custom-card {
+            margin: 0 15px;
+        }
+
+        .video-info {
+            text-align: center;
+        }
+    }
+
+
+
+    .contenedor-portada {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    }
+
+    .embed-responsive-item {
+    border: 1px solid #ddd;
+    background-color: #eee;
+    }
+
+    .shadow-lg {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    @media (max-width: 767px) {
+    .contenedor-portada {
+        margin-bottom: 30px;
+        height: 400px;
+    }
+
+    }
+
+
+    .item-video {
+        padding: 10px;
+    }
+
+    .item-video iframe {
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Flechas de navegación */
+    .pos-relative {
+        position: relative;
+    }
+
+    .prev-btn,
+    .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #691C32;
+
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .prev-btn {
+        left: -5px;
+    }
+
+    .next-btn {
+        right: -5px;
+    }
+
+    .slick-dots {
+        bottom: -30px;
+    }
+
+    .slick-dots li button:before {
+        font-size: 12px;
+        color: #ddd;
+        opacity: 1;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: #691C32;
+    }
+
+    .slider-wrapper {
+        position: relative;
+        padding: 0 40px;
+    }
+
+
+    .slider-prev,
+    .slider-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #691C32;
+
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-prev {
+        left: 0;
+    }
+
+    .slider-next {
+        right: 0;
+    }
+
+
+    .slick-dots li button:before {
+        color: #ccc;
+        font-size: 10px;
+        opacity: 1;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: #691C32;
+
+    }
+
+
+    .item-video iframe {
+        border-radius: 15px;
+    }
+
+    .hotspot-link:active .badge-content {
+        background-color: #fce4ec;
+        transform: scale(0.95);
+        transition: all 0.2s;
+    }
+
+    .youtube-slider:not(.slick-initialized) .item-video:not(:first-child) {
+        display: none;
+    }
+
+    .youtube-slider .item-video {
+        outline: none;
+    }
+
+    .slider-prev,
+    .slider-next {
+        z-index: 100 !important;
+        cursor: pointer;
+    }
+
+    @media (max-width: 767px) {
+
+        /* Asegura que el slider y sus items tengan dimensiones visibles */
+        .youtube-slider,
+        .slick-list,
+        .slick-track {
+            height: auto !important;
+            min-height: 200px;
+            /* Altura mínima para que no desaparezca */
+        }
+
+        .item-video {
+            display: block !important;
+            /* Slick a veces pone display:none por error al inicio */
+            width: 100%;
+        }
+    }
+
+
+        #linea-vinculo {
+            stroke: #FFFF00;
+
+            stroke-width: 3;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.8));
+
+            animation: dash-animation 2s linear infinite;
+        }
+    
+        @keyframes dash-animation {
+            from {
+                stroke-dashoffset: 20;
+            }
+    
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+
+
+        .img_tumb-difusion{
+            height: 100px;
+        }
+
+                /* Paleta de colores basada en tu imagen */
+                :root {
+                    --color-primario: #82213e;
+                    /* Color vinotinto */
+                    --color-fondo-badge: #e8ccd5;
+                }
+        
+                /* --- Buscador --- */
+                .search-wrapper {
+                    max-width: 800px;
+                    margin: 30px auto;
+                }
+        
+                .input-group.search-group input {
+                    border-radius: 25px 0 0 25px;
+                    height: 45px;
+                    border-color: #ddd;
+                    box-shadow: none;
+                }
+        
+                .input-group.search-group .btn-buscar {
+                    border-radius: 0 25px 25px 0;
+                    background-color: var(--color-primario);
+                    color: white;
+                    height: 45px;
+                    padding: 0 30px;
+                    font-weight: bold;
+                    border: none;
+                }
+        
+                /* --- Botones de Filtro (Pills) --- */
+                .filter-container {
+                    text-align: center;
+                    margin-bottom: 30px;
+                }
+        
+                .filter-btn {
+                    border: 1px solid var(--color-primario);
+                    background-color: white;
+                    color: var(--color-primario);
+                    border-radius: 20px;
+                    padding: 5px 15px;
+                    margin: 0 5px;
+                    font-weight: bold;
+                    transition: all 0.3s;
+                    font-size: 10px;
+                }
+        
+                .filter-btn.active,
+                .filter-btn:hover {
+                    background-color: var(--color-primario);
+                    color: white;
+                }
+        
+                .filter-btn .badge-count {
+                    background: transparent;
+                    color: inherit;
+                    padding-left: 5px;
+                }
+        
+                /* --- Tarjetas (Cards) --- */
+                .recurso-card {
+                    border: 1px solid var(--color-primario);
+                    border-radius: 20px;
+                    padding: 15px;
+                    margin-bottom: 30px;
+                    background: white;
+                }
+        
+                .recurso-img-box {
+                    position: relative;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    /*height: 180px;
+                    background-color: #f4f4f4;*/
+                }
+        
+                .recurso-img-box img {
+                    width: 56px;
+                    height: auto;
+                    /*object-fit: contain;*/
+                }
+        
+                .recurso-badge {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background-color: var(--color-fondo-badge);
+                    color: black;
+                    padding: 5px 15px;
+                    border-radius: 20px;
+                    font-weight: bold;
+                    font-size: 12px;
+                }
+        
+                .recurso-titulo {
+                    color: var(--color-primario);
+                    margin: 15px 0;
+                    font-family: Noto Sans;
+                    font-weight: 700;
+                    font-style: Bold;
+                    font-size: 14px;
+                }
+
+                .recurso-descripcion-corta{
+                    font-family: Noto Sans;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 14px;
+                    color: #595959;
+                }
+
+                .recurso-descripcion-calendario{
+                    font-family: Noto Sans;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 11px;
+                }
+        
+                .btn-ver {
+                    background-color: var(--color-primario);
+                    color: white;
+                    border-radius: 20px;
+                    width: 100%;
+                    font-weight: bold;
+                    font-weight: 700;
+                    font-size: 12px;
+                }
+        
+                .btn-ver:hover {
+                    color: white;
+                    opacity: 0.9;
+                }
+        
+                /* --- Paginación simulada --- */
+                .pagination>li>a {
+                    color: var(--color-primario);
+                }
+        
+                .pagination>.active>a {
+                    background-color: var(--color-primario);
+                    border-color: var(--color-primario);
+                    color: white;
+                }
+
+                /* --- Estilos para la info del Modal de Video --- */
+                .modal-info-container {
+                    text-align: left;
+                    padding: 15px 10px;
+                }
+
+                .modal-titulo-recurso {
+                    color: #1a3e35;
+                    font-size: 26px;
+                    font-weight: bold;
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                }
+
+                .modal-badges {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 15px;
+                }
+
+                .badge-video {
+                    background-color: #b08d4f;
+                    color: black;
+                    font-weight: bold;
+                    padding: 5px 15px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                }
+
+                .badge-categoria {
+                    color: #888;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                .modal-descripcion {
+                    color: #777;
+                    font-size: 14px;
+                    line-height: 1.6;
+                    margin-bottom: 25px;
+                }
+
+                .modal-botones {
+                    display: flex;
+                    gap: 15px;
+                }
+
+                /* Botones personalizados del modal */
+                .btn-descargar-m {
+                    font-size: 16px;
+                    background-color: #9b2847;
+                    color: white;
+                    border-radius: 25px;
+                    padding: 10px 25px;
+                    font-weight: bold;
+                    border: none;
+                    transition: 0.3s;
+                    width: 100%;
+                    max-width: 400px;
+                    display: block;
+                }
+
+                .btn-descargar-m:hover {
+                    background-color: #7a1f37;
+                    color: white;
+                }
+
+                .btn-compartir-cm {
+                    font-size: 16px;
+                    background-color: #245a4b;
+                    color: white;
+                    border-radius: 25px;
+                    padding: 10px 25px;
+                    font-weight: bold;
+                    border: none;
+                    transition: 0.3s;
+                    width: 100%;
+                    max-width: 400px;
+                    display: block;
+                }
+
+                .btn-compartir-cm:hover {
+                    background-color: #1a4338;
+                    color: white;
+                }
+
+                .modal-body {
+                    display: grid;
+                }
+
+
+                /* --- Estilos para la lista de recomendaciones --- */
+                .recomendaciones-titulo {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #1a3e35;
+                    margin-bottom: 15px;
+                    border-bottom: 2px solid #e0e0e0;
+                    padding-bottom: 5px;
+                }
+
+                .recomendacion-item {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 15px;
+                    padding: 10px;
+                    border-radius: 8px;
+                    background-color: #f9f9f9;
+                    border: 1px solid #eee;
+                    transition: background-color 0.2s;
+                }
+
+                .recomendacion-item:hover {
+                    background-color: #f0f0f0;
+                }
+
+                .recomendacion-nombre {
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #333;
+                    margin-bottom: 8px;
+                    line-height: 1.3;
+                }
+
+                .btn-ver-recomendacion {
+                    background-color: #9b2847;
+                    color: white;
+                    border: none;
+                    border-radius: 15px;
+                    padding: 4px 12px;
+                    font-size: 11px;
+                    align-self: flex-start;
+                    font-weight: bold;
+                }
+
+                .btn-ver-recomendacion:hover {
+                    background-color: #7a1f37;
+                    color: white;
+                }
+
+                /* --- Nuevos estilos para las Tarjetas de Eventos --- */
+.recurso-card {
+    position: relative;
+    border: 1px solid #9b2847; /* Borde vinotinto */
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 30px;
+    background: white;
+    /*text-align: center;*/
+}
+.badge-videos-count {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #f2d5df; /* Fondo rosado claro */
+    color: #82213e; /* Texto vinotinto oscuro */
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 10;
+}
+.video-icon-placeholder {
+    background-color: #82213e;
+    border-radius: 20px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    margin-top: 25px; /* Espacio para el badge */
+}
+/* Estilo del botón Ver con icono de Play */
+.btn-ver {
+    background-color: #9b2847;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/********RELACIONADOS**********/
+
+.titulo-relacionados {
+    color: #6b1f35;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hr-dorado-center {
+    width: 240px;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px solid #b89b5e;
+}
+
+.card-relacionado {
+    position: relative;
+    background: #f7f7f7;
+    border-radius: 20px;
+    padding: 24px 20px 20px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+    min-height: 220px;
+}
+
+.fecha-relacionado {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #efe8de;
+    color: #5f5a52;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.titulo-card-rel {
+    color: #6b1f35;
+    font-weight: 700;
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+.desc-card-rel {
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.btn-ver-rel {
+    display: inline-block;
+    min-width: 150px;
+    text-align: center;
+    background-color: #245a4b;
+    color: #fff !important;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition: .3s;
+}
+
+.btn-ver-rel:hover {
+    background-color: #1a4338;
+    color: #fff !important;
+}
