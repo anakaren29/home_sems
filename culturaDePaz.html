@@ -522,10 +522,10 @@
       function gestionarImagen(archivo) {
         if (!imgMochila || !archivo || imgMochila.src.includes(archivo)) return;
 
-        imgMochila.classList.add("is-fading");
+        //imgMochila.classList.add("is-fading");
         setTimeout(() => {
           imgMochila.src = `assets/mochila/img-mochila/${archivo}`;
-          imgMochila.onload = () => imgMochila.classList.remove("is-fading");
+          //imgMochila.onload = () => imgMochila.classList.remove("is-fading");
         }, 200);
       }
 

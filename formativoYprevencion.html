@@ -515,7 +515,14 @@
               processData();
             });
 
-
+            window.copiarUrl = function (url) {
+              navigator.clipboard.writeText("https://educacionmediasuperior.sep.gob.mx/"+url).then(function () {
+                alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
+              }).catch(function (err) {
+                console.error('Error al copiar: ', err);
+                alert("Tu navegador no soporta copiar automáticamente. El enlace es: " + url);
+              });
+            };
             // --- LÓGICA DEL MODAL ---
 
             // Usamos delegación de eventos porque los botones se generan dinámicamente

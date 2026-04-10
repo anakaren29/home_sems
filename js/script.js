@@ -201,6 +201,7 @@ function scrollCarruselCompartimiento1(direction) {
  document.addEventListener("DOMContentLoaded", function () {
   const intervalTime = 3000; 
   const carrusel = document.getElementById('carrusel-horizontal');
+  if(!carrusel) return;
   const cards = carrusel.querySelectorAll('.card-noticia');
   const cardWidth = cards[0].offsetWidth + 20; 
   let index = 0;
@@ -226,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const filtroAnio = document.getElementById("filtro-anio");
   const seccion = document.querySelector("section");
   const todasColumnas = Array.from(seccion.querySelectorAll(".col-md-4"));
-
+  if(!filtroAnio) return;
   filtroAnio.addEventListener("change", function () {
     const anioSeleccionado = filtroAnio.value;
 
@@ -406,6 +407,7 @@ function scrollCarruselBachilleratoTecnologico(direction) {
 function initDotsCarruselDigital() {
   const carrusel = document.getElementById('carrusel-horizontal-digitales');
   const dotsContainer = document.getElementById('carousel-dots-digitales');
+  if(!carrusel) return;
   const cards = carrusel.querySelectorAll('.card-digital');
 
   // Limpiar dots previos si los hubiera
