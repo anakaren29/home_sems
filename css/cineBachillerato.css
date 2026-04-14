@@ -314,6 +314,7 @@
     background: #fff;
     margin-bottom: 25px;
     height: 100%;
+    width: 100%;
     box-shadow: 0 2px 8px rgba(0,0,0,.05);
     display: flex;
     flex-direction: column;
@@ -377,6 +378,18 @@
     border-color: #d9d9d9;
   }
 
+  #resultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #resultsContainer > [class*="col-"] {
+    float: none;  
+    display: flex;
+    margin-bottom: 25px;
+  }
+
+
   .card-cine__body {
     padding: 16px;
     display: flex;
@@ -391,6 +404,7 @@
     font-weight: 800;
     text-transform: uppercase;
     color: #000;
+    min-height: 58px;
   }
 
   .card-cine__author {
@@ -411,10 +425,12 @@
     color: #222;
     margin-bottom: 12px;
     line-height: 1.35;
+     min-height: 40px;
   }
 
   .card-cine__tags {
     margin-bottom: 16px;
+    min-height: 52px;
   }
 
   .card-cine__tag {
