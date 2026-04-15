@@ -195,13 +195,13 @@
 
       <section class="container campanas">
 
-        <h2>Documentos de consulta</h2>
+        <h2>Sesiones</h2>
 
         <!-- Buscador -->
         <div class="search-box pt-20">
           <form action="/buscar" method="get" class="form-buscar-mochila" onsubmit="return false;">
             <span class="icon-search"></span>
-            <input type="search" id="searchInput" name="q" placeholder="Escribe el documento, palabra clave, tema .." required />
+            <input type="search" id="searchInput" name="q" placeholder="Escribe nombre de la sesión, palabra clave, tema ..." required />
             <button class="btn-buscar" type="button" id="searchBtn">Buscar</button>
           </form>
         </div>
@@ -262,129 +262,114 @@
         <script>
           $(document).ready(function () {
 
-           
+            
             var jsonData = [
               {
-                "id": 1,
-                "titulo": "Titulo 1",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 01",
-                "fecha": "2026-01-06",
-                "ayo": 2026
+                "id": "1",
+                "titulo": "Primera Sesión Extraordinaria 2026",
+                "descripcion_corta": "Primera Sesión Extraordinaria2026 del Consejo del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana.",
+                "descripcion": "Primera Sesión Extraordinaria de 2026 del Consejo Nacional del SINBANEM. En la sesión se votó el calendario de sesiones ordinarias del 2026 y se mencionaron los temasque serán prioritarios para este año.",
+                "fecha": "Viernes 16 de enero de 2026",
+                "modalidad": "Virtual",
+                "relacionados": "2,3",
+                "file_ordenDia": "orden del día-01.pdf",
+                "file_presentacion": "Presentación final-01.pptx",
+                "file_acta": "",
+                "file_minuta": "",
+                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
               },
               {
-                "id": 2,
-                "titulo": "Titulo 2",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 02",
-                "fecha": "2026-01-07",
-                "ayo": 2026
+                "id": "2",
+                "titulo": "Primera Sesión Ordinaria 2026",
+                "descripcion_corta": "Primera Sesión Ordinaria 2026del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana",
+                "descripcion": "Primera Sesión Ordinaria de 2026.\nEn la Sesión se votó un punto de acuerdo para añadir a los Lineamientos Generales la obligatoriedad de firmar las actas de las sesiones de manera electrónica. \nSe presentaron avances de la Comisión de Trabajo sobre Reglas y Lineamientos de Registro Escolar y Portabilidad de Estudios. \nSe presentó un Informe de Indicadores de cobertura, \nasí como el tema de los Juegos escolares y Política de copas de futbol estudiantil. ",
+                "fecha": "Jueves 22 de enero de 2026",
+                "modalidad": "Virtual",
+                "relacionados": "1,3",
+                "file_ordenDia": "",
+                "file_presentacion": "",
+                "file_acta": "",
+                "file_minuta": "",
+                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
               },
               {
-                "id": 3,
-                "titulo": "Titulo 3",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 03",
-                "fecha": "2026-01-08",
-                "ayo": 2026
+                "id": "3",
+                "titulo": "Segunda Sesión Extraordinaria 2026",
+                "descripcion_corta": "Segunda Sesión Extraordinaria de 2026 del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana.",
+                "descripcion": "Segunda Sesión Extraordinaria 2026.En esta sesión se presentó el Informe de avances de los Mecanismos de ingreso a la Educación Media Superior (Acuerdo SINBANEM_04_17/10/25) y se votó un Punto de Acuerdo para la implementación obligatoria de procesos estatales centralizados de registro y asignación a la Educación Media Superior, orientados a garantizar el acceso universal y el ejercicio efectivo del derecho a la educación. ",
+                "fecha": "Jueves 29 de enero de 2026",
+                "modalidad": "Presencial",
+                "relacionados": "1,2",
+                "file_ordenDia": "",
+                "file_presentacion": "",
+                "file_acta": "",
+                "file_minuta": "",
+                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
               },
               {
-                "id": 4,
-                "titulo": "Titulo 4",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 01",
-                "fecha": "2026-01-09",
-                "ayo": 2026
-              },
-              {
-                "id": 5,
-                "titulo": "Titulo 5",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 02",
-                "fecha": "2026-01-10",
-                "ayo": 2026
-              },
-              {
-                "id": 6,
-                "titulo": "Cocina",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 03",
-                "fecha": "2026-01-11",
-                "ayo": 2026
-              },
-              {
-                "id": 7,
-                "titulo": "Sala",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 01",
-                "fecha": "2026-01-12",
-                "ayo": 2026
-              },
-              {
-                "id": 8,
-                "titulo": "Titulo 8",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 02",
-                "fecha": "2026-01-13",
-                "ayo": 2026
-              },
-              {
-                "id": 9,
-                "titulo": "Titulo 9",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 03",
-                "fecha": "2026-01-14",
-                "ayo": 2026
-              },
-              {
-                "id": 10,
-                "titulo": "Titulo 10",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets\\/mochila\\/Materialesformativo\\/Guía para la resolución de conflictos.pdf",
-                "grupo": "grupo 04",
-                "fecha": "2025-01-15",
-                "ayo": 2025
+                "id": "4",
+                "titulo": "Segunda Sesión Ordinaria 2026",
+                "descripcion_corta": "Segunda Sesión Ordinaria 2026 del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana",
+                "descripcion": "",
+                "fecha": "Jueves 26 de marzo de 2026",
+                "modalidad": "Virtual",
+                "relacionados": "",
+                "file_ordenDia": "",
+                "file_presentacion": "",
+                "file_acta": "",
+                "file_minuta": "",
+                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
               }
             ];
 
-             // Estado
+   
   var currentCategory = 'todos';
   var currentPage = 1;
   var itemsPerPage = 6;
   var filteredData = [];
 
-  // Quitar acentos
+  // Ejemplo: este arreglo puede venir de tu JSON externo
+  // var jsonData = [...];
+
   function removeAccents(str) {
-    return (str || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
-  // Contadores
+  function escapeHtml(text) {
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function getYearFromFecha(fecha) {
+    var match = String(fecha || '').match(/\b(20\d{2})\b/);
+    return match ? match[1] : '';
+  }
+
+  function getModalidadIcon(modalidad) {
+    var txt = removeAccents(String(modalidad || '').toLowerCase());
+
+    if (txt.indexOf('presencial') !== -1) return 'glyphicon-user';
+    if (txt.indexOf('virtual') !== -1) return 'glyphicon-headphones';
+    if (txt.indexOf('hibrida') !== -1 || txt.indexOf('híbrida') !== -1) return 'glyphicon-transfer';
+
+    return 'glyphicon-map-marker';
+  }
+
   function updateCounts() {
     $('#count-todos').text(jsonData.length);
-    $('#count-2025').text(jsonData.filter(item => Number(item.ayo) === 2025).length);
-    $('#count-2026').text(jsonData.filter(item => Number(item.ayo) === 2026).length);
+    $('#count-2025').text(jsonData.filter(function (item) {
+      return getYearFromFecha(item.fecha) === '2025';
+    }).length);
+
+    $('#count-2026').text(jsonData.filter(function (item) {
+      return getYearFromFecha(item.fecha) === '2026';
+    }).length);
   }
 
-  // Paginación
   function renderPagination(totalItems) {
     var pagination = $('#paginationContainer');
     pagination.empty();
@@ -405,65 +390,86 @@
     pagination.append('<li class="' + nextClass + '"><a href="#" data-page="next">&raquo;</a></li>');
   }
 
-  // Render resultados
   function renderResults(data) {
     var container = $('#resultsContainer');
     container.empty();
 
-    if (data.length === 0) {
-      container.append('<div class="col-xs-12 text-center"><h4>No se encontraron recursos.</h4></div>');
+    if (!data.length) {
+      container.append('<div class="col-xs-12 text-center"><h4>No se encontraron sesiones.</h4></div>');
       return;
     }
 
     $.each(data, function (index, item) {
+      var poster = item.file_poster && item.file_poster.trim() !== ''
+        ? item.file_poster
+        : 'assets/SINBANEM/sesiones/poster-default.jpg';
+
+      var modalidad = item.modalidad || '';
+      var modalidadIcon = getModalidadIcon(modalidad);
+
       var html = `
         <div class="col-sm-6 col-md-4">
-          <div class="recurso-card">
-            <div class="recurso-img-box">
-              <img src="assets/SINBANEM/pdf-icon.png" alt="${item.titulo}">
+          <div class="sesion-card">
+            <div class="sesion-img-box">
+              <img src="${escapeHtml(poster)}" alt="${escapeHtml(item.titulo)}">
             </div>
-            <h4 class="recurso-titulo">${item.titulo}</h4>
-            <p class="recurso-descripcion-corta">${item.descripcion_corta || ''}</p>
-            <p class="recurso-descripcion-calendario">
-              <img src="assets/SINBANEM/calendario.png" alt="year"> ${item.ayo}
-            </p>
-            <button 
-              class="btn btn-ver btn-block btn-abrir-item"
-              data-id="${item.id}">
-              Abrir documento &nbsp; 
-              <i class="glyphicon glyphicon-chevron-right" style="font-size: 10px;"></i>
-            </button>
+
+            <div class="sesion-body">
+              <h3 class="sesion-titulo">${escapeHtml(item.titulo)}</h3>
+
+              <p class="sesion-descripcion-corta">
+                ${escapeHtml(item.descripcion_corta || '')}
+              </p>
+
+              <p class="sesion-meta">
+                <span class="glyphicon glyphicon-calendar"></span>
+                <span>${escapeHtml(item.fecha || '')}</span>
+              </p>
+
+              <p class="sesion-meta">
+                <span class="glyphicon ${modalidadIcon}"></span>
+                <span>${escapeHtml(modalidad)}</span>
+              </p>
+
+              <button 
+                class="btn btn-sesion btn-block btn-abrir-item"
+                data-id="${escapeHtml(item.id)}">
+                Ver sesión y materiales
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </button>
+            </div>
           </div>
         </div>
       `;
+
       container.append(html);
     });
   }
 
-  // Proceso principal
   function processData() {
     var searchTerm = removeAccents($('#searchInput').val().toLowerCase().trim());
 
     filteredData = jsonData.filter(function (item) {
-      // Filtro por año
-      var matchesCategory = (currentCategory === 'todos') || (String(item.ayo) === String(currentCategory));
+      var year = getYearFromFecha(item.fecha);
+      var matchesCategory = (currentCategory === 'todos') || (String(year) === String(currentCategory));
 
-      // Búsqueda en varios campos
       var textoBusqueda = removeAccents(
         (
           (item.titulo || '') + ' ' +
           (item.descripcion_corta || '') + ' ' +
           (item.descripcion || '') + ' ' +
-          (item.grupo || '')
+          (item.fecha || '') + ' ' +
+          (item.modalidad || '')
         ).toLowerCase()
       );
 
-      var matchesSearch = textoBusqueda.includes(searchTerm);
+      var matchesSearch = textoBusqueda.indexOf(searchTerm) !== -1;
 
       return matchesCategory && matchesSearch;
     });
 
     var totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
     if (currentPage > totalPages) {
       currentPage = totalPages || 1;
     }
@@ -476,19 +482,16 @@
     renderPagination(filteredData.length);
   }
 
-  // Buscar al escribir
   $('#searchInput').on('keyup', function () {
     currentPage = 1;
     processData();
   });
 
-  // Buscar al hacer clic
   $('#searchBtn').on('click', function () {
     currentPage = 1;
     processData();
   });
 
-  // Filtros
   $('.filter-btn').on('click', function () {
     $('.filter-btn').removeClass('active');
     $(this).addClass('active');
@@ -498,7 +501,6 @@
     processData();
   });
 
-  // Paginación
   $('#paginationContainer').on('click', 'a', function (e) {
     e.preventDefault();
 
@@ -516,18 +518,11 @@
     processData();
   });
 
-  // Abrir detalle por id
   $('#resultsContainer').on('click', '.btn-abrir-item', function () {
     var itemId = $(this).data('id');
-
-    // Opción 1: redirigir a una página detalle
-    window.location.href = '/SINBANEM-DocumentoDetalle.html?id=' + itemId;
-
-    // Opción 2: si tu ruta es amigable, usa esto:
-    // window.location.href = '/item/' + itemId;
+    window.location.href = '/SINBANEM-SesionesDetalle.html?id=' + itemId;
   });
 
-  // Inicializar
   updateCounts();
   processData();
 });
