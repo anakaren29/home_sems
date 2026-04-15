@@ -1190,3 +1190,37 @@
     background-color: #1a4338;
     color: #fff !important;
 }
+
+
+/*clases home sinbanem*/
+.servicios{
+    background-color:#FDF5F5;   
+}
+.row-servicios{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.row-servicios a{
+    text-decoration: none;
+    color: #000000;
+}
+.card-otroServicio{
+    width: 297px;
+    height: 149px;
+    border-radius: 20px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.card-otroServicio p {
+    font-weight: bold;
+}
+
+.img{
+    width: 120px;
+    height: 120px;
+}
