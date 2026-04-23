@@ -543,7 +543,7 @@
   }
 
   .detalle-media,
-  .detalle-resumen,
+  .detalle-sinopsis,
   .detalle-card,
   .detalle-card-wide {
     
@@ -597,6 +597,18 @@
     position: relative;
   }
 
+  .detalle-resumen h1{
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 32px;
+    color: #000;
+
+  }
+
+  .detalle-sinopsis{
+    padding: 10px;
+  }
+
   .detalle-badge {
     position: absolute;
     right: 16px;
@@ -628,6 +640,7 @@
     width: 100%;
     margin: 10px 0 18px;
     opacity: .35;
+    background-color: #a48138;
   }
 
   .detalle-meta-grid {
@@ -691,6 +704,7 @@
     max-width: 340px;
     margin-bottom: 15px;
     opacity: .35;
+    background: #a48138;
   }
 
   .detalle-grid-bottom {
@@ -781,10 +795,6 @@
     color: #f28c2f;
   }
 
-  .theme-largometraje .detalle-divider,
-  .theme-largometraje .detalle-linea {
-    background: #f28c2f;
-  }
 
   .theme-largometraje .detalle-tag,
   .theme-largometraje .detalle-btn--outline {
@@ -808,10 +818,6 @@
     color: #e53958;
   }
 
-  .theme-cortometraje .detalle-divider,
-  .theme-cortometraje .detalle-linea {
-    background: #e53958;
-  }
 
   .theme-cortometraje .detalle-tag,
   .theme-cortometraje .detalle-btn--outline {
@@ -835,10 +841,6 @@
     color: #0f8b6d;
   }
 
-  .theme-miniserie .detalle-divider,
-  .theme-miniserie .detalle-linea {
-    background: #0f8b6d;
-  }
 
   .theme-miniserie .detalle-tag,
   .theme-miniserie .detalle-btn--outline {
@@ -862,10 +864,6 @@
     color: #7b1b42;
   }
 
-  .theme-default .detalle-divider,
-  .theme-default .detalle-linea {
-    background: #7b1b42;
-  }
 
   .theme-default .detalle-tag,
   .theme-default .detalle-btn--outline {
