@@ -948,7 +948,25 @@
                     </div>
 
                     <div class="detalle-grid-bottom">
+
                       <div class="detalle-card">
+                        <h3>Sinopsis desde el Currículum Ampliado:</h3>
+                        <div class="detalle-texto">${escapeHtml(sinopsisAmpliado)}</div>
+                      </div>
+
+
+                     
+                      <div class="detalle-card">
+                        <h3>Sinopsis desde el Currículum Fundamental:</h3>
+                        <div class="detalle-texto">${escapeHtml(sinopsisCurriculum)}</div>
+
+                        <div class="detalle-actions">
+                          ${buildActionButtonDown(item.guia, 'Guía de cinedebate (PDF)', 'detalle-btn--outline', false)}
+                        </div>
+                      </div>
+
+
+                       <div class="detalle-card">
                         <div class="detalle-mini-title">Asignatura del Currículum Fundamental con la que se relaciona:</div>
                         <div class="detalle-tags">
                           <span class="detalle-tag">${escapeHtml(item.asignatura || 'No disponible')}</span>
@@ -966,19 +984,7 @@
                         </div>
                       </div>
 
-                      <div class="detalle-card">
-                        <h3>Sinopsis desde el Currículum Fundamental:</h3>
-                        <div class="detalle-texto">${escapeHtml(sinopsisCurriculum)}</div>
-
-                        <div class="detalle-actions">
-                          ${buildActionButtonDown(item.guia, 'Guía de cinedebate (PDF)', 'detalle-btn--outline', false)}
-                        </div>
-                      </div>
-
-                      <div class="detalle-card">
-                        <h3>Sinopsis desde el Currículum Ampliado:</h3>
-                        <div class="detalle-texto">${escapeHtml(sinopsisAmpliado)}</div>
-                      </div>
+                      
                     </div>
                   </div>
                 `;
