@@ -485,7 +485,7 @@
   }
 
   .tipo-serie .card-cine__tag {
-    background: #fde7cd;
+    background: #98b1f7;
     color: #202F57;
   }
 
@@ -861,7 +861,7 @@
   .theme-cortometraje .detalle-btn--outline {
     border-color: #e53958;
     color: #a61a35;
-    background: #ffe2e8;
+    background: #ea798e;
   }
 
   .theme-miniserie .detalle-badge,
@@ -909,7 +909,7 @@
   .theme-mediometraje .detalle-btn--outline {
     border-color: #EF82B3;
     color: #a53869;
-    background: #EF82B3;
+    background: #efc9da;
   }
 
 
@@ -933,9 +933,9 @@
 
   .theme-serie .detalle-tag,
   .theme-serie .detalle-btn--outline {
-    border-color: #202F57;
-    color: #0d1732;
-    background: #fde6d2;
+    border-color: #131825;
+    color: #223a7a;
+    background: #6781c9;
   }
 
 
