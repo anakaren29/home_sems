@@ -351,7 +351,19 @@
   }
 
   .tipo-cortometraje .card-cine__badge {
-    background: #e83d56;
+    background: #e62842;
+  }
+
+  .tipo-miniserie .card-cine__badge {
+    background: #0b8b66;
+  }
+
+  .tipo-mediometraje .card-cine__badge {
+    background: #EF82B3;
+  }
+
+    .tipo-serie .card-cine__badge {
+    background: #202F57;
   }
 
   .tipo-miniserie .card-cine__badge {
@@ -367,11 +379,19 @@
   }
 
   .tipo-cortometraje {
-    border-color: #2196f3;
+    border-color: #e62842;
   }
 
   .tipo-miniserie {
     border-color: #4caf50;
+  }
+
+  .tipo-mediometraje {
+    border-color: #EF82B3;
+  }
+
+  .tipo-serie {
+    border-color: #202F57;
   }
 
   .tipo-default {
@@ -459,6 +479,16 @@
     color: #06654b;
   }
 
+  .tipo-mediometraje .card-cine__tag {
+    background: #fde7cd;
+    color: #EF82B3;
+  }
+
+  .tipo-serie .card-cine__tag {
+    background: #fde7cd;
+    color: #202F57;
+  }
+
   .btn-ficha-cine {
     margin-top: auto;
     display: inline-block;
@@ -480,6 +510,14 @@
 
   .tipo-miniserie .btn-ficha-cine {
     background: #0b8b66;
+  }
+
+  .tipo-serie .btn-ficha-cine {
+    background: #202F57;
+  }
+
+    .tipo-mediometraje .btn-ficha-cine {
+    background: #EF82B3;
   }
 
   .tipo-default .btn-ficha-cine {
@@ -848,6 +886,59 @@
     color: #075b48;
     background: #def3ec;
   }
+
+
+
+  .theme-mediometraje .detalle-badge,
+  .theme-mediometraje .detalle-play,
+  .theme-mediometraje .detalle-btn:not(.detalle-btn--outline) {
+    background: #EF82B3;
+  }
+
+  .theme-mediometraje .detalle-back a,
+  .theme-mediometraje .detalle-subtitulo,
+  .theme-mediometraje .detalle-iconoDescripcion,
+  .theme-mediometraje .detalle-card-wide h3,
+  .theme-mediometraje .detalle-card h3,
+  .theme-mediometraje .detalle-mini-title {
+    color: #EF82B3;
+  }
+
+
+  .theme-mediometraje .detalle-tag,
+  .theme-mediometraje .detalle-btn--outline {
+    border-color: #EF82B3;
+    color: #a53869;
+    background: #EF82B3;
+  }
+
+
+
+
+  .theme-serie .detalle-badge,
+  .theme-serie .detalle-play,
+  .theme-serie .detalle-btn:not(.detalle-btn--outline) {
+    background: #202F57;
+  }
+
+  .theme-serie .detalle-back a,
+  .theme-serie .detalle-subtitulo,
+  .theme-serie .detalle-iconoDescripcion,
+  .theme-serie .detalle-card-wide h3,
+  .theme-serie .detalle-card h3,
+  .theme-serie .detalle-mini-title {
+    color: #202F57;
+  }
+
+
+  .theme-serie .detalle-tag,
+  .theme-serie .detalle-btn--outline {
+    border-color: #202F57;
+    color: #0d1732;
+    background: #fde6d2;
+  }
+
+
 
   .theme-default .detalle-badge,
   .theme-default .detalle-play,
