@@ -441,9 +441,11 @@
   }
 
   .card-cine__meta-title {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     margin-bottom: 3px;
+    font-weight: bold;
+    font-family: Noto Sans;
   }
 
   .card-cine__meta-value {
