@@ -990,6 +990,26 @@
   overflow: hidden;
 }
 
+@media (min-width: 992px){
+  .cine__back{
+    background-image: url('assets/cineBachillerato/BannerV2_micrositio_Cine_Bachillerato.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Tablet y mobile */
+@media (max-width: 991px){
+  .cine__back{
+    background-image: none;
+    padding: 30px 0;
+  }
+}
+
 .cine__row{
   display: flex;
   align-items: center;
