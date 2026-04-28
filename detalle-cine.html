@@ -1020,28 +1020,51 @@
                 detalleCineContainer.innerHTML = buildDetalle(item);
 
                 var shareBtn = document.getElementById('shareBtn');
+
                 if (shareBtn) {
                   shareBtn.addEventListener('click', function(e) {
                     e.preventDefault();
 
-                    if (navigator.share) {
-                      navigator.share({
-                        title: item.titulo || 'Cine en el Bachillerato Nacional',
-                        text: item.titulo || '',
-                        url: window.location.href
-                      }).catch(function(){});
+                    var currentUrl = window.location.href;
+
+                    if (navigator.clipboard && window.isSecureContext) {
+                      navigator.clipboard.writeText(currentUrl)
+                        .then(function() {
+                          alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
+                        })
+                        .catch(function(err) {
+                          console.error('Error al copiar: ', err);
+                          fallbackCopy(currentUrl);
+                        });
                     } else {
-                      navigator.clipboard.writeText(window.location.href).then(function() {
-                        alert('Liga copiada al portapapeles');
-                      }).catch(function() {
-                        prompt('Copia esta liga:', window.location.href);
-                      });
+                      fallbackCopy(currentUrl);
                     }
                   });
+                }
+
+                function fallbackCopy(text) {
+                  var input = document.createElement('textarea');
+                  input.value = text;
+                  input.style.position = 'fixed';
+                  input.style.left = '-9999px';
+                  document.body.appendChild(input);
+                  input.select();
+
+                  try {
+                    document.execCommand('copy');
+                    alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
+                  } catch (err) {
+                    console.error('Error al copiar: ', err);
+                    alert("No se pudo copiar automáticamente. El enlace es: " + text);
+                  }
+
+                  document.body.removeChild(input);
                 }
               }
 
               initDetalle();
+
+
              
           });
 
