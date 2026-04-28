@@ -992,7 +992,7 @@
 
 @media (min-width: 992px){
   .cine__back{
-    background-image: url('assets/cineBachillerato/BannerV2_micrositio_Cine_Bachillerato.jpg');
+    background-image: url('/assets/cineBachillerato/BannerV2_micrositio_Cine_Bachillerato.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
