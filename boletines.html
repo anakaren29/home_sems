@@ -55,6 +55,30 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+
+    <style>
+      .typing {
+  margin-top: 8px;
+}
+
+.typing span {
+  height: 8px;
+  width: 8px;
+  background: #b38e5d;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 3px;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing span:nth-child(1) { animation-delay: -0.32s; }
+.typing span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+    </style>
   </head>
   <body>
     <header>
@@ -80,7 +104,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                   aria-expanded="false">Comunicación<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="https://www.gob.mx/sep/archivo/prensa">Boletines</a></li>
+                  <li><a href="boletines.html">Boletines</a></li>
                   <li><a href="https://www.youtube.com/@MediaSuperiorMxSEP">Multimedia</a></li>
                   <li><a href="http://168.255.153.170/es_mx/sems/boletines_informativos_sems">Histórico</a></li>
                 </ul>
@@ -258,6 +282,13 @@
       </div>
 
       <div class="container">
+
+        <div class="typing text-center " id="typing-busqueda">
+          Buscando
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <section>
           <div class="row" style="margin:40px 0; display: flex; flex-wrap: wrap;" id="contenedor-boletines">
 
@@ -621,6 +652,7 @@
 
 
         function consultaBoletines() {
+          $('#typing-busqueda').show();
           $.ajax({
             url: 'https://educacionmediasuperior.sep.gob.mx/adminSEMS/filtro-boletin.php',
             type: 'POST',
@@ -632,8 +664,9 @@
             },
             success: function (response) {
               const successBoletin = JSON.parse(response);
-              console.log(successBoletin.items);
-              console.log(successBoletin.status);
+              //console.log(successBoletin.items);
+              //console.log(successBoletin.status);
+              $('#typing-busqueda').hide();
 
               if (successBoletin && successBoletin.items.length > 0) {
                 // Limpiar contenedor antes de dibujar
@@ -677,6 +710,7 @@
               }
             },
             error: function (xhr, status, error) {
+              $('#typing-busqueda').hide();
               $('#contenedor-boletines').html('Error al cargar boletín: ' + error);
             }
           });
