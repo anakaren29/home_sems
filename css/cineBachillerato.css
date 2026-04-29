@@ -1047,7 +1047,8 @@
 }
 
 .btn__cine-banner{
-  display: inline-block;
+  display: grid;
+  align-items: center;
   min-width: 170px;
   padding: 10px 22px;
   border-radius: 30px;
