@@ -103,8 +103,18 @@
       media="all"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/sinbanem.css" />
+    <link rel="stylesheet" href="./css/mochilaHerramientas.css">
+    
+    <link rel="preload" as="image" href="assets/mochila/img-mochila/MOCHILA_2.png">
+    <link rel="preload" as="image" href="assets/mochila/img-mochila/MOCHILA_3.png">
+    <link rel="preload" as="image" href="assets/mochila/img-mochila/MOCHILA_4.png">
+
+
   </head>
   <body>
     <header>
@@ -163,7 +173,7 @@
                   >Programas Presupuestarios</a
                 >
               </li>
-              <li><a href="index.html#tu-voz-nos-importa">Contacto</a></li>
+              <li><a href="#tu-voz-nos-importa">Contacto</a></li>
             </ul>
           </div>
         </div>
@@ -175,581 +185,229 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="1" ></li>
+          <li data-target="#myCarousel" data-slide-to="2" ></li>
+          <li data-target="#myCarousel" data-slide-to="3" ></li>
+          <li data-target="#myCarousel" data-slide-to="4" ></li>
+
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner carousel-vertical-fix">
           <!-- Slide 0-->
           <div class="item active">
-            <picture>
-              <source
-                media="(max-width: 499px)"
-                srcset="
-                  assets/carousel/mobil/Banners_Bienvenida_Bachiller-02.jpg
-                "
-              />
-              <source
-                media="(min-width: 500px)"
-                srcset="assets/carousel/Banners_Bienvenida_Bachiller-01.jpg"
-              />
-              <img
-                src="assets/carousel/Banners_Bienvenida_Bachiller-01.jpg"
-                alt="Bachillerato_Nacional"
-                style="width: 100%"
-              />
-            </picture>
-          </div>
-
-          <!-- Slide 1 -->
-          <div class="item">
-            <a href="/modeloeducativo2025.html" target="_blank">
+            <a href="https://www.gob.mx/sep" target="_blank" rel="noopener noreferrer">
               <picture>
-                <source
-                  media="(max-width: 499px)"
-                  srcset="assets/carousel/mobil/mccvertical.jpeg"
-                />
-                <source
-                  media="(min-width: 500px)"
-                  srcset="assets/carousel/bannerMCCEMS.png"
-                />
-                <img
-                  src="assets/carousel/bannerMCCEMS.png"
-                  alt="Marco curricular 2025"
-                  style="width: 100%"
-                />
+                <source media="(max-width: 499px)" srcset="assets/SINBANEM/BANNER_MOBILE.jpg"/>
+                <source media="(min-width: 500px)"  srcset="assets/SINBANEM/BANNER_WEB_1980X430.jpg"/>
+                <img src="assets/SINBANEM/BANNER_WEB_1980X430.jpg" alt="Banner" style="width: 100%" />
               </picture>
             </a>
           </div>
+
+          <div class="item">
+            <a href="https://www.youtube.com/watch?v=-2lhvqCTcgk" target="_blank" rel="noopener noreferrer">
+              <picture>
+                <source media="(max-width: 499px)" srcset="assets/SINBANEM/banner_vert.png"/>
+                <source media="(min-width: 500px)"  srcset="assets/SINBANEM/imgi_3_Banner-TLE (1).jpg"/>
+                <img src="assets/SINBANEM/imgi_3_Banner-TLE (1).jpg" alt="Banner" style="width: 100%" />
+              </picture>
+            </a>
+          </div>
+
+
+          <div class="item">
+            <a href="https://educacionmediasuperior.sep.gob.mx/SEMS_en_cifras" target="_blank" rel="noopener noreferrer">
+              <picture>
+                <source media="(max-width: 499px)" srcset="assets/SINBANEM/imgi_23_SEMSencifrasV.png"/>
+                <source media="(min-width: 500px)"  srcset="assets/SINBANEM/imgi_4_sems_cifras.jpg"/>
+                <img src="assets/SINBANEM/imgi_4_sems_cifras.jpg" alt="Banner" style="width: 100%" />
+              </picture>
+            </a>
+          </div>
+
+
+          <div class="item">
+            <a href="https://www.whatsapp.com/channel/0029VaJFnWCCcW4x0YsjVR3j" target="_blank" rel="noopener noreferrer">
+              <picture>
+              <source media="(max-width: 499px)" srcset="assets/SINBANEM/imgi_24_BANNER_WHATS500x700-01.png"/>
+              <source media="(min-width: 500px)"  srcset="assets/SINBANEM/imgi_5_P1.png"/>
+              <img src="assets/SINBANEM/imgi_5_P1.png" alt="Banner" style="width: 100%" />
+            </picture>
+            </a>
+            
+          </div>
+
+          
+
         </div>
+        <div style="background-color: var(--bg-primary); height: 20px"></div>
 
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
+          <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
           <span class="sr-only">Previous</span>
         </a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
+          <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
           <span class="sr-only">Next</span>
         </a>
       </div>
-
-      <section style="background-color: var(--bg-secondary)">
-        <div class="container text-center">
-          <h2>¿Quiénes somos?</h2>
-          <div class="row vertical-wrapper">
-            <div class="col-xs-12 col-sm-6">
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="300px"
-                  style="border-radius: 20px"
-                  src="https://www.youtube.com/embed/xjoIdV5eLeQ?autoplay=1&mute=1&loop=1&playlist=xjoIdV5eLeQ"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="
-                    autoplay;
-                    encrypted-media;
-                    accelerometer;
-                    clipboard-write;
-                    gyroscope;
-                    picture-in-picture;
-                    web-share;
-                  "
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                >
-                </iframe>
-              </div>
-            </div>
-            <div class="vertical-line hidden-xs"></div>
-            <div class="col-xs-12 col-sm-6 d-flex-col text-left">
-              <div></div>
-              <p style="text-align: justify">
-                SINBANEM es el Sistema Nacional de Bachillerato de la Nueva
-                Escuela Mexicana. Es una iniciativa de la SEP que busca
-                articular y fortalecer la Educación Media Superior en todo el
-                país, alineándola con los principios de la Nueva Escuela
-                Mexicana. Su objetivo es garantizar una formación integral, con
-                enfoque humanista, inclusivo, intercultural y con sentido
-                social, asegurando calidad, equidad y pertinencia entre los
-                distintos subsistemas de bachillerato. También promueve la
-                mejora continua, el desarrollo de trayectorias educativas
-                flexibles y la vinculación con la comunidad y el contexto
-                social.
-              </p>
-              <div class="btn-description">
-                <a href="./quienesSomos-SINBANEM.html" target="_self">
-                  <button type="button" class="btn boton">
-                    Conocer más
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <br>
-
-      <section class="carousel-wrapper">
-            <button class="carousel-btn left" onclick="scrollCarrusel(-1)">
-              &#10094;
-            </button>
-
-            <div class="carrusel-scroll horizontal" id="carrusel-horizontal">
-              <div class="card-noticia card-carrusel">
-                <div class="container-description">
-                  <div class="imagen-carrusel">
-                    <img
-                      style="width: 100%; border-radius: 10px"
-                      src="assets/boletines/boletin385.jpeg"
-                      alt="boltin1"
-                      class="img-responsive"
-                    />
-                  </div>
-                  <div class="divisor-carrusel"></div>
-                  <div class="carrusel-description">
-                    <p class="fecha">25 de noviembre de 2025</p>
-                    <h4 class="titulo-noticia">
-                    Boletín 385. SEP lanza campaña nacional “Lo virtual también es real” para prevenir la violencia digital en el Bachillerato: Mario Delgado
-                    </h4>
-                    <p class="descripcion">
-                      Contará con 16 días de activismo y acciones para 4.6 millones de estudiantes en todos los subsistemas públicos del Bachillerato Nacional para prevenir la violencia digital, informó
-                    </p>
-                    <div class="buton-leer-mas">
-                      <a href="https://educacionmediasuperior.sep.gob.mx/boletin.html?folio=37" target="_blank" class="carrusel-a">
-                        <button type="button" class="btn boton">
-                        Leer<span
-                          class="glyphicon glyphicon-chevron-right"
-                        ></span>
-                      </a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-noticia card-carrusel">
-                <div class="container-description">
-                  <div class="imagen-carrusel">
-                    <img
-                      style="width: 100%; border-radius: 10px"
-                      src="assets/boletines/boletin387.jpeg"
-                      alt="boletin 387"
-                      class="img-responsive"
-                    />
-                  </div>
-                  <div class="divisor-carrusel"></div>
-                  <div class="carrusel-description">
-                    <p class="fecha">26 de noviembre de 2025</p>
-                    <h4 class="titulo-noticia">
-                      Boletín 387. Mario Delgado convocó en Reunión Nacional de Directores de Colegios Estatales del Conalep fortalecer el Bachillerato Nacional
-                    </h4>
-                    <p class="descripcion">
-                      Con la transformación educativa impulsada por la Presidenta Claudia Sheinbaum Pardo, no se está formando mano de obra, sino ciudadanos y ciudadanas comprometidos con su comunidad, destacó
-                    </p>
-                    <div class="buton-leer-mas">
-                      <a href="https://educacionmediasuperior.sep.gob.mx/boletin.html?folio=38" target="_blank" class="carrusel-a">
-                        <button type="button" class="btn boton">
-                        Leer<span
-                          class="glyphicon glyphicon-chevron-right"
-                        ></span>
-                      </a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-noticia card-carrusel">
-                <div class="container-description">
-                  <div class="imagen-carrusel">
-                    <img
-                      style="width: 100%; border-radius: 10px"
-                      src="assets/boletines/boletin 397.jpeg"
-                      alt="BTED"
-                      class="img-responsive"
-                    />
-                  </div>
-                  <div class="divisor-carrusel"></div>
-                  <div class="carrusel-description">
-                    <p class="fecha">01 de diciembre de 2025</p>
-                    <h4 class="titulo-noticia">
-                     Boletín 397. IA, robótica, semiconductores, ciberseguridad y desarrollo sostenible, nuevas carreras para el bachillerato: Mario Delgado
-                    </h4>
-                    <p class="descripcion">
-                      Es una actualización histórica del Bachillerato nacional, afirma el titular de la SEP
-                    </p>
-                    <div class="buton-leer-mas">
-                      <a href="https://educacionmediasuperior.sep.gob.mx/boletin.html?folio=39" target="_blank" class="carrusel-a">
-                        <button type="button" class="btn boton">
-                        Leer<span
-                          class="glyphicon glyphicon-chevron-right"
-                        ></span>
-                      </a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-noticia card-carrusel">
-                <div class="container-description">
-                  <div class="imagen-carrusel">
-                    <img
-                      style="width: 100%; border-radius: 10px"
-                      src="assets/boletines/missing-photo.jpg"
-                      alt="BTED"
-                      class="img-responsive"
-                    />
-                  </div>
-                  <div class="divisor-carrusel"></div>
-                  <div class="carrusel-description">
-                    <p class="fecha">03 de diciembre de 2025</p>
-                    <h4 class="titulo-noticia">
-                      Boletín 399. De 2.5 a 4.2 millones: la Beca Universal Benito Juárez amplía su cobertura en bachillerato, informa Mario Delgado
-                    </h4>
-                    <p class="descripcion">
-                      El titular de la SEP anuncia inversión histórica de más de 33 mil 920 millones en la Beca Universal Benito Juárez
-                    </p>
-                    <div class="buton-leer-mas">
-                      <a href="https://educacionmediasuperior.sep.gob.mx/boletin.html?folio=40" target="_blank" class="carrusel-a">
-                        <button type="button" class="btn boton">
-                        Leer<span
-                          class="glyphicon glyphicon-chevron-right"
-                        ></span>
-                      </a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="card-noticia card-carrusel">
-                <div class="container-description">
-                  <div class="imagen-carrusel">
-                    <img
-                      style="width: 100%; border-radius: 10px"
-                      src="assets/boletines/comunicado-32.jpeg"
-                      alt="BTED"
-                      class="img-responsive"
-                    />
-                  </div>
-                  <div class="divisor-carrusel"></div>
-                  <div class="carrusel-description">
-                    <p class="fecha">06 de diciembre de 2025</p>
-                    <h4 class="titulo-noticia">
-                      Comunicado conjunto 32. SEP y Salud lanzan la Estrategia Nacional por una Menstruación Digna en la Educación Básica y Media Superior
-                    </h4>
-                    <p class="descripcion">
-                      La iniciativa está dirigida a más de 6.2 millones de estudiantes de secundaria de 42 mil 975 planteles y para más de 5.4 millones jóvenes de bachillerato de 21 mil 175 centros escolares
-                    </p>
-                    <div class="buton-leer-mas">
-                      <a href="https://educacionmediasuperior.sep.gob.mx/boletin.html?folio=41" target="_blank" class="carrusel-a">
-                        <button type="button" class="btn boton">
-                        Leer<span
-                          class="glyphicon glyphicon-chevron-right"
-                        ></span>
-                      </a>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-
-            </div>
-
-            <button class="carousel-btn right" onclick="scrollCarrusel(1)">
-              &#10095;
-            </button>
-      </section>
-      <br>
-
-      <section class="servicios">
-        <div class="container ">
-          <h3 class="text-center">Otros servicios</h3>
-          <div class="row text-center row-servicios" >
-            <a href="/SINBANEM-Comisiones.html">
-              <div class="col-md-4 card-otroServicio">
-              <div class="img">
-                <img class="img-responsive" src="/assets/SINBANEM/iconos/firma.png" alt="comisiones">
-              </div>
-              <p>Comisiones</p>
-            </div>
-            </a>
-            
-            <a href="">
-              <div class="col-md-4 card-otroServicio">
-              <div class="img">
-                <img class="img-responsive" src="/assets/SINBANEM/iconos/firma.png" alt="firmas">
-              </div>
-              <p>Firma de Actas</p>
-            </div>
-            </a>
-            
-            <a href="/SINBANEM-Sesiones.html">
-              <div class="col-md-4 card-otroServicio">
-              <div class="img">
-                <img class="img-responsive" src="/assets/SINBANEM/iconos/sesiones.png" alt="sesiones">
-              </div>
-              <p>Sesiones</p>
-            </div>
-            </a>
-            
-          </div>
-        </div>
-        <br><br>
-      </section>
-      <br>
-
-      <section>
-        <div class="container">
-          <h3 class="text-center">Documentos recientes</h3>
-          
-          <div
-          style="
-            background-color: #FDF5F5;
-            border-radius: 30px;
-            padding: 10px;
-            margin-left: 5%;
-            margin-right: 5%;
-          "
-        >
-          <div class="carousel-wrapper" style="margin-bottom: 20px">
-            
-            <button
-              class="carousel-btn left flechas"
-              style="top: 56%"
-              onclick="scrollCarruselDocumentos(-1)"
-            >
-              &#10094;
-            </button>
-            <div
-              class="carrusel-scroll horizontal"
-              id="carrusel-horizontal-documentos"
-              style="gap:229px;"
-            >
-              <div class="col-md-4">
-                <a href="https://dof.gob.mx/nota_detalle.php?codigo=5765757&fecha=15/08/2025#gsc.tab=0" target="_blank" class="card-acuerdos card-info card-documentos a-card" style="width: 497px; height: 215px;">
-                  <div class="img-box">
-                    <img
-                      src="assets/iconos-quienes-somos/doc_cifras.png"
-                      alt="Documento"
-                    />
-                  </div>
-                  <p
-                    class="card-info-margin"
-                    style="text-align: left; color: #ffffff"
-                  >
-                    ACUERDO número 21/08/25 por el que se establece y regula el
-                    Marco Curricular Común de la Educación Media Superior.
-                  </p>
-                  <div
-                    class="card-info-span span-documentos">
-                    <span class="hover-text">Ver más</span>
-                    <svg
-                      class="svg-hover"
-                      width="15"
-                      height="26"
-                      viewBox="0 0 15 26"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"
-                      />
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-md-4">
-                <a style="width: 497px; height: 215px;" href="https://dof.gob.mx/nota_detalle.php?codigo=5765758&fecha=15/08/2025#gsc.tab=0" target="_blank" class="card-acuerdos card-info card-documentos a-card">
-                  <div class="img-box">
-                    <img
-                      src="assets/iconos-quienes-somos/doc_cifras.png"
-                      alt="Documento"
-                    />
-                  </div>
-                  <p
-                    class="card-info-margin"
-                    style="text-align: left; color: #ffffff"
-                  >
-                    ACUERDO número 22/08/25 por el que se establece y regula el
-                    Sistema Nacional de Bachillerato de la Nueva Escuela
-                    Mexicana (SINBANEM).
-                  </p>
-                  <div
-                    class="card-info-span span-documentos"
-                  >
-                    <span class="hover-text">Ver más</span>
-                    <svg
-                      class="svg-hover"
-                      width="15"
-                      height="26"
-                      viewBox="0 0 15 26"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"
-                      />
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-md-4">
-                <a style="width: 497px; height: 215px;" href="assets/quienes-somos/Plan de Trabajo EMS 2024-2030.pdf" target="_blank"
-                  class="card-acuerdos card-info card-documentos a-card"
-                >
-                  <div class="img-box">
-                    <img
-                      src="assets/iconos-quienes-somos/doc_cifras.png"
-                      alt="Documento"
-                    />
-                  </div>
-                  <p
-                    class="card-info-margin"
-                    style="text-align: left; color: #ffffff"
-                  >
-                    Plan de Trabajo para la Educacion Media Superior 2024-2030
-                  </p>
-                  <div
-                    class="card-info-span span-documentos">
-                    <span class="hover-text">Ver más</span>
-                    <svg
-                      class="svg-hover"
-                      width="15"
-                      height="26"
-                      viewBox="0 0 15 26"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"
-                      />
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-md-4">
-                <a style="width: 497px; height: 215px;" href="https://dof.gob.mx/nota_detalle.php?codigo=5765758&fecha=15/08/2025#gsc.tab=0" target="_blank"
-                  class="card-acuerdos card-info card-documentos a-card"
-                >
-                  <div class="img-box">
-                    <img
-                      src="assets/iconos-quienes-somos/doc_cifras.png"
-                      alt="Documento"
-                    />
-                  </div>
-                  <p
-                    class="card-info-margin"
-                    style="text-align: left; color: #ffffff"
-                  >
-                    ACUERDO número 22/08/25 por el que se establece y regula el Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana (SINBANEM).
-                  </p>
-                  <div
-                    class="card-info-span span-documentos"
-                    
-                  >
-                    <span class="hover-text">Ver más</span>
-                    <svg
-                      class="svg-hover"
-                      width="15"
-                      height="26"
-                      viewBox="0 0 15 26"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"
-                      />
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-             <div class="col-md-4">
-                <a style="width: 497px; height: 215px;" href="assets/quienes-somos/Nuevo Modelo de Ingreso a la Educación Media Superior en la ZMVM.PDF"
-                    target="_blank"
-                  class="card-acuerdos card-info card-documentos a-card"
-                >
-                  <div class="img-box">
-                    <img
-                      src="assets/iconos-quienes-somos/doc_cifras.png"
-                      alt="Documento"
-                    />
-                  </div>
-                  <p
-                    class="card-info-margin"
-                    style="text-align: left; color: #ffffff"
-                  >
-                    Nuevo Modelo de Ingreso a la Educación Media Superior en la ZMVM - Informe de resultados de la asignación 2025
-                  </p>
-                  <div
-                    class="card-info-span span-documentos"
-                  >
-                    <span class="hover-text">Ver más</span>
-                    <svg
-                      class="svg-hover"
-                      width="15"
-                      height="26"
-                      viewBox="0 0 15 26"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"
-                      />
-                    </svg>
-                  </div>
-                </a>
-              </div>
+      <br />
 
 
-            </div>
-            <button
-              class="carousel-btn right flechas"
-              style="top: 56%"
-              onclick="scrollCarruselDocumentos(1)"
-            >
-              &#10095;
-            </button>
-          </div>
-        </div>
-        </div>
-      </section>
-      <br><br>
 
-      <section>
-        <div style="background-color: var(--bg-secondary)" >
+      <div class="container">
+<h2>¿Qué es el SINBANEM?</h2>
+<br>
+<p>
+    El Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana (SINBANEM), es el sistema de 
+    educación media superior de carácter nacional a que refiere la Ley General de Educación (LGE), 
+    el cual tiene como objeto contribuir a que todas las personas y, en particular, adolescentes y 
+    jóvenes, puedan ejercer en condiciones de 
+    igualdad, equidad, universalidad e inclusión su derecho a la Educación Media Superior (EMS).
+</p>
+<br>
+<a href="assets/SINBANEM/a22_08_25.pdf" target="_blank">Acuerdo Secretarial            22/08/25 </a> <br>
+<br>
+<div class="panel-group ficha-collapse" id="accordion">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"><a data-parent="#accordion" data-toggle="collapse" href="#panel-01" aria-expanded="true" aria-controls="panel-01">          Objetivos específicos del SINBANEM         </a></h3>
+<button type="button" class="collpase-button collapsed" data-parent="#accordion" data-toggle="collapse" href="#panel-01"></button></div>
+<div class="panel-collapse collapse" id="panel-01">
+<div class="panel-body">
+<h5>El SINBANEM, con respeto al federalismo, la autonomía universitaria, la libertad académica y la diversidad educativa, tiene como objetivos específicos los siguientes:</h5>
+<ol type="I" class="lista-romana">
+  <li>
+    Contribuir a generar políticas y acciones conjuntas para el acceso universal a la EMS como un derecho que permite a las personas una formación integral, crítica, científica y humanística para la vida, así como para la integración e inclusión comunitaria;
+  </li><br>
+  <li>
+    Fortalecer la implementación de los principios de la Nueva Escuela Mexicana y el Marco Curricular Común de la Educación Media Superior (MCCEMS);
+  </li><br>
+  <li>
+    Establecer el reconocimiento de dos opciones formativas de Bachillerato Nacional que derivan del MCCEMS, con independencia de la denominación de la Instituciones de Educación Media Superior del Sistema Educativo Nacional: <br>
+    <ol type="a"> <br>
+      <li>Bachillerato General,</li><br>
+      <li>Bachillerato Tecnológico</li>
+    </ol>
+    <p>Estas dos opciones formativas podrán impartirse a través de las modalidades educativas reconocidas en la LGE y en el MCCEMS;</p>
+  </li><br>
+  <li>
+    Garantizar el reconocimiento de los estudios de EMS a través de un único Certificado de Terminación de Estudios de Bachillerato Nacional independientemente de la diversidad de modalidades y opciones educativas que ofrece este tipo educativo;
+  </li><br>
+  <li>
+    Garantizar el reconocimiento de las distintas formaciones laborales en la EMS a través del Certificado de Formación Profesional alineado al Marco Nacional de Cualificaciones;
+  </li><br>
+  <li>
+    Promover el tránsito libre y accesible de estudiantes dentro del Sistema Educativo Nacional a través de la simplificación de la equivalencia y revalidación de sus estudios; y
+  </li><br>
+  <li>
+    Promover la simplificación y homologación de normas de control escolar que regulen los procesos de inscripción, reinscripción, acreditación, regularización, certificación y/o titulación.
+  </li><br>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="container" style="margin-top: 45px; margin-bottom: 25px;">
+<div class="row">
+<div class="col-md-2">&nbsp;</div>
+<div class="col-md-3" style="margin:0 25px;"><center><a href="/ecems.html" target="_blank"><img class="img-responsive" src="assets/SINBANEM/imgi_6_LogoECEMS.png" alt="ECEMS"></a></center></div>
+<div class="col-md-3" style="margin:0 25px;"><center><a href="/ceppems.html" target="_blank"><img class="img-responsive" src="assets/SINBANEM/imgi_7_LogoCEPPEMS.png" alt="CEPPEMS"></a></center></div>
+<div class="col-md-4">&nbsp;</div>
+</div>
+</div>
+
+
+<div class="container">
+<h3 class="text-center">Difusión</h3>
+<br>
+<br>
+<br>
+<div class="row">
+<div class="col-sm-2">&nbsp;</div>
+<div class="col-sm-4"><img src="assets/SINBANEM/imgi_8_sinems1.png" class="img-responsive" alt="">
+<p>Lunes, 13 / 02 / 2023</p>
+<h4>Primera Sesión Ordinaria del Consejo del SINBANEM</h4>
+<p><a href="https://www.gob.mx/sep/es/articulos/boletin-24-promueve-la-educacion-media-superior-una-cultura-de-paz-y-vida-saludable-leticia-ramirez-amaya?idiom=es" target="_blank">continuar leyendo</a></p>
+</div>
+<div class="col-sm-4"><img src="assets/SINBANEM/imgi_9_2dasinems.jpg" class="img-responsive" alt="">
+<p>Viernes, 19 / 05 / 2023</p>
+<h4>Segunda Sesión Ordinaria del Consejo del SINBANEM</h4>
+<p><a href="https://www.gob.mx/sep/es/articulos/boletin-116-avanzan-sistemas-de-educacion-media-superior-en-la-implementacion-de-la-nueva-escuela-mexicana-sep?idiom=es" target="_blank">continuar leyendo</a></p>
+</div>
+<div class="col-sm-2">&nbsp;</div>
+</div>
+<div class="row">
+<div class="col-sm-2">&nbsp;</div>
+<div class="col-sm-4"><img src="assets/SINBANEM/imgi_10_sinems3.png" class="img-responsive" alt="">
+<p>Viernes, 2 / 06 / 2023</p>
+<h4>Primera Sesión Extraordinaria Virtual del Consejo del SINBANEM</h4>
+<p><a href="">continuar leyendo</a></p>
+</div>
+<div class="col-sm-4"><img src="assets/SINBANEM/imgi_11_3ra SINEMS IPN 2(2).jpg" class="img-responsive" alt="">
+<p>Viernes, 08 / 09 / 2023</p>
+<h4>Tercera Sesión                        Ordinaria del Consejo                        del SINBANEM</h4>
+<p><a href="https://www.gob.mx/sep/es/articulos/boletin-188-sep-destaca-recuperacion-de-matricula-y-eficiencia-terminal-en-educacion-media-superior?idiom=es" target="_blank">continuar leyendo</a></p>
+</div>
+<div class="col-sm-2">&nbsp;</div>
+</div>
+</div>
+
+
+
+
+<div class="container">
+<h3 class="text-center">Multimedia</h3>
+<div class="row">
+<div class="col-md-6">
+<div style="position:relative; width:100%; max-width:800px;"><a href="https://www.youtube.com/embed/K7m1x84XkZ4?si=6XAnuK44V39zO_U5&amp;start=4" target="_blank"> <!-- Enlace al video --> <img src="assets/SINBANEM/1er video SINEMS imagen.png" alt="Vista previa del video" style="width: 100%; max-height: 100%; object-fit: cover; cursor: pointer;">
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"><img src="https://static.vecteezy.com/system/resources/previews/018/930/575/original/youtube-logo-youtube-icon-transparent-free-png.png" alt="Play icon" style="width: 80px; height: 80px;"></div>
+</a> <br>
+<br>
+<span>Video Primera Sesión del SINBANEM</span></div>
+</div>
+<div class="col-md-6">
+<div style="position: relative; width: 100%; max-width: 800px;"><a href="https://www.youtube.com/embed/qTbUu20QbFg?si=F2wssmbha74QftUy&amp;start=2" target="_blank"> <!-- Enlace al video --> <img src="assets/SINBANEM/portadatytb(3).png" alt="Vista previa del video" style="width: 100%; max-height: 100%; object-fit: cover; cursor: pointer;">
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"><img src="https://static.vecteezy.com/system/resources/previews/018/930/575/original/youtube-logo-youtube-icon-transparent-free-png.png" alt="Play icon" style="width: 80px; height: 80px;"></div>
+</a> <br>
+<br>
+<span>Video Segunda Sesión del SINBANEM</span></div>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+   
+
+
+
+      
+
+      <br /><br /> 
+      <div style="background-color: var(--bg-secondary)" >
           <div  class="container" >
             <h2>Tu voz nos importa</h2>
             <div class="row vertical-wrapper-voz voz-movil">
                 <div class="col-md-8 col-sm-12" style="display: flex; flex-direction: column; padding: 20px; margin: 0 auto;">
                   <div class="info-item">
-                    <div class="img-servicios">
+                    <div>
                       <img src="assets/tu-voz-nos-importa/correo.png" alt="" />
                     </div>
                     <div class="voz-correo">
                       <strong style="color: var(--text-primary);">Correo:</strong>
                     </div>
                     <div>
-                      <p><a href="mailto:contacto.sinbanem@sems.gob.mx">contacto.sinbanem@sems.gob.mx</a></p>
+                      <p><a href="mailto:atencion.sems@sems.gob.mx">atencion.sems@sems.gob.mx</a></p>
                     </div>
                   </div>
                 
@@ -788,21 +446,26 @@
                   ></iframe>
                 </div>
             </div>
-            
+            <div class="text-center">
+                <a href="https://contacto.sep.gob.mx/" target="_blank">
+                  <button style="margin-bottom: 20px;" type="button" class="btn boton">
+                   Ingresa petición <span class="glyphicon glyphicon-chevron-right"></span></button>
+                </a>
+            </div>
           </div>
        </div>
-      </section>
 
-
-      
-      
-          
     </main>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+
   </body>
 </html>
