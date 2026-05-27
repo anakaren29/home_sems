@@ -235,7 +235,7 @@
             </div>
 
             <div class="pt-20">
-              <button class="btn btn-compartir-cm" id="btnCompartir">
+              <button class="btn btn-compartir-cm" id="btnCompartir" >
                 Compartir <i class="glyphicon glyphicon-share" style="margin-left:5px;"></i>
               </button>
             </div>
@@ -282,8 +282,8 @@
                 "relacionados": "2,3",
                 "file_ordenDia": "orden del día-01.pdf",
                 "file_presentacion": "Presentación final-01.pptx",
-                "file_acta": "",
-                "file_minuta": "",
+                "file_acta": "Presentación final-01.pptx",
+                "file_minuta": "Presentación final-01.pptx",
                 "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
               },
               {
@@ -360,7 +360,7 @@
               if (url) {
                 $btn.attr('href', url).attr('target', '_blank').show();
               } else {
-                $btn.hide();
+                $btn.attr('disabled', true).show();
               }
             }
 
