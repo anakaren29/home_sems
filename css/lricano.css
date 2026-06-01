@@ -1530,7 +1530,7 @@ color: var(--text-secondary);
     .card-bachiller .col-sm-5:nth-of-type(2) > p::after {
         content: "";
         display: block;
-        background-image: url('../assets/bachiller/bachiller04/BACHILLER\ 04\ PORTADA.jpg.jpeg');
+        background-image: url('../assets/bachiller/bachiller05/BACHILLER\ 05\ PORTADA.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
