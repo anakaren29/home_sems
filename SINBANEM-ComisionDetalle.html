@@ -265,78 +265,27 @@
           $(document).ready(function () {
 
               var jsonData = [
-              {
-                "id": 1,
-                "titulo": "Titulo 1",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "objetivo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets/SINBANEM/comisiones/comision.png",
-                "estatus": "publico",
-                "integrantes": "integrante uno, integrante dos, integrante tres",
-                "ayo": 2026
-              },
-              {
-                "id": 2,
-                "titulo": "Titulo 2",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "objetivo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets/SINBANEM/comisiones/comision.png",
-                "estatus": "publico",
-                "integrantes": "integrante uno, integrante dos, integrante tres",
-                "ayo": 2026
-              },
-              {
-                "id": 3,
-                "titulo": "Titulo 3",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "objetivo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets/SINBANEM/comisiones/comision.png",
-                "estatus": "publico",
-                "integrantes": "integrante uno, integrante dos",
-                "ayo": 2026
-              },
-              {
-                "id": 4,
-                "titulo": "Titulo 4",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "objetivo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets/SINBANEM/comisiones/comision.png",
-                "estatus": "publico",
-                "integrantes": "integrante uno, integrante dos, integrante tres",
-                "ayo": 2026
-              },
-              {
-                "id": 5,
-                "titulo": "Titulo 5",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "objetivo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets/SINBANEM/comisiones/comision.png",
-                "estatus": "publico",
-                "integrantes": "integrante uno, integrante dos",
-                "ayo": 2026
-              },
-              {
-                "id": 6,
-                "titulo": "Titulo 6",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "objetivo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets/SINBANEM/comisiones/comision.png",
-                "estatus": "publico",
-                "integrantes": "integrante uno, integrante dos, integrante tres",
-                "ayo": 2025
-              },
-              {
-                "id": 7,
-                "titulo": "Titulo 7",
-                "descripcion_corta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                "objetivo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "archivo": "assets/SINBANEM/comisiones/comision.png",
-                "estatus": "publico",
-                "integrantes": "integrante uno, integrante dos",
-                "ayo": 2025
-              },
-
-            ];
+  {
+    "id": "1",
+    "titulo": "Comisión de Trabajo sobre Reglas y Lineamientos de Registro Escolar y Portabilidad de Estudios",
+    "descripcion_corta": "Garantizar la permanencia en el sistema escolar de Educación Media Superior, la portabilidad de los estudios, la continuidad de las trayectorias escolares y prevenir la desafiliación",
+    "objetivo": "",
+    "archivo": "assets/SINBANEM/comisiones/comision.png",
+    "estatus": "publico",
+    "integrantes": "Presidenta del SINBANEM, Subsecretario de Educación Media Superior del Estado de México, Subsecretario de Educación Media Superior del Estado de Jalisco, Directora de Educación Media Superior y Superior en el Estado de Tlaxcala, Subsecretaria de Educación Media Superior y Superior del Estado de Guerrero, Subsecretario de Educación Media Superior y Superior del Estado de Hidalgo, Coordinadora de Educación Media Superior y Formación para el Trabajo en el Estado de Querétaro y Subsecretaria de Educación Ciencia, Tecnología e Innovación de la Ciudad de México. ",
+    "ayo": "2025-2026"
+  },
+  {
+    "id": "2",
+    "titulo": "Comisión de Trabajo sobre Indicadores Educativos",
+    "descripcion_corta": "Revisar los indicadores de Educación Media Superior",
+    "objetivo": "",
+    "archivo": "assets/SINBANEM/comisiones/comision.png",
+    "estatus": "publico",
+    "integrantes": "Presidente del SINBANEM, Subsecretaria de Educación Media Superior del Estado de Nuevo León, Subsecretario de Educación Media Superior del Estado de México, Subsecretario de Educación Media Superior del Estado de Jalisco y Subsecretario de Educación Media Superior del Estado de Oaxaca",
+    "ayo": "2025-2026"
+  }
+];
 
               function getParam(name) {
                 var params = new URLSearchParams(window.location.search);
