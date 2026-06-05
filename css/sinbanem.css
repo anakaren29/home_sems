@@ -1491,9 +1491,9 @@
   }
 
   @media (max-width: 991px) {
-    .sesion-img-box {
+    /*.sesion-img-box {
       height: 220px;
-    }
+    }*/
 
     .sesion-descripcion-corta {
       min-height: auto;
@@ -1501,9 +1501,9 @@
   }
 
   @media (max-width: 767px) {
-    .sesion-img-box {
+   /* .sesion-img-box {
       height: 180px;
-    }
+    }*/
 
     .sesion-body {
       padding: 16px 18px 18px;
