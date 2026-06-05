@@ -135,7 +135,7 @@
               <li><a href="ceppems.html">CEPPEMS</a></li>
               <li><a href="./SINBANEM_historico.html">Histórico</a></li>
 
-              <li><a href="SINBANEM_modificado.html#tu-voz-nos-importa-SINBANEM">Contacto</a></li>
+              <li><a href="/SINBANEM.html#contacto">Contacto</a></li>
             </ul>
           </div>
         </div>
@@ -168,9 +168,7 @@
       <section class="container campanas">
         <div class="row">
           <div class="col-xs-12 col-md-7">
-            <div class="media-sesion">
-              <img id="posterSesion" src="" alt="" class="img-responsive" style="width:100%; border-radius: 24px;">
-            </div>
+            <div class="media-sesion" id="mediaSesion"></div>
           </div>
 
           <div class="col-xs-12 pt-20 col-md-5">
@@ -244,63 +242,67 @@
             var baseMateriales = '/assets/SINBANEM/sesiones/materiales/';
 
             var jsonData = [
-                          {
-                "id": "1",
-                "titulo": "Primera Sesión Extraordinaria 2026",
-                "descripcion_corta": "Primera Sesión Extraordinaria2026 del Consejo del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana.",
-                "descripcion": "Primera Sesión Extraordinaria de 2026 del Consejo Nacional del SINBANEM. En la sesión se votó el calendario de sesiones ordinarias del 2026 y se mencionaron los temasque serán prioritarios para este año.",
-                "fecha": "Viernes 16 de enero de 2026",
-                "modalidad": "Virtual",
-                "relacionados": "2,3",
-                "file_ordenDia": "orden del día-01.pdf",
-                "file_presentacion": "Presentación final-01.pptx",
-                "file_acta": "Presentación final-01.pptx",
-                "file_minuta": "Presentación final-01.pptx",
-                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
-              },
-              {
-                "id": "2",
-                "titulo": "Primera Sesión Ordinaria 2026",
-                "descripcion_corta": "Primera Sesión Ordinaria 2026del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana",
-                "descripcion": "Primera Sesión Ordinaria de 2026.\nEn la Sesión se votó un punto de acuerdo para añadir a los Lineamientos Generales la obligatoriedad de firmar las actas de las sesiones de manera electrónica. \nSe presentaron avances de la Comisión de Trabajo sobre Reglas y Lineamientos de Registro Escolar y Portabilidad de Estudios. \nSe presentó un Informe de Indicadores de cobertura, \nasí como el tema de los Juegos escolares y Política de copas de futbol estudiantil. ",
-                "fecha": "Jueves 22 de enero de 2026",
-                "modalidad": "Virtual",
-                "relacionados": "1,3",
-                "file_ordenDia": "",
-                "file_presentacion": "",
-                "file_acta": "",
-                "file_minuta": "",
-                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
-              },
-              {
-                "id": "3",
-                "titulo": "Segunda Sesión Extraordinaria 2026",
-                "descripcion_corta": "Segunda Sesión Extraordinaria de 2026 del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana.",
-                "descripcion": "Segunda Sesión Extraordinaria 2026.En esta sesión se presentó el Informe de avances de los Mecanismos de ingreso a la Educación Media Superior (Acuerdo SINBANEM_04_17/10/25) y se votó un Punto de Acuerdo para la implementación obligatoria de procesos estatales centralizados de registro y asignación a la Educación Media Superior, orientados a garantizar el acceso universal y el ejercicio efectivo del derecho a la educación. ",
-                "fecha": "Jueves 29 de enero de 2026",
-                "modalidad": "Presencial",
-                "relacionados": "1,2",
-                "file_ordenDia": "",
-                "file_presentacion": "",
-                "file_acta": "",
-                "file_minuta": "",
-                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
-              },
-              {
-                "id": "4",
-                "titulo": "Segunda Sesión Ordinaria 2026",
-                "descripcion_corta": "Segunda Sesión Ordinaria 2026 del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana",
-                "descripcion": "",
-                "fecha": "Jueves 26 de marzo de 2026",
-                "modalidad": "Virtual",
-                "relacionados": "",
-                "file_ordenDia": "",
-                "file_presentacion": "",
-                "file_acta": "",
-                "file_minuta": "",
-                "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg"
-              }
-            ];
+  {
+    "id": "1",
+    "titulo": "Primera Sesión Extraordinaria 2026 ",
+    "descripcion_corta": "Primera Sesión Extraordinaria 2026 del Consejo del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana.  ",
+    "descripcion": "Primera Sesión Extraordinaria de 2026 del Consejo Nacional del SINBANEM. En la sesión se votó el calendario de sesiones ordinarias del 2026 y se mencionaron los temas que serán prioritarios para este año. ",
+    "fecha": "Viernes 16 de enero de 2026 ",
+    "modalidad": "Virtual ",
+    "relacionados": "2,3",
+    "file_ordenDia": "/assets/SINBANEM/sesiones/Primera sesion Extraordinaria/orden del día.pdf",
+    "file_presentacion": "/assets/SINBANEM/sesiones/Primera sesion Extraordinaria/Presentación final.pptx",
+    "file_acta": "",
+    "file_minuta": "",
+    "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg",
+    "video": "https://www.youtube.com/watch?v=GPTaNp_PJqA"
+  },
+  {
+    "id": "2",
+    "titulo": "Primera Sesión Ordinaria 2026 ",
+    "descripcion_corta": "Primera Sesión Ordinaria 2026 del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana ",
+    "descripcion": "Primera Sesión Ordinaria de 2026.  \nEn la Sesión se votó un punto de acuerdo para añadir a los Lineamientos Generales la obligatoriedad de firmar las actas de las sesiones de manera electrónica. \nSe presentaron avances de la Comisión de Trabajo sobre Reglas y Lineamientos de Registro Escolar y Portabilidad de Estudios. \nSe presentó un Informe de Indicadores de cobertura, \nasí como el tema de los Juegos escolares y Política de copas de futbol estudiantil. ",
+    "fecha": "Jueves 22 de enero de 2026 ",
+    "modalidad": "Virtual ",
+    "relacionados": "1,3",
+    "file_ordenDia": "",
+    "file_presentacion": "",
+    "file_acta": "",
+    "file_minuta": "",
+    "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg",
+    "video": "https://www.youtube.com/watch?v=3o0224HnWjs"
+  },
+  {
+    "id": "3",
+    "titulo": "Segunda Sesión Extraordinaria 2026 ",
+    "descripcion_corta": "Segunda Sesión Extraordinaria de 2026 del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana. ",
+    "descripcion": "Segunda Sesión Extraordinaria 2026.  En esta sesión se presentó el Informe de avances de los Mecanismos de ingreso a la Educación Media Superior (Acuerdo SINBANEM_04_17/10/25) y se votó un Punto de Acuerdo para la implementación obligatoria de procesos estatales centralizados de registro y asignación a la Educación Media Superior, orientados a garantizar el acceso universal y el ejercicio efectivo del derecho a la educación. ",
+    "fecha": "Jueves 29 de enero de 2026 ",
+    "modalidad": "Virtual ",
+    "relacionados": "1,2",
+    "file_ordenDia": "",
+    "file_presentacion": "",
+    "file_acta": "",
+    "file_minuta": "",
+    "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg",
+    "video": "https://www.youtube.com/watch?v=Rhwo86ttEqU"
+  },
+  {
+    "id": "4",
+    "titulo": "Segunda Sesión Ordinaria 2026 ",
+    "descripcion_corta": "Segunda Sesión Ordinaria 2026 del Consejo Nacional del Sistema Nacional de Bachillerato de la Nueva Escuela Mexicana  ",
+    "descripcion": "Segunda Sesión Ordinaria 2026. Se abordaron temas prioritarios para la Educación Media Superior, tales como: los resultados preliminares de la Campaña “Te extrañamos en el salón 2026-01”, los avances de la Comisión de Reglas de Registro Escolar, el avance en el Mecanismo de Ingreso a la Educación Media Superior en el país, la Certificación de formaciones técnicas y tecnológicas por universidades, así como el Plan de Infraestructura para la ampliación de la cobertura en Educación Media Superior 2026. Bachillerato Nacional Margarita Maza y dentro de los Asuntos Generales se comentaron las generalidades de la \"Próxima jornada de discusión del MCCEMS” que se llevará a cabo en todos los planteles del Bachillerato Nacional de todo el país el 24 de abril del año en curso. Además se recordó el compromiso de compartir información en la Plataforma Única de Identidad (PUI).",
+    "fecha": "Jueves 26 de marzo de 2026 ",
+    "modalidad": "Virtual ",
+    "relacionados": "2,3",
+    "file_ordenDia": "/assets/SINBANEM/sesiones/Segunda sesion ordinaria/Presentación final.pdf",
+    "file_presentacion": "/assets/SINBANEM/sesiones/Segunda sesion ordinaria/Orden del día 2a Ord.pdf",
+    "file_acta": "",
+    "file_minuta": "/assets/SINBANEM/sesiones/Segunda sesion ordinaria/Minuta 2a Ord 260326.pdf",
+    "file_poster": "/assets/SINBANEM/sesiones/poster_sesiones.jpg",
+    "video": "https://youtu.be/EcZaDYTxgj8?si=ed6mjwYDENXrDLWj"
+  }
+];
 
             function obtenerIdURL() {
               var params = new URLSearchParams(window.location.search);
@@ -344,6 +346,68 @@
               return 'glyphicon-map-marker';
             }
 
+
+            function obtenerYoutubeEmbed(url) {
+
+  if (!url) return '';
+
+  // youtube.com/watch?v=
+  var match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/);
+
+  if (!match || !match[1]) {
+    return '';
+  }
+
+  return 'https://www.youtube.com/embed/' + match[1];
+}
+
+function renderMediaSesion(item) {
+
+  var container = $('#mediaSesion');
+  container.empty();
+
+  // Si existe video
+  if (item.video && item.video.trim() !== '') {
+
+    var embedUrl = obtenerYoutubeEmbed(item.video);
+
+    if (embedUrl) {
+
+      container.html(`
+        <iframe
+          src="${embedUrl}"
+          title="${item.titulo || ''}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      `);
+
+      return;
+    }
+  }
+
+  // Si no hay video usar poster
+  if (item.file_poster) {
+
+    container.html(`
+      <img
+        src="${item.file_poster}"
+        alt="${item.titulo || ''}"
+        class="img-responsive">
+    `);
+
+  } else {
+
+    container.html(`
+      <div class="media-vacia">
+        Sin imagen disponible
+      </div>
+    `);
+
+  }
+}
+
+
             function renderDetalle(item) {
               if (!item) {
                 $('#titulo').text('Sesión no encontrada');
@@ -362,11 +426,12 @@
                 .removeClass('glyphicon-headphones glyphicon-user glyphicon-map-marker')
                 .addClass(iconoModalidad(item.modalidad));
 
-              if (item.file_poster) {
+              /*if (item.file_poster) {
                 $('#posterSesion').attr('src', item.file_poster).attr('alt', item.titulo || 'Sesión');
               } else {
                 $('#posterSesion').hide();
-              }
+              }*/
+             renderMediaSesion(item);
 
               configurarBotonArchivo('#btnOrdenDia', item.file_ordenDia);
               configurarBotonArchivo('#btnPresentacion', item.file_presentacion);
