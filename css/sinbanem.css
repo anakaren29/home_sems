@@ -2201,3 +2201,7 @@
   }
 
 }
+
+.imagen-gris {
+    filter: grayscale(100%);
+}
