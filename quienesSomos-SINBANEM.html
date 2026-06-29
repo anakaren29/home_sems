@@ -203,6 +203,117 @@
           <p>IX. Emitir su programa de trabajo y calendario de sesiones ordinarias, y
           <p>X. Las demás que acuerden sus integrantes, en el ámbito de sus respectivas competencias, para dar cabal cumplimiento a los propósitos del SINBANEM, así como a las tareas del Consejo Nacional.</p>
         </div>
+        <br>
+        <!-- section Directorio -->
+        <div
+          class="row card-oferta-educativa"
+          style="box-shadow: rgba(0, 0, 0, 0.12)"
+        >
+          <h2>Directorio</h2>
+          <div class="col-sm-10 col-md-8 mx-auto">
+            <div class="card-directorio">
+              <div class="">
+                <img
+                  alt="Foto de Tania Rodríguez Mora"
+                  class=""
+                  src="assets/iconos-quienes-somos/Dra.Tania.jpeg"
+                  style="max-width: 120px; height: auto"
+                />
+              </div>
+              <div>
+                <h4>Subsecretaria de Educación Media Superior</h4>
+                <p>Dra. Tania Rodríguez Mora</p>
+                <div class="btn-description">
+                  <button type="button" class="btn boton" id="abrirModal">
+                    Conocer más
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div id="miModal" class="modal modal-subse">
+            <div class="modal-contenido ">
+              <span class="cerrar">&times;</span>
+              <h3 style="text-align: center;">Subsecretaria de Educación Media Superior</h3>
+              <div class="modal-body">
+                
+                <div class="modal-img columna-subse">
+                  <img
+                    alt="Foto de Tania Rodríguez Mora"
+                    src="assets/iconos-quienes-somos/Dra.Tania.jpeg"
+                  />
+                  <p>Dra. Tania Rodríguez Mora</p>
+                </div>
+                <div class="modal-texto">
+                  
+                  <p>
+                    Tania Rodríguez Mora es Socióloga egresada de la Universidad
+                    Nacional Autónoma de México (UNAM) y Doctora en Ciencia
+                    Social con especialidad en Sociología por el Colegio de
+                    México. Además cuenta con un Diplomado Internacional de
+                    Actualización Profesional “Feminismo, desarrollo y
+                    democracia” por el Centro de Investigaciones
+                    Interdisciplinarias en Ciencias y Humanidades en la UNAM.<br />
+                    De junio del 2020 a junio 2024 ocupó el cargo de Rectora de
+                    la Universidad Autónoma de la Ciudad de México (UACM), Casa
+                    de Estudios de la que es fundadora y profesora-investigadora
+                    de tiempo completo de 2001-2020.
+                  </p>
+                  <p>
+                    De 2011 a 2013 fue Coordinadora del Colegio de Humanidades y
+                    Ciencias Sociales de la UACM, en donde tuvo a su cargo siete
+                    programas de licenciatura y dos posgrados; diseñó e
+                    implementó políticas institucionales de investigación, de
+                    nuevos proyectos académicos y presupuestales.
+                  </p>
+                  <p>
+                    Fue Coordinadora del Diplomado “Historia, pensamiento
+                    problemáticas contemporáneas de América Latina” en el
+                    CAMeNA, y es miembro del Consejo Académico del Archivo Marta
+                    y Gregorio Selser; así como miembro del Comité Editorial de
+                    Andamios y de la Revista Educación Superior (RESU) México,
+                    de la Asociación Nacional de Universidades e Instituciones
+                    de Educación Superior de la República Mexicana (ANUIES).
+                  </p>
+                  <p>
+                    Entre sus publicaciones destacan: “Contienda política y
+                    pacto de dominación: la trayectoria del partido dos
+                    trabalhadores y el cambio político en Brasil” en Brachet,
+                    Viviane/Uribe, Mónica. Estado y sociedad en América Latina:
+                    acercamientos relacionales. México: El Colegio de México;
+                    “Crisis política y ciclos de lucha en México. Notas para
+                    evaluar el proceso de democratización”. Memoria del XXX
+                    Congreso de la Asociación Latinoamericana de Sociología, San
+                    José, Costa Rica del 29 de noviembre al 04 de diciembre
+                    2015; y “La universidad y la memoria. El archivo Gregorio y
+                    Marta Selser en la UACM”. Colegio de Humanidades y Ciencias
+                    Sociales, UACM; entre otros.<br />
+                    A partir del 1 de octubre de 2024 se desempeña como
+                    Subsecretaria de Educación Media Superior en la Secretaría
+                    de Educación Pública.
+                  </p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <a
+                  href="assets/iconos-quienes-somos/curriculum_Dra Rodriguez.pdf"
+                  target="_self"
+                >
+                  <button type="button" class="btn boton">
+                    Imprimir
+                    <span class="icono-imp">
+                      <img
+                        src="assets/iconos-quienes-somos/roja impresora.png"
+                        alt="impresora"
+                    /></span>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -356,5 +467,25 @@
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="js/script.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/applications/cms/modal_global_cms.js"></script>
+
+    <script>
+      const modal = document.getElementById("miModal");
+      const btnAbrir = document.getElementById("abrirModal");
+      const btnCerrar = document.querySelector(".cerrar");
+
+      btnAbrir.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      btnCerrar.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
   </body>
 </html>
