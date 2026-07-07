@@ -1362,6 +1362,9 @@
         </div>
       </div>
 
+
+
+<a href="JavaScript:void(0)" id="clicOnLoad" class="open-modal" data-img="assets/carousel/Comunicado_06_07_2026-1_page-0001.jpg">muestra</a>
     
         
     </main>
@@ -1474,6 +1477,7 @@
   topBoletines();
 
       $(document).ready(function () {
+
         $('.open-modal').click(function (e) {
           e.preventDefault();
         
@@ -1497,7 +1501,18 @@
             $('#bannerModal').modal('hide');
           }
         });
+
+
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('clicOnLoad').click();
+            }, 300);
+        });
+
       });
+
+
+
       </script>
       
   </body>
