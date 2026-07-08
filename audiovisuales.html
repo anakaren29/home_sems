@@ -781,6 +781,7 @@
             }
 
             window.copiarUrl = function (url) {
+              //const enlace= "https://educacionmediasuperior.sep.gob.mx/"+encodeURI(url); 
               navigator.clipboard.writeText(url).then(function () {
                 alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
               }).catch(function (err) {

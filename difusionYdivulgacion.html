@@ -529,7 +529,8 @@
       // --- LÓGICA DEL MODAL ---
 
       window.copiarUrl = function (url) {
-        navigator.clipboard.writeText("https://educacionmediasuperior.sep.gob.mx/assets/mochila/Materialesdedifusion/"+url).then(function () {
+        const enlace= "https://educacionmediasuperior.sep.gob.mx/assets/mochila/Materialesdedifusion/"+encodeURIComponent(url); 
+        navigator.clipboard.writeText(enlace).then(function () {
           alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
         }).catch(function (err) {
           console.error('Error al copiar: ', err);
