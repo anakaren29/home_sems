@@ -790,6 +790,27 @@
               });
             };
 
+
+            window.copiarUrl = async function(url) {
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: 'Material audiovisual - SEMS',
+                            text: 'Consulta este material audiovisual.',
+                            url: url
+                        });
+                    } catch (err) {
+                        console.log('Compartir cancelado');
+                    }
+                } else {
+                    navigator.clipboard.writeText(url);
+                    alert("Tu navegador no soporta compartir. El enlace fue copiado al portapapeles.");
+                }
+
+            }
+
+
             // Usamos delegación de eventos porque los botones se generan dinámicamente
             //$('#resultsContainer').on('click', '.btn-abrir-modal', function () {
             $(document).on('click', '.btn-abrir-modal', function () {

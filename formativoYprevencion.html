@@ -588,15 +588,27 @@
               processData();
             });
 
-            window.copiarUrl = function (url) {
-              const enlace= "https://educacionmediasuperior.sep.gob.mx/"+encodeURI(url); 
-              navigator.clipboard.writeText(enlace).then(function () {
-                alert("¡Enlace copiado! Ya puedes pegarlo donde quieras.");
-              }).catch(function (err) {
-                console.error('Error al copiar: ', err);
-                alert("Tu navegador no soporta copiar automáticamente. El enlace es: " + url);
-              });
-            };
+            window.copiarUrl = async function(nombreArchivo) {
+
+                const url = "https://educacionmediasuperior.sep.gob.mx/" + encodeURI(nombreArchivo);
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: 'Material formativo - SEMS',
+                            text: 'Consulta este material formativo.',
+                            url: url
+                        });
+                    } catch (err) {
+                        console.log('Compartir cancelado');
+                    }
+                } else {
+                    navigator.clipboard.writeText(url);
+                    alert("Tu navegador no soporta compartir. El enlace fue copiado al portapapeles.");
+                }
+
+            }
+
             // --- LÓGICA DEL MODAL ---
 
             // Usamos delegación de eventos porque los botones se generan dinámicamente
