@@ -3038,3 +3038,200 @@ h3{
   height: 250px;
   object-fit: contain;
 }
+
+/*CEPPEMS*/
+.hero-section {
+    width: 100%;
+    background-color: #FDF5F5;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px 15px;
+    gap: 30px;
+}
+
+.hero-text {
+    flex: 1 1 450px;
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    color: #691C32;
+    font-size: clamp(30px, 3.5vw, 42px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0 0 10px 0;
+}
+
+.hero-subtitle {
+    color: #333;
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+}
+
+.hero-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #D4A017;
+    border: none;
+    margin: 0 0 20px 0;
+}
+
+.hero-text h3 {
+    color: #691C32;
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.hero-description {
+    color: #333;
+    font-size: clamp(13px, 1.1vw, 15px);
+    line-height: 1.5;
+    margin: 0 0 25px 0;
+}
+
+.hero-btn {
+    background-color: #691C32;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-btn:hover {
+    background-color: #7d2440;
+    color: white;
+}
+
+.hero-image-wrap {
+    flex: 1 1 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+}
+
+/* ¿QUIÉNES SOMOS? */
+.quienes-section {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+.quienes-title {
+    color: #691C32;
+    font-weight: 800;
+    text-align: center;
+    font-size: clamp(28px, 3.5vw, 40px);
+    margin: 0 0 40px 0;
+}
+
+.quienes-row {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.quienes-logo-wrap {
+    flex: 0 0 260px;
+    display: flex;
+    justify-content: center;
+}
+
+.quienes-logo {
+    width: 200%;
+    max-width: 260px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.quienes-content {
+    flex: 1 1 400px;
+    min-width: 280px;
+}
+
+.quienes-text {
+    color: #333;
+    font-size: clamp(14px, 1.1vw, 16px);
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0 0 25px 0;
+}
+
+.quienes-btn {
+    background-color: #9F2241;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quienes-btn:hover {
+    background-color: #7d2440;
+    color: white;
+}
+
+
+@media (max-width: 767px) {
+    .quienes-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .quienes-logo-wrap {
+        flex: 0 0 auto;
+    }
+
+    .quienes-text {
+        text-align: left;
+    }
+}
+.quienes-divider-line {
+    flex: 0 0 1px;
+    width: 1px;
+    align-self: stretch;
+    background-color: #A48138;
+}
+
+
+@media (max-width: 767px) {
+    .quienes-divider-line {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .quienes-divider {
+        padding-right: 0;
+    }
+
+    .quienes-divider::after {
+        display: none;
+    }
+}
+
+/* CEPPEMS */
