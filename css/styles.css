@@ -48,7 +48,7 @@ h2{
   top: 0;
   bottom: 0;
   width: 1.2px;
-  background-color: var(--bg-separator);
+  background-color:#BC955C;
   left: 50.0000%; 
   z-index: 1;
 }
@@ -311,7 +311,7 @@ h2{
   top: 62px;
   bottom: 0;
   width: 1.2px;
-  background-color: var(--bg-separator);
+  background-color:#BC955C;
   left: 58%; 
   z-index: 1;
   height: 27vh;
@@ -3235,3 +3235,47 @@ h3{
 }
 
 /* CEPPEMS */
+
+
+/* nav bar */
+@media (min-width: 993px) {
+  .sub-navbar.navbar-fixed-top {
+    min-height: 80px !important;  
+  }
+  .sub-navbar .navbar-toggle {
+    display: none !important;
+  }
+  .sub-navbar .navbar-collapse {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+  .sub-navbar .navbar-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+  main {
+    margin-top: 58px;
+  }
+}
+
+/* nav bar responsivo */
+@media (max-width: 992px) {
+  .sub-navbar.navbar-fixed-top {
+    min-height: 80px !important;   
+  }
+  .sub-navbar .navbar-toggle {
+    display: block !important;
+  }
+  .sub-navbar .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .sub-navbar .navbar-collapse.collapse.in,
+  .sub-navbar .navbar-collapse.collapse.show {
+    display: block !important;
+  }
+  main {
+    margin-top: 50px;
+  }
+}
+
