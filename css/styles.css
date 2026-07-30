@@ -1229,6 +1229,113 @@ h2{
     width: 10em;
     box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
 }
+
+/* ===== Calendario Escolar 2026-2027 ===== */
+.hl-pink::after, .hl-khaki::after, .hl-cyan::after, .hl-teal::after,
+.hl-gray::after, .hl-green::after, .hl-magenta::after, .valoracion::after,
+.flag-ciclo-inicio::after, .flag-ciclo-fin::after, .flag-ciclo-inicio-outline::after,
+.flag-sem-inicio::after, .flag-sem-fin::after,
+.bd-diagnostico::after, .bd-recuperacion::after, .bd-registro::after {
+    padding: 0.5em;
+    width: 12em;
+    box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, .3);
+}
+
+.hl-pink { background-color: #eeafc1; color: #221f1f; }
+.hl-pink::after { content: "Formación docente al inicio del semestre 26-27/1 y 26-27/2"; width: 14em; }
+
+.hl-khaki { background-color: #9c7a34; color: #fff; }
+.hl-khaki::after { content: "Campaña \"Te extrañamos en el salón\""; }
+
+.hl-cyan { background-color: #45c7eb; color: #12333d; }
+.hl-cyan::after { content: "Planeación del ciclo escolar 26-27/1 y 26-27/2"; }
+
+.hl-teal { background-color: #165b50; color: #fff; }
+.hl-teal::after { content: "Evaluación del periodo escolar al término del semestre 26-27/1 y 26-27/2"; width: 14em; }
+
+.hl-gray { background-color: #bbbbbc; color: #221f1f; }
+.hl-gray::after { content: "Vacaciones"; width: 6.5em; left: -1.7em; }
+
+.hl-green { background-color: #93ce94; color: #123312; }
+.hl-green::after { content: "Jornada de concientización sobre la gravedad del abuso sexual y el maltrato en las adolescencias"; width: 14em; }
+
+.hl-magenta { background-color: #97234d; color: #fff; }
+.hl-magenta::after { content: "Jornadas de diálogo académico"; }
+
+.valoracion {
+    border: 2px solid #221f1f;
+    border-radius: 50%;
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0 auto;
+    padding-left: 0.3em;
+    background: #fff;
+}
+.valoracion::after { content: "Valoración de la implementación del MCCEMS"; width: 14em; }
+
+/* Inicio/fin del ciclo escolar: maroon-outlined pentagon flag, no fill (except day 31-ago,
+   which is simultaneously "inicio de semestre" so it also gets a khaki fill inside the
+   maroon ring). A plain CSS border can't follow a clip-path's diagonal edges, so the ring
+   is built from two stacked, clipped layers instead of a real `border`. */
+.pent-wrap { position: relative; z-index: 0; font-weight: bold; }
+.pent-wrap .pent-fill, .pent-wrap .pent-cut {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+.pent-wrap .pent-cut { inset: 2px; z-index: -1; }
+.pent-wrap.point-right .pent-fill, .pent-wrap.point-right .pent-cut {
+    clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
+}
+.pent-wrap.point-left .pent-fill, .pent-wrap.point-left .pent-cut {
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%);
+}
+
+.flag-ciclo-inicio-outline, .flag-ciclo-fin { color: #97234d; }
+.flag-ciclo-inicio-outline .pent-fill, .flag-ciclo-fin .pent-fill { background: #97234d; }
+.flag-ciclo-inicio-outline .pent-cut, .flag-ciclo-fin .pent-cut { background: #fff; }
+.flag-ciclo-inicio-outline::after { content: "Inicio del ciclo escolar 2026-2027"; }
+.flag-ciclo-fin::after { content: "Fin del ciclo escolar 2026-2027"; }
+
+.flag-ciclo-inicio { color: #fff; }
+.flag-ciclo-inicio .pent-fill { background: #97234d; }
+.flag-ciclo-inicio .pent-cut { background: #9c7a34; }
+.flag-ciclo-inicio::after { content: "Inicio del ciclo escolar 2026-2027 / Inicio de semestre"; width: 14em; }
+
+/* Inicio/término de semestre: solid khaki pentagon, no border -- a single clip-path layer
+   is enough since there's a fill (no border to worry about clipping away). */
+.flag-sem-inicio, .flag-sem-fin {
+    background-color: #9c7a34;
+    color: #fff;
+    font-weight: bold;
+}
+.flag-sem-inicio { clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%); }
+.flag-sem-inicio::after { content: "Inicio de semestre"; }
+.flag-sem-fin { clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%); }
+.flag-sem-fin::after { content: "Término de semestre"; }
+
+/* Diagnóstico / Recuperación / Registro: one continuous outline spanning the whole date
+   range (like the PDF), not a separate box per week. Each day only keeps the border sides
+   that aren't shared with an adjacent day in the same range (see nt/nb/nl/nr below). */
+.bd-diagnostico, .bd-recuperacion, .bd-registro {
+    padding: calc(0.5em - 2px);
+}
+.bd-diagnostico { border: 2px solid #9c7a34; }
+.bd-diagnostico::after { content: "Diagnóstico de los aprendizajes"; }
+.bd-recuperacion { border: 2px solid #97234d; }
+.bd-recuperacion::after { content: "Periodo de recuperación de aprendizaje, regularización y extraordinario"; width: 14em; }
+.bd-registro { border: 2px dashed #c8489a; }
+.bd-registro::after { content: "Periodo de registro al proceso de ingreso al Bachillerato Nacional"; width: 14em; }
+
+.nt { border-top: none; padding-top: 0.5em; }
+.nb { border-bottom: none; padding-bottom: 0.5em; }
+.nl { border-left: none; padding-left: 0.5em; }
+.nr { border-right: none; padding-right: 0.5em; }
+
+/* Dorados: días conmemorativos -- the day number itself prints in gold, no fill/border. */
+.dorado { color: #9c7a34; font-weight: bold; }
+.dorado-label { color: #9c7a34; }
+
 /****************Bachillerato nacional*****************/
 .mb-30{
   margin-bottom: 30px;
