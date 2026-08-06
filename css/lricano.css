@@ -331,7 +331,7 @@
 }
 
 .degradado-top img {
-    width: 40%;
+    width: auto;
     align-content: center;
     text-align: center;
 }
@@ -1139,6 +1139,91 @@
     border-radius: 25px;
     color: #9F2241;
     border: 1px solid #9F2241;
+}
+
+.leyenda-bachiller-n {
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+}
+
+.libros-bachiller-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.card-libro-bachiller {
+    text-align: center;
+}
+
+.img-libro-bachiller-container {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.img-libro-bachiller {
+    display: inline-block;
+    width: auto;
+    height: 300px;
+    align-content: center;
+    text-align: center;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.img-libro-bachiller-container:hover .img-libro-bachiller {
+    transform: scale(1.08);
+}
+
+.btn-leer-bachiller {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    padding: 5px 24px;
+    background-color: #ffffff;
+    border: 2px solid var(--bg-primary);
+    color: var(--bg-primary);
+    border-radius: 10px;
+    font-family: 'Patria', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+.btn-leer-bachiller:hover {
+    background-color: var(--bg-primary);
+    color: #ffffff;
+}
+
+.btn-leer-bachiller-gold {
+    border-color: var(--bg-separator);
+    color: var(--bg-separator);
+}
+
+.btn-leer-bachiller-gold:hover {
+    background-color: var(--bg-separator);
+    color: #ffffff;
+}
+
+.icono-libro-leer {
+    width: 18px;
+    height: 18px;
+}
+
+.icono-chevron-leer {
+    width: 16px;
+    height: 16px;
 }
 
 .titulo-bar-mm {
