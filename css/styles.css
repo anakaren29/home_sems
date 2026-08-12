@@ -32,7 +32,35 @@ h2{
     border: 1px solid transparent;
     background-color: #611232;
 }
+#bannerModal .modal-dialog {
+  width: 90%;
+  max-width: 1000px;
+}
 
+#bannerModal .modal-content {
+  width: 100%;
+}
+
+#modalCarousel,
+#modalCarousel .carousel-inner,
+#modalCarousel .item {
+  width: 100%;
+}
+
+#modalCarousel .item {
+  display: none;
+}
+
+#modalCarousel .item.active {
+  display: block;
+}
+
+.pdf-viewer {
+  display: block;
+  width: 100% !important;
+  height: 85vh !important;
+  border: none;
+}
 /* termina carrusel banner sems */
 
 /* QUIENES SOMOS */
