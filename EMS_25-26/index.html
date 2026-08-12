@@ -210,6 +210,73 @@
             box-shadow: 0 0 0 3px rgba(138, 36, 66, 0.2);
         }
         
+        /* Info overlay styling */
+        .info-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 10000;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow: auto;
+            display: none;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1.5px solid #eaeaea;
+            padding-bottom: 12px;
+        }
+        
+        .overlay-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-primario);
+            font-family: 'Patria', serif;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-primario);
+            padding: 0 8px;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--color-secundario);
+        }
+        
+        .overlay-content {
+            line-height: 1.6;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        
+        .overlay-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(3px);
+            z-index: 9999;
+            display: none;
+        }
+        
         /* Tablas responsivas */
         table {
             width: 100%;
@@ -259,6 +326,9 @@
             }
 
             /* Ocultar elementos solicitados en dispositivos móviles */
+            #exportarBtn {
+                display: none !important;
+            }
             #nota-geografica {
                 display: block !important;
                 font-size: 0.52rem !important;
@@ -372,6 +442,13 @@
         [tabindex]:focus {
             outline: 2px solid var(--color-primario);
             outline-offset: 2px;
+        }
+        
+        /* Animaciones suaves */
+        @media (prefers-reduced-motion: no-preference) {
+            .info-overlay, .overlay-backdrop {
+                transition: opacity 0.25s ease, transform 0.25s ease;
+            }
         }
         
         /* Indicador de carga */
@@ -730,14 +807,23 @@
                     <option value="Todos" selected>Todos los municipios</option>
                 </select>
 
+             <!--   <button id="exportarBtn"disabled style="display: inline-block; background-color: #999;" cursor: not-allowed;>Exportar Excel</button>
+                <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
+            </div>-->
+
+                 <button id="exportarBtn" style="display: inline-block; background-color: #1e5b4f;" onmouseover="this.style.backgroundColor='#15453c'" onmouseout="this.style.backgroundColor='#1e5b4f'">Exportar Excel</button> 
                 <button id="limpiarBtn" style="display: none;">Limpiar selección</button>
             </div> 
 
             <!-- Contadores Interactivos -->
             <div class="stats-container" style="margin-top: 24px; padding: 16px; background-color: #fcf6f7; border: 1px solid rgba(105, 28, 50, 0.15); border-radius: 8px; font-family: 'Noto Sans', sans-serif; box-shadow: 0 2px 8px rgba(105, 28, 50, 0.04);">
-                <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="stat-item" style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-weight: 600; color: #555; font-size: 0.85rem;">Planteles:</span>
                     <span id="contador-planteles" style="font-weight: 800; color: var(--color-primario); font-size: 1.2rem;">0</span>
+                </div>
+                <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 600; color: #555; font-size: 0.85rem;">Matrícula total:</span>
+                    <span id="contador-matricula" style="font-weight: 800; color: var(--color-primario); font-size: 1.2rem;">0</span>
                 </div>
                 <div id="nota-geografica" style="margin-top: 10px; border-top: 1px solid rgba(105, 28, 50, 0.1); padding-top: 8px; font-size: 0.58rem; color: #777; line-height: 1.35; font-weight: normal; text-align: justify;">
                     Nota: El número de planteles por entidad federativa pueden diferir de la estadística oficial, debido a que se consideró la ubicación geográfica, no la entidad de la que depende administrativamente en Campeche, Coahuila de Zaragoza, Ciudad de México, Durango, Guanajuato, Hidalgo, Jalisco, México, Nayarit, Puebla, San Luis Potosí, Quintana Roo y Veracruz de Ignacio de la Llave.
@@ -766,6 +852,15 @@
         </div>
     </div>
     
+    <!-- Superposición de información -->
+    <div class="overlay-backdrop" id="overlayBackdrop"></div>
+    <div class="info-overlay" id="infoOverlay">
+        <div class="overlay-header">
+            <div class="overlay-title" id="overlayTitle"></div>
+            <button class="close-btn" id="closeOverlayBtn">×</button>
+        </div>
+        <div class="overlay-content" id="overlayContent"></div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
@@ -778,6 +873,8 @@
     <script src="L.Control.Window.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+    <!-- SheetJS para exportación a Excel -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     
     <!-- Script principal -->
     <script>
@@ -825,6 +922,36 @@
                 "Veracruz de Ignacio de la Llave": [[17.2691, -98.2507], [22.3614, -93.5670]],
                 "Yucatán": [[19.5129, -90.3824], [21.5563, -87.4755]],
                 "Zacatecas": [[21.0000, -104.0000], [25.0000, -100.5000]]
+            },
+            // Información de subsistemas
+            infoSubsistemas: {
+                "DGETAyCM": "Dirección General de Educación Tecnológica Agropecuaria y Ciencias del Mar (DGETAyCM) | Matrícula escolarizada a nivel nacional: 211,410 estudiantes | Número de planteles escolarizados a nivel nacional: 407",
+                "DGETI": "Dirección General de Educación Tecnológica Industrial y de Servicios (DGETI) | Matrícula escolarizada a nivel nacional: 646,970 estudiantes | Número de planteles escolarizados a nivel nacional: 474",
+                "DGB": "Dirección General de Bachillerato (DGB) | Matrícula escolarizada a nivel nacional: 32,747 estudiantes | Número de planteles escolarizados a nivel nacional: 74",
+                "BTED": "Bachillerato Tecnológico de Educación y Promoción Deportiva (BTED) | Matrícula escolarizada a nivel nacional: 1,599 estudiantes | Número de planteles escolarizados a nivel nacional: 7",
+                "COLBACH (CDMX-EdoMéx)": "Colegio de Bachilleres (COLBACH - CDMX-EdoMéx)| Matrícula escolarizada a nivel nacional: 87,819 estudiantes | Número de planteles escolarizados a nivel nacional: 20",
+                "COBACH": "Colegio de Bachilleres (COBACH) | Matrícula escolarizada a nivel nacional: 695,459 estudiantes | Número de planteles escolarizados a nivel nacional: 1,213",
+                "CETI": "Centro de Enseñanza Técnica Industrial (CETI)| Matrícula escolarizada a nivel nacional: 4,851 estudiantes | Número de planteles escolarizados a nivel nacional: 3",
+                "CECyTE": "Colegio de Estudios Cientificos y Tecnológicos (CECyTE) | Matrícula escolarizada a nivel nacional: 397,126 estudiantes | Número de planteles escolarizados a nivel nacional: 679",
+                "CONALEP (CDMX-OAX)": "Colegio Nacional de Educación Profesional Técnica (CONALEP - CDMX-Oax) | Matrícula escolarizada a nivel nacional: 41,580 estudiantes | Número de planteles escolarizados a nivel nacional: 33",
+                "CONALEP (Estados)": "Colegio Nacional de Educación Profesional Técnica (CONALEP - Estados) | Matrícula escolarizada a nivel nacional: 279,854 estudiantes | Número de planteles escolarizados a nivel nacional: 280",
+                "EMSaD": "Educación Media Superior a Distancia (EMSaD) | Matrícula escolarizada a nivel nacional: 141,239 estudiantes | Número de planteles escolarizados a nivel nacional: 1,228",
+                "TBC": "Telebachillerato Comunitario (TBC) | Matrícula escolarizada a nivel nacional: 144,073 estudiantes | Número de planteles escolarizados a nivel nacional: 3,290",
+                "BIC": "Bachillerato Intercultural Bilingüe (BIC) | Matrícula escolarizada a nivel nacional: 2,398 estudiantes | Número de planteles escolarizados a nivel nacional: 14",
+                "Otros programas estatales": "Planteles de otras dependencias estatales | Matrícula escolarizada a nivel nacional: 778 estudiantes | Número de planteles escolarizados a nivel nacional: 4",
+                "INBAL": "Instituto Nacional de Bellas Artes y Literatura (INBAL) | Matrícula escolarizada a nivel nacional: 3,490 estudiantes | Número de planteles escolarizados a nivel nacional: 16",
+                "IPN": "Instituto Politécnico Nacional (IPN) | Matrícula escolarizada a nivel nacional: 73,260 estudiantes | Número de planteles escolarizados a nivel nacional: 21",
+                "Otras Secretarías": "Planteles de otras subsecretarías | Matrícula escolarizada a nivel nacional: 1,257 estudiantes | Número de planteles escolarizados a nivel nacional: 8",
+                "Bachillerato Estatal": "Bachilleratos Estatales | Matrícula escolarizada a nivel nacional: 644,841 estudiantes | Número de planteles escolarizados a nivel nacional: 2,017",
+                "Prepa Abierta Estatal": "Prepa Abierta Estatal | Matrícula escolarizada a nivel nacional: 1,230 estudiantes | Número de planteles escolarizados a nivel nacional: 1",
+                "IEMS": "Instituto de Educación Media Superior (IEMS) | Matrícula escolarizada a nivel nacional: 28,046 estudiantes | Número de planteles escolarizados a nivel nacional: 27",
+                "Bachillerato SECTEI": "Bachillerato de la Secretaría de Educación, Ciencia, Tecnología e Innovación CDMX | Matrícula escolarizada a nivel nacional: 176 estudiantes | Número de planteles escolarizados a nivel nacional: 1",
+                "Escuela Nacional para Ciegos": "Escuela Nacional para Ciegos | Matrícula escolarizada a nivel nacional: 49 estudiantes | Número de planteles escolarizados a nivel nacional: 1",
+                "IEBAS": "Instituto Estatal de Bellas Artes (IEBAS) | Matrícula escolarizada a nivel nacional: 1,604 estudiantes | Número de planteles escolarizados a nivel nacional: 29",
+                "CBDC": "Centro de Bachillerato de Desarrollo Comunitario (CBDC) | Matrícula escolarizada a nivel nacional: 5,806 estudiantes | Número de planteles escolarizados a nivel nacional: 48",
+                "Telebachillerato": "Telebachillerato | Matrícula escolarizada a nivel nacional: 171,128 estudiantes | Número de planteles escolarizados a nivel nacional: 2,091",
+                "Bachillerato de Universidades Públicas Autónomas": "Bachillerato de Universidades Públicas Autónomas | Matrícula escolarizada a nivel nacional: 700,177 estudiantes | Número de planteles escolarizados a nivel nacional: 607",
+                "Todos": "Educación Media Superior en la modalidad escolarizada de sostenimiento público del ciclo escolar 2025-2026 | Matrícula escolarizada a nivel nacional: 5,095,681 estudiantes | Número de planteles a nivel nacional: 12,593"
             }
         };
 
@@ -902,7 +1029,28 @@
             }
         }
 
+        // Función para mostrar información del subsistema
+        function mostrarInfoSubsistema() {
+            const subsistemaSelect = document.getElementById("Subsistema");
+            const subsistema = subsistemaSelect.value;
+            const info = config.infoSubsistemas[subsistema];
+            
+            if (info) {
+                const textTitle = subsistema === "Todos" ? "Educación Media Superior" : subsistemaSelect.options[subsistemaSelect.selectedIndex].text;
+                document.getElementById('overlayTitle').textContent = textTitle;
+                document.getElementById('overlayContent').textContent = info;
+                
+                document.getElementById('overlayBackdrop').style.display = 'block';
+                document.getElementById('infoOverlay').style.display = 'block';
+            }
+        }
 
+        // Función para cerrar el overlay
+        function closeInfoOverlay() {
+            document.getElementById('overlayBackdrop').style.display = 'none';
+            document.getElementById('infoOverlay').style.display = 'none';
+            document.getElementById('Subsistema').focus();
+        }
 
         function filtrarPlanteles() {
             const subsistemaSeleccionado = document.getElementById("Subsistema").value;
@@ -926,9 +1074,16 @@
             
             // Actualizar contadores interactivos
             const totalPlanteles = plantelesFiltrados.length;
+            const totalMatricula = plantelesFiltrados.reduce(function(sum, f) {
+                const val = String(f.properties.MatTot || '').replace(/,/g, '').trim();
+                const num = Number(val);
+                return sum + (isNaN(num) ? 0 : num);
+            }, 0);
             
             const ptSpan = document.getElementById('contador-planteles');
+            const matSpan = document.getElementById('contador-matricula');
             if (ptSpan) ptSpan.textContent = totalPlanteles.toLocaleString('es-MX');
+            if (matSpan) matSpan.textContent = totalMatricula.toLocaleString('es-MX');
         }
 
         // Función optimizada para resaltar municipios por entidad o por subsistema
@@ -1191,7 +1346,7 @@
             return subsistema !== "Todos" || entidad !== "Todos";
         }
 
-        // Función para actualizar los botones de acción (limpiar)
+        // Función para actualizar los botones de acción (limpiar y exportar)
         function actualizarBotonesAccion() {
             const activo = haySeleccionActiva();
             document.getElementById("limpiarBtn").style.display = activo ? "inline-block" : "none";
@@ -1217,7 +1372,92 @@
             zoomAEntidad("Todos");
         }
 
+        // Función para exportar los planteles filtrados a Excel
+        function exportarAExcel() {
+            if (typeof XLSX === 'undefined') {
+                alert("La librería de exportación aún no se ha cargado. Por favor, inténtelo de nuevo en unos segundos.");
+                return;
+            }
+            
+            const datosAExportar = [];
+            
+            plantelesLayer.eachLayer(function(layer) {
+                if (layer.feature && layer.feature.properties) {
+                    const props = layer.feature.properties;
+                    
+                    // Normalizar Fuente como se hace en la cédula
+                    const fuenteLimpia = props.Fuente || '';
+                    let tipoDisplay = fuenteLimpia;
+                    if (fuenteLimpia) {
+                        const clean = fuenteLimpia.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+                        if (clean.includes("general")) tipoDisplay = "Bachillerato General";
+                        else if (clean.includes("tecnol")) tipoDisplay = "Bachillerato Tecnológico";
+                    }
 
+                    // Formatear Oferta educativa con comas
+                    let ofertaDisplay = props.Oferta_edu || '';
+                    ofertaDisplay = ofertaDisplay.replace(/\|/g, ', ');
+
+                    // Función auxiliar para convertir valores a números de forma segura
+                    const aNumero = (val) => {
+                        if (val === null || val === undefined) return 0;
+                        const cleanVal = String(val).replace(/,/g, '').trim();
+                        const num = Number(cleanVal);
+                        return isNaN(num) ? 0 : num;
+                    };
+
+                    // Mapear exactamente las 16 columnas requeridas por el usuario con nombres completos (sin coordenadas)
+                    datosAExportar.push({
+                        "Fuente": tipoDisplay,
+                        "CCT": props.CCT || '',
+                        "Nombre": props.Nombre || '',
+                        "Subsistema": props.Subsistema || '',
+                        "CVE_ENT": aNumero(props.CVE_ENT),
+                        "Entidad": props.Entidad || '',
+                        "CVE_MUN": aNumero(props.CVE_MUN),
+                        "Municipio": props.Municipio || '',
+                        "Matrícula total": aNumero(props.MatTot),
+                        "Alumnado con discapacidad": aNumero(props.PCDTot),
+                        "Alumnado hablante de leng indígena": aNumero(props.HLITot),
+                        "Alumnado afromexicano": aNumero(props.AfroTot),
+                        "Nuevos ingresos": aNumero(props.NvoIngTot),
+                        "Egresados 24-25": aNumero(props.EgreTot),
+                        "Docentes": aNumero(props.DocTot),
+                        "Oferta educativa": ofertaDisplay
+                    });
+                }
+            });
+            
+            if (datosAExportar.length === 0) {
+                alert("No hay registros en la selección actual para exportar.");
+                return;
+            }
+            
+            // Crear el libro de trabajo (workbook) con SheetJS
+            const worksheet = XLSX.utils.json_to_sheet(datosAExportar);
+            
+            // Agregar celda con la fuente al final (dejando una fila en blanco)
+            const range = XLSX.utils.decode_range(worksheet['!ref']);
+            const nextRow = range.e.r + 2; 
+            const cellAddress = 'A' + (nextRow + 1); 
+            worksheet[cellAddress] = { t: 's', v: 'Fuente: Sistema de Estadísticas Continuas en Educación del formato 911, DGPPyEE-SEP 2026, ciclo escolar 2025-2026' };
+            range.e.r = nextRow; 
+            worksheet['!ref'] = XLSX.utils.encode_range(range);
+
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Planteles");
+            
+            // Nombre de archivo descriptivo
+            const subsistema = document.getElementById("Subsistema").value;
+            const entidad = document.getElementById("Entidad").value;
+            let filename = "Planteles_EMS_2025-2026";
+            if (subsistema !== "Todos") filename += "_" + subsistema;
+            if (entidad !== "Todos") filename += "_" + entidad.replace(/\s+/g, "_");
+            filename += ".xlsx";
+            
+            // Descargar archivo Excel
+            XLSX.writeFile(workbook, filename);
+        }
 
         // Función para popup de municipios
         function popupMunicipio(feature, layer) {
@@ -1359,6 +1599,13 @@
                     <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Tipo:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px; word-break: break-word; overflow-wrap: break-word;">${tipoDisplay}</td></tr>
                     <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Estado:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px; word-break: break-word; overflow-wrap: break-word;">${feature.properties.Entidad}</td></tr>
                     <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Municipio:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px; word-break: break-word; overflow-wrap: break-word;">${feature.properties.Municipio}</td></tr>
+                    <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Matrícula:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px;">${formatearNumero(feature.properties.MatTot)}</td></tr>
+                    <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Con discapacidad:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px;">${formatearNumero(feature.properties.PCDTot)}</td></tr>
+                    <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lengua indígena:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px;">${formatearNumero(feature.properties.HLITot)}</td></tr>
+                    <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Afromexicanos:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px;">${formatearNumero(feature.properties.AfroTot)}</td></tr>
+                    <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Nuevos ingresos:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px;">${formatearNumero(feature.properties.NvoIngTot)}</td></tr>
+                    <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Egresados 24-25:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px;">${formatearNumero(feature.properties.EgreTot)}</td></tr>
+                    <tr><td style="text-align:left; font-weight: 500; color: #555; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Docentes:</td><td style="text-align:left; font-size: 0.72rem; border-bottom: 1px solid #f3ebeb; padding: 4px 8px 4px 2px;">${formatearNumero(feature.properties.DocTot)}</td></tr>
                     ${ofertaContent}
                 </table>`;
             
@@ -1407,7 +1654,7 @@
 
             const win = L.control.window(document.body, {
     title: '¿Cómo navegar el mapa interactivo?',
-    content: 'El mapa interactivo muestra los planteles públicos del Bachillerato Nacional por subsistema y/o servicio educativo del ciclo escolar 2025-2026, también brinda información contextual por municipio. Se puede realizar una selección a través del subsistema y/o de entidad federativa, así como una búsqueda por Clave de Centro de Trabajo (CCT). Al seleccionar por entidad federativa solo se muestra los subsistemas presentes en la misma.',
+    content: 'El mapa interactivo muestra los planteles públicos del Bachillerato Nacional por subsistema y/o servicio educativo del ciclo escolar 2025-2026 con información estadística, también brinda información contextual por municipio. Se puede realizar una selección a través del subsistema y/o de entidad federativa, así como una búsqueda por Clave de Centro de Trabajo (CCT). Al seleccionar por entidad federativa solo se muestra los subsistemas presentes en la misma.',
     position: 'center',
     modal: true // Forzar el comportamiento de modal centrado en la pantalla
 }).show();
@@ -1598,6 +1845,9 @@
                 });
                 
                 document.getElementById('limpiarBtn').addEventListener('click', limpiarSeleccion);
+                document.getElementById('exportarBtn').addEventListener('click', exportarAExcel);
+                document.getElementById('closeOverlayBtn').addEventListener('click', closeInfoOverlay);
+                document.getElementById('overlayBackdrop').addEventListener('click', closeInfoOverlay);
                 
                 // Inicializar contadores en la carga inicial
                 filtrarPlanteles();
@@ -1622,13 +1872,13 @@
             {
                 elemento: '#sidebar',
                 titulo: 'Filtros y estadísticas',
-                texto: 'En este panel puedes seleccionar el subsistema, la entidad federativa y el municipio. Los contadores interactivos se actualizarán automáticamente para mostrar el total de planteles públicos correspondiente a la selección realizada.',
+                texto: 'En este panel puedes seleccionar el subsistema, la entidad federativa y el municipio. Los contadores interactivos se actualizarán automáticamente para mostrar el total de planteles públicos y la matrícula activa correspondiente a la selección realizada. También puedes exportar la información seleccionada en un archivo de Excel haciendo clic en el botón “Exportar Excel".',
                 posicion: 'right'
             },
             {
                 elemento: '#map',
                 titulo: 'Interactividad con el mapa',
-                texto: 'Haz clic en cualquier círculo correspondiente a un plantel para abrir su ficha técnica. Asimismo, al dar clic sobre cualquier demarcación municipal, se desplegará su información contextual.',
+                texto: 'Haz clic en cualquier círculo correspondiente a un plantel para abrir su ficha técnica detallada con la estadística básica. Asimismo, al dar clic sobre cualquier demarcación municipal, se desplegará su información contextual.',
                 posicion: 'center'
             },
             {
