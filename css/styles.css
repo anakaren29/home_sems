@@ -1933,6 +1933,8 @@ h2{
   height: 268px;
   background-color: var(--text-secondary);
   box-shadow: none;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .span-documentos{
