@@ -945,6 +945,8 @@ h2{
   margin-left: 150px;
 }
 
+/* marco normativo */
+
 .marco-normativo p{
   text-align: center;
   font-weight: bold;
@@ -1000,6 +1002,48 @@ h2{
   border: 1px solid var(--bg-primary);
 }
 
+/* Flechas del carrusel sin fondo gris */
+#myCarouselDocs .carousel-control.left,
+#myCarouselDocs .carousel-control.right {
+  background: #ffffff !important;
+}
+
+#myCarouselDocs .carousel-control .glyphicon-chevron-left,
+#myCarouselDocs .carousel-control .glyphicon-chevron-right {
+  color: #333333;
+}
+
+/* Indicadores (puntos) centrados debajo de las tarjetas */
+#myCarouselDocs .carousel-indicators {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-left: 0;
+  left: auto;
+  right: auto;
+  border: none;
+}
+
+#myCarouselDocs .carousel-indicators li {
+  display: inline-block;
+  background-color: #cccccc;
+  border: none;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  text-indent: 0;
+  cursor: pointer;
+}
+
+#myCarouselDocs .carousel-indicators li.active {
+  background-color: #7a1d3f;
+  margin: 0 4px;
+}
 
 /* CALENDARIO */
 .media-superior{
