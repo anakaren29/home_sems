@@ -1216,6 +1216,19 @@
     color: #ffffff;
 }
 
+.btn-descargar-bachiller {
+    margin-top: 12px;
+    width: auto;
+    min-width: 200px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.icono-descarga-leer {
+    width: 18px;
+    height: 18px;
+}
+
 .icono-libro-leer {
     width: 18px;
     height: 18px;
