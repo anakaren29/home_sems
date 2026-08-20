@@ -2542,7 +2542,6 @@ color: var(--text-secondary);
         text-decoration-color: #9F2241;
         margin-bottom: 18px;
     }
-
     .datos-modal-mc p {
         padding-top: 10px;
         text-decoration-line: none;
@@ -2553,6 +2552,37 @@ color: var(--text-secondary);
         background-color: white;
         color: #9F2241;
         border: 1px solid #9F2241;
+        text-decoration: none;
+        text-decoration-color: white;
+    }
+
+     .datos-modal-mc2{
+        background-color: #235B4E;
+        width: 481px;
+        height: 54px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration-line: none;
+        text-decoration-color: #235B4E;
+        margin-bottom: 18px;
+    }
+
+    .datos-modal-mc2 p {
+        padding-top: 10px;
+        text-decoration-line: none;
+        text-decoration-color: #235B4E;
+    }
+
+    .datos-modal-mc2:hover {
+        background-color: white;
+        color: #235B4E;
+        border: 1px solid #235B4E;
         text-decoration: none;
         text-decoration-color: white;
     }
