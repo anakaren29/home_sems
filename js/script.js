@@ -18,6 +18,8 @@
   gtag('config', MEASUREMENT_ID);
 })();
 
+cargarGoogleAnalytics();
+
 function animarContadoresEn(seccion) {
   const counters = seccion.querySelectorAll('.contador');
 
