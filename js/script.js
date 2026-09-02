@@ -1,4 +1,23 @@
 
+// Google Analytics (GA4) - carga dinámica
+(function cargarGoogleAnalytics() {
+  const MEASUREMENT_ID = 'G-LH14L3RJ59'; // <-- tu ID real
+
+  if (window.gaCargado) return; // evita cargarlo dos veces
+  window.gaCargado = true;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', MEASUREMENT_ID);
+})();
+
 function animarContadoresEn(seccion) {
   const counters = seccion.querySelectorAll('.contador');
 
