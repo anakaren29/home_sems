@@ -1,7 +1,9 @@
 
 // Google Analytics (GA4) - carga dinámica
 (function cargarGoogleAnalytics() {
-  const MEASUREMENT_ID = 'G-LH14L3RJ59'; // <-- tu ID real
+  const MEASUREMENT_ID = 'G-LH14L3RJ59';
+
+  console.log('GA función ejecutándose'); // quítalo cuando confirmes que todo va bien
 
   if (window.gaCargado) return; // evita cargarlo dos veces
   window.gaCargado = true;
@@ -17,8 +19,7 @@
   gtag('js', new Date());
   gtag('config', MEASUREMENT_ID);
 })();
-
-cargarGoogleAnalytics();
+// (sin llamada extra abajo — la IIFE ya se ejecuta sola)
 
 function animarContadoresEn(seccion) {
   const counters = seccion.querySelectorAll('.contador');
