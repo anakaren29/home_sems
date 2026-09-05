@@ -21,6 +21,7 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
+
   <body>
     <header>
       <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
@@ -266,6 +267,7 @@
 
         <!-- section documentos de consulta -->
         <div
+          id="documentos-de-consulta"
           style="
             background-color: #fcf1f4;
             border-radius: 12px;
@@ -275,7 +277,7 @@
           "
         >
           <div class="carousel-wrapper" style="margin-bottom: 20px">
-            <h2 id="documentos-de-consulta">Documentos de consulta</h2>
+            <h2>Documentos de consulta</h2>
             <button
               class="carousel-btn left flechas"
               style="top: 56%"
@@ -285,8 +287,7 @@
             </button>
             <div
               class="carrusel-scroll horizontal"
-              id="carrusel-horizontal-documentos"
-            >
+              id="carrusel-horizontal-documentos" >
 
             <div class="col-md-4">
                 <a href="assets/quienes-somos/Compromisos_de_convivencia.pdf"
@@ -1578,5 +1579,32 @@ function scrollCarruselSEMSCifras(direccion) {
 }
     </script>
    
+<script>
+  function irAAncla() {
+    if (!window.location.hash) return;
+    const destino = document.querySelector(window.location.hash);
+    if (!destino) return;
+    destino.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // Reintenta varias veces durante el primer segundo y medio,
+  // por si algún script del framework (gobmx.js) resetea el scroll después.
+  function forzarScrollAncla() {
+    let intentos = 0;
+    const maxIntentos = 6;
+    const interval = setInterval(() => {
+      irAAncla();
+      intentos++;
+      if (intentos >= maxIntentos) clearInterval(interval);
+    }, 250);
+  }
+
+  window.addEventListener("DOMContentLoaded", forzarScrollAncla);
+  window.addEventListener("load", forzarScrollAncla); // por si gobmx.js actúa en 'load'
+  document.addEventListener("turbolinks:load", forzarScrollAncla);
+</script>
+
+
+
   </body>
 </html>
