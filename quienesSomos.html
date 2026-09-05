@@ -21,6 +21,7 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
+
   <body>
     <header>
       <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
@@ -250,7 +251,7 @@
             </div>
 
             <br /><br />
-            <div style="display: flex; justify-content: center">
+            <div style="display: flex; justify-content: center" id="documentos-de-consulta">
               <button
                 type="button"
                 class="btn boton"
@@ -266,6 +267,7 @@
 
         <!-- section documentos de consulta -->
         <div
+          
           style="
             background-color: #fcf1f4;
             border-radius: 12px;
@@ -285,10 +287,90 @@
             </button>
             <div
               class="carrusel-scroll horizontal"
-              id="carrusel-horizontal-documentos"
-            >
+              id="carrusel-horizontal-documentos" >
 
             <div class="col-md-4">
+                <a href="assets/quienes-somos/Compromisos_de_convivencia.pdf"
+                    target="_blank"
+                  class="card-acuerdos card-info card-documentos a-card"
+                >
+                  <div class="img-box">
+                    <img
+                      src="assets/iconos-quienes-somos/doc_cifras.png"
+                      alt="Documento"
+                    />
+                  </div>
+                  <p
+                    class="card-info-margin"
+                    style="text-align: left; color: #ffffff"
+
+                  >
+                    Compromisos de convivencia
+                  </p>
+                  <div
+                    class="card-info-span span-documentos"
+                  >
+                    <span class="hover-text">Ver más</span>
+                    <svg
+                      class="svg-hover"
+                      width="15"
+                      height="26"
+                      viewBox="0 0 15 26"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-4">
+                <a href="assets/quienes-somos/Guía_operativa_para_la_elección.pdf"
+                    target="_blank"
+                  class="card-acuerdos card-info card-documentos a-card"
+                >
+                  <div class="img-box">
+                    <img
+                      src="assets/iconos-quienes-somos/doc_cifras.png"
+                      alt="Documento"
+                    />
+                  </div>
+                  <p
+                    class="card-info-margin"
+                    style="text-align: left; color: #ffffff"
+                    
+
+>
+                    Guía operativa para la elección
+                  </p>
+                  <div
+                    class="card-info-span span-documentos"
+                  >
+                    <span class="hover-text">Ver más</span>
+                    <svg
+                      class="svg-hover"
+                      width="15"
+                      height="26"
+                      viewBox="0 0 15 26"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M13.9234 14.3108L2.84992 25.2L0.0820312 22.4782L9.77159 12.95L0.0820312 3.42175L2.84992 0.699951L13.9234 11.5891C14.2904 11.95 14.4965 12.4395 14.4965 12.95C14.4965 13.4604 14.2904 13.9499 13.9234 14.3108Z"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-4">
                 <a href="assets/quienes-somos/20260807_ Programa Nacional EIS.pdf"
                     target="_blank"
                   class="card-acuerdos card-info card-documentos a-card"
@@ -302,6 +384,8 @@
                   <p
                     class="card-info-margin"
                     style="text-align: left; color: #ffffff"
+                  
+
                   >
                     Programa Nacional EIS
                   </p>
@@ -1495,5 +1579,32 @@ function scrollCarruselSEMSCifras(direccion) {
 }
     </script>
    
+<script>
+  function irAAncla() {
+    if (!window.location.hash) return;
+    const destino = document.querySelector(window.location.hash);
+    if (!destino) return;
+    destino.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // Reintenta varias veces durante el primer segundo y medio,
+  // por si algún script del framework (gobmx.js) resetea el scroll después.
+  function forzarScrollAncla() {
+    let intentos = 0;
+    const maxIntentos = 6;
+    const interval = setInterval(() => {
+      irAAncla();
+      intentos++;
+      if (intentos >= maxIntentos) clearInterval(interval);
+    }, 250);
+  }
+
+  window.addEventListener("DOMContentLoaded", forzarScrollAncla);
+  window.addEventListener("load", forzarScrollAncla); // por si gobmx.js actúa en 'load'
+  document.addEventListener("turbolinks:load", forzarScrollAncla);
+</script>
+
+
+
   </body>
 </html>
